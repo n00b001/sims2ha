@@ -4,6 +4,12 @@
 
 <h1 align="center">💎 Sims 2 for Home Assistant</h1>
 
+<p align="center">
+  <a href="https://github.com/n00b001/sims2ha/stargazers"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/n00b001/sims2ha?style=social"></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/n00b001/sims2ha">⭐ Star this repo if it's useful</a>
+</p>
+
 A fan-made tribute that restyles Home Assistant to look and feel like **The
 Sims 2** — and installs in **one step**. Parchment panels, the signature
 panel-blue, gold trim, a glowing plumbob, nine auto-created dashboards, and a
@@ -205,6 +211,14 @@ only `node` (used to escape the CSS into a JS string).
   style layer is injected by the bundle and cached aggressively.
 - **Fonts look plain** — the Fredoka web font loads from Google Fonts. If your
   network blocks it, set `--sims2-font-display` to a locally-hosted face.
+
+---
+
+## 📈 Star history
+
+<a href="https://star-history.com/#n00b001/sims2ha&Date">
+  <img alt="Star history chart" src="https://api.star-history.com/svg?repos=n00b001/sims2ha&type=Date">
+</a>
 
 ---
 
