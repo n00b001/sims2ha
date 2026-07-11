@@ -1,16 +1,14 @@
 # =============================================================================
-#  Pleasantview Starter - a STATIC dashboard that needs NO auto-entities.
-#  Use this if you do not (yet) have the auto-entities integration installed,
-#  or as a template to build your own Sims 2 view by hand.
-#
-#  Replace the entity_id values below with your own. The banners, the loading
-#  splash, and the plumbob mascot work on their own.
+#  Pleasantview Starter - a simple landing view.
+#  Uses the bundled auto-entities (no separate install needed) to pull in a few
+#  of your lights, switches, climate and media players automatically. The
+#  loading splash and the plumbob mascot work on their own.
 # =============================================================================
 title: Pleasantview Starter
 views:
   - title: Home
     path: home
-    icon: mdi:home-city
+    icon: sims2:aspiration-star
     cards:
       - type: custom:sims2-loading
         wordmark: PLEASANTVIEW
@@ -19,33 +17,36 @@ views:
 
       - type: markdown
         content: >
-          # 💎 Welcome to Pleasantview
+          #  Welcome to Pleasantview
 
 
-          A starter dashboard for the Sims 2 theme. Swap the placeholders
-          below for your own entities.
+          A starter dashboard for the Sims 2 theme. The favourites below fill
+          in automatically from your own entities.
 
       - type: custom:sims2-plumbob
         title: Household Morale
         mood: green
         size: 76
 
-      - type: entities
-        title: A few favourites
-        state_color: true
-        entities:
-          # <-- replace these with real entity ids from your setup
-          - light.replace_me_living_room
-          - light.replace_me_kitchen
-          - climate.replace_me_thermostat
-          - switch.replace_me_lamp
-          - media_player.replace_me_tv
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: A few favourites
+          state_color: true
+        filter:
+          include:
+            - domain: light
+            - domain: switch
+            - domain: climate
+            - domain: media_player
+        sort:
+          method: domain
+        show_empty: false
 
       - type: markdown
         content: >
           ### Add more
 
 
-          Install the free **auto-entities** integration (via HACS) and switch
-          to the premade dashboards in the parent folder to have every light,
-          lock, and sensor appear automatically - jokes included.
+          Every dashboard in this collection auto-populates from your entities
+          - lights, locks, sensors and more, jokes included.

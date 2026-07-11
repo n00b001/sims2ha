@@ -3,17 +3,17 @@
 #  Every watt is a simoleon. This dashboard tallies them up with gauges and
 #  meters drawn straight from your power and energy sensors.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Power & Energy
 views:
   - title: Power
     path: power
-    icon: mdi:flash
+    icon: sims2:type-electronics
     cards:
       - type: markdown
         content: >
-          # ⚡ Reticulating Splines: Power & Energy
+          #  Reticulating Splines: Power & Energy
 
 
           > Every watt is a simoleon. We are counting all of them.

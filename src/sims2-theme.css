@@ -2,7 +2,7 @@
    Sims 2 for Home Assistant - ZERO-CONFIG THEME LAYER
    --------------------------------------------------------------------------
    Sets Home Assistant's own theme variables on :root so the whole UI takes the
-   Sims 2 look the moment the bundle loads - with NO need to select a theme or
+   Sims 2 look the moment the bundle loads — with NO need to select a theme or
    add anything to configuration.yaml. CSS custom properties inherit through
    Home Assistant's shadow DOM, so this reaches cards, the header, the sidebar,
    switches, sliders and Material components.
@@ -12,216 +12,217 @@
    swaps in the midnight palette so the look follows the OS, exactly like the
    optional `sims2` selectable theme.
 
+   Visual direction: authentic Sims 2 live-mode control panel — teal panels,
+   sharp corners, subtle inset (per reference-images/ui.jpeg). Dark mode
+   mirrors with deep-teal night panels (per ui-2.jpg build/buy wood-trim
+   adapted for dark UI).
+
    The selectable theme file (themes/sims2.yaml) is still copied into
-   <config>/themes/ for users who want Home Assistant's native theme picker -
+   <config>/themes/ for users who want Home Assistant's native theme picker —
    that path is OPTIONAL (advanced). This injected layer is the default.
    ========================================================================== */
 
 :root {
-  /* base surfaces */
-  --primary-background-color: #F3E9D2 !important;
-  --secondary-background-color: #EADFC2 !important;
-  --card-background-color: #FBF4DF !important;
-  --ha-card-background: #FBF4DF !important;
-  --dialog-background-color: #FBF4DF !important;
-  --app-drawer-background-color: #173A52 !important;
-  --mdc-dialog-background-color: #FBF4DF !important;
-  --ha-dialog-background-color: #FBF4DF !important;
-  --table-row-background-color: #FBF4DF !important;
-  --table-row-alternative-background-color: #F3E9D2 !important;
-  --input-fill-color: #EFE3C6 !important;
-  --input-dropdown-background-color: #FBF4DF !important;
+  /* base surfaces — Pleasantview teal palette */
+  --primary-background-color: #3A6B8C !important;
+  --secondary-background-color: #2F5A78 !important;
+  --card-background-color: #4A7A9C !important;
+  --ha-card-background: linear-gradient(180deg, #4E82A4 0%, #3D6E8E 100%) !important;
+  --dialog-background-color: #2F5A78 !important;
+  --app-drawer-background-color: #1A3A52 !important;
+  --mdc-dialog-background-color: #2F5A78 !important;
+  --ha-dialog-background-color: #2F5A78 !important;
+  --table-row-background-color: #4A7A9C !important;
+  --table-row-alternative-background-color: #3D6E8E !important;
+  --input-fill-color: #2F5A78 !important;
+  --input-dropdown-background-color: #4A7A9C !important;
 
-  /* brand / action */
+  /* brand / action — Sims 2 blue + plumbob green */
   --primary-color: #2F86C5 !important;
-  --accent-color: #7BC942 !important;
-  --dark-primary-color: #235E8C !important;
-  --light-primary-color: #9CCBE6 !important;
+  --accent-color: #33CC33 !important;
+  --dark-primary-color: #1E5A8A !important;
+  --light-primary-color: #7BBAD4 !important;
 
-  /* header */
-  --app-header-background-color: #235E8C !important;
-  --app-header-text-color: #FFF6E0 !important;
-  --app-header-selection-background-color: #7BC942 !important;
+  /* header — deep Pleasantview blue */
+  --app-header-background-color: #1E4A6C !important;
+  --app-header-text-color: #E0F0FF !important;
+  --app-header-selection-background-color: #33CC33 !important;
 
-  /* sidebar */
-  --sidebar-background-color: #173A52 !important;
-  --sidebar-text-color: #E7D9B6 !important;
-  --sidebar-icon-color: #9FB6CE !important;
-  --sidebar-selected-background-color: #2F86C5 !important;
-  --sidebar-selected-icon-color: #FFF6E0 !important;
-  --sidebar-selected-text-color: #FFF6E0 !important;
+  /* sidebar — night sky teal */
+  --sidebar-background-color: #163050 !important;
+  --sidebar-text-color: #B8D4E8 !important;
+  --sidebar-icon-color: #7BA4C4 !important;
+  --sidebar-selected-background-color: #2F5A78 !important;
+  --sidebar-selected-icon-color: #33CC33 !important;
+  --sidebar-selected-text-color: #E0F0FF !important;
 
   /* text */
-  --primary-text-color: #4A3320 !important;
-  --secondary-text-color: #7A5A38 !important;
-  --text-primary-color: #FFF6E0 !important;
-  --disabled-text-color: #A98C5C !important;
-  --divider-color: #D8C39A !important;
-  --item-divider-color: #E2D2A8 !important;
+  --primary-text-color: #D4EAF5 !important;
+  --secondary-text-color: #8AB4D0 !important;
+  --text-primary-color: #E0F0FF !important;
+  --disabled-text-color: #4A7A9C !important;
+  --divider-color: #264C6A !important;
+  --item-divider-color: #2F5A78 !important;
 
   /* status */
-  --error-color: #C0392B !important;
-  --warning-color: #E09A2B !important;
-  --success-color: #5BA82C !important;
+  --error-color: #E04030 !important;
+  --warning-color: #D4942B !important;
+  --success-color: #33CC33 !important;
   --info-color: #2F86C5 !important;
 
   /* entity / state icons */
-  --state-icon-color: #7A5A38 !important;
-  --state-icon-active-color: #7BC942 !important;
-  --state-active-color: #7BC942 !important;
-  --paper-item-icon-color: #7A5A38 !important;
-  --paper-item-icon-active-color: #7BC942 !important;
+  --state-icon-color: #8AB4D0 !important;
+  --state-icon-active-color: #33CC33 !important;
+  --state-active-color: #33CC33 !important;
+  --paper-item-icon-color: #7BA4C4 !important;
+  --paper-item-icon-active-color: #33CC33 !important;
 
   /* switches & sliders */
-  --switch-checked-color: #7BC942 !important;
-  --switch-checked-button-color: #FBF4DF !important;
-  --switch-checked-track-color: #5BA82C !important;
-  --toggle-button-color: #7BC942 !important;
+  --switch-checked-color: #33CC33 !important;
+  --switch-checked-button-color: #1E4A6C !important;
+  --switch-checked-track-color: #229922 !important;
+  --toggle-button-color: #33CC33 !important;
   --slider-color: #2F86C5 !important;
-  --slider-secondary-color: #7BC942 !important;
-  --slider-track-color: #D8C39A !important;
+  --slider-secondary-color: #33CC33 !important;
+  --slider-track-color: #264C6A !important;
   --slider-bar-color: #2F86C5 !important;
-  --slider-thumb-color: #FBF4DF !important;
-  --slider-knob-color: #FBF4DF !important;
+  --slider-thumb-color: #E0F0FF !important;
+  --slider-knob-color: #E0F0FF !important;
   --slider-pin-color: #2F86C5 !important;
 
   /* badges */
-  --label-badge-background-color: #E0B66B !important;
-  --label-badge-text-color: #4A3320 !important;
+  --label-badge-background-color: #33CC33 !important;
+  --label-badge-text-color: #1A3A52 !important;
 
-  /* cards */
-  --ha-card-border-radius: 14px !important;
-  --ha-card-box-shadow: 0 2px 6px rgba(74, 51, 32, 0.18) !important;
-  --ha-card-border-color: #D8C39A !important;
-  --borders-color: #D8C39A !important;
+  /* cards — authentic Sims 2 teal panels (live-mode control panel).
+     Sharp corners, subtle inset edge, no gold trim. The gradient gives a
+     softly lit surface that matches the game's UI aesthetic (ui.jpeg). */
+  --ha-card-border-radius: 4px !important;
+  --ha-card-border-color: #265070 !important;
+  --ha-card-box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 8px rgba(0,0,0,0.3) !important;
+  --borders-color: #265070 !important;
 
   /* chips / menus */
-  --chip-background-color: #EFE3C6 !important;
+  --chip-background-color: #2F5A78 !important;
 
   /* Material tokens */
   --mdc-theme-primary: #2F86C5 !important;
-  --mdc-theme-secondary: #7BC942 !important;
-  --mdc-theme-on-primary: #FFF6E0 !important;
-  --mdc-theme-surface: #FBF4DF !important;
-  --mdc-theme-background: #F3E9D2 !important;
-  --mdc-theme-on-surface: #4A3320 !important;
-  --mdc-theme-error: #C0392B !important;
+  --mdc-theme-secondary: #33CC33 !important;
+  --mdc-theme-on-primary: #E0F0FF !important;
+  --mdc-theme-surface: #4A7A9C !important;
+  --mdc-theme-background: #3A6B8C !important;
+  --mdc-theme-on-surface: #D4EAF5 !important;
+  --mdc-theme-error: #E04030 !important;
 
   /* Sims 2 custom tokens (consumed by the cards and the override layer) */
   --sims2-panel-blue: #2F86C5 !important;
-  --sims2-panel-blue-dark: #235E8C !important;
-  --sims2-panel-blue-deep: #173A52 !important;
-  --sims2-plumbob-green: #7BC942 !important;
-  --sims2-gold: #E0B66B !important;
-  --sims2-gold-dark: #C29A3C !important;
-  --sims2-parchment: #F3E9D2 !important;
-  --sims2-cream: #FBF4DF !important;
-  --sims2-espresso: #4A3320 !important;
-  --sims2-load-bg-top: #1E5C92 !important;
-  --sims2-load-bg-bottom: #0E2C4D !important;
+  --sims2-panel-blue-dark: #1E4A6C !important;
+  --sims2-panel-blue-deep: #163050 !important;
+  --sims2-plumbob-green: #33CC33 !important;
+  --sims2-teal-light: #4E82A4 !important;
+  --sims2-teal-dark: #1E4A6C !important;
+  --sims2-load-bg-top: #0E2C4D !important;
+  --sims2-load-bg-bottom: #050D17 !important;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* base surfaces */
+    /* base surfaces — deep night Pleasantview */
     --primary-background-color: #0C1A2B !important;
-    --secondary-background-color: #102338 !important;
-    --card-background-color: #13283F !important;
-    --ha-card-background: #13283F !important;
-    --dialog-background-color: #13283F !important;
+    --secondary-background-color: #0E2238 !important;
+    --card-background-color: #142840 !important;
+    --ha-card-background: linear-gradient(180deg, #162C44 0%, #0F2038 100%) !important;
+    --dialog-background-color: #142840 !important;
     --app-drawer-background-color: #0A1626 !important;
-    --mdc-dialog-background-color: #13283F !important;
-    --ha-dialog-background-color: #13283F !important;
-    --table-row-background-color: #13283F !important;
-    --table-row-alternative-background-color: #0F2236 !important;
-    --input-fill-color: #17304C !important;
-    --input-dropdown-background-color: #13283F !important;
+    --mdc-dialog-background-color: #142840 !important;
+    --ha-dialog-background-color: #142840 !important;
+    --table-row-background-color: #142840 !important;
+    --table-row-alternative-background-color: #0E2238 !important;
+    --input-fill-color: #102A44 !important;
+    --input-dropdown-background-color: #142840 !important;
 
-    /* brand / action */
+    /* brand / action — brighter for dark mode */
     --primary-color: #3FA0D8 !important;
-    --accent-color: #8BD64A !important;
+    --accent-color: #5BEE5B !important;
     --dark-primary-color: #2B6E9C !important;
     --light-primary-color: #17304C !important;
 
     /* header */
-    --app-header-background-color: #0E2A45 !important;
-    --app-header-text-color: #EAF4FF !important;
-    --app-header-selection-background-color: #8BD64A !important;
+    --app-header-background-color: #0A2040 !important;
+    --app-header-text-color: #D4ECFF !important;
+    --app-header-selection-background-color: #5BEE5B !important;
 
     /* sidebar */
-    --sidebar-background-color: #0A1E33 !important;
-    --sidebar-text-color: #CDE3F5 !important;
+    --sidebar-background-color: #081628 !important;
+    --sidebar-text-color: #A0C4E0 !important;
     --sidebar-icon-color: #5F84A8 !important;
-    --sidebar-selected-background-color: #17304C !important;
-    --sidebar-selected-icon-color: #8BD64A !important;
-    --sidebar-selected-text-color: #EAF4FF !important;
+    --sidebar-selected-background-color: #102A44 !important;
+    --sidebar-selected-icon-color: #5BEE5B !important;
+    --sidebar-selected-text-color: #D4ECFF !important;
 
     /* text */
-    --primary-text-color: #EAF2FB !important;
-    --secondary-text-color: #9FB6CE !important;
-    --text-primary-color: #EAF4FF !important;
-    --disabled-text-color: #4A6480 !important;
-    --divider-color: #1F3E5E !important;
-    --item-divider-color: #16324C !important;
+    --primary-text-color: #D4ECFF !important;
+    --secondary-text-color: #7AAAC8 !important;
+    --text-primary-color: #E0F0FF !important;
+    --disabled-text-color: #2A5068 !important;
+    --divider-color: #132C48 !important;
+    --item-divider-color: #0E2238 !important;
 
     /* status */
-    --error-color: #E55B45 !important;
-    --warning-color: #E8A23C !important;
-    --success-color: #7BC942 !important;
+    --error-color: #FF5B45 !important;
+    --warning-color: #F0A03C !important;
+    --success-color: #5BEE5B !important;
     --info-color: #3FA0D8 !important;
 
     /* entity / state icons */
-    --state-icon-color: #9FB6CE !important;
-    --state-icon-active-color: #8BD64A !important;
-    --state-active-color: #8BD64A !important;
-    --paper-item-icon-color: #9FB6CE !important;
-    --paper-item-icon-active-color: #8BD64A !important;
+    --state-icon-color: #7AAAC8 !important;
+    --state-icon-active-color: #5BEE5B !important;
+    --state-active-color: #5BEE5B !important;
+    --paper-item-icon-color: #5F84A8 !important;
+    --paper-item-icon-active-color: #5BEE5B !important;
 
     /* switches & sliders */
-    --switch-checked-color: #8BD64A !important;
+    --switch-checked-color: #5BEE5B !important;
     --switch-checked-button-color: #0C1A2B !important;
-    --switch-checked-track-color: #5BA82C !important;
-    --toggle-button-color: #8BD64A !important;
+    --switch-checked-track-color: #3AA83A !important;
+    --toggle-button-color: #5BEE5B !important;
     --slider-color: #3FA0D8 !important;
-    --slider-secondary-color: #8BD64A !important;
-    --slider-track-color: #1F3E5E !important;
+    --slider-secondary-color: #5BEE5B !important;
+    --slider-track-color: #132C48 !important;
     --slider-bar-color: #3FA0D8 !important;
-    --slider-thumb-color: #EAF4FF !important;
-    --slider-knob-color: #EAF4FF !important;
+    --slider-thumb-color: #E0F0FF !important;
+    --slider-knob-color: #E0F0FF !important;
     --slider-pin-color: #3FA0D8 !important;
 
     /* badges */
-    --label-badge-background-color: #C29A3C !important;
+    --label-badge-background-color: #5BEE5B !important;
     --label-badge-text-color: #0C1A2B !important;
 
-    /* cards */
-    --ha-card-border-radius: 14px !important;
-    --ha-card-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45) !important;
-    --ha-card-border-color: #1F3E5E !important;
-    --borders-color: #1F3E5E !important;
+    /* cards — dark teal panels (mirrors light mode structure) */
+    --ha-card-border-radius: 4px !important;
+    --ha-card-border-color: #0E2238 !important;
+    --ha-card-box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 8px rgba(0,0,0,0.5) !important;
+    --borders-color: #132C48 !important;
 
     /* chips / menus */
-    --chip-background-color: #17304C !important;
+    --chip-background-color: #102A44 !important;
 
     /* Material tokens */
     --mdc-theme-primary: #3FA0D8 !important;
-    --mdc-theme-secondary: #8BD64A !important;
+    --mdc-theme-secondary: #5BEE5B !important;
     --mdc-theme-on-primary: #0C1A2B !important;
-    --mdc-theme-surface: #13283F !important;
+    --mdc-theme-surface: #142840 !important;
     --mdc-theme-background: #0C1A2B !important;
-    --mdc-theme-on-surface: #EAF2FB !important;
-    --mdc-theme-error: #E55B45 !important;
+    --mdc-theme-on-surface: #D4ECFF !important;
+    --mdc-theme-error: #FF5B45 !important;
 
     /* Sims 2 custom tokens */
     --sims2-panel-blue: #3FA0D8 !important;
     --sims2-panel-blue-dark: #2B6E9C !important;
-    --sims2-panel-blue-deep: #0E2A45 !important;
-    --sims2-plumbob-green: #8BD64A !important;
-    --sims2-gold: #C29A3C !important;
-    --sims2-gold-dark: #8A6A24 !important;
-    --sims2-parchment: #102338 !important;
-    --sims2-cream: #13283F !important;
-    --sims2-espresso: #EAF2FB !important;
+    --sims2-panel-blue-deep: #0A2040 !important;
+    --sims2-plumbob-green: #5BEE5B !important;
+    --sims2-teal-light: #162C44 !important;
+    --sims2-teal-dark: #0A2040 !important;
     --sims2-load-bg-top: #0E2A45 !important;
     --sims2-load-bg-bottom: #050D17 !important;
   }

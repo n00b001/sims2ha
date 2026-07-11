@@ -2,34 +2,29 @@
 #  Plumbob Command - system status, updates, and network health.
 #  The diamond that hovers above your entire smart home. A green plumbob means
 #  the neighbourhood is humming; a red one means something needs attention.
-#
-#  Requires the optional auto-entities integration (HACS).
 # =============================================================================
 title: Plumbob Command
 views:
   - title: System
     path: system
-    icon: mdi:chip
+    icon: sims2:build-mode
     cards:
       - type: markdown
         content: >
-          # 💎 Plumbob Command
+          #  Plumbob Command
 
 
           > The diamond that hovers above your entire smart home. When it is
           > green, all is well in Pleasantview.
 
-      # --- Plumbob bound to overall system health --------------------------
+      # --- Plumbob mascot (static green; add an entity to make it live) ------
       - type: custom:sims2-plumbob
         title: Plumbob Morale
         subtitle: The diamond knows
-        entity: binary_sensor.updater
-        state_map:
-          "off": green
-          "on": yellow
+        mood: green
         size: 80
 
-      # --- Pending updates --------------------------------------------------
+      # --- Pending updates (auto-populated from real update.* entities) ------
       - type: custom:auto-entities
         card:
           type: entities

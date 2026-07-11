@@ -3,17 +3,17 @@
 #  Mortimer has seen things. Mostly burglars, and mostly at 2am.
 #  This dashboard gathers every lock, alarm panel, and opening sensor.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Security Grid
 views:
   - title: Security
     path: security
-    icon: mdi:shield-home
+    icon: sims2:shop-window
     cards:
       - type: markdown
         content: >
-          # 🛡️ Mortimer Goth's Security Grid
+          # ️ Mortimer Goth's Security Grid
 
 
           > He has seen things. Mostly burglars named Frankie.
@@ -42,7 +42,7 @@ views:
             - domain: lock
               options:
                 type: tile
-                icon: mdi:lock
+                icon: sims2:lock
         sort:
           method: name
         show_empty: true

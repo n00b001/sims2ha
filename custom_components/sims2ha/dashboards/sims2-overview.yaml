@@ -10,7 +10,7 @@ title: Pleasantview Overview
 views:
   - title: Home
     path: home
-    icon: mdi:home-city
+    icon: sims2:plumbob
     cards:
       # --- The Sims 2 loading splash (auto-dismisses after 5 seconds) -------
       - type: custom:sims2-loading
@@ -21,7 +21,7 @@ views:
       # --- Welcome banner ---------------------------------------------------
       - type: markdown
         content: >
-          # 💎 Welcome to Pleasantview
+          #  Welcome to Pleasantview
 
 
           Your home, now 38% more reticulated. The plumbob above your smart

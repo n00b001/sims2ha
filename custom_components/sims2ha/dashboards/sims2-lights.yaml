@@ -3,17 +3,17 @@
 #  Bella Goth vanished mysteriously in Pleasantview. The lamps she left
 #  behind still work perfectly. This dashboard rounds them all up.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Lighting Bureau
 views:
   - title: Lights
     path: lights
-    icon: mdi:lightbulb-on
+    icon: sims2:type-lighting
     cards:
       - type: markdown
         content: >
-          # 💡 The Bella Goth Memorial Lighting Bureau
+          #  The Bella Goth Memorial Lighting Bureau
 
 
           > She vanished without a trace. The lamps remember.
@@ -21,7 +21,7 @@ views:
       # Plunge every light into darkness in a single tap.
       - type: button
         name: Plunge Pleasantview into darkness
-        icon: mdi:lightbulb-off
+        icon: sims2:plumbob-mood-red
         tap_action:
           action: call-service
           service: light.turn_off
@@ -46,7 +46,7 @@ views:
             - domain: light
               options:
                 type: tile
-                icon: mdi:lightbulb
+                icon: sims2:type-lighting
                 hide_state: false
         sort:
           method: name
