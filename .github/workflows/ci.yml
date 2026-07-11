@@ -45,14 +45,7 @@ jobs:
       - name: hassfest (Home Assistant integration validator)
         uses: home-assistant/actions/hassfest@master
 
-      # HACS validates HACS-distributability (description, topics, license,
-      # manifest, hacs.json, releases). The `brands` check needs the domain
-      # listed in home-assistant/brands — an external PR (see README) — so it
-      # cannot pass from this repo yet. continue-on-error keeps that one
-      # external dependency from failing the build; remove it once `sims2ha`
-      # is listed in the brands repo.
       - name: HACS validation
         uses: hacs/action@main
         with:
           category: integration
-        continue-on-error: true
