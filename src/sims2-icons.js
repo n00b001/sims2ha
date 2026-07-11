@@ -101,6 +101,13 @@ const SIMS2_ICONS = {
   "sort-function": '<circle cx="12" cy="12" r="3"/><path d="M12 2 V5 M12 19 V22 M2 12 H5 M19 12 H22 M5 5 L7 7 M17 17 L19 19 M19 5 L17 7 L7 17 L5 19" stroke-width="1.6" stroke="#FFFFFF"/>',
   "sort-name": '<path d="M3 18 L6 6 L9 18 M4 14 H8" fill="none" stroke-width="1.6"/><path d="M13 18 V6 H16 a3 3 0 0 1 0 6 H13" fill="none" stroke-width="1.6"/>',
   "sort-price": '<path d="M12 2 L16 7 L13.4 7 L13.4 15 H16 L12 20 L8 15 H10.6 L10.6 7 L8 7 Z"/>',
+
+  // =========================================================================
+  // SECURITY & AUTOMATION (new — flat fill, thin outline style)
+  // =========================================================================
+  lock: '<path d="M7 11 V7 a5 5 0 0 1 10 0 V11"/><rect x="4" y="11" width="16" height="10" rx="2"/>',
+  script: '<path d="M6 3 H14 L18 7 V17 a2 2 0 0 1 -2 2 H6 a2 2 0 0 1 -2 -2 V5 a2 2 0 0 1 2 -2 Z"/><path d="M14 3 V7 H18"/>' +
+    '<path d="M8 11 H16 M8 14 H16 M8 17 H13" stroke="#FFFFFF" stroke-width="1.2"/>',
 };
 
 window.customIcons = window.customIcons || {};

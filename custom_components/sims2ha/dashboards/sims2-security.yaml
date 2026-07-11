@@ -13,7 +13,7 @@ views:
     cards:
       - type: markdown
         content: >
-          # 🛡️ Mortimer Goth's Security Grid
+          # ️ Mortimer Goth's Security Grid
 
 
           > He has seen things. Mostly burglars named Frankie.
@@ -42,7 +42,7 @@ views:
             - domain: lock
               options:
                 type: tile
-                icon: mdi:lock
+                icon: sims2:lock
         sort:
           method: name
         show_empty: true

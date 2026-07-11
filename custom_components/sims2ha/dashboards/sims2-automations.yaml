@@ -13,7 +13,7 @@ views:
     cards:
       - type: markdown
         content: >
-          # 🤖 Don Lothario's Automation Suite
+          #  Don Lothario's Automation Suite
 
 
           > Smooth operators, working around the clock so you can nap like
@@ -59,7 +59,7 @@ views:
             - domain: script
               options:
                 type: tile
-                icon: mdi:script-text
+                icon: sims2:script
         sort:
           method: name
         show_empty: true

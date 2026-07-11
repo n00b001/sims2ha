@@ -21,7 +21,7 @@ views:
       # --- Welcome banner ---------------------------------------------------
       - type: markdown
         content: >
-          # 💎 Welcome to Pleasantview
+          #  Welcome to Pleasantview
 
 
           Your home, now 38% more reticulated. The plumbob above your smart
