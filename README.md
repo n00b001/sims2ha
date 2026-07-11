@@ -1,4 +1,8 @@
-# 💎 Sims 2 for Home Assistant
+<p align="center">
+  <img src="assets/plumbob.png" width="140" alt="Sims 2 plumbob">
+</p>
+
+<h1 align="center">💎 Sims 2 for Home Assistant</h1>
 
 A fan-made tribute that restyles Home Assistant to look and feel like **The
 Sims 2** — and installs in **one step**. Parchment panels, the signature
@@ -132,6 +136,19 @@ person.bella_goth:
 
 ---
 
+## 🔣 Integration icon (brand submission)
+
+The plumbob logo in this README (`assets/plumbob.png`) and ready-made brand
+icons (`assets/brand-icon-256.png`, `assets/brand-icon-512.png`) are staged for
+the [home-assistant/brands](https://github.com/home-assistant/brands)
+repository — that is where Home Assistant sources the icon shown next to the
+integration in **Settings → Devices & Services**. To publish it, open a PR
+there adding `custom_integrations/sims2ha/icons/icon.png` (256×256) and
+`icons/icon@2x.png` (512×512); see their CONTRIBUTING for the current
+`config_flow` file format.
+
+---
+
 ## 🔧 How it works
 
 This is a **custom integration** (not a plain theme repo) because that's the
@@ -173,6 +190,12 @@ only `node` (used to escape the CSS into a JS string).
 
 ## ❓ Troubleshooting
 
+- **"Failed to download zipball" when installing in HACS** — this is a
+  network or GitHub rate-limit error on the Home Assistant side, not a problem
+  with this repository (the zipball is public and serves fine). Retry first;
+  if it persists, add a GitHub personal access token (HACS → Settings → GitHub
+  token) and confirm the HA host can reach `https://github.com` (e.g.
+  `curl -I https://github.com/n00b001/sims2ha`).
 - **Cards show "Custom element doesn't exist"** — refresh your browser. The
   resource is registered during setup; a hard refresh picks it up.
 - **Dashboards show a red error card** — refresh the browser first; the bundled

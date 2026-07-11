@@ -1,0 +1,11 @@
+# Text files normalize to LF on every checkout (keeps the JS bundle and YAML
+# stable across Windows/macOS/Linux contributors). Images and archives are
+# marked binary so line-ending conversion never corrupts them.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.gz binary
