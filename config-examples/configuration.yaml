@@ -1,0 +1,74 @@
+# ==========================================================================
+#  Sims 2 for Home Assistant - example configuration.yaml additions
+#  Copy the relevant snippets into your own configuration.yaml, then reload.
+#  Full step-by-step instructions live in the README.
+# ==========================================================================
+
+# 1. Enable the theme loader and point it at the themes folder.
+frontend:
+  themes: !include_dir_merge_named themes/
+  # Optional: extra JS/CSS modules. After installing the theme + custom cards
+  # + icon pack (see README), add the resources below OR add them via the UI:
+  #   Settings -> Dashboards -> Resources -> Add resource
+  extra_module_url:
+    - /local/community/sims2ha/sims2-loading-card.js
+    - /local/community/sims2ha/sims2-plumbob-card.js
+    - /local/community/sims2ha/sims2-icons.js      # registers the sims2: icon set
+  extra_html_url:
+    - /local/community/sims2ha/sims2-fonts.css
+    - /local/community/sims2ha/sims2-overrides.css
+
+# 2. Register the premade Sims 2 dashboards so they appear in the sidebar.
+#    Sidebar icons use the bundled sims2: icon pack wherever a natural match
+#    exists (plumbob, lighting, electronics, needs); mdi: is used elsewhere.
+lovelace:
+  mode: storage
+  dashboards:
+    sims2-overview:
+      mode: yaml
+      title: Pleasantview Overview
+      icon: sims2:plumbob
+      show_in_sidebar: true
+      filename: dashboards/sims2-overview.yaml
+    sims2-lights:
+      mode: yaml
+      title: Lighting Bureau
+      icon: sims2:type-lighting
+      show_in_sidebar: true
+      filename: dashboards/sims2-lights.yaml
+    sims2-climate:
+      mode: yaml
+      title: Climate Control
+      icon: mdi:thermostat
+      show_in_sidebar: true
+      filename: dashboards/sims2-climate.yaml
+    sims2-power:
+      mode: yaml
+      title: Power & Energy
+      icon: mdi:flash
+      show_in_sidebar: true
+      filename: dashboards/sims2-power.yaml
+    sims2-security:
+      mode: yaml
+      title: Security Grid
+      icon: mdi:shield-home
+      show_in_sidebar: true
+      filename: dashboards/sims2-security.yaml
+    sims2-automations:
+      mode: yaml
+      title: Automation Suite
+      icon: mdi:robot-happy
+      show_in_sidebar: true
+      filename: dashboards/sims2-automations.yaml
+    sims2-system:
+      mode: yaml
+      title: Plumbob Command
+      icon: sims2:type-electronics
+      show_in_sidebar: true
+      filename: dashboards/sims2-system.yaml
+    sims2-needs:
+      mode: yaml
+      title: Household Needs
+      icon: sims2:need-energy
+      show_in_sidebar: true
+      filename: dashboards/sims2-needs.yaml

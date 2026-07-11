@@ -1,0 +1,135 @@
+# =============================================================================
+#  Household Needs - a joke dashboard.
+#  Every Sim has eight needs. Here we map your home's sensors onto them, so
+#  your house can have a plumbob just like a person does.
+#
+#  This dashboard is a TEMPLATE: replace the sensor.* placeholders with your
+#  own entities (or bind them to the custom:sims2-plumbob cards). Suggestions
+#  for each need are in the comments.
+#
+#  No auto-entities required - this one is hand-curated for fun.
+# =============================================================================
+title: Household Needs
+views:
+  - title: Needs
+    path: needs
+    icon: mdi:emoticon-happy
+    cards:
+      - type: markdown
+        content: >
+          # 🧠 Household Needs
+
+
+          > Your home is basically a Sim. It has needs. Keep the plumbob green
+          > and the neighbourhood prospers.
+
+
+          Replace each placeholder below with a real sensor (or a
+          `custom:sims2-plumbob` card) to bring your house to life.
+
+      - type: custom:sims2-plumbob
+        title: Overall Plumbob
+        subtitle: How is the household, really
+        mood: green
+        size: 90
+
+      - type: grid
+        columns: 2
+        square: false
+        cards:
+          # Hunger -> fridge door sensor, or pantry weight. Default: placeholder.
+          - type: gauge
+            name: 🍔 Hunger
+            entity: sensor.replace_me_hunger
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Energy -> UPS / battery / solar. A tired home is a dim home.
+          - type: gauge
+            name: ⚡ Energy
+            entity: sensor.replace_me_energy
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Comfort -> average temperature comfort, or HVAC running cleanly.
+          - type: gauge
+            name: 🛋️ Comfort
+            entity: sensor.replace_me_comfort
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Fun -> TV on, or media player playing.
+          - type: gauge
+            name: 🎮 Fun
+            entity: sensor.replace_me_fun
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Social -> number of people home, or guest Wi-Fi clients.
+          - type: gauge
+            name: 🗣️ Social
+            entity: sensor.replace_me_social
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Hygiene -> humidity in range, or a leak-free bathroom.
+          - type: gauge
+            name: 🚿 Hygiene
+            entity: sensor.replace_me_hygiene
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Bladder -> water usage today (lower is calmer).
+          - type: gauge
+            name: 🚽 Bladder
+            entity: sensor.replace_me_bladder
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+          # Room -> air quality (PM2.5 inverted) or cleanliness.
+          - type: gauge
+            name: 🏠 Room
+            entity: sensor.replace_me_room
+            min: 0
+            max: 100
+            severity:
+              green: 60
+              yellow: 30
+              red: 0
+
+      - type: markdown
+        content: >
+          ### The free will problem
+
+
+          Sims left to their own devices will eventually set the kitchen on
+          fire. Your home, given the right automations, is hopefully smarter
+          than that. Keep the plumbob green and nobody gets burned.

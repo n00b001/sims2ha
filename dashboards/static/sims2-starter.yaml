@@ -1,0 +1,51 @@
+# =============================================================================
+#  Pleasantview Starter - a STATIC dashboard that needs NO auto-entities.
+#  Use this if you do not (yet) have the auto-entities integration installed,
+#  or as a template to build your own Sims 2 view by hand.
+#
+#  Replace the entity_id values below with your own. The banners, the loading
+#  splash, and the plumbob mascot work on their own.
+# =============================================================================
+title: Pleasantview Starter
+views:
+  - title: Home
+    path: home
+    icon: mdi:home-city
+    cards:
+      - type: custom:sims2-loading
+        wordmark: PLEASANTVIEW
+        duration: 4
+        fullscreen: true
+
+      - type: markdown
+        content: >
+          # 💎 Welcome to Pleasantview
+
+
+          A starter dashboard for the Sims 2 theme. Swap the placeholders
+          below for your own entities.
+
+      - type: custom:sims2-plumbob
+        title: Household Morale
+        mood: green
+        size: 76
+
+      - type: entities
+        title: A few favourites
+        state_color: true
+        entities:
+          # <-- replace these with real entity ids from your setup
+          - light.replace_me_living_room
+          - light.replace_me_kitchen
+          - climate.replace_me_thermostat
+          - switch.replace_me_lamp
+          - media_player.replace_me_tv
+
+      - type: markdown
+        content: >
+          ### Add more
+
+
+          Install the free **auto-entities** integration (via HACS) and switch
+          to the premade dashboards in the parent folder to have every light,
+          lock, and sensor appear automatically - jokes included.

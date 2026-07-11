@@ -1,0 +1,74 @@
+# =============================================================================
+#  The Bella Goth Memorial Lighting Bureau - every light in the home.
+#  Bella Goth vanished mysteriously in Pleasantview. The lamps she left
+#  behind still work perfectly. This dashboard rounds them all up.
+#
+#  Requires the optional auto-entities integration (HACS).
+# =============================================================================
+title: Lighting Bureau
+views:
+  - title: Lights
+    path: lights
+    icon: mdi:lightbulb-on
+    cards:
+      - type: markdown
+        content: >
+          # 💡 The Bella Goth Memorial Lighting Bureau
+
+
+          > She vanished without a trace. The lamps remember.
+
+      # Plunge every light into darkness in a single tap.
+      - type: button
+        name: Plunge Pleasantview into darkness
+        icon: mdi:lightbulb-off
+        tap_action:
+          action: call-service
+          service: light.turn_off
+          target:
+            entity_id: all
+          confirmation:
+            text: Switch off every light in the neighbourhood?
+        hold_action:
+          action: call-service
+          service: light.turn_on
+          target:
+            entity_id: all
+
+      # --- Tile grid of every light ----------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 2
+          square: false
+        filter:
+          include:
+            - domain: light
+              options:
+                type: tile
+                icon: mdi:lightbulb
+                hide_state: false
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Same lights, grouped by room ------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: By room
+          state_color: true
+        filter:
+          include:
+            - domain: light
+        sort:
+          method: area
+        show_empty: true
+
+      - type: markdown
+        content: >
+          ### A note from the management
+
+
+          No Sims were harmed in the automation of this lighting. Any bulb
+          that flickers is merely *reticulating its splines*.

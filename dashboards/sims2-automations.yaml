@@ -1,0 +1,73 @@
+# =============================================================================
+#  Don Lothario's Automation Suite - automations, scenes, and scripts.
+#  Smooth. Relentless. Oddly romantic. Everything in your home that acts on
+#  its own, gathered in one place.
+#
+#  Requires the optional auto-entities integration (HACS).
+# =============================================================================
+title: Automation Suite
+views:
+  - title: Automations
+    path: automations
+    icon: mdi:robot-happy
+    cards:
+      - type: markdown
+        content: >
+          # 🤖 Don Lothario's Automation Suite
+
+
+          > Smooth operators, working around the clock so you can nap like
+          > a millionaire.
+
+      # --- Automations as toggles ------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Automations
+          state_color: true
+        filter:
+          include:
+            - domain: automation
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Scenes as buttons -----------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 2
+          square: false
+        filter:
+          include:
+            - domain: scene
+              options:
+                type: tile
+                icon: mdi:palette
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Scripts as buttons ----------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 2
+          square: false
+        filter:
+          include:
+            - domain: script
+              options:
+                type: tile
+                icon: mdi:script-text
+        sort:
+          method: name
+        show_empty: true
+
+      - type: markdown
+        content: >
+          ### A word from Don
+
+
+          "An automation, like a good date, should know exactly when to turn
+          itself off." - Don Lothario

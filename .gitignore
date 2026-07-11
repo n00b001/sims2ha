@@ -1,0 +1,29 @@
+# Operating system cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Editor / IDE
+.idea/
+.vscode/
+*.pyc
+__pycache__/
+
+# Home Assistant local runtime (never shipped in a theme repo)
+.HA_VERSION
+.homeassistant
+.storage/
+storage/
+*.log
+home-assistant*.db
+home-assistant_v2.db
+
+# OMC / Claude operational artifacts
+.omc/
+.claude/
+.tenet/
+logs/
+
+# Local test clones
+test-deploy/

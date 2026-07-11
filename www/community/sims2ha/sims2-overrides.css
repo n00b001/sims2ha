@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Sims 2 for Home Assistant - document-level flavour overrides
+   --------------------------------------------------------------------------
+   Optional niceties that live in the light DOM: a faint plumbob-watermark
+   background, rounded focus rings in plumbob green, and friendlier link
+   colours. Loaded alongside sims2-fonts.css.
+
+   These are intentionally cosmetic and safe. For deep restyling (gradient
+   app header, sidebar, settings UI) use the card-mod snippet in
+   docs/CARD-MOD.md — card-mod runs inside each component's shadow root where
+   a plain stylesheet cannot reach.
+   ========================================================================== */
+
+/* Subtle diamond plumbob watermark behind the app in light mode. */
+body {
+  background-image:
+    radial-gradient(circle at 50% 42%,
+      rgba(123, 201, 66, 0.05) 0%,
+      rgba(123, 201, 66, 0.0) 38%),
+    repeating-linear-gradient(45deg,
+      rgba(224, 182, 107, 0.025) 0px,
+      rgba(224, 182, 107, 0.025) 14px,
+      transparent 14px,
+      transparent 28px);
+  background-attachment: fixed;
+}
+
+/* Plumbob-green focus ring across the light-DOM shell. */
+*:focus-visible {
+  outline: 3px solid var(--sims2-plumbob-green, #7bc942);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Warmer link colour in parchment-toned surfaces. */
+a {
+  color: var(--sims2-panel-blue, #2f86c5);
+}
+a:hover {
+  color: var(--sims2-plumbob-green, #7bc942);
+}
+
+/* Give plain markdown / text content the Sims body face where reachable. */
+.home-assistant,
+.home-assistant * {
+  letter-spacing: 0.005em;
+}

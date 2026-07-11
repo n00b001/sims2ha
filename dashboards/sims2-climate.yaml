@@ -1,0 +1,80 @@
+# =============================================================================
+#  Pleasantview Climate Control - thermostats, fans, and humidifiers.
+#  In Pleasantview the weather is always ideal and nobody ever sweats.
+#  This dashboard assembles everything that keeps your home that way.
+#
+#  Requires the optional auto-entities integration (HACS).
+# =============================================================================
+title: Climate Control
+views:
+  - title: Climate
+    path: climate
+    icon: mdi:thermostat
+    cards:
+      - type: markdown
+        content: >
+          # 🌡️ Pleasantview Climate Control
+
+
+          > A perfect 72 degrees. Nobody sweats. Nobody shivers. The
+          > thermostats are deeply content.
+
+      # --- Thermostats / climate entities as tiles -------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 2
+          square: false
+        filter:
+          include:
+            - domain: climate
+              options:
+                type: tile
+                icon: mdi:thermostat
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Fans and humidifiers --------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Breezes and mists
+          state_color: true
+        filter:
+          include:
+            - domain: fan
+            - domain: humidifier
+        sort:
+          method: domain
+        show_empty: true
+
+      # --- Temperature gauges ----------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 3
+          square: false
+        filter:
+          include:
+            - domain: sensor
+              device_class: temperature
+              options:
+                type: gauge
+                min: 0
+                max: 40
+                severity:
+                  green: 18
+                  yellow: 15
+                  red: 35
+        sort:
+          method: name
+        show_empty: true
+
+      - type: markdown
+        content: >
+          ### Mortimer Goth, meteorologist
+
+
+          "The barometer agrees with me today, which is more than can be said
+          for most people." - Mortimer, probably.

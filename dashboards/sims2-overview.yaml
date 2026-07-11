@@ -1,0 +1,68 @@
+# =============================================================================
+#  Pleasantview Overview - the landing dashboard.
+#  Shows the Sims 2 loading splash, a plumbob mascot, and a live snapshot of
+#  everything currently switched on across the home.
+#
+#  Uses the optional auto-entities integration (install via HACS) to populate
+#  cards from your real entities automatically. See the README.
+# =============================================================================
+title: Pleasantview Overview
+views:
+  - title: Home
+    path: home
+    icon: mdi:home-city
+    cards:
+      # --- The Sims 2 loading splash (auto-dismisses after 5 seconds) -------
+      - type: custom:sims2-loading
+        wordmark: PLEASANTVIEW
+        duration: 5
+        fullscreen: true
+
+      # --- Welcome banner ---------------------------------------------------
+      - type: markdown
+        content: >
+          # 💎 Welcome to Pleasantview
+
+
+          Your home, now 38% more reticulated. The plumbob above your smart
+          home hovers green today.
+
+      # --- Plumbob mascot ---------------------------------------------------
+      - type: custom:sims2-plumbob
+        title: Household Morale
+        subtitle: The diamond knows
+        mood: green
+        size: 76
+
+      # --- Live snapshot: everything currently ON ---------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Right now in the neighbourhood
+          state_color: true
+        filter:
+          include:
+            - domain: light
+              state: "on"
+            - domain: switch
+              state: "on"
+            - domain: media_player
+              state: playing
+            - domain: vacuum
+              state: cleaning
+          exclude: []
+        sort:
+          method: domain
+        show_empty: true
+
+      # --- Quick jump links -------------------------------------------------
+      - type: markdown
+        content: >
+          ## Where to next?
+
+
+          * **Lighting Bureau** - every bulb Bella Goth left behind
+          * **Climate Control** - perfect 72 degrees, always
+          * **Power & Energy** - counting simoleons
+          * **Security Grid** - Mortimer is watching
+          * **Household Needs** - the eight Sim needs, mapped to your home

@@ -1,0 +1,101 @@
+# =============================================================================
+#  Mortimer Goth's Security Grid - locks, alarms, doors, and windows.
+#  Mortimer has seen things. Mostly burglars, and mostly at 2am.
+#  This dashboard gathers every lock, alarm panel, and opening sensor.
+#
+#  Requires the optional auto-entities integration (HACS).
+# =============================================================================
+title: Security Grid
+views:
+  - title: Security
+    path: security
+    icon: mdi:shield-home
+    cards:
+      - type: markdown
+        content: >
+          # 🛡️ Mortimer Goth's Security Grid
+
+
+          > He has seen things. Mostly burglars named Frankie.
+
+      # --- Alarm control panels --------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Alarm panels
+          state_color: true
+        filter:
+          include:
+            - domain: alarm_control_panel
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Locks ------------------------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: grid
+          columns: 2
+          square: false
+        filter:
+          include:
+            - domain: lock
+              options:
+                type: tile
+                icon: mdi:lock
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Doors, windows, openings (currently open) -----------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Open right now (Frankie check)
+          state_color: true
+        filter:
+          include:
+            - domain: binary_sensor
+              device_class: door
+              state: "on"
+            - domain: binary_sensor
+              device_class: window
+              state: "on"
+            - domain: binary_sensor
+              device_class: opening
+              state: "on"
+            - domain: binary_sensor
+              device_class: lock
+              state: "off"
+        sort:
+          method: name
+        show_empty: true
+
+      # --- Motion and presence ---------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Movement detected
+          state_color: true
+        filter:
+          include:
+            - domain: binary_sensor
+              device_class: motion
+              state: "on"
+            - domain: binary_sensor
+              device_class: occupancy
+              state: "on"
+            - domain: binary_sensor
+              device_class: presence
+              state: "on"
+        sort:
+          method: name
+        show_empty: true
+
+      - type: markdown
+        content: >
+          ### Burglar advisory
+
+
+          A green plumbob means all is calm. A red plumbob means a Sim is
+          either very unhappy or Frankie is at the back door again.

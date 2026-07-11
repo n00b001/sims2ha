@@ -1,0 +1,93 @@
+# =============================================================================
+#  Plumbob Command - system status, updates, and network health.
+#  The diamond that hovers above your entire smart home. A green plumbob means
+#  the neighbourhood is humming; a red one means something needs attention.
+#
+#  Requires the optional auto-entities integration (HACS).
+# =============================================================================
+title: Plumbob Command
+views:
+  - title: System
+    path: system
+    icon: mdi:chip
+    cards:
+      - type: markdown
+        content: >
+          # 💎 Plumbob Command
+
+
+          > The diamond that hovers above your entire smart home. When it is
+          > green, all is well in Pleasantview.
+
+      # --- Plumbob bound to overall system health --------------------------
+      - type: custom:sims2-plumbob
+        title: Plumbob Morale
+        subtitle: The diamond knows
+        entity: binary_sensor.updater
+        state_map:
+          "off": green
+          "on": yellow
+        size: 80
+
+      # --- Pending updates --------------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Updates waiting
+          state_color: true
+        filter:
+          include:
+            - domain: update
+              state: "on"
+            - domain: binary_sensor
+              device_class: update
+              state: "on"
+        sort:
+          method: name
+        show_empty: true
+
+      # --- System / device sensors -----------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Vitals
+          state_color: true
+        filter:
+          include:
+            - domain: sensor
+              device_class: temperature
+            - domain: sensor
+              device_class: processor
+            - domain: sensor
+              device_class: memory
+            - domain: sensor
+              device_class: battery
+        sort:
+          method: domain
+        show_empty: true
+
+      # --- Connectivity -----------------------------------------------------
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Connectivity (the splines you are reticulating on)
+          state_color: true
+        filter:
+          include:
+            - domain: binary_sensor
+              device_class: connectivity
+            - domain: binary_sensor
+              device_class: power
+            - domain: sensor
+              device_class: signal_strength
+        sort:
+          method: name
+        show_empty: true
+
+      - type: markdown
+        content: >
+          ### Reticulation status
+
+
+          If everything above is green, the splines are fully reticulated and
+          the plumbob approves. Please do not unreticulate them.

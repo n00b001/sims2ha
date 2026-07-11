@@ -1,0 +1,278 @@
+# =============================================================================
+#  Sims 2 - a Home Assistant theme
+#  A fan-made tribute to the The Sims 2 user interface. Not affiliated with
+#  Electronic Arts. Palette and rationale documented in docs/PALETTE.md.
+#
+#  Installs three selectable themes:
+#    sims2        - follows your system light/dark preference (recommended)
+#    sims2-light  - forces the warm parchment "daytime" Pleasantview look
+#    sims2-dark   - forces the deep-navy "midnight" plumbob look
+#
+#  YAML anchors are attached to the real theme keys below so that exactly
+#  three themes register (no leftover helper themes).
+# =============================================================================
+
+# == LIGHT MODE =============================================================
+# Warm parchment surfaces, signature Sims 2 panel blue, gold trim, and a bright
+# plumbob green for "active"/"on" states.
+sims2-light: &sims2_light
+  # --- base surfaces -------------------------------------------------------
+  primary-background-color: "#F3E9D2"
+  secondary-background-color: "#EADFC2"
+  card-background-color: "#FBF4DF"
+  ha-card-background: "#FBF4DF"
+  dialog-background-color: "#FBF4DF"
+  app-drawer-background-color: "#173A52"
+  mdc-dialog-background-color: "#FBF4DF"
+  ha-dialog-background-color: "#FBF4DF"
+  table-row-background-color: "#FBF4DF"
+  table-row-alternative-background-color: "#F3E9D2"
+  code-editor-background-color: "#2A2014"
+  input-fill-color: "#EFE3C6"
+  input-dropdown-background-color: "#FBF4DF"
+
+  # --- brand / action colours ---------------------------------------------
+  primary-color: "#2F86C5"
+  accent-color: "#7BC942"
+  dark-primary-color: "#235E8C"
+  light-primary-color: "#9CCBE6"
+
+  # --- header --------------------------------------------------------------
+  app-header-background-color: "#235E8C"
+  app-header-text-color: "#FFF6E0"
+  app-header-selection-background-color: "#7BC942"
+  app-header-edit-background-color: "#173A52"
+  app-header-edit-text-color: "#FFF6E0"
+
+  # --- sidebar -------------------------------------------------------------
+  sidebar-background-color: "#173A52"
+  sidebar-text-color: "#E7D9B6"
+  sidebar-border-color: "#0F2A3D"
+  sidebar-icon-color: "#9FB6CE"
+  sidebar-selected-background-color: "#2F86C5"
+  sidebar-selected-icon-color: "#FFF6E0"
+  sidebar-selected-text-color: "#FFF6E0"
+
+  # --- text ----------------------------------------------------------------
+  primary-text-color: "#4A3320"
+  secondary-text-color: "#7A5A38"
+  text-primary-color: "#FFF6E0"
+  disabled-text-color: "#A98C5C"
+  divider-color: "#D8C39A"
+  item-divider-color: "#E2D2A8"
+
+  # --- status / feedback ---------------------------------------------------
+  error-color: "#C0392B"
+  warning-color: "#E09A2B"
+  success-color: "#5BA82C"
+  info-color: "#2F86C5"
+  error-entity-color: "#C0392B"
+  warning-entity-color: "#E09A2B"
+  success-entity-color: "#5BA82C"
+
+  # --- entity / state icons -----------------------------------------------
+  state-icon-color: "#7A5A38"
+  state-icon-active-color: "#7BC942"
+  state-icon-unavailable-color: "#A98C5C"
+  state-active-color: "#7BC942"
+  state-inactive-color: "#9C8458"
+  paper-item-icon-color: "#7A5A38"
+  paper-item-icon-active-color: "#7BC942"
+
+  # --- switches & toggles --------------------------------------------------
+  switch-checked-color: "#7BC942"
+  switch-checked-button-color: "#FBF4DF"
+  switch-checked-track-color: "#5BA82C"
+  switch-unchecked-button-color: "#FBF4DF"
+  switch-unchecked-track-color: "#C9B687"
+  toggle-button-color: "#7BC942"
+
+  # --- sliders -------------------------------------------------------------
+  slider-color: "#2F86C5"
+  slider-secondary-color: "#7BC942"
+  slider-track-color: "#D8C39A"
+  slider-bar-color: "#2F86C5"
+  slider-thumb-color: "#FBF4DF"
+  slider-knob-color: "#FBF4DF"
+  slider-pin-color: "#2F86C5"
+  paper-slider-active-color: "#2F86C5"
+  paper-slider-container-color: "#D8C39A"
+  paper-slider-knob-color: "#FBF4DF"
+  paper-slider-pin-color: "#2F86C5"
+
+  # --- labels & badges -----------------------------------------------------
+  label-badge-background-color: "#E0B66B"
+  label-badge-text-color: "#4A3320"
+  label-badge-red: "#C0392B"
+  label-badge-blue: "#2F86C5"
+  label-badge-green: "#5BA82C"
+  label-badge-yellow: "#E0B66B"
+  label-badge-gray: "#9C8458"
+
+  # --- cards (shape & shadow) ---------------------------------------------
+  ha-card-border-radius: "14px"
+  ha-card-box-shadow: "0 2px 6px rgba(74, 51, 32, 0.18)"
+  ha-card-border-color: "#D8C39A"
+  borders-color: "#D8C39A"
+
+  # --- chips, lists, menus -------------------------------------------------
+  chip-background-color: "#EFE3C6"
+  paper-listbox-background-color: "#FBF4DF"
+  paper-listbox-color: "#4A3320"
+  paper-grey-50: "#FBF4DF"
+  paper-grey-200: "#F3E9D2"
+  paper-grey-300: "#EADFC2"
+  paper-item-selected_-_background-color: "#2F86C5"
+  paper-tabs-selection-bar-color: "#7BC942"
+
+  # --- Material tokens (HA 2024+) -----------------------------------------
+  mdc-theme-primary: "#2F86C5"
+  mdc-theme-secondary: "#7BC942"
+  mdc-theme-on-primary: "#FFF6E0"
+  mdc-theme-on-secondary: "#2A2014"
+  mdc-theme-surface: "#FBF4DF"
+  mdc-theme-background: "#F3E9D2"
+  mdc-theme-on-surface: "#4A3320"
+  mdc-theme-error: "#C0392B"
+
+  # --- Sims 2 custom tokens (consumed by the custom cards & overrides) ----
+  sims2-panel-blue: "#2F86C5"
+  sims2-panel-blue-dark: "#235E8C"
+  sims2-panel-blue-deep: "#173A52"
+  sims2-plumbob-green: "#7BC942"
+  sims2-gold: "#E0B66B"
+  sims2-gold-dark: "#C29A3C"
+  sims2-parchment: "#F3E9D2"
+  sims2-cream: "#FBF4DF"
+  sims2-espresso: "#4A3320"
+  sims2-load-bg-top: "#1E5C92"
+  sims2-load-bg-bottom: "#0E2C4D"
+
+# == DARK MODE ==============================================================
+# Deep Pleasantview-at-night palette with a glowing neon plumbob green.
+sims2-dark: &sims2_dark
+  primary-background-color: "#0C1A2B"
+  secondary-background-color: "#102338"
+  card-background-color: "#13283F"
+  ha-card-background: "#13283F"
+  dialog-background-color: "#13283F"
+  app-drawer-background-color: "#0A1626"
+  mdc-dialog-background-color: "#13283F"
+  ha-dialog-background-color: "#13283F"
+  table-row-background-color: "#13283F"
+  table-row-alternative-background-color: "#0F2236"
+  code-editor-background-color: "#08111D"
+  input-fill-color: "#17304C"
+  input-dropdown-background-color: "#13283F"
+
+  primary-color: "#3FA0D8"
+  accent-color: "#8BD64A"
+  dark-primary-color: "#2B6E9C"
+  light-primary-color: "#17304C"
+
+  app-header-background-color: "#0E2A45"
+  app-header-text-color: "#EAF4FF"
+  app-header-selection-background-color: "#8BD64A"
+  app-header-edit-background-color: "#08111D"
+  app-header-edit-text-color: "#EAF4FF"
+
+  sidebar-background-color: "#0A1E33"
+  sidebar-text-color: "#CDE3F5"
+  sidebar-border-color: "#06121F"
+  sidebar-icon-color: "#5F84A8"
+  sidebar-selected-background-color: "#17304C"
+  sidebar-selected-icon-color: "#8BD64A"
+  sidebar-selected-text-color: "#EAF4FF"
+
+  primary-text-color: "#EAF2FB"
+  secondary-text-color: "#9FB6CE"
+  text-primary-color: "#EAF4FF"
+  disabled-text-color: "#4A6480"
+  divider-color: "#1F3E5E"
+  item-divider-color: "#16324C"
+
+  error-color: "#E55B45"
+  warning-color: "#E8A23C"
+  success-color: "#7BC942"
+  info-color: "#3FA0D8"
+  error-entity-color: "#E55B45"
+  warning-entity-color: "#E8A23C"
+  success-entity-color: "#7BC942"
+
+  state-icon-color: "#9FB6CE"
+  state-icon-active-color: "#8BD64A"
+  state-icon-unavailable-color: "#4A6480"
+  state-active-color: "#8BD64A"
+  state-inactive-color: "#5F84A8"
+  paper-item-icon-color: "#9FB6CE"
+  paper-item-icon-active-color: "#8BD64A"
+
+  switch-checked-color: "#8BD64A"
+  switch-checked-button-color: "#0C1A2B"
+  switch-checked-track-color: "#5BA82C"
+  switch-unchecked-button-color: "#9FB6CE"
+  switch-unchecked-track-color: "#1F3E5E"
+  toggle-button-color: "#8BD64A"
+
+  slider-color: "#3FA0D8"
+  slider-secondary-color: "#8BD64A"
+  slider-track-color: "#1F3E5E"
+  slider-bar-color: "#3FA0D8"
+  slider-thumb-color: "#EAF4FF"
+  slider-knob-color: "#EAF4FF"
+  slider-pin-color: "#3FA0D8"
+  paper-slider-active-color: "#3FA0D8"
+  paper-slider-container-color: "#1F3E5E"
+  paper-slider-knob-color: "#EAF4FF"
+  paper-slider-pin-color: "#3FA0D8"
+
+  label-badge-background-color: "#C29A3C"
+  label-badge-text-color: "#0C1A2B"
+  label-badge-red: "#E55B45"
+  label-badge-blue: "#3FA0D8"
+  label-badge-green: "#8BD64A"
+  label-badge-yellow: "#E8A23C"
+  label-badge-gray: "#5F84A8"
+
+  ha-card-border-radius: "14px"
+  ha-card-box-shadow: "0 2px 10px rgba(0, 0, 0, 0.45)"
+  ha-card-border-color: "#1F3E5E"
+  borders-color: "#1F3E5E"
+
+  chip-background-color: "#17304C"
+  paper-listbox-background-color: "#13283F"
+  paper-listbox-color: "#EAF2FB"
+  paper-grey-50: "#13283F"
+  paper-grey-200: "#0F2236"
+  paper-grey-300: "#0C1A2B"
+  paper-item-selected_-_background-color: "#3FA0D8"
+  paper-tabs-selection-bar-color: "#8BD64A"
+
+  mdc-theme-primary: "#3FA0D8"
+  mdc-theme-secondary: "#8BD64A"
+  mdc-theme-on-primary: "#0C1A2B"
+  mdc-theme-on-secondary: "#0C1A2B"
+  mdc-theme-surface: "#13283F"
+  mdc-theme-background: "#0C1A2B"
+  mdc-theme-on-surface: "#EAF2FB"
+  mdc-theme-error: "#E55B45"
+
+  sims2-panel-blue: "#3FA0D8"
+  sims2-panel-blue-dark: "#2B6E9C"
+  sims2-panel-blue-deep: "#0E2A45"
+  sims2-plumbob-green: "#8BD64A"
+  sims2-gold: "#C29A3C"
+  sims2-gold-dark: "#8A6A24"
+  sims2-parchment: "#102338"
+  sims2-cream: "#13283F"
+  sims2-espresso: "#EAF2FB"
+  sims2-load-bg-top: "#0E2A45"
+  sims2-load-bg-bottom: "#050D17"
+
+# ---------------------------------------------------------------------------
+# The recommended theme: follows the system / user light-dark preference.
+# ---------------------------------------------------------------------------
+sims2:
+  modes:
+    light: *sims2_light
+    dark: *sims2_dark

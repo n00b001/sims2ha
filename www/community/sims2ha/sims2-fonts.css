@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Sims 2 for Home Assistant - fonts & base type wiring
+   --------------------------------------------------------------------------
+   Loads the "Fredoka" display face from Google Fonts (a friendly, rounded
+   sans that evokes the tone of the Sims 2 wordmark and headers) and exposes
+   it as a CSS variable the theme and custom cards consume.
+
+   NOTE ON SCOPE
+   Home Assistant renders most of its UI inside Shadow DOM. A plain CSS file
+   loaded via `frontend.extra_html_url` (or as a Lovelace resource) can style
+   the document-level shell and define variables the cards read, but it cannot
+   pierce into HA's internal shadow trees. For deep, surgical restyling
+   (gradient panel headers, tab bars, the settings page) install the optional
+   card-mod integration and apply the snippet in docs/CARD-MOD.md.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap");
+
+:root {
+  /* The display face the custom cards and (with card-mod) the headers use. */
+  --sims2-font-display: "Fredoka", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --sims2-font-body: "Fredoka", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* Document-shell baseline. Affects the parts of HA that render in the light DOM. */
+html, body {
+  font-family: var(--sims2-font-body);
+}
+
+/* Sims-green text selection with gold caret flavour. */
+::selection {
+  background: var(--sims2-plumbob-green, #7bc942);
+  color: var(--sims2-espresso, #4a3320);
+}
+
+/* Pleasantview scrollbar. */
+* {
+  scrollbar-color: var(--sims2-panel-blue, #2f86c5) var(--sims2-parchment, #f3e9d2);
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: var(--sims2-parchment, #f3e9d2); }
+*::-webkit-scrollbar-thumb {
+  background: var(--sims2-panel-blue, #2f86c5);
+  border-radius: 6px;
+  border: 2px solid var(--sims2-parchment, #f3e9d2);
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--sims2-plumbob-green, #7bc942); }
