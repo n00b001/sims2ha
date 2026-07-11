@@ -25,7 +25,6 @@ import yaml
 from homeassistant.components import frontend
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.components.lovelace.const import (
-    DEFAULT_ICON,
     LOVELACE_DATA,
     MODE_STORAGE,
 )
@@ -163,8 +162,8 @@ async def _async_upsert_dashboard(
             "url_path": url_path,
             "title": spec["title"],
             "icon": spec["icon"],
-            "show_in_sidebar": spec["show_in_sidebar"],
-            "require_admin": spec["require_admin"],
+            "show_in_sidebar": True,
+            "require_admin": False,
             "mode": MODE_STORAGE,
         }
     )
@@ -179,10 +178,10 @@ async def _async_upsert_dashboard(
         hass,
         "lovelace",
         frontend_url_path=url_path,
-        require_admin=spec["require_admin"],
-        show_in_sidebar=spec["show_in_sidebar"],
+        require_admin=False,
+        show_in_sidebar=True,
         sidebar_title=spec["title"],
-        sidebar_icon=spec.get("icon") or DEFAULT_ICON,
+        sidebar_icon=spec["icon"],
         config={"mode": MODE_STORAGE},
         update=True,
     )
