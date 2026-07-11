@@ -1,6 +1,6 @@
 {
   "name": "Sims 2",
-  "render_readme": true,
   "content_in_root": false,
-  "homeassistant": "2024.4.0"
+  "render_readme": true,
+  "homeassistant": "2025.8.0"
 }

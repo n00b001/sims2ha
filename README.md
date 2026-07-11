@@ -1,129 +1,83 @@
 # 💎 Sims 2 for Home Assistant
 
-A fan-made Home Assistant theme system that dresses your smart home in the
-warm, ridiculous look and feel of **The Sims 2**: parchment panels, the
-signature panel-blue, gold trim, a glowing plumbob, and a loading screen that
-*reticulates your splines*.
+A fan-made tribute that restyles Home Assistant to look and feel like **The
+Sims 2** — and installs in **one step**. Parchment panels, the signature
+panel-blue, gold trim, a glowing plumbob, nine auto-created dashboards, and a
+loading screen that *reticulates your splines*.
 
 > **Fan tribute.** *The Sims 2* is a trademark of Electronic Arts Inc. This
 > project is not affiliated with, endorsed by, or sponsored by EA. All Sims
-> names and references are used for parody and homage. No EA assets are
-> bundled.
+> names and references are parody and homage. No EA assets are bundled.
 
 ---
 
-## ✨ Features
+## ✨ What one install gives you
 
-- **Three installable themes** in one file:
-  - `sims2` — follows your light/dark preference (recommended)
-  - `sims2-light` — warm parchment "Pleasantview daytime"
-  - `sims2-dark` — deep navy "midnight plumbob"
-- **Full UI coverage** via Home Assistant's native theme variables: header,
-  sidebar, cards, buttons, switches, sliders, badges, toggles, text, focus,
-  selection, scrollbars.
-- **A custom loading screen** (`custom:sims2-loading`) — a full-screen Sims 2
-  splash with a floating, mood-shifting plumbob and a rotating list of
-  ridiculous tips, from *Reticulating splines* to *Convincing the thermostat
-  it is happy*.
-- **A custom plumbob card** (`custom:sims2-plumbob`) — the diamond above every
-  Sim's head, repurposed as a green/yellow/red status indicator bound to any
-  entity.
-- **A Sims 2 icon pack** (`sims2:`) — 52 original vector icons: the plumbob,
-  simoleon coins, the eight Sim needs, and the buy-mode furniture glyphs
-  (rooms, types, shopping categories). Use anywhere you'd use `mdi:`.
-- **Eight premade dashboards**, auto-built from your entities with jokes
-  baked in: the Bella Goth Memorial Lighting Bureau, Pleasantview Climate
-  Control, Reticulating Splines: Power & Energy, Mortimer Goth's Security
-  Grid, Don Lothario's Automation Suite, Plumbob Command, and a Household
-  Needs dashboard that maps your home onto the eight Sim needs.
+- **The Sims 2 look, applied automatically** — warm parchment surfaces, panel
+  blue, gold trim and a plumbob green, wired into Home Assistant's own theme
+  variables so it covers the header, sidebar, cards, switches, sliders, badges
+  and Material components. It even follows your system light/dark preference.
+  **No `configuration.yaml` edit required** — the look is live the moment you
+  add the integration.
+- **Nine premade dashboards, created for you** — the moment you click *Add
+  Integration* they appear in your sidebar. Seven auto-populate from whatever
+  entities exist in your instance.
+- **A custom icon pack** (`sims2:` — the plumbob, simoleons, the eight Sim
+  needs, buy-mode rooms and more — 52 icons).
+- **Custom cards** — a Sims 2 loading splash (`custom:sims2-loading`) with
+  rotating ridiculous tips, and a status plumbob (`custom:sims2-plumbob`).
+- **The Fredoka typeface** and themed scrollbars, focus rings and selection.
+- **`auto-entities` is bundled in** — the auto-populating dashboards need no
+  separate install.
+- **Easter eggs** — Bella Goth, Mortimer Goth, Don Lothario and friends.
 
 ---
 
-## 📦 What gets installed where
+## 🚀 Install (one step)
 
-```
-sims2ha/
-├── hacs.json                      # HACS manifest (this repo is a HACS theme)
-├── themes/
-│   └── sims2.yaml                  # the three themes (light + dark, via anchors)
-├── www/community/sims2ha/          # copy this whole folder into your HA www/
-│   ├── sims2-loading-card.js       # custom:sims2-loading
-│   ├── sims2-plumbob-card.js       # custom:sims2-plumbob
-│   ├── sims2-icons.js             # the sims2: icon pack (52 icons)
-│   ├── sims2-fonts.css             # Fredoka font + scrollbar/selection
-│   └── sims2-overrides.css         # optional document-level flavour
-├── dashboards/                     # premade Lovelace YAML dashboards
-│   ├── sims2-overview.yaml
-│   ├── sims2-lights.yaml
-│   ├── sims2-climate.yaml
-│   ├── sims2-power.yaml
-│   ├── sims2-security.yaml
-│   ├── sims2-automations.yaml
-│   ├── sims2-system.yaml
-│   ├── sims2-needs.yaml
-│   └── static/sims2-starter.yaml   # works with zero extra integrations
-├── config-examples/
-│   └── configuration.yaml          # copy/paste snippets
-└── docs/
-    ├── PALETTE.md                  # the design contract (colours, voice, naming)
-    ├── ICONS.md                    # the sims2: icon pack catalogue
-    └── CARD-MOD.md                 # optional deep styling via card-mod
-```
+1. In Home Assistant, open **HACS → Custom repositories** (three dots, top
+   right), add `https://github.com/n00b001/sims2ha`, category **Integration**.
+2. Find **Sims 2** → **Install**.
+3. **Restart Home Assistant** (HACS needs this once so the integration loads).
+4. **Settings → Devices & Services → Add Integration** → search **Sims 2** →
+   click. This runs the automatic setup: it serves the bundle, registers it as a
+   Lovelace resource, and creates all nine dashboards.
+5. **Refresh your browser.** The Sims 2 look is live and the dashboards are in
+   your sidebar.
+
+That's it. **No copy/paste, no manual resource registration, no dashboard
+import, no editing YAML.** The dashboards, cards, icons, fonts and the theme
+look are all delivered automatically.
+
+> 💡 **Optional — Home Assistant's native theme picker.**
+> The Sims 2 look is already applied by an injected style layer (above), so this
+> step is *not* required. If you'd rather switch themes from your profile page,
+> add this once to `configuration.yaml` and the three Sims 2 themes (`sims2`,
+> `sims2-light`, `sims2-dark`) become selectable under your profile:
+> ```yaml
+> frontend:
+>   themes:
+>     !include_dir_merge_named themes
+> ```
 
 ---
 
-## 🚀 Installation
+## 🗺️ The premade dashboards
 
-### Step 1 — Install the theme (HACS)
+| Dashboard | What's in it |
+|---|---|
+| Pleasantview Overview | Splash, plumbob mascot, live household snapshot |
+| Lighting Bureau | Every `light.*`, with a Bella Goth Memorial touch |
+| Climate Control | Climate, fans, humidifiers, temperature gauges |
+| Power & Energy | Power gauges, energy meters, batteries (reticulating) |
+| Security Grid | Locks, alarms, doors, windows, motion (Mortimer Goth's) |
+| Automation Suite | Automations, scenes, scripts (Don Lothario's) |
+| Plumbob Command | Updates, system vitals, connectivity |
+| Household Needs | The eight Sim needs mapped to your sensors |
+| Pleasantview Starter | A no-dependency static starter dashboard |
 
-This repository is a **HACS theme**.
-
-1. In Home Assistant, open **HACS → Frontend**.
-2. Click the three dots (top right) → **Custom repositories**.
-3. Add `https://github.com/n00b001/sims2ha`, category **Theme**, and Add.
-4. Find **Sims 2** in the list and **Install** it.
-5. Reload themes: **Developer tools → YAML → Reload Themes** (or restart).
-6. Pick the theme: **Settings → System → (your profile, top right) → Theme →
-   Sims 2**.
-
-At this point your whole UI is already re-skinned using the theme variables.
-The next steps add the loading screen, the plumbob, and the dashboards.
-
-### Step 2 — Install the custom cards & fonts
-
-The theme handles colours. The loading screen and plumbob are custom cards
-that need to be copied into your `www/` folder and registered as resources.
-
-1. Copy the contents of `www/community/sims2ha/` from this repo into
-   `<home-assistant-config>/www/community/sims2ha/` on your server.
-   (Create the folders if they do not exist.)
-2. Register the files as Lovelace resources. The easiest way is the UI:
-   **Settings → Dashboards → Resources → Add resource**, one per file:
-
-   | URL | Resource type |
-   |---|---|
-   | `/local/community/sims2ha/sims2-loading-card.js` | JavaScript module |
-   | `/local/community/sims2ha/sims2-plumbob-card.js` | JavaScript module |
-   | `/local/community/sims2ha/sims2-icons.js` | JavaScript module (icon pack) |
-   | `/local/community/sims2ha/sims2-fonts.css` | Stylesheet |
-   | `/local/community/sims2ha/sims2-overrides.css` | Stylesheet (optional) |
-
-   > **Note:** `/local/...` maps to your `<config>/www/` folder. After copying
-   > files, clear your browser cache (or append `?v=2`) so HA re-reads them.
-
-   Alternatively, add them under `frontend:` in `configuration.yaml` — see
-   `config-examples/configuration.yaml`.
-
-### Step 3 — Add the premade dashboards (optional, but fun)
-
-The premade dashboards auto-populate from your entities. They use the free
-**[auto-entities](https://github.com/thomasloven/lovelace-auto-entities)**
-integration (install via HACS → Frontend). Register the dashboards by adding
-the `lovelave:` block from `config-examples/configuration.yaml`, then reload.
-The sidebar fills up with Pleasantview.
-
-> No auto-entities? Start with `dashboards/static/sims2-starter.yaml` — it
-> needs nothing extra and still shows the splash, the plumbob, and the jokes.
+Seven of the nine use the bundled `auto-entities` card and populate themselves
+from your entities. The starter dashboard needs nothing extra.
 
 ---
 
@@ -140,10 +94,6 @@ tips:                          # optional: override the built-in tip list
   - Reticulating your Zigbee mesh
   - Convincing the thermostat it is happy
 ```
-
-Drop it in as the only card on a dedicated view for a true splash screen, or
-at the top of any dashboard. Click the plumbob for a fresh task. Bind
-`dismiss_entity` to a sensor to hide it when a load completes.
 
 ### Plumbob
 
@@ -168,81 +118,84 @@ state_map:
 
 ## 🖼️ Icon pack
 
-Once `sims2-icons.js` is registered (Step 2), **52 icons** become available under
-the `sims2:` prefix and recolour automatically with the theme. The full catalogue
-lives in [docs/ICONS.md](docs/ICONS.md); the highlights:
+52 icons are available under the `sims2:` prefix anywhere you'd use `mdi:`. The
+full catalogue is in [docs/ICONS.md](docs/ICONS.md).
 
 ```yaml
-# Entity icons
 light.kitchen:
   icon: sims2:room-kitchen
 sensor.house_mood:
   icon: sims2:plumbob-mood-green
 person.bella_goth:
   icon: sims2:sim
-
-# Any card or dashboard
-- type: entity
-  entity: light.living_room
-  icon: sims2:type-lighting
 ```
-
-Groups included: `plumbob` (+ mood variants), `simoleon`/`simoleon-stack`,
-`sim`/`sim-head`, `aspiration-star`, `want-bubble`, the game-mode marks
-(`live-mode`, `buy-mode`, `build-mode`, `cas-mode`, `story-mode`), the eight Sim
-needs (`need-hunger` … `need-room`), rooms (`room-kitchen` … `room-hallway`),
-buy-mode types (`type-comfort` … `type-toys`), and shopping controls
-(`shop-tag`, `shop-cart`, `sort-rooms`, `sort-price`, …).
 
 ---
 
-## 🎨 Customising
+## 🔧 How it works
 
-- **Palette & voice:** `docs/PALETTE.md` is the single source of truth. Edit
-  the colour tokens in `themes/sims2.yaml` to retune the whole UI.
-- **Loading tips:** edit `SIMS2_DEFAULT_TIPS` in
-  `www/community/sims2ha/sims2-loading-card.js`, or pass `tips:` per card.
-- **Deep styling** (gradient panel headers, sidebar rail, settings pages):
-  install [card-mod](https://github.com/thomasloven/lovelace-card-mod) and
-  apply the snippet in `docs/CARD-MOD.md`. Optional — the theme looks correct
-  without it.
+This is a **custom integration** (not a plain theme repo) because that's the
+only HACS category whose setup code can create dashboards and register frontend
+resources for you. On *Add Integration* it:
+
+1. serves `sims2-bundle.js` over HTTP,
+2. registers it as a Lovelace module resource (so the custom cards resolve),
+3. creates the nine storage-mode dashboards with their view configs,
+4. copies the theme file into `<config>/themes/` (for the optional native theme
+   path) and reloads themes.
+
+Everything is **idempotent** — restarts and reloads never duplicate state, and
+shipped dashboard updates refresh automatically. Removing the integration leaves
+any dashboards you've edited in place.
+
+---
+
+## 🧪 Development
+
+The served bundle is built from the sources under `src/`:
+
+```
+./build.sh
+```
+
+It concatenates the icon pack, the two custom cards, the fonts + zero-config
+theme + overrides CSS, and the vendored `auto-entities`, into
+`custom_components/sims2ha/frontend/sims2-bundle.js`. No build toolchain needed —
+only `node` (used to escape the CSS into a JS string).
+
+- **Palette & voice:** [docs/PALETTE.md](docs/PALETTE.md)
+- **Icon catalogue:** [docs/ICONS.md](docs/ICONS.md)
+- **Optional deep styling** (gradient headers, sidebar rail, settings pages)
+  via [card-mod](https://github.com/thomasloven/lovelace-card-mod):
+  [docs/CARD-MOD.md](docs/CARD-MOD.md)
 
 ---
 
 ## ❓ Troubleshooting
 
-- **Card shows "Custom element doesn't exist: custom:sims2-loading"** — the JS
-  module is not registered as a resource (Step 2) or the URL is wrong. URLs
-  start with `/local/...`, files live under `<config>/www/...`.
-- **Theme did not change** — reload themes (Developer tools → YAML → Reload
-  Themes) and confirm the theme is selected in your profile.
-- **Dashboards show a red error card** — install the **auto-entities**
-  integration (HACS → Frontend), or use the static starter dashboard.
+- **Cards show "Custom element doesn't exist"** — refresh your browser. The
+  resource is registered during setup; a hard refresh picks it up.
+- **Dashboards show a red error card** — refresh the browser first; the bundled
+  `auto-entities` needs to load. If it persists, confirm you're on Home
+  Assistant **2025.8** or newer.
+- **Theme look didn't change** — hard-refresh the browser (Ctrl+Shift+R). The
+  style layer is injected by the bundle and cached aggressively.
 - **Fonts look plain** — the Fredoka web font loads from Google Fonts. If your
   network blocks it, set `--sims2-font-display` to a locally-hosted face.
-- **Changed files, nothing happened** — Home Assistant caches Lovelace
-  resources aggressively. Clear your browser cache or bump the resource URL
-  with `?v=2`.
-
----
-
-## 🧪 Compatibility
-
-- Home Assistant **2024.4** or newer (the `tile` card and modern theme
-  variables are used). Older versions mostly work; the `tile` cards fall back
-  gracefully.
-- Optional: [auto-entities](https://github.com/thomasloven/lovelace-auto-entities),
-  [card-mod](https://github.com/thomasloven/lovelace-card-mod).
 
 ---
 
 ## 🤝 Credits & license
 
-- **License:** MIT — see [LICENSE](LICENSE).
-- **Inspired by** the r/homeassistant ["Sims 2 inspired dashboard" project of
-  the day](https://www.reddit.com/r/homeassistant/comments/1usr3qp/project_of_the_day_a_sims_2_inspired_dashboard/).
-- *The Sims 2*, the plumbob, Pleasantview, and all character names (Bella Goth,
-  Mortimer Goth, Don Lothario, et al.) are trademarks of Electronic Arts Inc.,
-  referenced here affectionately and without any EA assets.
+- **`auto-entities`** by Thomas Lovén (MIT) is **vendored into the bundle** so
+  the auto-populating dashboards need no separate install — see
+  `src/vendor/auto-entities.LICENSE.txt`.
+- Fredoka font via Google Fonts (Open Font License).
+- Inspired by the r/homeassistant ["Sims 2 inspired dashboard" project of the
+  day](https://www.reddit.com/r/homeassistant/comments/1usr3qp/project_of_the_day_a_sims_2_inspired_dashboard/).
+- *The Sims 2*, the plumbob, Pleasantview, and all character names are
+  trademarks of Electronic Arts Inc., referenced affectionately and without any
+  EA assets.
 
-Pull requests welcome. May your splines always be fully reticulated. 💎
+**License:** MIT — see [LICENSE](LICENSE). Pull requests welcome.
+May your splines always be fully reticulated. 💎
