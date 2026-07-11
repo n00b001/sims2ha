@@ -1,0 +1,48 @@
+name: Release
+
+# When a pull request is merged into main, bump the MINOR version (x.Y.0) and
+# publish a GitHub release with that tag. HACS downloads by tag, so a fresh
+# release is what keeps installs working — and a real tag avoids the
+# "download by commit SHA" path that 404s for repos without releases.
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump minor version and publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git fetch --tags --prune-tags --quiet
+          latest="$(git tag --list 'v*' --sort=-v:refname | head -n1)"
+          if [ -z "$latest" ]; then
+            version="0.1.0"
+          else
+            base="${latest#v}"
+            major="${base%%.*}"
+            rest="${base#*.}"
+            minor="${rest%%.*}"
+            version="${major}.$((minor + 1)).0"
+          fi
+          tag="v${version}"
+          echo "Releasing $tag"
+          git tag "$tag"
+          git push origin "$tag"
+          gh release create "$tag" \
+            --generate-notes \
+            --target "${{ github.event.pull_request.base.ref }}" \
+            --title "$tag"
