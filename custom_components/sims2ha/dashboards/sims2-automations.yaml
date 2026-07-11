@@ -43,7 +43,7 @@ views:
             - domain: scene
               options:
                 type: tile
-                icon: mdi:palette
+                icon: sims2:type-decorative
         sort:
           method: name
         show_empty: true

@@ -21,7 +21,7 @@ views:
       # Plunge every light into darkness in a single tap.
       - type: button
         name: Plunge Pleasantview into darkness
-        icon: mdi:lightbulb-off
+        icon: sims2:plumbob-mood-red
         tap_action:
           action: call-service
           service: light.turn_off
@@ -46,7 +46,7 @@ views:
             - domain: light
               options:
                 type: tile
-                icon: mdi:lightbulb
+                icon: sims2:type-lighting
                 hide_state: false
         sort:
           method: name
