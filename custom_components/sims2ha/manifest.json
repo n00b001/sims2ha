@@ -1,11 +1,11 @@
 {
   "domain": "sims2ha",
   "name": "Sims 2",
-  "version": "1.0.0",
-  "documentation": "https://github.com/n00b001/sims2ha",
-  "issue_tracker": "https://github.com/n00b001/sims2ha/issues",
   "codeowners": ["@n00b001"],
-  "dependencies": ["http", "frontend", "lovelace"],
   "config_flow": true,
-  "iot_class": "calculated"
+  "dependencies": ["http", "frontend", "lovelace"],
+  "documentation": "https://github.com/n00b001/sims2ha",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/n00b001/sims2ha/issues",
+  "version": "1.0.0"
 }
