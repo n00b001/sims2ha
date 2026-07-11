@@ -3,13 +3,13 @@
 #  In Pleasantview the weather is always ideal and nobody ever sweats.
 #  This dashboard assembles everything that keeps your home that way.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Climate Control
 views:
   - title: Climate
     path: climate
-    icon: mdi:thermostat
+    icon: sims2:type-appliances
     cards:
       - type: markdown
         content: >
@@ -30,7 +30,7 @@ views:
             - domain: climate
               options:
                 type: tile
-                icon: mdi:thermostat
+                icon: sims2:type-appliances
         sort:
           method: name
         show_empty: true

@@ -3,13 +3,13 @@
 #  Smooth. Relentless. Oddly romantic. Everything in your home that acts on
 #  its own, gathered in one place.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Automation Suite
 views:
   - title: Automations
     path: automations
-    icon: mdi:robot-happy
+    icon: sims2:live-mode
     cards:
       - type: markdown
         content: >

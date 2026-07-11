@@ -3,13 +3,13 @@
 #  Bella Goth vanished mysteriously in Pleasantview. The lamps she left
 #  behind still work perfectly. This dashboard rounds them all up.
 #
-#  Requires the optional auto-entities integration (HACS).
+#  Uses the bundled auto-entities card (no separate HACS install needed).
 # =============================================================================
 title: Lighting Bureau
 views:
   - title: Lights
     path: lights
-    icon: mdi:lightbulb-on
+    icon: sims2:type-lighting
     cards:
       - type: markdown
         content: >
