@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -41,25 +41,36 @@ jobs:
       - name: Render cards
         run: node scripts/render-cards.js
 
-      - name: Upload screenshots as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: card-screenshots
-          path: artifacts/cards/
-          retention-days: 14
+      - name: Commit screenshots to branch
+        run: |
+          cd artifacts/cards
+          git add *.png
+          git -c user.name="github-actions" \
+              -c user.email="github-actions@github.com" \
+              commit -m "Add card preview screenshots [skip ci]" || echo "No new screenshots to commit"
 
-      - name: Comment PR with screenshot links
+      - name: Push screenshot commits
+        run: |
+          git push origin feat/sims2-theme-deepen
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Comment PR with embedded images
         if: github.event_name == 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
+          BASE_URL: "https://raw.githubusercontent.com/n00b001/sims2ha/feat/sims2-theme-deepen/artifacts/cards"
           PR_BODY: |
             ## Sims 2 Card Preview
 
             Screenshots of all custom cards rendered from this PR:
 
-            - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
-            - **Gauge Detail** — green / yellow / red severity states
-            - **Panel Detail** — green / yellow / red mood colouring
+            ### All Cards Overview — plumbob, loading screen, divider, gauge, panel
+            ![All Cards Overview]($BASE_URL/all-cards-overview.png)
 
-            Download the full screenshots: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            ### Gauge Detail — green / yellow / red severity states
+            ![Gauge Detail]($BASE_URL/gauge-detail.png)
+
+            ### Panel Detail — green / yellow / red mood colouring
+            ![Panel Detail]($BASE_URL/panel-detail.png)
         run: gh pr comment ${{ github.event.pull_request.number }} -b "$PR_BODY"
