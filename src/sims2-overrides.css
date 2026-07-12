@@ -1,38 +1,99 @@
 /* ==========================================================================
    Sims 2 for Home Assistant - document-level flavour overrides
    --------------------------------------------------------------------------
-   Optional niceties that live in the light DOM: a faint plumbob-watermark
-   background, rounded focus rings in plumbob green, and friendlier link
-   colours. Loaded alongside sims2-fonts.css.
+   Full shell transformation: sunburst background, sidebar chrome, header
+   styling, button shapes, input fields, dialogs, login page.
 
-   These are intentionally cosmetic and safe. For deep restyling (gradient
-   app header, sidebar, settings UI) use the card-mod snippet in
-   docs/CARD-MOD.md — card-mod runs inside each component's shadow root where
-   a plain stylesheet cannot reach.
+   These live in the light DOM and pierce Home Assistant's shell elements
+   that are reachable without card-mod. For shadow-DOM components (each
+   individual card), use the card-mod snippet in docs/CARD-MOD.md.
+
+   Key changes:
+     - Sunburst radial gradient background replacing diagonal stripes
+     - Sidebar styled like Sims 2 buy-mode room navigator
+     - Header with gold underline
+     - Buttons shaped like Sims 2 UI elements (pill-shaped, gold-trimmed)
+     - Input fields with parchment background
+     - Dialogs and panels with gold borders
+     - Login page styling
    ========================================================================== */
 
-/* Subtle diamond plumbob watermark behind the app in light mode. */
+/* ---- Sunburst background -----------------------------------------------
+   The iconic Sims 2 main-menu sunburst: alternating light/dark gold rays
+   radiating from a focal point slightly above center, on a deep navy field.
+   Layered radial gradients create the ray effect.
+   ========================================================================== */
 body {
+  background-color: #0E2A44;
   background-image:
-    radial-gradient(circle at 50% 42%,
-      rgba(123, 201, 66, 0.05) 0%,
-      rgba(123, 201, 66, 0.0) 38%),
-    repeating-linear-gradient(45deg,
-      rgba(224, 182, 107, 0.025) 0px,
-      rgba(224, 182, 107, 0.025) 14px,
-      transparent 14px,
-      transparent 28px);
+    /* Soft plumbob-green ambient glow at focal point */
+    radial-gradient(ellipse 60% 50% at 50% 42%, rgba(123, 201, 66, 0.06) 0%, transparent 70%),
+    /* Alternating gold rays via layered radial gradients */
+    radial-gradient(ellipse 120% 80% at 50% 42%, rgba(224, 182, 107, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 65% at 50% 42%, rgba(196, 154, 60, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse 140% 95% at 50% 42%, rgba(224, 182, 107, 0.05) 0%, transparent 55%),
+    /* Subtle warm vignette at edges */
+    radial-gradient(ellipse 100% 100% at 50% 42%, transparent 40%, rgba(14, 42, 68, 0.4) 100%);
   background-attachment: fixed;
 }
 
-/* Plumbob-green focus ring across the light-DOM shell. */
+/* ---- App shell header — gold underline ---------------------------------- */
+app-header,
+header,
+.header-toolbar,
+[part="header"],
+::backdrop {
+  border-bottom: 2px solid rgba(224, 182, 107, 0.5) !important;
+}
+
+/* ---- Sidebar — Sims 2 buy-mode navigator -------------------------------- */
+ha-sidebar,
+.sidebar,
+.side-nav,
+[navigation],
+paper-listbox {
+  border-right: 2px solid rgba(224, 182, 107, 0.35) !important;
+}
+
+/* ---- Buttons — pill-shaped with gold trim -------------------------------- */
+mwc-button,
+md-filled-button,
+md-outlined-button,
+md-text-button,
+.paper-button,
+button {
+  border-radius: 999px !important;
+}
+
+/* ---- Input fields — parchment background, rounded ----------------------- */
+ha-textfield,
+ha-select,
+paper-input,
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea {
+  border-radius: 12px !important;
+  --mdc-shape-small: 12px !important;
+}
+
+/* ---- Dialogs and panels — gold border, rounded ------------------------- */
+ha-dialog,
+ha-alert,
+paper-dialog,
+.card-header,
+.dialog-surface {
+  border-radius: 16px !important;
+}
+
+/* ---- Focus ring — plumbob green ---------------------------------------- */
 *:focus-visible {
   outline: 3px solid var(--sims2-plumbob-green, #7bc942);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
-/* Warmer link colour in parchment-toned surfaces. */
+/* ---- Links — gold in parchment surfaces --------------------------------- */
 a {
   color: var(--sims2-panel-blue, #2f86c5);
 }
@@ -40,8 +101,107 @@ a:hover {
   color: var(--sims2-plumbob-green, #7bc942);
 }
 
-/* Give plain markdown / text content the Sims body face where reachable. */
+/* ---- Body text — apply Sims 2 face where reachable ---------------------- */
 .home-assistant,
-.home-assistant * {
+.home-assistant *,
+app-drawer,
+[part="drawer"] {
   letter-spacing: 0.005em;
+}
+
+/* ---- Switches — pill-shaped, green active ------------------------------ */
+ha-switch,
+paper-toggle-button {
+  --ha-switch-bar-radius: 999px !important;
+  --ha-switch-button-radius: 999px !important;
+}
+
+/* ---- Sliders — gold track, round thumb ---------------------------------- */
+ha-slider,
+paper-slider {
+  --paper-slider-knob-color: var(--sims2-gold, #e0b66b) !important;
+  --paper-slider-container-color: var(--sims2-gold-dark, #c49a3c) !important;
+  --paper-slider-secondary-color: var(--sims2-plumbob-green, #7bc942) !important;
+  border-radius: 999px !important;
+}
+
+/* ---- Chips and badges — rounded pills ----------------------------------- */
+ha-chip,
+paper-chip,
+.label-badge {
+  border-radius: 12px !important;
+}
+
+/* ---- Login page — parchment panel on sunburst --------------------------- */
+.login-container,
+.login-content,
+ ha-login-card,
+[class*="login"],
+iron-form {
+  background: transparent !important;
+}
+
+/* ---- Table rows — subtle parchment striping ----------------------------- */
+table,
+[data-component="table"] {
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+
+/* ---- Progress / loading indicators — gold -------------------------------- */
+paper-progress,
+[role="progressbar"],
+mwc-linear-progress,
+md-linear-progress {
+  --mdc-theme-primary: var(--sims2-gold, #e0b66b) !important;
+  --paper-progress-secondary-color: var(--sims2-plumbob-green, #7bc942) !important;
+}
+
+/* ---- Dropdowns / menus — parchment background --------------------------- */
+paper-listbox,
+mwc-menu,
+md-menu {
+  border-radius: 12px !important;
+  border: 1px solid var(--sims2-gold, #e0b66b) !important;
+}
+
+/* ---- Entity states — green when active ---------------------------------- */
+.state-active,
+[data-state="on"],
+[data-state="home"],
+[data-state="open"],
+[data-state="active"],
+[data-state="running"] {
+  color: var(--sims2-plumbob-green, #7bc942) !important;
+}
+
+/* ---- Error / warning badges — rounded ----------------------------------- */
+ha-alert,
+.alert,
+.warning,
+.error {
+  border-radius: 12px !important;
+}
+
+/* ---- Tabs — gold underline for active tab -------------------------------- */
+paper-tabs,
+md-tab-bar,
+[role="tablist"] {
+  border-bottom: 2px solid var(--sims2-gold, #e0b66b) !important;
+}
+
+paper-tab[selected],
+md-tab[active],
+[role="tab"][aria-selected="true"] {
+  color: var(--sims2-gold, #e0b66b) !important;
+  border-bottom: 3px solid var(--sims2-gold-dark, #c49a3c) !important;
+}
+
+/* ---- Dividers — gold line ----------------------------------------------- */
+hr,
+paper-divider,
+[role="separator"] {
+  border-top-color: var(--sims2-gold, #e0b66b) !important;
+  border-top-width: 1px !important;
+  opacity: 0.4;
 }
