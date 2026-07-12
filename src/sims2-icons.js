@@ -355,6 +355,348 @@ const SIMS2_ICONS = {
     `<path d="M14 3 V7 H18" fill="url(#s2g-gold)"/>` +
     `<path d="M8 11 H16 M8 14 H16 M8 17 H13" stroke="#F8E8A0" stroke-width="1.2"/>` +
     `<path d="M6 3 H14 L18 7 V17 Z" fill="#ffffff" opacity="0.08"/>`,
+
+  // =========================================================================
+  // HOME ASSISTANT ENTITY DOMAINS
+  // =========================================================================
+
+  "lamplight": `<ellipse cx="12" cy="14" rx="6" ry="5" fill="url(#s2g-gold)" opacity="0.3"/>` +
+    `<rect x="10.5" y="3" width="3" height="6" rx="1" fill="url(#s2g-gold-light)"/>` +
+    `<path d="M7 14 L17 14 L15 9 H9 Z" fill="url(#s2g-gold)"/>` +
+    `<path d="M9 14 L12 9 L15 14 Z" fill="#F8E8A0" opacity="0.3"/>` +
+    `<rect x="10" y="19" width="4" height="3" rx="0.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M7 14 L17 14 L15 9 H9 Z" fill="#ffffff" opacity="0.15"/>`,
+
+  brightness: `<ellipse cx="12" cy="12" rx="5" ry="5" fill="url(#s2g-gold)" opacity="0.3"/>` +
+    `<circle cx="12" cy="12" r="3.5" fill="url(#s2g-gold-light)"/>` +
+    `<path d="M12 3 V5 M12 19 V21 M3 12 H5 M19 12 H21" stroke="url(#s2g-gold)" stroke-width="1.4"/>` +
+    `<path d="M5.6 5.6 L7 7 M17 17 L18.4 18.4 M5.6 18.4 L7 17 M17 7 L18.4 5.6" stroke="url(#s2g-gold)" stroke-width="1.2"/>` +
+    `<circle cx="12" cy="12" r="3.5" fill="#ffffff" opacity="0.15"/>`,
+
+  chandelier: `<path d="M12 3 V5" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<rect x="7" y="4" width="10" height="2" rx="1" fill="url(#s2g-gold)"/>` +
+    `<path d="M9 6 V10 M12 6 V11 M15 6 V10" stroke-width="1.2" stroke="url(#s2g-gold)"/>` +
+    `<ellipse cx="9" cy="11" rx="2" ry="1.5" fill="url(#s2g-gold)" opacity="0.7"/>` +
+    `<ellipse cx="12" cy="12" rx="2" ry="1.5" fill="url(#s2g-gold)" opacity="0.7"/>` +
+    `<ellipse cx="15" cy="11" rx="2" ry="1.5" fill="url(#s2g-gold)" opacity="0.7"/>` +
+    `<rect x="7" y="4" width="10" height="1" rx="0.5" fill="#ffffff" opacity="0.2"/>`,
+
+  toggle: `<rect x="3" y="6" width="18" height="12" rx="3" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="16" cy="12" r="3.5" fill="url(#s2g-gold-light)" stroke="#A07830" stroke-width="0.5"/>` +
+    `<rect x="3" y="6" width="18" height="6" rx="3" fill="#ffffff" opacity="0.1"/>`,
+
+  breaker: `<rect x="5" y="4" width="14" height="16" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<rect x="8" y="7" width="8" height="10" rx="1" fill="#1A3A5A"/>` +
+    `<path d="M12 9 V15 M12 9 L10 11 M12 9 L14 11" stroke-width="2" stroke="url(#s2g-gold)"/>` +
+    `<rect x="5" y="4" width="14" height="8" rx="2" fill="#ffffff" opacity="0.06"/>`,
+
+  gauge: `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="7" fill="#0E2A44"/>` +
+    `<path d="M12 5 A7 7 0 0 1 18.9 9.5" fill="none" stroke-width="2.5" stroke="url(#s2g-gold)"/>` +
+    `<path d="M12 12 L14 8" stroke-width="1.6" stroke="#F8E8A0"/>` +
+    `<circle cx="12" cy="12" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  eye: `<path d="M2 12 S6 7 12 7 S22 12 22 12 S18 17 12 17 S2 12 2 12 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="3.5" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="12" r="2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="13.5" cy="10.5" r="0.8" fill="#F8E8A0"/>` +
+    `<path d="M2 12 S6 7 12 7 S12 12 12 12 Z" fill="#ffffff" opacity="0.1"/>`,
+
+  motion: `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<circle cx="12" cy="12" r="3" fill="#F8E8A0"/>` +
+    `<path d="M12 5 V7 M12 17 V19 M5 12 H7 M17 12 H19" stroke-width="2" stroke="url(#s2g-gold)"/>` +
+    `<path d="M8.5 8.5 L10 10 M14 14 L15.5 15.5 M15.5 8.5 L14 10 M10 14 L8.5 15.5" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "door-sensor": `<rect x="3" y="4" width="18" height="16" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="8" cy="12" r="3" fill="#0E2A44"/>` +
+    `<circle cx="8" cy="12" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="14" y="8" width="5" height="8" rx="1" fill="url(#s2g-gold-light)"/>` +
+    `<path d="M3 4 H21 V12" fill="#ffffff" opacity="0.06"/>`,
+
+  thermometer: `<rect x="10" y="2" width="4" height="12" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<circle cx="12" cy="18" r="4" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<circle cx="12" cy="18" r="2.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="10.5" y="8" width="3" height="7" rx="1.5" fill="#E0B66B"/>` +
+    `<path d="M10 2 V6 M14 2 V6 M10 2 V4 M14 2 V4" stroke-width="1.2" stroke="url(#s2g-gold)"/>` +
+    `<rect x="10" y="2" width="4" height="12" rx="2" fill="#ffffff" opacity="0.08"/>`,
+
+  "fan-blades": `<circle cx="12" cy="12" r="2.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 9.5 C12 9.5 16 6 17 9 C18 12 12 12 12 12 Z" fill="url(#s2g-panel)" opacity="0.85"/>` +
+    `<path d="M14.5 14 C14.5 14 17 17 14 18 C11 19 12 12 12 12 Z" fill="url(#s2g-panel)" opacity="0.7"/>` +
+    `<path d="M9.5 14 C9.5 14 7 17 10 18 C13 19 12 12 12 12 Z" fill="url(#s2g-panel)" opacity="0.85"/>` +
+    `<path d="M10 9.5 C10 9.5 7 6 8 9 C9 12 12 12 12 12 Z" fill="url(#s2g-panel)" opacity="0.7"/>` +
+    `<circle cx="12" cy="12" r="1" fill="#F8E8A0"/>`,
+
+  winter: `<path d="M12 2 L12 22" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<path d="M5 7 L19 17 M5 17 L19 7" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<path d="M8 4.5 L16 19.5 M8 19.5 L16 4.5" stroke-width="1" stroke="url(#s2g-gold)" opacity="0.5"/>` +
+    `<path d="M12 2 L10 5 M12 2 L14 5" stroke-width="1.2" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="4.5" fill="none" stroke-width="0.8" stroke="url(#s2g-gold)" opacity="0.3"/>` +
+    `<circle cx="12" cy="12" r="4.5" fill="#F8E8A0" opacity="0.1"/>`,
+
+  curtain: `<rect x="3" y="4" width="18" height="2" rx="1" fill="url(#s2g-gold)"/>` +
+    `<path d="M5 6 V20 a3 3 0 0 1 -3 -3 V9 a3 3 0 0 1 3 -3 Z" fill="url(#s2g-panel)" opacity="0.85"/>` +
+    `<path d="M19 6 V20 a3 3 0 0 1 3 -3 V9 a3 3 0 0 1 -3 -3 Z" fill="url(#s2g-panel)"/>` +
+    `<path d="M5 6 V20 a3 3 0 0 1 -3 -3 V9 a3 3 0 0 1 3 -3 Z" fill="#ffffff" opacity="0.08"/>`,
+
+  "garage-door": `<rect x="3" y="5" width="18" height="15" rx="1" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M3 9 H21 M3 13 H21 M3 17 H21" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<rect x="5" y="7" width="14" height="2" rx="0.5" fill="url(#s2g-gold-light)" opacity="0.5"/>` +
+    `<path d="M3 5 H21 V8" fill="#ffffff" opacity="0.06"/>`,
+
+  "lock-circular": `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M8 10 V7 a4 4 0 0 1 8 0 V10" fill="none" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="13" r="2.5" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="13" r="1.2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "camera-eye": `<path d="M3 8 L7 5 H17 L21 8 V16 L17 19 H7 L3 16 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="4" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="12" r="2.5" fill="url(#s2g-gold)"/>` +
+    `<circle cx="13" cy="11" r="0.8" fill="#F8E8A0"/>` +
+    `<path d="M3 8 L7 5 H17" fill="#ffffff" opacity="0.1"/>`,
+
+  speaker: `<rect x="5" y="4" width="14" height="16" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="10" r="3.5" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="10" r="2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="10" r="0.8" fill="#F8E8A0"/>` +
+    `<circle cx="12" cy="17" r="1.5" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="17" r="0.8" fill="url(#s2g-gold)"/>` +
+    `<rect x="5" y="4" width="14" height="8" rx="2" fill="#ffffff" opacity="0.06"/>`,
+
+  "music-note": `<path d="M9 18 V10 L17 8 V16" fill="none" stroke-width="2" stroke="url(#s2g-gold)"/>` +
+    `<ellipse cx="7" cy="18" rx="3" ry="2.5" fill="url(#s2g-gold)"/>` +
+    `<ellipse cx="15" cy="16" rx="3" ry="2.5" fill="url(#s2g-gold)"/>` +
+    `<ellipse cx="7" cy="18" fill="#F8E8A0" opacity="0.2"/>`,
+
+  broom: `<path d="M14 3 L18 21" stroke-width="2.2" stroke="url(#s2g-gold)"/>` +
+    `<path d="M7 21 C5 16 6 10 14 3" fill="none" stroke-width="1.5" stroke="url(#s2g-plum-g)"/>` +
+    `<path d="M8 21 L12 21" stroke-width="1.8" stroke="url(#s2g-gold)"/>` +
+    `<path d="M9 16 L13 16 M8 19 L12 19" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<path d="M14 3 L18 21" stroke="#ffffff" stroke-opacity="0.2"/>`,
+
+  shield: `<path d="M12 3 L4 7 V12 C4 17 8 21 12 22 C16 21 20 17 20 12 V7 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M12 3 L4 7 V12 C4 17 8 21 12 22 Z" fill="#ffffff" opacity="0.08"/>` +
+    `<path d="M9 12 L11 14 L15 10" fill="none" stroke-width="2.2" stroke="#F8E8A0"/>` +
+    `<path d="M12 3 L4 7 V12 C4 17 8 21 12 22 C16 21 20 17 20 12 V7 Z" fill="#F8E8A0" opacity="0.05"/>`,
+
+  bell: `<path d="M12 3 C8.5 3 6 5.5 6 9 V14 L4 16 H20 L18 14 V9 C18 5.5 15.5 3 12 3 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="18" r="2" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 3 C8.5 3 6 5.5 6 9 V14 Z" fill="#ffffff" opacity="0.08"/>`,
+
+  gears: `<circle cx="7" cy="15" r="4.5" fill="none" stroke-width="2.2" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="7" cy="15" r="1.8" fill="url(#s2g-gold)"/>` +
+    `<path d="M7 10.5 V9 M7 20.5 V19 M2.5 15 H4 M11 15 H9" stroke-width="2" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="17" cy="9" r="3.5" fill="none" stroke-width="1.8" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="17" cy="9" r="1.4" fill="url(#s2g-gold)"/>` +
+    `<path d="M17 5.5 V4 M17 13.5 V12 M13.5 9 H15 M20.5 9 H19" stroke-width="1.8" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="7" cy="15" r="4.5" fill="#ffffff" opacity="0.06"/>`,
+
+  robot: `<rect x="5" y="4" width="14" height="11" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="9" cy="10" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<circle cx="15" cy="10" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M9 14 H15" stroke-width="1.6" stroke="#F8E8A0"/>` +
+    `<path d="M12 4 V2" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="2" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="3" y="10" width="3" height="6" rx="1.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="18" y="10" width="3" height="6" rx="1.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="5" y="4" width="14" height="5.5" rx="2" fill="#ffffff" opacity="0.08"/>`,
+
+  scroll: `<path d="M6 3 H16 L20 7 V21 H6 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M6 3 C4 3 3 5 3 7 V21 H6" fill="url(#s2g-panel)"/>` +
+    `<path d="M8 10 H18 M8 14 H18 M8 18 H14" stroke="#F8E8A0" stroke-width="1"/>` +
+    `<path d="M6 3 H16 L20 7 V21 Z" fill="#ffffff" opacity="0.06"/>`,
+
+  "book-open": `<path d="M3 4 C3 4 7 2 12 4 C17 2 21 4 21 4 V20 C21 20 17 18 12 20 C7 18 3 20 3 20 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M12 4 V20" stroke="url(#s2g-gold)" stroke-width="1.2"/>` +
+    `<path d="M6 8 H10 M6 12 H10 M6 16 H9" stroke="#F8E8A0" stroke-width="0.8"/>` +
+    `<path d="M14 8 H18 M14 12 H18 M14 16 H17" stroke="#F8E8A0" stroke-width="0.8"/>` +
+    `<path d="M3 4 C3 4 7 2 12 4 V20 C7 18 3 20 3 20 Z" fill="#ffffff" opacity="0.06"/>`,
+
+  sparkle: `<path d="M12 2 L13.5 8.5 L20 7 L14.5 11.5 L19.5 18 L12 14 L4.5 18 L9.5 11.5 L4 7 L10.5 8.5 Z" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 2 L13.5 8.5 L20 7 L14.5 11.5 L19.5 18 L12 14 Z" fill="#ffffff" opacity="0.15"/>` +
+    `<circle cx="5" cy="5" r="1" fill="url(#s2g-gold)" opacity="0.6"/>` +
+    `<circle cx="19" cy="4" r="0.8" fill="url(#s2g-gold)" opacity="0.5"/>` +
+    `<circle cx="3" cy="15" r="0.7" fill="url(#s2g-gold)" opacity="0.4"/>`,
+
+  "magic-wand": `<path d="M5 19 L15 9" stroke-width="2.2" stroke="url(#s2g-gold)"/>` +
+    `<path d="M15 9 L20 4" stroke-width="2.2" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="20" cy="4" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M18 2 L18 4 M20 0 L20 2 M22 2 L22 4" stroke-width="1.2" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="20" cy="4" r="1.5" fill="#ffffff" opacity="0.2"/>`,
+
+  "map-pin": `<path d="M12 2 C8 2 5 5 5 9 C5 14 12 22 12 22 C12 22 19 14 19 9 C19 5 16 2 12 2 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="9" r="3.5" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="9" r="2" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 2 C8 2 5 5 5 9 C5 14 12 22 12 22 Z" fill="#ffffff" opacity="0.06"/>`,
+
+  compass: `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="7" fill="#0E2A44"/>` +
+    `<path d="M12 5 L14.5 12 H9.5 Z" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 19 L9.5 12 H14.5 Z" fill="url(#s2g-gold-light)" opacity="0.7"/>` +
+    `<circle cx="12" cy="12" r="1.5" fill="#F8E8A0"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  sun: `<circle cx="12" cy="12" r="4.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 3 V5 M12 19 V21 M3 12 H5 M19 12 H21" stroke="url(#s2g-gold)" stroke-width="1.6"/>` +
+    `<path d="M5.6 5.6 L7 7 M17 17 L18.4 18.4 M5.6 18.4 L7 17 M17 7 L18.4 5.6" stroke="url(#s2g-gold)" stroke-width="1.4"/>` +
+    `<circle cx="12" cy="12" r="4.5" fill="#ffffff" opacity="0.1"/>`,
+
+  moon: `<path d="M15 4.5 A7.5 7.5 0 1 0 15 19.5 A5.5 5.5 0 1 1 15 4.5 Z" fill="url(#s2g-gold)"/>` +
+    `<circle cx="17" cy="7" r="0.8" fill="#F8E8A0" opacity="0.4"/>` +
+    `<circle cx="14" cy="16" r="0.5" fill="#F8E8A0" opacity="0.3"/>`,
+
+  cloud: `<path d="M7 16 a4 4 0 0 1 -0.5 -7.5 a5.5 5.5 0 0 1 10 -1.5 a4 4 0 0 1 1 8 H7 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<path d="M7 16 a4 4 0 0 1 -0.5 -7.5 a5.5 5.5 0 0 1 10 -1.5 Z" fill="#ffffff" opacity="0.08"/>`,
+
+  "raindrop": `<path d="M12 3 C12 3 6 11 6 15 a6 6 0 0 0 12 0 C18 11 12 3 12 3 Z" fill="url(#s2g-blue)"/>` +
+    `<path d="M12 3 C10 8 7 12 7 15 a5 5 0 0 0 5 5" fill="#ffffff" opacity="0.15"/>` +
+    `<circle cx="10" cy="14" r="0.8" fill="#F8E8A0" opacity="0.4"/>`,
+
+  sunrise: `<path d="M3 17 H21" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<path d="M6 14 A6 6 0 0 1 18 14" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 6 V3 M5 8 L3.5 6.5 M19 8 L20.5 6.5" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<path d="M6 14 A6 6 0 0 1 18 14 Z" fill="#ffffff" opacity="0.1"/>`,
+
+  user: `<circle cx="12" cy="9" r="4.5" fill="url(#s2g-sim)"/>` +
+    `<path d="M4 21 C4 17 7.5 14.5 12 14.5 C16.5 14.5 20 17 20 21" fill="url(#s2g-sim)"/>` +
+    `<circle cx="12" cy="9" r="4.5" fill="#ffffff" opacity="0.08"/>`,
+
+  radar: `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="6" fill="none" stroke-width="0.6" stroke="url(#s2g-gold)" opacity="0.5"/>` +
+    `<circle cx="12" cy="12" r="3" fill="none" stroke-width="0.6" stroke="url(#s2g-gold)" opacity="0.3"/>` +
+    `<circle cx="12" cy="12" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 12 L18 6" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "slider-horiz": `<rect x="2" y="10" width="20" height="4" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<rect x="4" y="10.5" width="8" height="3" rx="1.5" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="3.5" fill="url(#s2g-gold-light)" stroke="#A07830" stroke-width="0.5"/>` +
+    `<rect x="2" y="10" width="20" height="4" rx="2" fill="#ffffff" opacity="0.06"/>`,
+
+  "text-line": `<rect x="3" y="4" width="18" height="16" rx="1" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M6 9 H18 M6 13 H18 M6 17 H14" stroke="#F8E8A0" stroke-width="1.2"/>` +
+    `<rect x="3" y="4" width="18" height="8" rx="1" fill="#ffffff" opacity="0.06"/>`,
+
+  "calendar-grid": `<rect x="3" y="4" width="18" height="17" rx="1.5" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M3 9 H21" stroke="url(#s2g-gold)" stroke-width="1.2"/>` +
+    `<path d="M8 3 V6 M16 3 V6" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<path d="M6 12 H8 M12 12 H14 M18 12 H19 M6 16 H8 M12 16 H14 M18 16 H19 M6 20 H8 M12 20 H14" fill="url(#s2g-gold-light)" rx="0.5"/>` +
+    `<rect x="3" y="4" width="18" height="5" rx="1.5" fill="#ffffff" opacity="0.06"/>`,
+
+  "bubble-chat": `<path d="M3 5 H19 a2 2 0 0 1 2 2 V16 a2 2 0 0 1 -2 2 H8 L3 22 V7 a2 2 0 0 1 2 -2 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M7 9 H16 M7 13 H13" stroke="#F8E8A0" stroke-width="1.2"/>` +
+    `<path d="M3 5 H19 a2 2 0 0 1 2 2 V16 Z" fill="#ffffff" opacity="0.06"/>`,
+
+  "bell-ring": `<path d="M12 4 C8.5 4 6 6.5 6 10 V14 L4 16 H20 L18 14 V10 C18 6.5 15.5 4 12 4 Z" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="18" r="2" fill="#0E2A44"/>` +
+    `<path d="M10 10 C10 7 14 7 14 10" fill="none" stroke-width="1.2" stroke="#0E2A44"/>` +
+    `<path d="M12 4 C8.5 4 6 6.5 6 10 V14 Z" fill="#ffffff" opacity="0.1"/>`,
+
+  hourglass: `<path d="M5 3 H19 L16 10 C16 10 18 14 18 14 L19 21 H5 L6 14 C6 14 4 10 4 10 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M5 3 H19 L16 10 L8 10 Z" fill="#F8E8A0" opacity="0.4"/>` +
+    `<rect x="4" y="2" width="16" height="2" rx="1" fill="url(#s2g-gold)"/>` +
+    `<rect x="4" y="20" width="16" height="2" rx="1" fill="url(#s2g-gold)"/>` +
+    `<path d="M5 3 H19 L16 10 L8 10 Z" fill="#ffffff" opacity="0.06"/>`,
+
+  stopwatch: `<circle cx="12" cy="12" r="8" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="6.5" fill="#0E2A44"/>` +
+    `<path d="M12 6 L14 10 H10 Z" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="1" fill="#F8E8A0"/>` +
+    `<path d="M12 2 V4 M12 20 V22" stroke-width="1.4" stroke="url(#s2g-gold)"/>` +
+    `<path d="M18 6 L20 4" stroke-width="1.8" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="12" r="8" fill="#ffffff" opacity="0.06"/>`,
+
+  "number-increment": `<rect x="3" y="4" width="18" height="16" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M12 8 V16 M8 12 H16" stroke-width="2.5" stroke="url(#s2g-gold)"/>` +
+    `<rect x="3" y="4" width="18" height="8" rx="2" fill="#ffffff" opacity="0.06"/>`,
+
+  "dropdown-arrow": `<rect x="3" y="4" width="18" height="16" rx="2" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M8 10 H16" stroke="#F8E8A0" stroke-width="1.2"/>` +
+    `<path d="M10 14 L12 17 L14 14" fill="none" stroke-width="2" stroke="#F8E8A0"/>` +
+    `<rect x="3" y="4" width="18" height="8" rx="2" fill="#ffffff" opacity="0.06"/>`,
+
+  "dial-knob": `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="6" fill="url(#s2g-gold-light)"/>` +
+    `<path d="M12 8 L12 12 L15 14" stroke-width="1.6" stroke="#0E2A44"/>` +
+    `<circle cx="12" cy="12" r="6" fill="#ffffff" opacity="0.1"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "push-button": `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="5.5" fill="url(#s2g-gold-light)" stroke="#A07830" stroke-width="0.5"/>` +
+    `<circle cx="12" cy="10.5" r="3.5" fill="#ffffff" opacity="0.1"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "arrow-up-circle": `<circle cx="12" cy="12" r="9" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<path d="M12 16 V7 M8 11 L12 7 L16 11" fill="none" stroke-width="2.2" stroke="#F8E8A0"/>` +
+    `<circle cx="12" cy="12" r="9" fill="#ffffff" opacity="0.06"/>`,
+
+  "eye-scanned": `<path d="M2 12 S6 7 12 7 S22 12 22 12 S18 17 12 17 S2 12 2 12 Z" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="12" r="4.5" fill="none" stroke-width="0.8" stroke="url(#s2g-gold)" opacity="0.5"/>` +
+    `<circle cx="12" cy="12" r="3" fill="none" stroke-width="0.6" stroke="url(#s2g-gold)" opacity="0.3"/>` +
+    `<circle cx="12" cy="12" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<circle cx="13.5" cy="10.5" r="0.8" fill="#F8E8A0"/>` +
+    `<path d="M2 12 S6 7 12 7 S12 12 12 12 Z" fill="#ffffff" opacity="0.1"/>`,
+
+  grid: `<rect x="3" y="3" width="7" height="7" rx="1" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.5"/>` +
+    `<rect x="14" y="3" width="7" height="7" rx="1" fill="url(#s2g-panel)" opacity="0.85" stroke="url(#s2g-gold)" stroke-width="0.5"/>` +
+    `<rect x="3" y="14" width="7" height="7" rx="1" fill="url(#s2g-panel)" opacity="0.85" stroke="url(#s2g-gold)" stroke-width="0.5"/>` +
+    `<rect x="14" y="14" width="7" height="7" rx="1" fill="url(#s2g-panel)" opacity="0.7" stroke="url(#s2g-gold)" stroke-width="0.5"/>` +
+    `<rect x="3" y="3" width="7" height="3.5" rx="1" fill="#ffffff" opacity="0.1"/>` +
+    `<rect x="14" y="3" width="7" height="3.5" rx="1" fill="#ffffff" opacity="0.08"/>`,
+
+  layout: `<rect x="3" y="3" width="18" height="7" rx="1" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<rect x="3" y="14" width="8" height="7" rx="1" fill="url(#s2g-panel)" opacity="0.85" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<rect x="13" y="14" width="8" height="7" rx="1" fill="url(#s2g-panel)" opacity="0.7" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<rect x="3" y="3" width="18" height="3.5" rx="1" fill="#ffffff" opacity="0.1"/>`,
+
+  hook: `<path d="M16 4 H8 a4 4 0 0 0 -4 4 V20" fill="none" stroke-width="2.2" stroke="url(#s2g-gold)"/>` +
+    `<path d="M4 8 H20" stroke-width="1.6" stroke="url(#s2g-gold)"/>` +
+    `<circle cx="4" cy="8" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<path d="M16 4 H8 a4 4 0 0 0 -4 4" fill="#ffffff" opacity="0.1"/>`,
+
+  "chart-line": `<rect x="3" y="3" width="18" height="18" rx="1.5" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.6"/>` +
+    `<path d="M6 18 V14 M10 18 V10 M14 18 V12 M18 18 V7" stroke-width="1.2" stroke="url(#s2g-gold)" opacity="0.5"/>` +
+    `<path d="M6 14 L10 10 L14 12 L18 7" fill="none" stroke-width="1.8" stroke="#F8E8A0"/>` +
+    `<circle cx="6" cy="14" r="1.2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="10" cy="10" r="1.2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="14" cy="12" r="1.2" fill="url(#s2g-gold)"/>` +
+    `<circle cx="18" cy="7" r="1.2" fill="url(#s2g-gold)"/>` +
+    `<rect x="3" y="3" width="18" height="9" rx="1.5" fill="#ffffff" opacity="0.04"/>`,
+
+  sprout: `<path d="M12 21 V12" stroke-width="2" stroke="url(#s2g-plum-g)"/>` +
+    `<path d="M12 16 C12 16 8 14 8 10 C8 7 12 7 12 10 C12 13 16 13 16 10 C16 7 20 7 20 10 C20 14 12 16 12 16 Z" fill="url(#s2g-plum-g)"/>` +
+    `<path d="M12 16 C12 16 8 14 8 10 C8 7 12 7 12 10" fill="#ffffff" opacity="0.15"/>` +
+    `<rect x="6" y="21" width="12" height="2" rx="1" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 16 C12 16 8 14 8 10 C8 7 12 7 12 10 C12 13 16 13 16 10 C20 7 20 14 12 16" fill="#ffffff" opacity="0.08"/>`,
+
+  leaf: `<path d="M12 21 C12 21 4 17 4 10 C4 5 12 3 12 3 C12 3 20 5 20 10 C20 17 12 21 12 21 Z" fill="url(#s2g-plum-g)" opacity="0.9"/>` +
+    `<path d="M12 21 L12 7" stroke-width="1" stroke="#ffffff" stroke-opacity="0.3"/>` +
+    `<path d="M12 21 C12 21 4 17 4 10 C4 5 12 3 12 3" fill="#ffffff" opacity="0.1"/>`,
+
+  "clipboard-check": `<rect x="5" y="4" width="14" height="17" rx="1.5" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<rect x="8" y="2" width="8" height="4" rx="1" fill="url(#s2g-gold)"/>` +
+    `<path d="M8 11 L10.5 13.5 L16 8" fill="none" stroke-width="2.2" stroke="#F8E8A0"/>` +
+    `<rect x="5" y="4" width="14" height="8.5" rx="1.5" fill="#ffffff" opacity="0.06"/>`,
+
+  "tag-round": `<circle cx="12" cy="12" r="8" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="8" cy="8" r="1.5" fill="#0E2A44"/>` +
+    `<circle cx="8" cy="8" r="0.7" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 10 H18 M12 14 H16" stroke="#F8E8A0" stroke-width="1"/>` +
+    `<path d="M12 4 C8 4 4 8 4 12" fill="#ffffff" opacity="0.06"/>`,
+
+  doorbell: `<circle cx="12" cy="10" r="5" fill="url(#s2g-panel)" stroke="url(#s2g-gold)" stroke-width="0.8"/>` +
+    `<circle cx="12" cy="10" r="3" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="10" r="1.5" fill="url(#s2g-gold)"/>` +
+    `<rect x="10" y="15" width="4" height="6" rx="1" fill="url(#s2g-gold)"/>` +
+    `<circle cx="12" cy="10" r="5" fill="#ffffff" opacity="0.06"/>`,
+
+  "warning-triangle": `<path d="M12 3 L22 20 H2 Z" fill="url(#s2g-gold)"/>` +
+    `<path d="M12 3 L22 20 H12 Z" fill="#ffffff" opacity="0.1"/>` +
+    `<rect x="11" y="9" width="2" height="6" rx="1" fill="#0E2A44"/>` +
+    `<circle cx="12" cy="17" r="1" fill="#0E2A44"/>`,
 };
 
 window.customIcons = window.customIcons || {};

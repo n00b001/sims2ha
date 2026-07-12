@@ -19,56 +19,87 @@
    ========================================================================== */
 
 /* ---- Sunburst background -----------------------------------------------
-   The iconic Sims 2 main-menu sunburst: smooth alternating light/dark gold
+   The iconic Sims 2 main-menu sunburst: bold alternating light/dark gold
    rays radiating from a focal point slightly above center, on a deep navy
-   field. Uses conic-gradient for true ray geometry (no harsh radial-stop
-   banding). A soft plumbob-green ambient glow sits at the focal point.
+   field. Uses conic-gradient for true ray geometry with high-contrast stops
+   that match the authentic Sims 2 menu aesthetic. A soft plumbob-green
+   ambient glow sits at the focal point, and a warm vignette fades rays
+   into navy at the edges.
    ========================================================================== */
 body {
   background-color: #0E2A44;
   background-image:
     /* Plumbob-green ambient glow at focal point */
-    radial-gradient(ellipse 50% 40% at 50% 38%, rgba(123, 201, 66, 0.07) 0%, transparent 70%),
-    /* Smooth sunburst rays via conic gradient — 16 rays (8 light + 8 dark) */
+    radial-gradient(ellipse 50% 40% at 50% 38%, rgba(123, 201, 66, 0.1) 0%, transparent 70%),
+    /* Bold sunburst rays via conic gradient — 24 rays (12 light + 12 dark), matching Sims 2 main-menu intensity */
     conic-gradient(
       from 0deg at 50% 38%,
-      #0E2A44 0deg,
-      rgba(224, 182, 107, 0.06) 11.25deg,
+      #163A5C 0deg,
+      rgba(248, 232, 184, 0.45) 7.5deg,
+      rgba(224, 182, 107, 0.28) 15deg,
       #0E2A44 22.5deg,
-      rgba(224, 182, 107, 0.04) 33.75deg,
-      #0E2A44 45deg,
-      rgba(224, 182, 107, 0.06) 56.25deg,
-      #0E2A44 67.5deg,
-      rgba(224, 182, 107, 0.04) 78.75deg,
+      #0E2A44 30deg,
+      rgba(224, 182, 107, 0.18) 37.5deg,
+      rgba(248, 232, 184, 0.40) 45deg,
+      #163A5C 52.5deg,
+      #163A5C 60deg,
+      rgba(224, 182, 107, 0.18) 67.5deg,
+      rgba(248, 232, 184, 0.40) 75deg,
+      #0E2A44 82.5deg,
       #0E2A44 90deg,
-      rgba(224, 182, 107, 0.06) 101.25deg,
-      #0E2A44 112.5deg,
-      rgba(224, 182, 107, 0.04) 123.75deg,
-      #0E2A44 135deg,
-      rgba(224, 182, 107, 0.06) 146.25deg,
-      #0E2A44 157.5deg,
-      rgba(224, 182, 107, 0.04) 168.75deg,
-      #0E2A44 180deg,
-      rgba(224, 182, 107, 0.06) 191.25deg,
+      rgba(224, 182, 107, 0.28) 97.5deg,
+      rgba(248, 232, 184, 0.45) 105deg,
+      #163A5C 112.5deg,
+      #163A5C 120deg,
+      rgba(224, 182, 107, 0.18) 127.5deg,
+      rgba(248, 232, 184, 0.40) 135deg,
+      #0E2A44 142.5deg,
+      #0E2A44 150deg,
+      rgba(224, 182, 107, 0.18) 157.5deg,
+      rgba(248, 232, 184, 0.40) 165deg,
+      #163A5C 172.5deg,
+      #163A5C 180deg,
+      rgba(224, 182, 107, 0.28) 187.5deg,
+      rgba(248, 232, 184, 0.45) 195deg,
       #0E2A44 202.5deg,
-      rgba(224, 182, 107, 0.04) 213.75deg,
-      #0E2A44 225deg,
-      rgba(224, 182, 107, 0.06) 236.25deg,
-      #0E2A44 247.5deg,
-      rgba(224, 182, 107, 0.04) 258.75deg,
+      #0E2A44 210deg,
+      rgba(224, 182, 107, 0.18) 217.5deg,
+      rgba(248, 232, 184, 0.40) 225deg,
+      #163A5C 232.5deg,
+      #163A5C 240deg,
+      rgba(224, 182, 107, 0.18) 247.5deg,
+      rgba(248, 232, 184, 0.40) 255deg,
+      #0E2A44 262.5deg,
       #0E2A44 270deg,
-      rgba(224, 182, 107, 0.06) 281.25deg,
-      #0E2A44 292.5deg,
-      rgba(224, 182, 107, 0.04) 303.75deg,
-      #0E2A44 315deg,
-      rgba(224, 182, 107, 0.06) 326.25deg,
-      #0E2A44 337.5deg,
-      rgba(224, 182, 107, 0.04) 348.75deg,
-      #0E2A44 360deg
+      rgba(224, 182, 107, 0.28) 277.5deg,
+      rgba(248, 232, 184, 0.45) 285deg,
+      #163A5C 292.5deg,
+      #163A5C 300deg,
+      rgba(224, 182, 107, 0.18) 307.5deg,
+      rgba(248, 232, 184, 0.40) 315deg,
+      #0E2A44 322.5deg,
+      #0E2A44 330deg,
+      rgba(224, 182, 107, 0.18) 337.5deg,
+      rgba(248, 232, 184, 0.40) 345deg,
+      #163A5C 352.5deg,
+      #163A5C 360deg
     ),
     /* Warm vignette at edges to fade rays into navy */
-    radial-gradient(ellipse 80% 80% at 50% 38%, transparent 30%, rgba(14, 42, 68, 0.5) 100%);
+    radial-gradient(ellipse 70% 70% at 50% 38%, transparent 20%, rgba(14, 42, 68, 0.6) 100%);
   background-attachment: fixed;
+}
+
+/* ---- Global font — Benguiat Gothic everywhere via inheritance -----------
+   HA's light-DOM shell elements inherit from body. Shadow-DOM components
+   that set their own font-family are overridden below, but the root-level
+   declaration ensures text that relies on cascade inheritance gets the
+   Sims 2 face automatically.
+   ========================================================================== */
+body {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+  line-height: 1.55 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ---- App shell header — gold underline ---------------------------------- */
@@ -78,6 +109,26 @@ header,
 [part="header"],
 ::backdrop {
   border-bottom: 2px solid rgba(224, 182, 107, 0.5) !important;
+}
+
+/* ---- Main content area — parchment surface, Sims 2 typography ----------- */
+home-assistant {
+  --primary-text-color: #4A3320 !important;
+  --secondary-text-color: #7A5A38 !important;
+}
+
+app-header paper-icon-button,
+app-header .title,
+app-header ha-icon-button {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+  color: #F3E9D2 !important;
+}
+
+app-header .title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
 }
 
 /* ---- Sidebar — Sims 2 buy-mode navigator -------------------------------- */
@@ -169,7 +220,7 @@ paper-chip,
 /* ---- Login page — parchment panel on sunburst --------------------------- */
 .login-container,
 .login-content,
- ha-login-card,
+ha-login-card,
 [class*="login"],
 iron-form {
   background: transparent !important;
@@ -573,6 +624,7 @@ ha-alert {
   border: 1px solid var(--sims2-gold, #e0b66b) !important;
   color: var(--sims2-espresso, #4A3320) !important;
   font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+  border-radius: 12px !important;
 }
 
 ha-alert[alert-type="error"] {
@@ -609,4 +661,906 @@ mwc-list-item.entity-item {
 paper-item.entity-item:hover,
 mwc-list-item.entity-item:hover {
   background: rgba(224, 182, 107, 0.06) !important;
+}
+
+/* ==========================================================================
+   FULL SHELL COVERAGE — Login, Loading/Connecting, Settings, All Panels
+   Every visible element in Home Assistant gets the Sims 2 treatment.
+   Circular/00s styling throughout: pill shapes, round buttons, gold trim.
+   ========================================================================== */
+
+/* ---- LOGIN SCREEN — Full Sims 2 splash card centered on sunburst ----------
+   The HA login page needs to look like stepping into Pleasantview itself.
+   A parchment/gold card with plumbob accent, green submit button,
+   and circular input fields that feel like Sims 2 text entry boxes.
+   ========================================================================== */
+ha-login-card {
+  border: 2px solid var(--sims2-gold, #e0b66b) !important;
+  border-radius: 24px !important;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 237, 218, 0.97) 0%,
+    rgba(237, 224, 200, 0.97) 50%,
+    rgba(224, 200, 160, 0.97) 100%
+  ) !important;
+  box-shadow:
+    0 8px 48px rgba(74, 51, 32, 0.25),
+    0 2px 12px rgba(74, 51, 32, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  padding: 32px 28px 24px !important;
+  backdrop-filter: blur(4px);
+}
+
+ha-login-card .card-content {
+  border-radius: 16px !important;
+}
+
+/* Login title — Sims 2 wordmark style */
+ha-login-card h1,
+ha-login-card .login-brand h1 {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  text-shadow: 0 1px 3px rgba(224, 182, 107, 0.4) !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Login logo/plumbob icon */
+ha-login-card .login-brand img,
+.login-logo {
+  border-radius: 50% !important;
+  box-shadow: 0 0 16px rgba(123, 201, 66, 0.4) !important;
+}
+
+/* Login input fields — circular/pill shaped like Sims 2 text boxes */
+ha-login-card ha-textfield,
+ha-login-card paper-input-container,
+.login-form ha-textfield {
+  border-radius: 999px !important;
+  --mdc-shape-large: 999px !important;
+  --mdc-shape-medium: 999px !important;
+}
+
+/* Login submit button — plumbob green pill */
+ha-login-card mwc-button,
+ha-login-card .login-form button,
+.login-submit {
+  background: linear-gradient(180deg, #7BC942 0%, #5BA832 100%) !important;
+  border-radius: 999px !important;
+  box-shadow:
+    0 2px 8px rgba(123, 201, 66, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid #4E9A26 !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+ha-login-card mwc-button:hover {
+  background: linear-gradient(180deg, #9CE04A 0%, #7BC942 100%) !important;
+  box-shadow: 0 0 16px rgba(123, 201, 66, 0.5) !important;
+}
+
+/* Login footer — gold text */
+ha-login-card .login-footer {
+  color: var(--sims2-espresso, #4a3320) !important;
+  opacity: 0.7 !important;
+}
+
+/* ---- LOADING / CONNECTING OVERLAY — Sims 2 style full-screen splash --------
+   When HA is loading or connecting to the backend, show a full-screen
+   overlay with a spinning plumbob and gold text, just like the Sims 2
+   loading screen between worlds.
+   ========================================================================== */
+@keyframes sims2-loading-plum {
+  0%   { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 8px rgba(123, 201, 66, 0.5)); }
+  25%  { transform: rotate(90deg) scale(1.15); filter: drop-shadow(0 0 16px rgba(123, 201, 66, 0.8)); }
+  50%  { transform: rotate(180deg) scale(1); filter: drop-shadow(0 0 8px rgba(123, 201, 66, 0.5)); }
+  75%  { transform: rotate(270deg) scale(1.15); filter: drop-shadow(0 0 16px rgba(123, 201, 66, 0.8)); }
+  100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 8px rgba(123, 201, 66, 0.5)); }
+}
+
+@keyframes sims2-loading-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 1; text-shadow: 0 0 12px rgba(224, 182, 107, 0.6); }
+}
+
+ha-app-layout[loading] body::before,
+.connection-banner:not([hidden]),
+.loading-indicator,
+[part="loading"],
+app-loading {
+  /* Full-screen overlay styling for loading state */
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  background: linear-gradient(180deg, #0E2A44 0%, #081C32 100%) !important;
+}
+
+/* Spinning plumbob for loading overlay */
+connection-banner:not([hidden])::before,
+ha-app-layout[loading] .loading-plumbob {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 80px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: linear-gradient(105deg, #B7F36B 0%, #7BC942 42%, #4E9A26 58%, #2F6B12 100%);
+  animation: sims2-loading-plum 3s ease-in-out infinite;
+  margin-bottom: 24px;
+}
+
+/* Loading text */
+connection-banner:not([hidden])::after,
+.loading-text,
+[part="loading"] .status {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  font-size: 18px !important;
+  letter-spacing: 0.08em !important;
+  animation: sims2-loading-pulse 2s ease-in-out infinite;
+}
+
+/* ---- SETTINGS PAGES — Full Sims 2 panel treatment -------------------------
+   Every settings page, config panel, and system section gets the same
+   dark navy + gold border + circular element treatment.
+   ========================================================================== */
+ha-panel-config,
+[panel="config"],
+[panel="logbook"],
+[panel="history"],
+[panel="states"],
+[panel="lovelace"],
+[panel="developer-tools"],
+.config-dashboard,
+.settings-container {
+  background: var(--sims2-sunburst-blue, #1e5078) !important;
+}
+
+/* Settings cards — dark navy panels with gold borders */
+ha-panel-config ha-card,
+[panel="config"] ha-card,
+.config-section ha-card,
+.settings-card {
+  background: linear-gradient(180deg, #1A2638 0%, #141C28 100%) !important;
+  border: 1px solid rgba(224, 182, 107, 0.35) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(224, 182, 107, 0.1) !important;
+}
+
+/* Settings section headers — gold uppercase */
+ha-panel-config h2,
+.config-section-title,
+[panel="config"] h2 {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  border-bottom: 2px solid rgba(224, 182, 107, 0.3) !important;
+  padding-bottom: 8px !important;
+}
+
+/* Settings entity rows */
+ha-settings-list,
+[panel="config"] paper-listbox,
+.config-menu {
+  border-radius: 12px !important;
+  border: 1px solid rgba(224, 182, 107, 0.2) !important;
+  background: rgba(14, 26, 34, 0.5) !important;
+}
+
+ha-settings-list paper-item,
+.config-menu-item {
+  border-bottom: 1px solid rgba(224, 182, 107, 0.12) !important;
+  border-radius: 8px !important;
+  margin: 2px 4px !important;
+}
+
+ha-settings-list paper-item:hover,
+.config-menu-item:hover {
+  background: rgba(224, 182, 107, 0.1) !important;
+}
+
+/* Settings icons — gold */
+ha-settings-list ha-svg-icon,
+.config-menu-item ha-svg-icon {
+  color: var(--sims2-gold, #e0b66b) !important;
+}
+
+/* ---- DIALOG BACKDROP — dark overlay with gold-bordered dialog -------------- */
+::backdrop,
+.mdc-dialog__scrim {
+  background: rgba(14, 42, 68, 0.85) !important;
+}
+
+ha-dialog .mdc-dialog__surface,
+paper-dialog .paper-dialog-content,
+.dialog-surface {
+  border: 2px solid var(--sims2-gold, #e0b66b) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  box-shadow:
+    0 12px 48px rgba(74, 51, 32, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Dialog title bar — gold underline */
+ha-dialog .mdc-dialog__title,
+paper-dialog .paper-dialog-header,
+.dialog-title {
+  border-bottom: 2px solid rgba(224, 182, 107, 0.4) !important;
+  padding-bottom: 12px !important;
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Dialog buttons — pill-shaped green/gold */
+ha-dialog mwc-button,
+paper-dialog .paper-dialog-button-panel button {
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #E0B66B 0%, #C49A3C 100%) !important;
+  color: #0E2A44 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+}
+
+ha-dialog mwc-button[primary],
+paper-dialog .primary {
+  background: linear-gradient(180deg, #7BC942 0%, #5BA832 100%) !important;
+  color: #0E2A44 !important;
+  border: 1px solid #4E9A26 !important;
+}
+
+/* ---- HA-STATE-CARD — entity display styling -------------------------------- */
+ha-state-card,
+.state-card,
+.entity-card {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1px solid rgba(224, 182, 107, 0.35) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 2px 8px rgba(74, 51, 32, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  color: #4A3320 !important;
+}
+
+/* Entity state text — green when active */
+ha-state-card .state,
+.state-text[data-state="on"],
+.state-text.active {
+  color: var(--sims2-plumbob-green, #7bc942) !important;
+  font-weight: 600 !important;
+}
+
+/* ---- ENTITY-ROWS — list of entities with icons and states ------------------ */
+ha-entity-row,
+.entity-row,
+paper-item[data-component="entity"],
+mwc-list-item[role="option"][data-type="entity"] {
+  border-bottom: 1px solid rgba(224, 182, 107, 0.12) !important;
+  border-radius: 10px !important;
+}
+
+ha-entity-row:hover,
+.entity-row:hover {
+  background: rgba(224, 182, 107, 0.06) !important;
+}
+
+/* Entity icons — circular container with gold border */
+ha-entity-row ha-svg-icon,
+.entity-row .icon {
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.3) !important;
+  background: rgba(224, 182, 107, 0.15) !important;
+}
+
+ha-entity-row ha-svg-icon[data-active],
+.entity-row .icon.active {
+  border-color: var(--sims2-plumbob-green, #7bc942) !important;
+  background: rgba(123, 201, 66, 0.1) !important;
+  box-shadow: 0 0 8px rgba(123, 201, 66, 0.3) !important;
+}
+
+/* ---- HA-CARD — default card styling override --------------------------------
+   Cards get a parchment/cream background with gold border and rounded corners.
+   Custom Sims 2 cards (gauge, panel, plumbob) set their own styles internally.
+   Native HA cards (markdown, glance, entity-filter) need light backgrounds
+   so their text remains readable — dark navy would break them.
+   ========================================================================== */
+ha-card {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 2px 12px rgba(74, 51, 32, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  overflow: hidden !important;
+  color: #4A3320 !important;
+}
+
+/* ha-card header — gold underline */
+ha-card .card-header {
+  background: linear-gradient(180deg, rgba(224, 182, 107, 0.1) 0%, rgba(224, 182, 107, 0.03) 100%) !important;
+  border-bottom: 1px solid rgba(224, 182, 107, 0.3) !important;
+  padding: 12px 16px !important;
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ha-card content */
+ha-card .card-content {
+  padding: 16px !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+/* ---- MATERIAL DESIGN OVERRIDES — circular everything -----------------------
+   MDC buttons, chips, menus, tabs, textfields all get circular/00s treatment.
+   ========================================================================== */
+
+/* MDC Buttons — pill shaped with gold gradient */
+.mdc-button,
+mdc-button,
+[role="button"] {
+  border-radius: 999px !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+}
+
+/* MDC Text Fields — pill shaped */
+.mdc-text-field,
+mdc-text-field,
+[role="textbox"] {
+  border-radius: 12px !important;
+  --mdc-shape-small: 12px !important;
+  --mdc-shape-medium: 12px !important;
+}
+
+/* MDC Chips — rounded pills */
+.mdc-chip,
+mdc-chip {
+  border-radius: 999px !important;
+  background: rgba(237, 224, 200, 0.15) !important;
+  border: 1px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+/* MDC Menu — rounded with gold border */
+.mdc-menu,
+mdc-menu {
+  border-radius: 12px !important;
+  border: 1px solid rgba(224, 182, 107, 0.35) !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  color: #4A3320 !important;
+}
+
+/* MDC Tab Bar — gold underline */
+.mdc-tab-bar,
+mdc-tab-bar {
+  border-bottom: 2px solid rgba(224, 182, 107, 0.4) !important;
+}
+
+/* MDC Tab — gold active indicator */
+.mdc-tab--active .mdc-tab__text-label {
+  color: var(--sims2-gold, #e0b66b) !important;
+}
+
+.mdc-tab--active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sims2-gold-dark, #c49a3c), var(--sims2-gold, #e0b66b));
+  border-radius: 999px;
+}
+
+/* ---- HA-ATTRIBUTION — footer branding -------------------------------------- */
+ha-attribution {
+  color: rgba(212, 196, 168, 0.5) !important;
+  font-size: 11px !important;
+}
+
+ha-attribution a {
+  color: var(--sims2-gold, #e0b66b) !important;
+  opacity: 0.6 !important;
+}
+
+/* ---- HA-TABS — navigation tabs --------------------------------------------- */
+ha-tabs,
+[part="tabs"] {
+  border-bottom: 2px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+ha-tabs paper-tab[selected],
+[part="tabs"] [selected] {
+  color: var(--sims2-gold, #e0b66b) !important;
+}
+
+/* ---- HA-ICON-MENU — circular icon buttons ---------------------------------- */
+ha-icon-button,
+paper-icon-button,
+[icon-button] {
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(224, 182, 107, 0.2) !important;
+  background: rgba(14, 42, 68, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+ha-icon-button:hover,
+paper-icon-button:hover {
+  background: rgba(224, 182, 107, 0.15) !important;
+  border-color: var(--sims2-gold, #e0b66b) !important;
+  box-shadow: 0 0 8px rgba(224, 182, 107, 0.3) !important;
+}
+
+/* ---- HA-COLOR-CONTROL — color picker circular ------------------------------ */
+ha-color-control,
+.color-picker {
+  border-radius: 50% !important;
+  border: 2px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+/* ---- HA-TIME-DATE-CONTROL — circular clock input --------------------------- */
+ha-time-control,
+ha-date-control {
+  border-radius: 12px !important;
+}
+
+/* ---- HA-TEMPLATE — template card styling ----------------------------------- */
+ha-template,
+.template-card {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- MAP CARD — map container styling -------------------------------------- */
+ha-map,
+[card-type="map"] {
+  border: 2px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+/* ---- LOGBOOK CARD — log entries -------------------------------------------- */
+ha-logbook,
+[card-type="logbook"] {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- HISTORY CARD — graph container ---------------------------------------- */
+ha-history,
+[card-type="history"] {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- GARDEN CARD — plant cards --------------------------------------------- */
+ha-garden,
+[card-type="garden"] {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- BUTTONS-CARD — third party card support ------------------------------- */
+buttons-card,
+paper-buttons-row {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- TILE-CARD — tile styling ---------------------------------------------- */
+tile-card,
+.entity-button {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- CUSTOM-CARD-BUILDER cards -------------------------------------------- */
+[card-config] {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- SIDEBAR — deep polish with circular elements -------------------------- */
+ha-sidebar {
+  border-right: 2px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+/* Sidebar user avatar — circular */
+ha-sidebar .user-avatar,
+.sidebar-avatar {
+  border-radius: 50% !important;
+  border: 2px solid var(--sims2-gold, #e0b66b) !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+/* Sidebar search bar — pill shaped */
+ha-sidebar .search-bar,
+.sidebar-search {
+  border-radius: 999px !important;
+  background: rgba(247, 237, 218, 0.6) !important;
+  border: 1px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+/* ---- APP HEADER — gold accents --------------------------------------------- */
+app-header {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Header menu button — circular */
+app-header .menu-button,
+.header-menu-btn {
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* Header search — pill shaped */
+app-header .search-input,
+.header-search {
+  border-radius: 999px !important;
+  background: rgba(247, 237, 218, 0.7) !important;
+  border: 1px solid rgba(224, 182, 107, 0.3) !important;
+}
+
+/* ---- VIEW HEADER — section dividers ---------------------------------------- */
+.view-header,
+.page-header {
+  border-bottom: 2px solid rgba(224, 182, 107, 0.3) !important;
+  padding-bottom: 12px !important;
+}
+
+.view-header-title {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ---- PROGRESS RING — circular progress indicator --------------------------- */
+ha-progress-ring,
+[circular-progress],
+.progress-circle {
+  border-radius: 50% !important;
+  border: 3px solid rgba(224, 182, 107, 0.2) !important;
+  border-top-color: var(--sims2-gold, #e0b66b) !important;
+  animation: sims2-loading-plum 1.5s linear infinite !important;
+}
+
+/* ---- TOOLTIP — Sims 2 styled ----------------------------------------------- */
+[role="tooltip"],
+.mdc-tooltip,
+mdc-tooltip {
+  border-radius: 8px !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1px solid rgba(224, 182, 107, 0.5) !important;
+  color: #4A3320 !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+}
+
+/* ---- SLIDE PANELS / DRAWERS — Sims 2 chrome -------------------------------- */
+app-drawer,
+[part="drawer"],
+ha-app-drawer {
+  border-right: 2px solid rgba(224, 182, 107, 0.3) !important;
+  background: linear-gradient(180deg, #EDE0C8 0%, #F7EDDA 100%) !important;
+}
+
+/* Drawer handle — circular grip */
+app-drawer .drawer-handle,
+[part="drawer"] .handle {
+  width: 40px !important;
+  height: 4px !important;
+  border-radius: 999px !important;
+  background: rgba(224, 182, 107, 0.3) !important;
+}
+
+/* ---- CHIP-LIST — chip containers ------------------------------------------- */
+chip-list,
+[role="list"][aria-label*="chip"] {
+  border-radius: 12px !important;
+  padding: 4px !important;
+}
+
+/* ---- RADIO-BUTTONS — circular radio options -------------------------------- */
+paper-radio-button,
+ha-radio-button,
+[role="radio"] {
+  border-radius: 50% !important;
+}
+
+paper-radio-button.selected .paper-radio-button-checked {
+  background: var(--sims2-plumbob-green, #7bc942) !important;
+  border-color: var(--sims2-plumbob-green, #7bc942) !important;
+}
+
+/* ---- CHECKBOXES — rounded squares (00s style) ----------------------------- */
+paper-checkbox,
+ha-checkbox,
+[role="checkbox"] {
+  border-radius: 6px !important;
+}
+
+paper-checkbox.checked .paper-checkbox-checked {
+  background: var(--sims2-plumbob-green, #7bc942) !important;
+  border-color: var(--sims2-plumbob-green, #7bc942) !important;
+}
+
+/* ---- DATA TABLES — Sims 2 styled ------------------------------------------- */
+data-table,
+[data-component="table"],
+ha-data-table {
+  border-radius: 16px !important;
+  border: 1px solid rgba(224, 182, 107, 0.35) !important;
+  overflow: hidden !important;
+}
+
+data-table thead,
+[data-table] th {
+  background: linear-gradient(180deg, rgba(224, 182, 107, 0.12) 0%, rgba(224, 182, 107, 0.04) 100%) !important;
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+}
+
+data-table tbody tr {
+  border-bottom: 1px solid rgba(224, 182, 107, 0.12) !important;
+}
+
+data-table tbody tr:hover {
+  background: rgba(224, 182, 107, 0.06) !important;
+}
+
+/* ---- TIMELINE / CHRONOLOGICAL VIEWS ---------------------------------------- */
+ha-timeline,
+.timeline-view {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  border-radius: 16px !important;
+  color: #4A3320 !important;
+}
+
+/* ---- BADGE-LABEL — Sims 2 styled ------------------------------------------- */
+label-badge,
+.badge-container {
+  border-radius: 16px !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  box-shadow:
+    0 2px 8px rgba(74, 51, 32, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  color: #4A3320 !important;
+}
+
+label-badge .badge-entity,
+.badge-label {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+  letter-spacing: 0.04em !important;
+}
+
+label-badge .badge-value {
+  color: var(--sims2-plumbob-green, #7bc942) !important;
+  font-weight: 600 !important;
+}
+
+/* ---- ICON-BADGE — circular icon badges ------------------------------------- */
+icon-badge,
+.badge-icon {
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid rgba(224, 182, 107, 0.3) !important;
+  background: rgba(14, 42, 68, 0.4) !important;
+}
+
+/* ---- CAROUSEL / SLIDER — circular navigation -------------------------------- */
+ha-carousel,
+.carousel-nav {
+  border-radius: 16px !important;
+}
+
+carousel-dot,
+.carousel-indicator {
+  border-radius: 50% !important;
+  background: rgba(224, 182, 107, 0.3) !important;
+}
+
+carousel-dot[active],
+.carousel-indicator.active {
+  background: var(--sims2-gold, #e0b66b) !important;
+  box-shadow: 0 0 8px rgba(224, 182, 107, 0.5) !important;
+}
+
+/* ---- EXPANDABLE / COLLAPSIBLE — Sims 2 style -------------------------------- */
+ha-expansion-panel,
+.expansion-panel {
+  border-radius: 12px !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1.5px solid rgba(224, 182, 107, 0.45) !important;
+  color: #4A3320 !important;
+}
+
+ha-expansion-panel .expansion-header {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", Georgia, serif) !important;
+}
+
+/* ---- SWITCH — circular pill toggle ----------------------------------------- */
+ha-switch .switch-track {
+  border-radius: 999px !important;
+}
+
+ha-switch .switch-thumb {
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+/* ---- RANGE SLIDER — circular thumb with gold track ------------------------- */
+ha-slider .slider-track,
+paper-slider .slider-track {
+  border-radius: 999px !important;
+}
+
+ha-slider .slider-knob,
+paper-slider .slider-knob {
+  border-radius: 50% !important;
+  box-shadow: 0 0 6px rgba(224, 182, 107, 0.4) !important;
+}
+
+/* ---- SELECT / DROPDOWN — circular pill -------------------------------------- */
+ha-select .mdc-text-field--outlined {
+  border-radius: 12px !important;
+}
+
+ha-select .mdc-notched-outline .mdc-notched-outline__leading,
+ha-select .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-radius: 12px !important;
+}
+
+/* ---- TAB PANELS — content under tabs --------------------------------------- */
+[role="tabpanel"] {
+  border-radius: 0 0 16px 16px !important;
+}
+
+/* ---- FULLSCREEN OVERLAY — for modals and popups ---------------------------- */
+[part="overlay"],
+.fullscreen-overlay {
+  background: rgba(14, 42, 68, 0.9) !important;
+  border-radius: 16px !important;
+}
+
+/* ---- SCROLLBAR — Sims 2 styled --------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(14, 26, 34, 0.5) !important;
+  border-radius: 999px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(224, 182, 107, 0.3) !important;
+  border-radius: 999px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(224, 182, 107, 0.5) !important;
+}
+
+/* ---- SELECTION — gold highlight -------------------------------------------- */
+::selection {
+  background: rgba(224, 182, 107, 0.3) !important;
+  color: #0E2A44 !important;
+}
+
+/* ---- Main content area — parchment background on cards and panels -------- */
+ha-card,
+.card,
+[part="card"],
+mwc-tab-bar {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+}
+
+/* ---- Entity rows — Sims 2 typography for state and labels ---------------- */
+ha-entity-toggle,
+ha-state-label-badge,
+.state-label-badge {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+}
+
+/* ---- Settings pages — gold-bordered parchment panels --------------------- */
+ha-panel-logbook paper-dialog,
+ha-panel-history paper-dialog,
+ha-panel-manage paper-dialog,
+[panel-info] {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+  color: #4A3320 !important;
+}
+
+/* ---- LOVELACE VIEW — parchment surface behind cards -------------------- */
+#view {
+  padding: 8px !important;
+}
+
+/* ---- HA MAIN APP SHELL — prevent white flash on load ------------------- */
+home-assistant {
+  --primary-color: var(--sims2-gold, #e0b66b) !important;
+}
+
+/* ---- PRINT STYLES — Sims 2 friendly ---------------------------------------- */
+@media print {
+  body {
+    background: white !important;
+  }
+
+  ha-card,
+  .card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ---- REDUCED MOTION — respect user preference -------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- HIGH CONTRAST — enhanced Sims 2 colors -------------------------------- */
+@media (forced-colors: active) {
+  ha-card,
+  .card {
+    border: 2px solid ButtonText !important;
+  }
+
+  mwc-button,
+  button {
+    border: 1px solid ButtonText !important;
+  }
+
+  *:focus-visible {
+    outline: 3px solid Highlight !important;
+  }
 }
