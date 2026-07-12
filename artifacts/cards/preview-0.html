@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>All Cards Overview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #e8e0d0;
+      font-family: "Fredoka", system-ui, sans-serif;
+      color: #3A2E1E;
+    }
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      margin: 0 0 20px 0;
+      color: #5A4A2E;
+      letter-spacing: 0.04em;
+    }
+    .card-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .card-snapshot {
+      background: #fff;
+      border-radius: 16px;
+      padding: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    ha-card {
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>All Cards Overview</h1>
+  <div class="card-row"><div class="card-snapshot" id="plumbob-card"></div>
+        <div class="card-snapshot" id="plumbob-card-red"></div>
+        <div class="card-snapshot" id="loading-card"></div>
+        <div class="card-snapshot" id="loading-card-fullscreen"></div>
+        <div class="card-snapshot" id="divider-green"></div>
+        <div class="card-snapshot" id="divider-yellow"></div>
+        <div class="card-snapshot" id="divider-red"></div>
+        <div class="card-snapshot" id="gauge-green"></div>
+        <div class="card-snapshot" id="gauge-yellow"></div>
+        <div class="card-snapshot" id="gauge-red"></div>
+        <div class="card-snapshot" id="panel-green"></div></div>
+  <script src="sims2-bundle.js"></script>
+  <script>
+    // Wait for bundle to register all custom elements, then instantiate cards.
+    window.addEventListener("load", () => {
+      const waitMs = 800;
+      setTimeout(() => {
+        
+          (function () {
+            const container = document.getElementById("plumbob-card");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-plumbob");
+            card.setAttribute("type", "custom:sims2-plumbob");
+            card.setConfig({"entity":"sensor.battery_level","mood":"green","size":100});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.living_room_temperature":{"state":"22"},"sensor.main_power_draw":{"state":"3500"},"sensor.battery_level":{"state":"78"},"climate.living_room":{"state":"heat"},"light.lamp":{"state":"on"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("plumbob-card-red");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-plumbob");
+            card.setAttribute("type", "custom:sims2-plumbob");
+            card.setConfig({"entity":"sensor.battery_level","mood":"red","size":100});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.living_room_temperature":{"state":"22"},"sensor.main_power_draw":{"state":"3500"},"sensor.battery_level":{"state":"78"},"climate.living_room":{"state":"heat"},"light.lamp":{"state":"on"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("loading-card");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-loading");
+            card.setAttribute("type", "custom:sims2-loading");
+            card.setConfig({"fullscreen":false,"message":"Reticulating Splines…"});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.living_room_temperature":{"state":"22"},"sensor.main_power_draw":{"state":"3500"},"sensor.battery_level":{"state":"78"},"climate.living_room":{"state":"heat"},"light.lamp":{"state":"on"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("loading-card-fullscreen");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-loading");
+            card.setAttribute("type", "custom:sims2-loading");
+            card.setConfig({"fullscreen":true,"message":"Loading Pleasantview…"});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.living_room_temperature":{"state":"22"},"sensor.main_power_draw":{"state":"3500"},"sensor.battery_level":{"state":"78"},"climate.living_room":{"state":"heat"},"light.lamp":{"state":"on"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("divider-green");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-divider");
+            card.setAttribute("type", "custom:sims2-divider");
+            card.setConfig({"mood":"green","size":40});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (false) {
+              card.hass = null;
+            }
+          })();
+          (function () {
+            const container = document.getElementById("divider-yellow");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-divider");
+            card.setAttribute("type", "custom:sims2-divider");
+            card.setConfig({"mood":"yellow","size":40});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (false) {
+              card.hass = null;
+            }
+          })();
+          (function () {
+            const container = document.getElementById("divider-red");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-divider");
+            card.setAttribute("type", "custom:sims2-divider");
+            card.setConfig({"mood":"red","size":40});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (false) {
+              card.hass = null;
+            }
+          })();
+          (function () {
+            const container = document.getElementById("gauge-green");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-gauge");
+            card.setAttribute("type", "custom:sims2-gauge");
+            card.setConfig({"entity":"sensor.main_power_draw","name":"Power Draw","unit":" W","min":0,"max":10000,"severity":{"green":2000,"yellow":5000,"red":8000}});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.main_power_draw":{"state":"1200"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("gauge-yellow");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-gauge");
+            card.setAttribute("type", "custom:sims2-gauge");
+            card.setConfig({"entity":"sensor.main_power_draw","name":"Power Draw","unit":" W","min":0,"max":10000,"severity":{"green":2000,"yellow":5000,"red":8000}});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.main_power_draw":{"state":"4500"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("gauge-red");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-gauge");
+            card.setAttribute("type", "custom:sims2-gauge");
+            card.setConfig({"entity":"sensor.main_power_draw","name":"Power Draw","unit":" W","min":0,"max":10000,"severity":{"green":2000,"yellow":5000,"red":8000}});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.main_power_draw":{"state":"9200"}}};
+            }
+          })();
+          (function () {
+            const container = document.getElementById("panel-green");
+            if (!container) return;
+
+            // Create card element (registered as e.g. "sims2-plumbob", not "custom:sims2-plumbob")
+            const card = document.createElement("sims2-panel");
+            card.setAttribute("type", "custom:sims2-panel");
+            card.setConfig({"title":"Living Room","icon":"sims2:cheerful","entity":"climate.living_room","green_above":70,"yellow_above":33,"children":[{"title":"Thermostat","type":"entities","entities":["climate.living_room"]}]});
+            container.appendChild(card);
+
+            // Provide Home Assistant context (null for cards that don't need it)
+            if (true) {
+              card.hass = {"states":{"sensor.living_room_temperature":{"state":"22"},"sensor.main_power_draw":{"state":"3500"},"sensor.battery_level":{"state":"78"},"climate.living_room":{"state":"heat"},"light.lamp":{"state":"on"}}};
+            }
+          })();
+      }, waitMs);
+    });
+  </script>
+</body>
+</html>
