@@ -50,16 +50,15 @@ jobs:
 
       - name: Comment PR with screenshot links
         if: github.event_name == 'pull_request'
-        run: |
-          gh pr comment ${{ github.event.pull_request.number }} \
-            --body-from-stdin <<'EOF'
-          ## Sims 2 Card Preview
+        env:
+          PR_BODY: |
+            ## Sims 2 Card Preview
 
-          Screenshots of all custom cards rendered from this PR:
+            Screenshots of all custom cards rendered from this PR:
 
-          - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
-          - **Gauge Detail** — green / yellow / red severity states
-          - **Panel Detail** — green / yellow / red mood colouring
+            - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
+            - **Gauge Detail** — green / yellow / red severity states
+            - **Panel Detail** — green / yellow / red mood colouring
 
-          Download the full screenshots: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          EOF
+            Download the full screenshots: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: gh pr comment ${{ github.event.pull_request.number }} -b "$PR_BODY"
