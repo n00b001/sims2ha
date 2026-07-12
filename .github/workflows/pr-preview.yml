@@ -1,6 +1,6 @@
 name: PR Preview
 
-# Render all Sims 2 custom Lovelace cards and upload screenshots on every
+# Render all Sims 2 custom Lovelace cards and embed screenshots on every
 # pull-request push so reviewers can see the UI changes without merging.
 
 on:
@@ -41,28 +41,20 @@ jobs:
       - name: Render cards
         run: node scripts/render-cards.js
 
-      - name: Checkout the feature branch (not PR merge commit)
-        run: git fetch origin feat/sims2-theme-deepen && git checkout feat/sims2-theme-deepen
-
-      - name: Commit and push screenshots
+      - name: Upload screenshots as release asset
         run: |
-          git -c user.name="github-actions" \
-              -c user.email="github-actions@github.com" \
-              add artifacts/cards/*.png
-          git -c user.name="github-actions" \
-              -c user.email="github-actions@github.com" \
-              commit -m "Add card preview screenshots [skip ci]" || echo "No new screenshots to commit"
-          git push origin feat/sims2-theme-deepen
+          gh release upload "${{ github.ref_name }}" artifacts/cards/*.png --clobber
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Comment PR with embedded images
-        if: github.event_name == 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          BASE_URL="https://raw.githubusercontent.com/n00b001/sims2ha/feat/sims2-theme-deepen/artifacts/cards"
-          gh pr comment ${{ github.event.pull_request.number }} -b "## Sims 2 Card Preview
+          BASE_URL="https://github.com/n00b001/sims2ha/releases/download/${BRANCH}"
+          gh pr comment ${{ github.event.pull_request.number }} -f - <<EOF
+          ## Sims 2 Card Preview
 
           Screenshots of all custom cards rendered from this PR:
 
@@ -73,4 +65,5 @@ jobs:
           ![Gauge Detail]($BASE_URL/gauge-detail.png)
 
           ### Panel Detail — green / yellow / red mood colouring
-          ![Panel Detail]($BASE_URL/panel-detail.png)"
+          ![Panel Detail]($BASE_URL/panel-detail.png)
+          EOF
