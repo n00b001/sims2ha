@@ -41,16 +41,14 @@ jobs:
       - name: Render cards
         run: node scripts/render-cards.js
 
-      - name: Commit screenshots to branch
+      - name: Commit and push screenshots
         run: |
-          cd artifacts/cards
-          git add *.png
+          git -c user.name="github-actions" \
+              -c user.email="github-actions@github.com" \
+              add artifacts/cards/*.png
           git -c user.name="github-actions" \
               -c user.email="github-actions@github.com" \
               commit -m "Add card preview screenshots [skip ci]" || echo "No new screenshots to commit"
-
-      - name: Push screenshot commits
-        run: |
           git push origin feat/sims2-theme-deepen
         env:
           GH_TOKEN: ${{ github.token }}
