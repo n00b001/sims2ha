@@ -1,0 +1,65 @@
+name: PR Preview
+
+# Render all Sims 2 custom Lovelace cards and upload screenshots on every
+# pull-request push so reviewers can see the UI changes without merging.
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    name: Card screenshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y --silent >/dev/null 2>&1
+          npm install playwright
+          npx playwright install chromium
+          # Install system deps that Playwright needs for headless rendering.
+          npx playwright install-deps chromium
+
+      - name: Build bundle
+        run: ./build.sh
+
+      - name: Render cards
+        run: node scripts/render-cards.js
+
+      - name: Upload screenshots as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: card-screenshots
+          path: artifacts/cards/
+          retention-days: 14
+
+      - name: Comment PR with screenshot links
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-pull-request-comment@v7
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## Sims 2 Card Preview
+
+            Screenshots of all custom cards rendered from this PR:
+
+            - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
+            - **Gauge Detail** — green / yellow / red severity states
+            - **Panel Detail** — green / yellow / red mood colouring
+
+            Download the full screenshots: [card-screenshots artifact](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
