@@ -41,18 +41,23 @@ jobs:
       - name: Render cards
         run: node scripts/render-cards.js
 
-      - name: Upload screenshots as release asset
+      - name: Commit and push screenshots
         run: |
-          gh release upload "${{ github.ref_name }}" artifacts/cards/*.png --clobber
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git checkout feat/sims2-theme-deepen
+          git add artifacts/cards/*.png
+          git commit -m "Add card preview screenshots [skip ci]" || true
+          git push origin feat/sims2-theme-deepen
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Comment PR with embedded images
         env:
           GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ github.ref_name }}
+          BRANCH: feat/sims2-theme-deepen
         run: |
-          BASE_URL="https://github.com/n00b001/sims2ha/releases/download/${BRANCH}"
+          BASE_URL="https://raw.githubusercontent.com/n00b001/sims2ha/${BRANCH}/artifacts/cards"
           gh pr comment ${{ github.event.pull_request.number }} -f - <<EOF
           ## Sims 2 Card Preview
 
