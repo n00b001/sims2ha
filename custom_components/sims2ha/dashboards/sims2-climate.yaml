@@ -13,7 +13,7 @@ views:
     cards:
       - type: markdown
         content: >
-          # ️ Pleasantview Climate Control
+          # Pleasantview Climate Control
 
 
           > A perfect 72 degrees. Nobody sweats. Nobody shivers. The
@@ -49,7 +49,7 @@ views:
           method: domain
         show_empty: true
 
-      # --- Temperature gauges ----------------------------------------------
+      # --- Temperature gauges (circular Sims 2 style) ----------------------
       - type: custom:auto-entities
         card:
           type: grid
@@ -60,12 +60,14 @@ views:
             - domain: sensor
               device_class: temperature
               options:
-                type: gauge
+                type: custom:sims2-gauge
+                name: '{{ states(entity) }}°F'
+                unit: "°F"
                 min: 0
                 max: 40
                 severity:
                   green: 18
-                  yellow: 15
+                  yellow: 25
                   red: 35
         sort:
           method: name

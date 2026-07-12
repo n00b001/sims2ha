@@ -9,6 +9,14 @@ Thumbs.db
 .vscode/
 *.pyc
 __pycache__/
+*.egg-info/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Environment variables (may contain secrets)
+.env
 
 # Home Assistant local runtime (never shipped in a theme repo)
 .HA_VERSION
@@ -25,5 +33,13 @@ home-assistant_v2.db
 .tenet/
 logs/
 
-# Local test clones
-test-deploy/
+# Node.js dependencies
+node_modules/
+
+# Generated artifacts (screenshots, build output)
+artifacts/
+
+# Python / Node.js build outputs
+dist/
+build/
+.pytest_cache/

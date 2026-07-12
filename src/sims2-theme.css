@@ -1,5 +1,6 @@
 /* ==========================================================================
    Sims 2 for Home Assistant - ZERO-CONFIG THEME LAYER
+   (v0.3 — screenshot hook tested)
    --------------------------------------------------------------------------
    Sets Home Assistant's own theme variables on :root so the whole UI takes the
    Sims 2 look the moment the bundle loads — with NO need to select a theme or
@@ -13,9 +14,8 @@
    optional `sims2` selectable theme.
 
    Visual direction: authentic Sims 2 live-mode control panel — teal panels,
-   sharp corners, subtle inset (per reference-images/ui.jpeg). Dark mode
-   mirrors with deep-teal night panels (per ui-2.jpg build/buy wood-trim
-   adapted for dark UI).
+   rounded corners (per Figma Sims-2-UI-Design-Study reference). Dark mode
+   mirrors with deep-teal night panels adapted for dark UI.
 
    The selectable theme file (themes/sims2.yaml) is still copied into
    <config>/themes/ for users who want Home Assistant's native theme picker —
@@ -95,9 +95,10 @@
   --label-badge-text-color: #1A3A52 !important;
 
   /* cards — authentic Sims 2 teal panels (live-mode control panel).
-     Sharp corners, subtle inset edge, no gold trim. The gradient gives a
-     softly lit surface that matches the game's UI aesthetic (ui.jpeg). */
-  --ha-card-border-radius: 4px !important;
+     Rounded corners matching the Sims 2 UI reference — organic, circular shapes
+     with subtle inset edge and gradient. The rounded look mirrors the game's
+     buy/build mode interface. */
+  --ha-card-border-radius: 16px !important;
   --ha-card-border-color: #265070 !important;
   --ha-card-box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 8px rgba(0,0,0,0.3) !important;
   --borders-color: #265070 !important;
@@ -199,7 +200,7 @@
     --label-badge-text-color: #0C1A2B !important;
 
     /* cards — dark teal panels (mirrors light mode structure) */
-    --ha-card-border-radius: 4px !important;
+    --ha-card-border-radius: 16px !important;
     --ha-card-border-color: #0E2238 !important;
     --ha-card-box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 8px rgba(0,0,0,0.5) !important;
     --borders-color: #132C48 !important;
