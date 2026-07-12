@@ -295,7 +295,7 @@ class Sims2GaugeCard extends HTMLElement {
                 font-family="var(--sims2-font-display, 'Benguiat Gothic', 'Fredoka', system-ui, sans-serif)">${this._escapeHtml(displayValue)}</text>
         </svg>
         ${cfg.name ? `<div class="sims2-gauge-name">${this._escapeHtml(cfg.name)}</div>` : ""}
-      </ha-card>
+      </div>
     `;
   }
 

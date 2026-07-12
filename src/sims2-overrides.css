@@ -239,3 +239,374 @@ paper-divider,
   border-top-width: 1px !important;
   opacity: 0.4;
 }
+
+/* ==========================================================================
+   ANIMATIONS — Sims 2 UI life and motion
+   The game is famous for its lively, breathing interfaces. These keyframes
+   add that same energy to Home Assistant without slowing anything down.
+   ========================================================================== */
+
+/* ---- Plumbob pulse on active entity icons --------------------------------
+   When an entity is ON / ACTIVE its icon gets a soft green glow that
+   breathes in and out — exactly like the plumbob hovering above a happy Sim.
+   ========================================================================== */
+@keyframes sims2-plum-pulse {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(123, 201, 66, 0.3)); }
+  50%      { filter: drop-shadow(0 0 8px rgba(123, 201, 66, 0.7)); }
+}
+
+ha-state-icon[data-state="on"],
+ha-state-icon[data-state="home"],
+ha-state-icon[data-state="open"],
+ha-state-icon[data-state="active"],
+ha-state-icon[data-state="running"],
+ha-state-icon[data-state="cooling"],
+ha-state-icon[data-state="heating"],
+ha-state-icon[data-state="locking"],
+ha-state-icon[data-state="connected"],
+paper-item[selected],
+[aria-selected="true"] {
+  animation: sims2-plum-pulse 3s ease-in-out infinite;
+}
+
+/* ---- Button hover — lift + gold glow --------------------------------------
+   Sims 2 buttons press down and emit a warm gold shimmer on hover.
+   ========================================================================== */
+@keyframes sims2-btn-glow {
+  0%   { box-shadow: 0 0 0 rgba(224, 182, 107, 0); }
+  100% { box-shadow: 0 0 12px rgba(224, 182, 107, 0.35); }
+}
+
+mwc-button:hover,
+md-filled-button:hover,
+md-outlined-button:hover,
+.md-text-button:hover,
+.paper-button:hover,
+button:not([disabled]):hover {
+  transform: translateY(-1px);
+  animation: sims2-btn-glow 0.3s ease forwards;
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+}
+
+mwc-button:active,
+md-filled-button:active,
+button:not([disabled]):active {
+  transform: translateY(1px);
+  transition: transform 0.05s ease;
+}
+
+/* ---- Card entrance — gentle fade + slide up --------------------------------
+   Each card slides in from below with a soft fade, like a Sims 2 panel
+   sliding into view on the screen.
+   ========================================================================== */
+@keyframes sims2-card-enter {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+ha-card,
+.card,
+[part="card"],
+.sims2-panel,
+.sims2-gauge-card,
+.sims2-plumbob-card,
+.entity-cards-in-lovelace-view > * {
+  animation: sims2-card-enter 0.4s ease both;
+}
+
+/* Stagger: first card 0ms, second 60ms, etc. */
+ha-card:nth-child(1), .card:nth-child(1) { animation-delay: 0ms; }
+ha-card:nth-child(2), .card:nth-child(2) { animation-delay: 60ms; }
+ha-card:nth-child(3), .card:nth-child(3) { animation-delay: 120ms; }
+ha-card:nth-child(4), .card:nth-child(4) { animation-delay: 180ms; }
+ha-card:nth-child(5), .card:nth-child(5) { animation-delay: 240ms; }
+ha-card:nth-child(6), .card:nth-child(6) { animation-delay: 300ms; }
+
+/* ---- Sidebar item hover — gold shimmer strip --------------------------------
+   The Sims 2 room navigator highlights the selected room with a gold
+   shimmer that sweeps across. Replicate that on sidebar items.
+   ========================================================================== */
+@keyframes sims2-sidebar-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+paper-item:hover,
+mwc-list-item:hover,
+[role="option"]:hover,
+.sidebar-item:hover {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(224, 182, 107, 0.06) 40%,
+    rgba(224, 182, 107, 0.12) 50%,
+    rgba(224, 182, 107, 0.06) 60%,
+    transparent 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: sims2-sidebar-shimmer 0.6s ease forwards !important;
+  transition: background 0.2s ease;
+}
+
+/* ---- Dialog entrance — plumbob-green fade ----------------------------------
+   Dialogs slide up and fade in, with a subtle green glow on the border.
+   ========================================================================== */
+@keyframes sims2-dialog-enter {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+ha-dialog,
+paper-dialog,
+.dialog-surface,
+[role="dialog"] {
+  animation: sims2-dialog-enter 0.25s cubic-bezier(0.2, 0, 0, 1) both;
+}
+
+/* ---- Loading spinner — rotating plumbob -----------------------------------
+   Replace the default HA spinner with a spinning green diamond (plumbob).
+   ========================================================================== */
+@keyframes sims2-plumbob-spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(90deg) scale(1.1); }
+  50%  { transform: rotate(180deg) scale(1); }
+  75%  { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+paper-progress[mode="indeterminate"],
+mwc-linear-progress[mode="indeterminate"],
+md-linear-progress[mode="indeterminate"],
+[circular-progress],
+[role="progressbar"]:not([value]) {
+  animation: sims2-plumbob-spin 2s linear infinite;
+}
+
+/* ---- State-change flash — brief green glow on value update -----------------
+   When an entity's state changes, flash a soft green pulse to draw the eye.
+   ========================================================================== */
+@keyframes sims2-state-flash {
+  0%   { background-color: rgba(123, 201, 66, 0.15); }
+  100% { background-color: transparent; }
+}
+
+.entity-state.changed,
+[entity].state-changed {
+  animation: sims2-state-flash 1.2s ease-out both;
+}
+
+/* ---- Tab indicator slide — gold bar slides to active tab --------------------
+   The active tab's gold underline slides from the clicked position instead
+   of appearing instantly.
+   ========================================================================== */
+paper-tab,
+md-tab {
+  position: relative;
+  overflow: hidden;
+}
+
+paper-tab::after,
+md-tab::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sims2-gold-dark, #c49a3c), var(--sims2-gold, #e0b66b));
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+paper-tab[selected]::after,
+md-tab[active]::after {
+  transform: scaleX(1);
+}
+
+/* ---- Sidebar icon active glow ----------------------------------------------
+   Active sidebar icons get a soft green halo, like a lit plumbob.
+   ========================================================================== */
+@keyframes sims2-sidebar-icon-glow {
+  0%, 100% { text-shadow: 0 0 4px rgba(123, 201, 66, 0.2); }
+  50%      { text-shadow: 0 0 10px rgba(123, 201, 66, 0.5); }
+}
+
+ha-sidebar [selected] .icon,
+.sidebar-item[active] .icon,
+paper-item[selected] ::slotted(*),
+mwc-list-item[selected] {
+  animation: sims2-sidebar-icon-glow 2.5s ease-in-out infinite;
+}
+
+/* ---- Header title — subtle gold shimmer ------------------------------------
+   The app header title shimmers faintly, like a Sims 2 window label.
+   ========================================================================== */
+@keyframes sims2-header-shimmer {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.85; text-shadow: 0 0 8px rgba(224, 182, 107, 0.2); }
+}
+
+app-header .title,
+.header-toolbar .title,
+[part="title"],
+ha-menu-button {
+  animation: sims2-header-shimmer 4s ease-in-out infinite;
+}
+
+/* ---- Switch toggle — green snap --------------------------------------------
+   When a switch flips, the knob bounces slightly with plumbob-green energy.
+   ========================================================================== */
+@keyframes sims2-switch-snap {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.15); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+ha-switch[checked]:active,
+paper-toggle-button[checked] .toggle-bar:active {
+  animation: sims2-switch-snap 0.3s ease;
+}
+
+/* ---- Plumbob sparkle on hover for card headers -----------------------------
+   Cards with a title get a subtle gold sparkle when hovered, like the
+   plumbob catching light in the Sims 2 game.
+   ========================================================================== */
+@keyframes sims2-sparkle {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; text-shadow: 0 0 6px rgba(224, 182, 107, 0.5); }
+}
+
+.card-header:hover,
+.sims2-panel-title-row:hover,
+[part="header"]:hover {
+  animation: sims2-sparkle 1.5s ease-in-out infinite;
+  cursor: default;
+}
+
+/* ==========================================================================
+   SIDEBAR DEEP POLISH — Sims 2 room navigator feel
+   ========================================================================== */
+
+/* ---- Sidebar divider lines ------------------------------------------------ */
+ha-sidebar paper-listbox,
+.sidebar paper-listbox {
+  border-bottom: 1px solid rgba(224, 182, 107, 0.2) !important;
+  padding-bottom: 8px !important;
+}
+
+/* ---- Sidebar section labels — gold uppercase mini headers ------------------- */
+ha-sidebar .nav-section-entities,
+ha-sidebar [section="navigation"],
+.sidebar [role="group"][aria-label] {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 8px 16px 4px !important;
+}
+
+/* ---- Sidebar entity count badges — green pills ---------------------------- */
+ha-sidebar .entity-count,
+.sidebar-badge {
+  background: var(--sims2-plumbob-green, #7bc942) !important;
+  color: #0E2A44 !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  padding: 1px 6px !important;
+  font-weight: 600 !important;
+}
+
+/* ---- Login page — full Sims 2 splash feel ----------------------------------
+   Center a parchment card on the sunburst background with a gold border
+   and green submit button.
+   ========================================================================== */
+ha-login-card,
+.login-container ha-login-card {
+  border: 2px solid var(--sims2-gold, #e0b66b) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, rgba(247, 237, 218, 0.95) 0%, rgba(237, 224, 200, 0.95) 100%) !important;
+  box-shadow:
+    0 8px 32px rgba(74, 51, 32, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ---- Settings pages — parchment panels -------------------------------------
+   Settings cards and sections get the same Sims 2 panel treatment.
+   ========================================================================== */
+.settings-page ha-card,
+[panel="main"] ha-card,
+.config-dashboard ha-card {
+  border: 1px solid rgba(224, 182, 107, 0.4) !important;
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+}
+
+/* ---- Entity state indicator — small green dot next to name -----------------
+   A tiny pulsing plumbob-dot appears next to active entity names,
+   replicating the Sims 2 need-icons that glow when a Sim's need is high.
+   ========================================================================== */
+@keyframes sims2-state-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(1.2); }
+}
+
+.state-badge[data-state="on"],
+.entity-status-dot.active,
+ha-entity-state[data-state="on"]::after,
+[entity][state="on"]::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sims2-plumbob-green, #7bc942);
+  margin-left: 4px;
+  animation: sims2-state-dot 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+/* ---- Notification banner — Sims 2 style -----------------------------------
+   HA alerts and notifications styled like Sims 2 want/advice messages.
+   ========================================================================== */
+ha-alert {
+  background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%) !important;
+  border: 1px solid var(--sims2-gold, #e0b66b) !important;
+  color: var(--sims2-espresso, #4A3320) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif) !important;
+}
+
+ha-alert[alert-type="error"] {
+  border-left: 4px solid var(--sims2-plumbob-green, #7bc942) !important;
+}
+
+ha-alert[alert-type="warning"] {
+  border-left: 4px solid var(--sims2-gold-dark, #c49a3c) !important;
+}
+
+ha-alert[alert-type="error"],
+ha-alert[alert-type="fatal"] {
+  border-left: 4px solid var(--error-color, #d32f2f) !important;
+}
+
+/* ---- More-from header — gold accent --------------------------------------- */
+.more-from-header,
+.header-item-title {
+  color: var(--sims2-gold, #e0b66b) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+/* ---- Entity row — subtle parchment background ------------------------------ */
+.entity-list ha-entity-toggle,
+.entity-list ha-entity-light,
+.entity-list ha-entity-climate,
+paper-item.entity-item,
+mwc-list-item.entity-item {
+  border-bottom: 1px solid rgba(224, 182, 107, 0.15) !important;
+}
+
+paper-item.entity-item:hover,
+mwc-list-item.entity-item:hover {
+  background: rgba(224, 182, 107, 0.06) !important;
+}
