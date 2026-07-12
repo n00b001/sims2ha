@@ -41,6 +41,9 @@ jobs:
       - name: Render cards
         run: node scripts/render-cards.js
 
+      - name: Checkout the feature branch (not PR merge commit)
+        run: git fetch origin feat/sims2-theme-deepen && git checkout feat/sims2-theme-deepen
+
       - name: Commit and push screenshots
         run: |
           git -c user.name="github-actions" \
@@ -49,11 +52,7 @@ jobs:
           git -c user.name="github-actions" \
               -c user.email="github-actions@github.com" \
               commit -m "Add card preview screenshots [skip ci]" || echo "No new screenshots to commit"
-          # Fetch remote and merge so our screenshot commit lands on top
-          # of the latest PR HEAD (actions/checkout gives a detached HEAD).
-          git fetch origin feat/sims2-theme-deepen
-          git merge FETCH_HEAD --no-edit || true
-          git push origin HEAD:feat/sims2-theme-deepen
+          git push origin feat/sims2-theme-deepen
         env:
           GH_TOKEN: ${{ github.token }}
 
