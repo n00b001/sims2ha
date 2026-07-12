@@ -60,18 +60,17 @@ jobs:
         if: github.event_name == 'pull_request'
         env:
           GH_TOKEN: ${{ github.token }}
-          BASE_URL: "https://raw.githubusercontent.com/n00b001/sims2ha/feat/sims2-theme-deepen/artifacts/cards"
-          PR_BODY: |
-            ## Sims 2 Card Preview
+        run: |
+          BASE_URL="https://raw.githubusercontent.com/n00b001/sims2ha/feat/sims2-theme-deepen/artifacts/cards"
+          gh pr comment ${{ github.event.pull_request.number }} -b "## Sims 2 Card Preview
 
-            Screenshots of all custom cards rendered from this PR:
+          Screenshots of all custom cards rendered from this PR:
 
-            ### All Cards Overview — plumbob, loading screen, divider, gauge, panel
-            ![All Cards Overview]($BASE_URL/all-cards-overview.png)
+          ### All Cards Overview — plumbob, loading screen, divider, gauge, panel
+          ![All Cards Overview]($BASE_URL/all-cards-overview.png)
 
-            ### Gauge Detail — green / yellow / red severity states
-            ![Gauge Detail]($BASE_URL/gauge-detail.png)
+          ### Gauge Detail — green / yellow / red severity states
+          ![Gauge Detail]($BASE_URL/gauge-detail.png)
 
-            ### Panel Detail — green / yellow / red mood colouring
-            ![Panel Detail]($BASE_URL/panel-detail.png)
-        run: gh pr comment ${{ github.event.pull_request.number }} -b "$PR_BODY"
+          ### Panel Detail — green / yellow / red mood colouring
+          ![Panel Detail]($BASE_URL/panel-detail.png)"
