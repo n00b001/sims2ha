@@ -25,5 +25,8 @@ home-assistant_v2.db
 .tenet/
 logs/
 
-# Local test clones
-test-deploy/
+# Node.js dependencies
+node_modules/
+
+# Generated artifacts (screenshots, build output)
+artifacts/
