@@ -13,7 +13,7 @@ views:
     cards:
       - type: markdown
         content: >
-          # ️ Pleasantview Climate Control
+          # Pleasantview Climate Control
 
 
           > A perfect 72 degrees. Nobody sweats. Nobody shivers. The
@@ -61,11 +61,12 @@ views:
               device_class: temperature
               options:
                 type: gauge
+                name: '{{ states(entity) }}°F'
                 min: 0
                 max: 40
                 severity:
                   green: 18
-                  yellow: 15
+                  yellow: 25
                   red: 35
         sort:
           method: name

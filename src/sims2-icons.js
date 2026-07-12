@@ -126,6 +126,20 @@ window.customIcons["sims2"] = {
   names: Object.keys(SIMS2_ICONS),
 };
 
+// Tell Home Assistant to activate the custom icon set. Some HA versions only
+// wire card-renderers to hass.icons when the "connection-ready" event fires,
+// so register both eagerly (for early-load bundles) and on the event (for
+// late-loading ones).
+(function () {
+  const hass = window.hass;
+  if (hass && hass.icons) {
+    hass.icons.register(window.customIcons["sims2"]);
+  }
+  window.addEventListener("connection-ready", function () {
+    window.hass?.icons?.register(window.customIcons["sims2"]);
+  });
+})();
+
 // Announce availability for tooling / debugging.
 window.sims2Icons = window.sims2Icons || {
   prefix: "sims2",

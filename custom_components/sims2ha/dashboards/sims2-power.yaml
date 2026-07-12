@@ -13,7 +13,7 @@ views:
     cards:
       - type: markdown
         content: >
-          #  Reticulating Splines: Power & Energy
+          # Reticulating Splines: Power & Energy
 
 
           > Every watt is a simoleon. We are counting all of them.
@@ -30,6 +30,13 @@ views:
               device_class: power
               options:
                 type: gauge
+                name: '{{ states(entity) }} W'
+                min: 0
+                max: 10000
+                severity:
+                  green: 2000
+                  yellow: 5000
+                  red: 8000
         sort:
           method: name
         show_empty: true
@@ -58,8 +65,6 @@ views:
           include:
             - domain: sensor
               device_class: battery
-            - domain: sensor
-              device_class: battery_charging
         sort:
           method: name
         show_empty: true

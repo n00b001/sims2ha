@@ -52,7 +52,7 @@ views:
             - domain: sensor
               device_class: temperature
             - domain: sensor
-              device_class: processor
+              device_class: frequency
             - domain: sensor
               device_class: memory
             - domain: sensor
