@@ -51,6 +51,7 @@ jobs:
       - name: Comment PR with screenshot links
         if: github.event_name == 'pull_request'
         env:
+          GH_TOKEN: ${{ github.token }}
           PR_BODY: |
             ## Sims 2 Card Preview
 
