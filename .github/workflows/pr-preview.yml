@@ -50,16 +50,16 @@ jobs:
 
       - name: Comment PR with screenshot links
         if: github.event_name == 'pull_request'
-        uses: peter-evans/create-pull-request-comment@v7
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            ## Sims 2 Card Preview
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body-from-stdin <<'EOF'
+          ## Sims 2 Card Preview
 
-            Screenshots of all custom cards rendered from this PR:
+          Screenshots of all custom cards rendered from this PR:
 
-            - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
-            - **Gauge Detail** — green / yellow / red severity states
-            - **Panel Detail** — green / yellow / red mood colouring
+          - **All Cards Overview** — plumbob, loading screen, divider, gauge, panel
+          - **Gauge Detail** — green / yellow / red severity states
+          - **Panel Detail** — green / yellow / red mood colouring
 
-            Download the full screenshots: [card-screenshots artifact](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          Download the full screenshots: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EOF
