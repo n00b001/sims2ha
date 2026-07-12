@@ -121,7 +121,7 @@ class Sims2PlumbobCard extends HTMLElement {
     const widthPx = Math.round(cfg.size * 0.78);
     this._shadow.innerHTML = `
       <style>${Sims2PlumbobCard._styles(cfg, widthPx)}</style>
-      <ha-card class="sims2-plumbob-card">
+      <div class="sims2-plumbob-card">
         <div class="sims2-plumbob-wrap">
           <div id="sims2-plumbob" class="sims2-plumbob${cfg.float ? " sims2-float" : ""}" data-mood="${this._escapeAttr(cfg.mood)}"></div>
         </div>
@@ -130,7 +130,7 @@ class Sims2PlumbobCard extends HTMLElement {
           ${cfg.subtitle ? `<div class="sims2-subtitle">${this._escapeHtml(cfg.subtitle)}</div>` : ""}
           ${cfg.entity ? `<div id="sims2-plumbob-value" class="sims2-value">—</div>` : ""}
         </div>
-      </ha-card>
+      </div>
     `;
     this._update();
   }
@@ -148,10 +148,11 @@ class Sims2PlumbobCard extends HTMLElement {
   static _styles(cfg, widthPx) {
     return `
       :host { display: block; }
-      ha-card.sims2-plumbob-card {
-        background: var(--card-background-color, #FBF4DF);
-        border-radius: var(--ha-card-border-radius, 14px);
-        box-shadow: var(--ha-card-box-shadow, none);
+      .sims2-plumbob-card {
+        background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%);
+        border-radius: 14px;
+        box-shadow: 0 2px 12px rgba(74, 51, 32, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        border: 1px solid #D4B878;
         padding: 18px 14px 16px;
         display: flex; flex-direction: column; align-items: center; gap: 12px;
         text-align: center;

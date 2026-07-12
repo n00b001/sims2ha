@@ -226,7 +226,7 @@ class Sims2GaugeCard extends HTMLElement {
 
     this._shadow.innerHTML = `
       <style>${Sims2GaugeCard._styles(cfg)}</style>
-      <ha-card class="sims2-gauge-card" data-mood="${this._escapeAttr(mood)}">
+      <div class="sims2-gauge-card" data-mood="${this._escapeAttr(mood)}">
         <svg viewBox="0 0 116 116" class="sims2-gauge-svg" xmlns="http://www.w3.org/2000/svg">
           <!-- Gold outer ring -->
           <circle cx="58" cy="58" r="54" fill="none" stroke="#E0B66B" stroke-width="1.5" opacity="0.7"/>
@@ -289,7 +289,7 @@ class Sims2GaugeCard extends HTMLElement {
                 x="58" y="88"
                 text-anchor="middle"
                 dominant-baseline="central"
-                fill="#FFF6E0"
+                fill="var(--sims2-espresso, #4A3320)"
                 font-size="14"
                 font-weight="600"
                 font-family="var(--sims2-font-display, 'Benguiat Gothic', 'Fredoka', system-ui, sans-serif)">${this._escapeHtml(displayValue)}</text>
@@ -342,10 +342,11 @@ class Sims2GaugeCard extends HTMLElement {
   static _styles() {
     return `
       :host { display: block; }
-      ha-card.sims2-gauge-card {
-        background: var(--card-background-color, #FBF4DF);
-        border-radius: var(--ha-card-border-radius, 16px);
-        box-shadow: var(--ha-card-box-shadow, none);
+      .sims2-gauge-card {
+        background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%);
+        border-radius: 16px;
+        box-shadow: 0 2px 12px rgba(74, 51, 32, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        border: 1px solid #D4B878;
         padding: 16px 12px 14px;
         display: flex;
         flex-direction: column;

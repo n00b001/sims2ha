@@ -160,27 +160,25 @@ class Sims2PanelCard extends HTMLElement {
   _renderChildren() {
     const children = this._config.children || [];
     if (!children.length) {
-      return '<div class="sims2-panel-empty">No child cards configured.</div>';
+      return '<div class="sims2-panel-empty">Place HA cards directly inside this view.</div>';
     }
+    // The panel card wraps child content in a Sims 2-styled container.
+    // Each child entry is rendered as a styled section; actual Lovelace cards
+    // are added by placing them directly in the dashboard (the panel is a
+    // decorative wrapper, not a Lovelace card host).
     return children
       .map(
         (child, i) => `
       <div class="sims2-child-card" data-child-index="${i}">
-        <div class="sims2-child-header">
-          ${
-            child.title
-              ? `<span class="sims2-child-title">${this._escapeHtml(child.title)}</span>`
-              : ""
-          }
-          ${
-            child.icon
-              ? `<span class="sims2-child-icon">${this._escapeHtml(child.icon)}</span>`
-              : ""
-          }
-        </div>
-        <div class="sims2-child-content">
-          <!-- sims2-panel child card: ${JSON.stringify(child).replace(/</g, "&lt;")} -->
-        </div>
+        ${
+          child.title || child.icon
+            ? `<div class="sims2-child-header">
+                ${child.icon ? `<span class="sims2-child-icon">${this._escapeHtml(child.icon)}</span>` : ""}
+                ${child.title ? `<span class="sims2-child-title">${this._escapeHtml(child.title)}</span>` : ""}
+              </div>`
+            : ""
+        }
+        <div class="sims2-child-content"></div>
       </div>
     `
       )
@@ -214,9 +212,9 @@ class Sims2PanelCard extends HTMLElement {
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        background: linear-gradient(180deg, #3A6B5C 0%, #2D5A4E 100%);
+        background: linear-gradient(180deg, #EDE0C8 0%, #F5EBD8 100%);
         font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif);
-        color: #FFF6E0;
+        color: var(--sims2-espresso, #4A3320);
         box-shadow:
           inset 0 1px 0 rgba(255,255,255,0.1),
           0 4px 16px rgba(0, 0, 0, 0.3);
@@ -265,8 +263,8 @@ class Sims2PanelCard extends HTMLElement {
         gap: 10px;
         height: ${titleRowHeight};
         padding: 10px 20px 6px;
-        background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 100%);
-        border-bottom: 1px solid rgba(224, 182, 107, 0.25);
+        background: linear-gradient(180deg, rgba(224, 182, 107, 0.15) 0%, rgba(224, 182, 107, 0.05) 100%);
+        border-bottom: 1px solid rgba(224, 182, 107, 0.4);
         font-size: 16px;
         font-weight: 600;
         letter-spacing: 0.04em;
@@ -278,7 +276,7 @@ class Sims2PanelCard extends HTMLElement {
         width: 22px;
         height: 22px;
         font-size: 14px;
-        color: #E0B66B;
+        color: var(--sims2-gold-dark, #C49A3C);
       }
       .sims2-panel-title {
         white-space: nowrap;
@@ -299,8 +297,8 @@ class Sims2PanelCard extends HTMLElement {
       /* ---- Child card wrapper ----------------------------------------- */
       .sims2-child-card {
         border-radius: 12px;
-        background: rgba(0, 0, 0, 0.18);
-        border: 1px solid rgba(224, 182, 107, 0.2);
+        background: var(--sims2-cream, #FBF4DF);
+        border: 1px solid rgba(224, 182, 107, 0.5);
         overflow: hidden;
       }
       .sims2-child-header {
@@ -308,10 +306,10 @@ class Sims2PanelCard extends HTMLElement {
         align-items: center;
         gap: 8px;
         padding: 8px 14px;
-        background: rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(224, 182, 107, 0.15);
+        background: linear-gradient(180deg, rgba(224, 182, 107, 0.12) 0%, rgba(224, 182, 107, 0.04) 100%);
+        border-bottom: 1px solid rgba(224, 182, 107, 0.35);
         font-size: 12px;
-        color: rgba(255, 246, 224, 0.7);
+        color: var(--sims2-espresso, #4A3320);
         letter-spacing: 0.03em;
       }
       .sims2-child-title {
@@ -321,7 +319,7 @@ class Sims2PanelCard extends HTMLElement {
       }
       .sims2-child-icon {
         font-size: 12px;
-        color: #E0B66B;
+        color: var(--sims2-gold-dark, #C49A3C);
       }
       .sims2-child-content {
         min-height: 48px;
@@ -333,7 +331,8 @@ class Sims2PanelCard extends HTMLElement {
         text-align: center;
         padding: 24px 16px;
         font-size: 13px;
-        color: rgba(255, 246, 224, 0.45);
+        color: var(--sims2-espresso, #4A3320);
+        opacity: 0.45;
         letter-spacing: 0.03em;
       }
 

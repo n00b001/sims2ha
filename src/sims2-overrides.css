@@ -19,21 +19,55 @@
    ========================================================================== */
 
 /* ---- Sunburst background -----------------------------------------------
-   The iconic Sims 2 main-menu sunburst: alternating light/dark gold rays
-   radiating from a focal point slightly above center, on a deep navy field.
-   Layered radial gradients create the ray effect.
+   The iconic Sims 2 main-menu sunburst: smooth alternating light/dark gold
+   rays radiating from a focal point slightly above center, on a deep navy
+   field. Uses conic-gradient for true ray geometry (no harsh radial-stop
+   banding). A soft plumbob-green ambient glow sits at the focal point.
    ========================================================================== */
 body {
   background-color: #0E2A44;
   background-image:
-    /* Soft plumbob-green ambient glow at focal point */
-    radial-gradient(ellipse 60% 50% at 50% 42%, rgba(123, 201, 66, 0.06) 0%, transparent 70%),
-    /* Alternating gold rays via layered radial gradients */
-    radial-gradient(ellipse 120% 80% at 50% 42%, rgba(224, 182, 107, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 90% 65% at 50% 42%, rgba(196, 154, 60, 0.06) 0%, transparent 45%),
-    radial-gradient(ellipse 140% 95% at 50% 42%, rgba(224, 182, 107, 0.05) 0%, transparent 55%),
-    /* Subtle warm vignette at edges */
-    radial-gradient(ellipse 100% 100% at 50% 42%, transparent 40%, rgba(14, 42, 68, 0.4) 100%);
+    /* Plumbob-green ambient glow at focal point */
+    radial-gradient(ellipse 50% 40% at 50% 38%, rgba(123, 201, 66, 0.07) 0%, transparent 70%),
+    /* Smooth sunburst rays via conic gradient — 16 rays (8 light + 8 dark) */
+    conic-gradient(
+      from 0deg at 50% 38%,
+      #0E2A44 0deg,
+      rgba(224, 182, 107, 0.06) 11.25deg,
+      #0E2A44 22.5deg,
+      rgba(224, 182, 107, 0.04) 33.75deg,
+      #0E2A44 45deg,
+      rgba(224, 182, 107, 0.06) 56.25deg,
+      #0E2A44 67.5deg,
+      rgba(224, 182, 107, 0.04) 78.75deg,
+      #0E2A44 90deg,
+      rgba(224, 182, 107, 0.06) 101.25deg,
+      #0E2A44 112.5deg,
+      rgba(224, 182, 107, 0.04) 123.75deg,
+      #0E2A44 135deg,
+      rgba(224, 182, 107, 0.06) 146.25deg,
+      #0E2A44 157.5deg,
+      rgba(224, 182, 107, 0.04) 168.75deg,
+      #0E2A44 180deg,
+      rgba(224, 182, 107, 0.06) 191.25deg,
+      #0E2A44 202.5deg,
+      rgba(224, 182, 107, 0.04) 213.75deg,
+      #0E2A44 225deg,
+      rgba(224, 182, 107, 0.06) 236.25deg,
+      #0E2A44 247.5deg,
+      rgba(224, 182, 107, 0.04) 258.75deg,
+      #0E2A44 270deg,
+      rgba(224, 182, 107, 0.06) 281.25deg,
+      #0E2A44 292.5deg,
+      rgba(224, 182, 107, 0.04) 303.75deg,
+      #0E2A44 315deg,
+      rgba(224, 182, 107, 0.06) 326.25deg,
+      #0E2A44 337.5deg,
+      rgba(224, 182, 107, 0.04) 348.75deg,
+      #0E2A44 360deg
+    ),
+    /* Warm vignette at edges to fade rays into navy */
+    radial-gradient(ellipse 80% 80% at 50% 38%, transparent 30%, rgba(14, 42, 68, 0.5) 100%);
   background-attachment: fixed;
 }
 
