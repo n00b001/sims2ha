@@ -18,7 +18,7 @@ views:
 
           > Every watt is a simoleon. We are counting all of them.
 
-      # --- Live power draw as gauges ---------------------------------------
+      # --- Live power draw (circular Sims 2 gauges) ------------------------
       - type: custom:auto-entities
         card:
           type: grid
@@ -29,8 +29,9 @@ views:
             - domain: sensor
               device_class: power
               options:
-                type: gauge
+                type: custom:sims2-gauge
                 name: '{{ states(entity) }} W'
+                unit: "W"
                 min: 0
                 max: 10000
                 severity:
