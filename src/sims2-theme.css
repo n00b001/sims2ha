@@ -1,250 +1,321 @@
 /* ==========================================================================
-   Sims 2 for Home Assistant — AUTHENTIC LIVE-MODE THEME LAYER
+   Sims 2 for Home Assistant — THEME VARIABLES (PALETTE-ALIGNED)
    --------------------------------------------------------------------------
-   Full overhaul: authentic Sims 2 Live Mode visual language.
+   Every color token maps directly to docs/PALETTE.md.
+   New design patterns from reference images: circular buttons, translucent
+   blue panels, gloss/reflection effects, pill-shaped progress bars.
 
-   Palette — warm cream/beige surfaces (Sims 2 panel colour), deep blue headers,
-   navy sidebar, gold chrome accents, plumbob green status. Based on the actual
-   Sims 2 game UI (2004).
-
-   Key colours:
-   - Card surfaces: warm cream (#F5E6C8) — matches Sims 2 live-mode panels
-   - Borders/outlines: dark navy/charcoal (#1A1A3E)
-   - Header: blue gradient (#2B5EA7 → #1A3D7A) — Sims 2 buy-mode bar
-   - Sidebar: deep navy (#0E1628) — Sims 2 room navigator
-   - Accent: warm gold (#E8B44D), plumbob green (#4ADE80)
-   - Text: warm dark brown/grey (#2A2320 on light, #D4C4A0 on dark)
-
+   Palette source: The Sims 2 Live Mode UI (2004).
    `!important` overrides Home Assistant defaults throughout the cascade.
    ========================================================================== */
 
 :root {
-  /* ---- Base surfaces — warm cream (Sims 2 Live Mode panel colour) ------- */
-  --primary-background-color: #E8D9B4 !important;
-  --secondary-background-color: #F0E2C8 !important;
-  --card-background-color: #EDE2CC !important;
+  /* =========================================================================
+     LIGHT MODE — "Pleasantview daytime"
+     Warm parchment surfaces, signature Sims 2 panel blue, gold trim,
+     bright plumbob green for active states.
+     ========================================================================= */
+
+  /* ---- Base surfaces — warm parchment (PALETTE.md) --------------------
+     sims2-parchment:   #F3E9D2  app background
+     sims2-cream:       #FBF4DF  cards, dialogs
+     ========================================================================= */
+  --primary-background-color: #F3E9D2 !important;
+  --secondary-background-color: #EDE0C4 !important;
+  --card-background-color: #FBF4DF !important;
   --ha-card-background: linear-gradient(
     180deg,
-    #F5E6C8 0%,
-    #EDD9B4 50%,
-    #E2CC9A 100%
+    #FBF4DF 0%,
+    #F7EDD5 50%,
+    #F3E6CA 100%
   ) !important;
-  --dialog-background-color: #F0E2C8 !important;
-  --app-drawer-background-color: #E2CC9A !important;
-  --mdc-dialog-background-color: #F0E2C8 !important;
-  --ha-dialog-background-color: #F0E2C8 !important;
-  --table-row-background-color: #EDE2CC !important;
-  --table-row-alternative-background-color: #E2CC9A !important;
-  --input-fill-color: #D9C4A0 !important;
-  --input-dropdown-background-color: #F0E2C8 !important;
+  --dialog-background-color: #FBF4DF !important;
+  --app-drawer-background-color: #EDE0C4 !important;
+  --mdc-dialog-background-color: #FBF4DF !important;
+  --ha-dialog-background-color: #FBF4DF !important;
+  --table-row-background-color: #FBF4DF !important;
+  --table-row-alternative-background-color: #EDE0C4 !important;
+  --input-fill-color: #EDE0C4 !important;
+  --input-dropdown-background-color: #FBF4DF !important;
 
-  /* ---- Brand / action — warm gold + plumbob green ---------------------- */
-  --primary-color: #E8B44D !important;
-  --accent-color: #4ADE80 !important;
-  --dark-primary-color: #CC9A30 !important;
-  --light-primary-color: #FFF3B0 !important;
+  /* ---- Brand / action — panel blue + plumbob green (PALETTE.md) -------
+     sims2-panel-blue:      #2F86C5  primary actions, active states, sliders
+     sims2-plumbob-green:   #7BC942  accent, "on", success
+     ========================================================================= */
+  --primary-color: #2F86C5 !important;
+  --accent-color: #7BC942 !important;
+  --dark-primary-color: #235E8C !important;
+  --light-primary-color: #A8D4F0 !important;
 
-  /* ---- Header — blue gradient (Sims 2 buy-mode bar) ------------------- */
+  /* ---- Header — panel blue dark gradient (PALETTE.md) -----------------
+     sims2-panel-blue-dark: #235E8C  app header
+     ========================================================================= */
   --app-header-background-color: linear-gradient(
     180deg,
-    #2B5EA7 0%,
-    #1A3D7A 100%
+    #2F86C5 0%,
+    #235E8C 100%
   ) !important;
-  --app-header-text-color: #F5E6C8 !important;
-  --app-header-selection-background-color: #4ADE80 !important;
+  --app-header-text-color: #FBF4DF !important;
+  --app-header-selection-background-color: #7BC942 !important;
 
-  /* ---- Sidebar — deep navy panel (Sims 2 room navigator) -------------- */
-  --sidebar-background-color: #0E1628 !important;
-  --sidebar-text-color: #C8B89A !important;
-  --sidebar-icon-color: #A08C6A !important;
-  --sidebar-selected-background-color: #1E2A5E !important;
-  --sidebar-selected-icon-color: #4ADE80 !important;
-  --sidebar-selected-text-color: #F5E6C8 !important;
+  /* ---- Sidebar — panel blue deep (PALETTE.md) -------------------------
+     sims2-panel-blue-deep: #173A52  sidebar
+     ========================================================================= */
+  --sidebar-background-color: #173A52 !important;
+  --sidebar-text-color: #C8D8E8 !important;
+  --sidebar-icon-color: #9AB0C8 !important;
+  --sidebar-selected-background-color: #235E8C !important;
+  --sidebar-selected-icon-color: #7BC942 !important;
+  --sidebar-selected-text-color: #FBF4DF !important;
 
-  /* ---- Text — warm dark brown ----------------------------------------- */
-  --primary-text-color: #2A2320 !important;
-  --secondary-text-color: #5A4E40 !important;
-  --text-primary-color: #2A2320 !important;
-  --disabled-text-color: #9A8E7C !important;
-  --divider-color: #D9C4A0 !important;
-  --item-divider-color: #E2CC9A !important;
+  /* ---- Text — espresso brown (PALETTE.md) -----------------------------
+     sims2-espresso:    #4A3320  primary text
+     secondary:         #7A5A38  captions, helpers
+     ========================================================================= */
+  --primary-text-color: #4A3320 !important;
+  --secondary-text-color: #7A5A38 !important;
+  --text-primary-color: #4A3320 !important;
+  --disabled-text-color: #B8A890 !important;
+  --divider-color: #D8C39A !important;
+  --item-divider-color: #EDE0C4 !important;
 
-  /* ---- Status colors -------------------------------------------------- */
-  --error-color: #DC2626 !important;
-  --warning-color: #DD8800 !important;
-  --success-color: #4ADE80 !important;
-  --info-color: #2B5EA7 !important;
+  /* ---- Status colors (PALETTE.md) -------------------------------------
+     error:   #C0392B  errors, danger
+     warning: #E09A2B  warnings
+     ========================================================================= */
+  --error-color: #C0392B !important;
+  --warning-color: #E09A2B !important;
+  --success-color: #7BC942 !important;
+  --info-color: #2F86C5 !important;
 
   /* ---- Entity / state icons ------------------------------------------- */
-  --state-icon-color: #5A4E40 !important;
-  --state-icon-active-color: #4ADE80 !important;
-  --state-active-color: #4ADE80 !important;
-  --paper-item-icon-color: #A08C6A !important;
-  --paper-item-icon-active-color: #4ADE80 !important;
+  --state-icon-color: #7A5A38 !important;
+  --state-icon-active-color: #7BC942 !important;
+  --state-active-color: #7BC942 !important;
+  --paper-item-icon-color: #9AB0C8 !important;
+  --paper-item-icon-active-color: #7BC942 !important;
 
-  /* ---- Switches & sliders — plumbob green active ---------------------- */
-  --switch-checked-color: #4ADE80 !important;
-  --switch-checked-button-color: #0E1628 !important;
-  --switch-checked-track-color: #22C55E !important;
-  --toggle-button-color: #4ADE80 !important;
-  --slider-color: #E8B44D !important;
-  --slider-secondary-color: #4ADE80 !important;
-  --slider-track-color: #D9C4A0 !important;
-  --slider-bar-color: #E8B44D !important;
-  --slider-thumb-color: #F5E6C8 !important;
-  --slider-knob-color: #F5E6C8 !important;
-  --slider-pin-color: #E8B44D !important;
+  /* ---- Switches & sliders — plumbob green active, panel blue track --- */
+  --switch-checked-color: #7BC942 !important;
+  --switch-checked-button-color: #173A52 !important;
+  --switch-checked-track-color: #7BC942 !important;
+  --toggle-button-color: #7BC942 !important;
+  --slider-color: #2F86C5 !important;
+  --slider-secondary-color: #FBF4DF !important;
+  --slider-track-color: #D8C39A !important;
+  --slider-bar-color: #2F86C5 !important;
+  --slider-thumb-color: #FBF4DF !important;
+  --slider-knob-color: #FBF4DF !important;
+  --slider-pin-color: #2F86C5 !important;
 
-  /* ---- Badges --------------------------------------------------------- */
-  --label-badge-background-color: #4ADE80 !important;
-  --label-badge-text-color: #0E1628 !important;
+  /* ---- Badges — gold (PALETTE.md) -------------------------------------
+     sims2-gold: #E0B66B  badges, highlights
+     ========================================================================= */
+  --label-badge-background-color: #E0B66B !important;
+  --label-badge-text-color: #4A3320 !important;
 
-  /* ---- Cards — cream panels with navy border -------------------------- */
-  --ha-card-border-radius: 12px !important;
-  --ha-card-border-color: #1A1A3E !important;
+  /* ---- Cards — cream panels with navy border (PALETTE.md) ------------
+     divider / frame: #D8C39A
+     ========================================================================= */
+  --ha-card-border-radius: 14px !important;
+  --ha-card-border-color: #D8C39A !important;
   --ha-card-box-shadow:
-    0 2px 8px rgba(26, 26, 62, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
-  --borders-color: #1A1A3E !important;
+    0 2px 8px rgba(74, 51, 32, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  --borders-color: #D8C39A !important;
 
   /* ---- Chips / menus -------------------------------------------------- */
-  --chip-background-color: #D9C4A0 !important;
+  --chip-background-color: #EDE0C4 !important;
 
-  /* ---- Material Design tokens — cream/gold theme ---------------------- */
-  --mdc-theme-primary: #2B5EA7 !important;
-  --mdc-theme-secondary: #4ADE80 !important;
+  /* ---- Material Design tokens — cream/gold/panel-blue theme ----------- */
+  --mdc-theme-primary: #2F86C5 !important;
+  --mdc-theme-secondary: #7BC942 !important;
   --mdc-theme-on-primary: #FFFFFF !important;
-  --mdc-theme-surface: #F5E6C8 !important;
-  --mdc-theme-background: #E8D9B4 !important;
-  --mdc-theme-on-surface: #2A2320 !important;
-  --mdc-theme-error: #DC2626 !important;
+  --mdc-theme-surface: #FBF4DF !important;
+  --mdc-theme-background: #F3E9D2 !important;
+  --mdc-theme-on-surface: #4A3320 !important;
+  --mdc-theme-error: #C0392B !important;
 
-  /* ---- Sims 2 custom tokens ------------------------------------------- */
-  --sims2-cream: #F5E6C8 !important;
-  --sims2-cream-deep: #D9C4A0 !important;
-  --sims2-navy: #1A1A3E !important;
-  --sims2-navy-dark: #0E1628 !important;
-  --sims2-gold: #E8B44D !important;
-  --sims2-gold-dark: #CC9A30 !important;
-  --sims2-plumbob-green: #4ADE80 !important;
-  --sims2-blue: #2B5EA7 !important;
-  --sims2-sunburst-dark: #1B2A49 !important;
+  /* ---- Sims 2 custom tokens (PALETTE.md aligned) ---------------------- */
+  --sims2-parchment: #F3E9D2 !important;
+  --sims2-cream: #FBF4DF !important;
+  --sims2-panel-blue: #2F86C5 !important;
+  --sims2-panel-blue-dark: #235E8C !important;
+  --sims2-panel-blue-deep: #173A52 !important;
+  --sims2-plumbob-green: #7BC942 !important;
+  --sims2-gold: #E0B66B !important;
+  --sims2-gold-dark: #C29A3C !important;
+  --sims2-espresso: #4A3320 !important;
+  --sims2-divider: #D8C39A !important;
+
+  /* ---- Gloss / reflection tokens (from reference images) --------------
+     Sims 2 UI has a signature top-half lighter "gloss" on buttons,
+     progress bars, and panels that makes surfaces look rounded and 3D.
+     ========================================================================= */
+  --sims2-gloss-top: rgba(255, 255, 255, 0.35) !important;
+  --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
+  --sims2-shadow-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  --sims2-shadow-drop: 0 2px 6px rgba(23, 58, 82, 0.25) !important;
+
+  /* ---- Translucent blue panel tokens (from reference images) ----------
+     Sims 2 dialogs use semi-transparent blue-tinted backgrounds.
+     ========================================================================= */
+  --sims2-blue-panel-bg: linear-gradient(
+    180deg,
+    rgba(168, 200, 240, 0.92) 0%,
+    rgba(120, 165, 215, 0.88) 50%,
+    rgba(85, 135, 195, 0.90) 100%
+  ) !important;
+  --sims2-blue-panel-border: rgba(35, 94, 140, 0.6) !important;
+  --sims2-blue-text-bg: rgba(200, 225, 255, 0.7) !important;
 }
 
 /* ==========================================================================
-   DARK MODE — deep Pleasantview night
+   DARK MODE — "Midnight plumbob"
+   Deep Pleasantview-at-night navy with glowing neon plumbob.
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* ---- Base surfaces — deep blue-gray/cream ------------------------- */
-    --primary-background-color: #0C1025 !important;
-    --secondary-background-color: #101530 !important;
-    --card-background-color: #1A2040 !important;
+    /* ---- Base surfaces — deep navy (PALETTE.md) -----------------------
+       app background:  #0C1A2B
+       card surface:    #13283F
+       ========================================================================= */
+    --primary-background-color: #0C1A2B !important;
+    --secondary-background-color: #0E2A45 !important;
+    --card-background-color: #13283F !important;
     --ha-card-background: linear-gradient(
       180deg,
-      #1E2550 0%,
-      #182040 50%,
-      #141C38 100%
+      #183050 0%,
+      #142A42 50%,
+      #102038 100%
     ) !important;
-    --dialog-background-color: #1A2040 !important;
-    --app-drawer-background-color: #141C38 !important;
-    --mdc-dialog-background-color: #1A2040 !important;
-    --ha-dialog-background-color: #1A2040 !important;
-    --table-row-background-color: #1A2040 !important;
-    --table-row-alternative-background-color: #141C38 !important;
-    --input-fill-color: #162040 !important;
-    --input-dropdown-background-color: #1A2040 !important;
+    --dialog-background-color: #13283F !important;
+    --app-drawer-background-color: #0A1E33 !important;
+    --mdc-dialog-background-color: #13283F !important;
+    --ha-dialog-background-color: #13283F !important;
+    --table-row-background-color: #13283F !important;
+    --table-row-alternative-background-color: #0E2038 !important;
+    --input-fill-color: #0E2038 !important;
+    --input-dropdown-background-color: #13283F !important;
 
-    /* ---- Brand / action — brighter for dark contrast ------------------ */
-    --primary-color: #FFD700 !important;
-    --accent-color: #6EE7A0 !important;
-    --dark-primary-color: #CCAA00 !important;
-    --light-primary-color: #2E2820 !important;
+    /* ---- Brand / action — brighter panel blue + plumbob green --------
+       sims2-panel-blue (dark):  #3FA0D8  primary actions
+       sims2-plumbob-green(dark): #8BD64A accent, "on", success
+       ========================================================================= */
+    --primary-color: #3FA0D8 !important;
+    --accent-color: #8BD64A !important;
+    --dark-primary-color: #2F86C5 !important;
+    --light-primary-color: #5BB8F0 !important;
 
-    /* ---- Header — deeper blue gradient ------------------------------- */
+    /* ---- Header — deeper navy gradient (PALETTE.md) -------------------
+       app header: #0E2A45
+       ========================================================================= */
     --app-header-background-color: linear-gradient(
       180deg,
-      #1E2A5E 0%,
-      #0E1628 100%
+      #13283F 0%,
+      #0E2A45 100%
     ) !important;
-    --app-header-text-color: #D4C4A0 !important;
-    --app-header-selection-background-color: #6EE7A0 !important;
+    --app-header-text-color: #EAF2FB !important;
+    --app-header-selection-background-color: #8BD64A !important;
 
-    /* ---- Sidebar — darkest navy panel -------------------------------- */
-    --sidebar-background-color: #080618 !important;
-    --sidebar-text-color: #B8A880 !important;
-    --sidebar-icon-color: #8A7A5A !important;
-    --sidebar-selected-background-color: #1E2A5E !important;
-    --sidebar-selected-icon-color: #6EE7A0 !important;
-    --sidebar-selected-text-color: #D4C4A0 !important;
+    /* ---- Sidebar — darkest navy (PALETTE.md) --------------------------
+       sidebar: #0A1E33
+       ========================================================================= */
+    --sidebar-background-color: #0A1E33 !important;
+    --sidebar-text-color: #9FB6CE !important;
+    --sidebar-icon-color: #6B8DAB !important;
+    --sidebar-selected-background-color: #0E2A45 !important;
+    --sidebar-selected-icon-color: #8BD64A !important;
+    --sidebar-selected-text-color: #EAF2FB !important;
 
-    /* ---- Text — warm light on dark ------------------------------------ */
-    --primary-text-color: #D4C4A0 !important;
-    --secondary-text-color: #A89870 !important;
-    --text-primary-color: #D4C4A0 !important;
-    --disabled-text-color: #4A4030 !important;
-    --divider-color: #3A3020 !important;
-    --item-divider-color: #1A2040 !important;
+    /* ---- Text — light blue-tinted (PALETTE.md) -------------------------
+       primary text:   #EAF2FB
+       secondary text: #9FB6CE
+       ========================================================================= */
+    --primary-text-color: #EAF2FB !important;
+    --secondary-text-color: #9FB6CE !important;
+    --text-primary-color: #EAF2FB !important;
+    --disabled-text-color: #4A5E70 !important;
+    --divider-color: #1F3E5E !important;
+    --item-divider-color: #0E2038 !important;
 
-    /* ---- Status colors — brighter for dark mode ----------------------- */
-    --error-color: #FC5C5C !important;
-    --warning-color: #F0A030 !important;
-    --success-color: #6EE7A0 !important;
-    --info-color: #6090E0 !important;
+    /* ---- Status colors ------------------------------------------------ */
+    --error-color: #E55B45 !important;
+    --warning-color: #F2C14E !important;
+    --success-color: #8BD64A !important;
+    --info-color: #3FA0D8 !important;
 
     /* ---- Entity / state icons ----------------------------------------- */
-    --state-icon-color: #A89870 !important;
-    --state-icon-active-color: #6EE7A0 !important;
-    --state-active-color: #6EE7A0 !important;
-    --paper-item-icon-color: #8A7A5A !important;
-    --paper-item-icon-active-color: #6EE7A0 !important;
+    --state-icon-color: #9FB6CE !important;
+    --state-icon-active-color: #8BD64A !important;
+    --state-active-color: #8BD64A !important;
+    --paper-item-icon-color: #6B8DAB !important;
+    --paper-item-icon-active-color: #8BD64A !important;
 
     /* ---- Switches & sliders ------------------------------------------- */
-    --switch-checked-color: #6EE7A0 !important;
-    --switch-checked-button-color: #080618 !important;
-    --switch-checked-track-color: #22C55E !important;
-    --toggle-button-color: #6EE7A0 !important;
-    --slider-color: #FFD700 !important;
-    --slider-secondary-color: #6EE7A0 !important;
-    --slider-track-color: #2E2820 !important;
-    --slider-bar-color: #FFD700 !important;
-    --slider-thumb-color: #D4C4A0 !important;
-    --slider-knob-color: #D4C4A0 !important;
-    --slider-pin-color: #FFD700 !important;
+    --switch-checked-color: #8BD64A !important;
+    --switch-checked-button-color: #0A1E33 !important;
+    --switch-checked-track-color: #8BD64A !important;
+    --toggle-button-color: #8BD64A !important;
+    --slider-color: #3FA0D8 !important;
+    --slider-secondary-color: #13283F !important;
+    --slider-track-color: #1F3E5E !important;
+    --slider-bar-color: #3FA0D8 !important;
+    --slider-thumb-color: #EAF2FB !important;
+    --slider-knob-color: #EAF2FB !important;
+    --slider-pin-color: #3FA0D8 !important;
 
-    /* ---- Badges ------------------------------------------------------- */
-    --label-badge-background-color: #6EE7A0 !important;
-    --label-badge-text-color: #080618 !important;
+    /* ---- Badges — gold (PALETTE.md dark) ------------------------------
+       gold (dark): #C29A3C
+       ========================================================================= */
+    --label-badge-background-color: #C29A3C !important;
+    --label-badge-text-color: #0A1E33 !important;
 
-    /* ---- Cards — dark navy panels ------------------------------------- */
-    --ha-card-border-radius: 12px !important;
-    --ha-card-border-color: #2E2820 !important;
+    /* ---- Cards — navy panels, subtle divider border ------------------- */
+    --ha-card-border-radius: 14px !important;
+    --ha-card-border-color: #1F3E5E !important;
     --ha-card-box-shadow:
-      0 2px 8px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-    --borders-color: #2E2820 !important;
+      0 2px 10px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(63, 160, 216, 0.08) !important;
+    --borders-color: #1F3E5E !important;
 
     /* ---- Chips / menus ------------------------------------------------ */
-    --chip-background-color: #162040 !important;
+    --chip-background-color: #0E2038 !important;
 
     /* ---- Material Design tokens — dark theme -------------------------- */
-    --mdc-theme-primary: #6090E0 !important;
-    --mdc-theme-secondary: #6EE7A0 !important;
-    --mdc-theme-on-primary: #080618 !important;
-    --mdc-theme-surface: #1A2040 !important;
-    --mdc-theme-background: #0C1025 !important;
-    --mdc-theme-on-surface: #D4C4A0 !important;
-    --mdc-theme-error: #FC5C5C !important;
+    --mdc-theme-primary: #3FA0D8 !important;
+    --mdc-theme-secondary: #8BD64A !important;
+    --mdc-theme-on-primary: #0C1A2B !important;
+    --mdc-theme-surface: #13283F !important;
+    --mdc-theme-background: #0C1A2B !important;
+    --mdc-theme-on-surface: #EAF2FB !important;
+    --mdc-theme-error: #E55B45 !important;
 
-    /* ---- Sims 2 custom tokens (dark mode) ----------------------------- */
-    --sims2-cream: #1A2040 !important;
-    --sims2-cream-deep: #141C38 !important;
-    --sims2-navy: #2E2820 !important;
-    --sims2-navy-dark: #0E0A20 !important;
-    --sims2-gold: #FFD700 !important;
-    --sims2-gold-dark: #CCAA00 !important;
-    --sims2-plumbob-green: #6EE7A0 !important;
-    --sims2-blue: #6090E0 !important;
-    --sims2-sunburst-dark: #141C4A !important;
+    /* ---- Sims 2 custom tokens (dark mode, PALETTE.md aligned) --------- */
+    --sims2-parchment: #0C1A2B !important;
+    --sims2-cream: #13283F !important;
+    --sims2-panel-blue: #3FA0D8 !important;
+    --sims2-panel-blue-dark: #0E2A45 !important;
+    --sims2-panel-blue-deep: #0A1E33 !important;
+    --sims2-plumbob-green: #8BD64A !important;
+    --sims2-gold: #C29A3C !important;
+    --sims2-gold-dark: #A07D2E !important;
+    --sims2-divider: #1F3E5E !important;
+
+    /* ---- Gloss / reflection tokens (dark mode) ------------------------ */
+    --sims2-gloss-top: rgba(63, 160, 216, 0.15) !important;
+    --sims2-gloss-bottom: rgba(63, 160, 216, 0) !important;
+    --sims2-shadow-inner-highlight: inset 0 1px 0 rgba(63, 160, 216, 0.12) !important;
+    --sims2-shadow-drop: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+
+    /* ---- Translucent blue panel tokens (dark mode) -------------------- */
+    --sims2-blue-panel-bg: linear-gradient(
+      180deg,
+      rgba(19, 40, 63, 0.95) 0%,
+      rgba(14, 42, 69, 0.92) 50%,
+      rgba(10, 30, 51, 0.94) 100%
+    ) !important;
+    --sims2-blue-panel-border: rgba(31, 62, 94, 0.7) !important;
+    --sims2-blue-text-bg: rgba(14, 42, 69, 0.6) !important;
   }
 }
