@@ -1576,6 +1576,325 @@ home-assistant {
 }
 
 /* ==========================================================================
+   TOGGLES — Sims 2 need-meter style switches ---------------------------------
+   Authentic Sims 2 toggles use a brass-rimmed track with green/gold/red fill,
+   and a faceted plumbob-inspired thumb that glows when active.
+   ========================================================================== */
+
+/* MDC toggle switch track and thumb */
+.mdc-switch .mdc-switch__track,
+ha-form-field ha-switch .mdc-switch__track,
+ha-switch .mdc-switch__track {
+  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  border-radius: 12px !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.mdc-switch[data-checked="true"] .mdc-switch__track,
+ha-switch[data-checked="true"] .mdc-switch__track {
+  background: linear-gradient(180deg, #7BC942 0%, #5BA830 50%, #3D8B1C 100%) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 8px rgba(123, 201, 66, 0.4) !important;
+}
+
+.mdc-switch .mdc-switch__thumb-knob,
+ha-switch .mdc-switch__thumb-knob {
+  background: linear-gradient(180deg, #F5E6C8 0%, #D9C4A0 40%, #B8942E 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.mdc-switch[data-checked="true"] .mdc-switch__thumb-knob {
+  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  border-color: #2F6B12 !important;
+  box-shadow: 0 0 10px rgba(123, 201, 66, 0.6), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Legacy ha-toggle */
+ha-toggle .toggle-input:checked + .toggle-button {
+  background: linear-gradient(180deg, #7BC942 0%, #5BA830 100%) !important;
+  border-color: #2F6B12 !important;
+  box-shadow: 0 0 8px rgba(123, 201, 66, 0.5) !important;
+}
+
+/* ==========================================================================
+   SLIDERS — Sims 2 brass track with gold fill --------------------------------
+   The slider track is a recessed brass groove. Fill uses the plumbob green
+   gradient. Thumb is a faceted brass knob.
+   ========================================================================== */
+
+input[type="range"],
+.mdc-slider,
+ha-slider,
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px !important;
+  border-radius: 6px !important;
+  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, #F5DF8A 0%, #D4AF37 40%, #A07830 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  cursor: pointer !important;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, #F5DF8A 0%, #D4AF37 40%, #A07830 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  cursor: pointer !important;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 8px !important;
+  border-radius: 6px !important;
+  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ==========================================================================
+   CHECKBOXES — Sims 2 navy-bordered cream boxes ------------------------------
+   Unchecked: cream panel with navy border. Checked: gold fill with navy check.
+   ========================================================================== */
+
+.mdc-checkbox .mdc-checkbox__native-control,
+ha-checkbox .mdc-checkbox__native-control {
+  opacity: 0 !important;
+  position: absolute !important;
+}
+
+.mdc-checkbox .mdc-checkbox__background,
+ha-checkbox .mdc-checkbox__background {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  border-radius: 4px !important;
+  width: 18px !important;
+  height: 18px !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mdc-checkbox--checked .mdc-checkbox__background,
+ha-checkbox[checked] .mdc-checkbox__background {
+  background: linear-gradient(180deg, #E8B44D 0%, #D4AF37 50%, #A07830 100%) !important;
+  border-color: #1A1A3E !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 4px rgba(232, 180, 77, 0.3) !important;
+}
+
+.mdc-checkbox__checkmark-path {
+  stroke: #1A1A3E !important;
+  stroke-width: 3 !important;
+}
+
+/* ==========================================================================
+   RADIO BUTTONS — brass ring with gold dot ----------------------------------- */
+
+.mdc-radio .mdc-radio__native-control,
+ha-radio .mdc-radio__native-control {
+  opacity: 0 !important;
+  position: absolute !important;
+}
+
+.mdc-radio .mdc-radio__outer-circle,
+ha-radio .mdc-radio__outer-circle {
+  border: 2px solid #1A1A3E !important;
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+}
+
+.mdc-radio--checked .mdc-radio__outer-circle {
+  border-color: #1A1A3E !important;
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+}
+
+.mdc-radio .mdc-radio__inner-circle {
+  background: radial-gradient(circle at 40% 35%, #F5DF8A 0%, #D4AF37 50%, #8C6D1A 100%) !important;
+  border: none !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ==========================================================================
+   PROGRESS BARS — Sims 2 loading bar chrome ----------------------------------
+   Brass-framed track with plumbob-green fill that shimmers.
+   ========================================================================== */
+
+.mdc-linear-progress,
+progress,
+ha-progress {
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  border: 2px solid #1A1A3E !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.mdc-linear-progress__track {
+  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  border-radius: 4px !important;
+}
+
+.mdc-linear-progress__bar {
+  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  box-shadow: 0 0 6px rgba(123, 201, 66, 0.4) !important;
+}
+
+progress::-webkit-progress-bar {
+  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  border-radius: 4px !important;
+  border: 2px solid #1A1A3E !important;
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  border-radius: 2px !important;
+}
+
+progress::-moz-progress-bar {
+  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  border-radius: 2px !important;
+}
+
+/* ==========================================================================
+   TAB BAR — Sims 2 gold-on-cream navigation tabs ----------------------------
+   The Sims 2 uses rounded tab buttons with a gold highlight for the active tab.
+   ========================================================================== */
+
+mwc-tab-bar {
+  background: linear-gradient(180deg, rgba(245, 230, 200, 0.9), rgba(237, 226, 204, 0.85)) !important;
+  border-bottom: 3px solid #1A1A3E !important;
+}
+
+mwc-tab {
+  color: #5C4A32 !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  letter-spacing: 0.3px !important;
+}
+
+mwc-tab[active] {
+  color: #1A1A3E !important;
+}
+
+mwc-tab .mdc-tab__indicator,
+.mdc-tab-bar .mdc-tab__indicator {
+  background: linear-gradient(180deg, #E8B44D 0%, #D4AF37 100%) !important;
+  height: 3px !important;
+  border-radius: 2px 2px 0 0 !important;
+}
+
+/* ==========================================================================
+   TEXTAREAS — cream panel with navy border ----------------------------------- */
+
+textarea,
+.mdc-text-field--outlined.mdc-text-field--textarea,
+ha-textarea {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  border-radius: 8px !important;
+  color: #2A2320 !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+textarea:focus,
+ha-textarea:focus {
+  border-color: #E8B44D !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(232, 180, 77, 0.25) !important;
+}
+
+/* ==========================================================================
+   SELECT / DROPDOWN — Sims 2 panel style ------------------------------------ */
+
+select,
+.mdc-select,
+ha-select {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  border-radius: 8px !important;
+  color: #2A2320 !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+select:focus,
+.mdc-select:focus {
+  border-color: #E8B44D !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(232, 180, 77, 0.25) !important;
+}
+
+/* ==========================================================================
+   TOOLTIPS — navy panel with gold border ------------------------------------ */
+
+.mdc-tooltip,
+ha-tooltip,
+[role="tooltip"] {
+  background: #1A1A3E !important;
+  color: #F5E6C8 !important;
+  border: 2px solid #E8B44D !important;
+  border-radius: 6px !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  box-shadow: 0 4px 12px rgba(26, 26, 62, 0.5) !important;
+}
+
+/* ==========================================================================
+   BADGES — Sims 2 label-badge chrome ----------------------------------------
+   Gold gradient badges with navy border for entity states.
+   ========================================================================== */
+
+.mdc-chip {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 50%, #D9C4A0 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  border-radius: 8px !important;
+  color: #2A2320 !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 4px rgba(26, 26, 62, 0.15) !important;
+}
+
+/* ==========================================================================
+   ENTITY ROW — Sims 2 list item style --------------------------------------- */
+
+ha-entity-row {
+  background: linear-gradient(180deg, rgba(245, 230, 200, 0.5), rgba(237, 226, 204, 0.4)) !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.10) !important;
+  border-radius: 4px !important;
+}
+
+ha-entity-row:hover {
+  background: linear-gradient(180deg, rgba(245, 230, 200, 0.8), rgba(237, 226, 204, 0.7)) !important;
+}
+
+/* ==========================================================================
+   ICON BUTTONS — Sims 2 circular brass buttons ------------------------------
+   The Sims 2 icon buttons are circular with a brass rim and cream fill.
+   ========================================================================== */
+
+.mdc-icon-button {
+  color: #5C4A32 !important;
+}
+
+.mdc-icon-button:hover {
+  color: #1A1A3E !important;
+}
+
+/* Icon button circular background on hover */
+ha-icon-button,
+.mdc-icon-button::after {
+  border-radius: 50% !important;
+}
+
+/* ==========================================================================
    PRINT STYLES — Sims 2 friendly -------------------------------------------- */
 @media print {
   body {
@@ -1587,6 +1906,259 @@ home-assistant {
     border: 2px solid #1A1A3E !important;
     box-shadow: none !important;
   }
+}
+
+/* ==========================================================================
+   ALERT BANNERS — Sims 2 styled alerts --------------------------------------
+   Info: blue panel with gold border. Warning: amber panel. Error: red panel.
+   Success: green plumbob panel. All navy-bordered cream backgrounds.
+   ========================================================================== */
+
+ha-alert,
+.mdc-alert {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+  border: 2px solid #1A1A3E !important;
+  border-left: 5px solid #E8B44D !important;
+  border-radius: 8px !important;
+  color: #2A2320 !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  box-shadow: 0 4px 12px rgba(26, 26, 62, 0.2) !important;
+}
+
+ha-alert[hass-alert-warning],
+.mdc-alert--warning {
+  border-left-color: #E8B44D !important;
+  background: linear-gradient(180deg, rgba(255, 220, 160, 0.9), rgba(245, 230, 200, 0.9)) !important;
+}
+
+ha-alert[hass-alert-error],
+.mdc-alert--error {
+  border-left-color: #E55B45 !important;
+  background: linear-gradient(180deg, rgba(255, 200, 190, 0.9), rgba(245, 230, 200, 0.9)) !important;
+}
+
+ha-alert[hass-alert-success],
+.mdc-alert--success {
+  border-left-color: #7BC942 !important;
+  background: linear-gradient(180deg, rgba(183, 243, 107, 0.3), rgba(245, 230, 200, 0.9)) !important;
+}
+
+/* ==========================================================================
+   TOAST / SNACKBAR — navy panel with gold accent ----------------------------
+   Bottom-up toast notification, Sims 2 style.
+   ========================================================================== */
+
+paper-toast,
+.mdc-snackbar,
+ha-toast {
+  background: #1A1A3E !important;
+  color: #F5E6C8 !important;
+  border: 2px solid #E8B44D !important;
+  border-radius: 8px !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  box-shadow: 0 8px 24px rgba(26, 26, 62, 0.5) !important;
+}
+
+paper-toast .mdc-button {
+  color: #E8B44D !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   LIST ITEMS — Sims 2 panel list style --------------------------------------
+   Each list item is a cream row with navy separator.
+   ========================================================================== */
+
+ha-list-item,
+.mdc-list-item,
+paper-item {
+  background: linear-gradient(180deg, rgba(245, 230, 200, 0.6), rgba(237, 226, 204, 0.5)) !important;
+  color: #2A2320 !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.08) !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+ha-list-item:hover,
+.mdc-list-item--selected {
+  background: linear-gradient(180deg, rgba(245, 230, 200, 0.95), rgba(237, 226, 204, 0.9)) !important;
+}
+
+.mdc-list-item--selected {
+  border-left: 3px solid #E8B44D !important;
+}
+
+/* ==========================================================================
+   SIDEBAR NAVIGATION — Sims 2 menu panel ------------------------------------
+   Cream sidebar with gold active indicator, navy borders.
+   ========================================================================== */
+
+app-drawer,
+ha-sidebar {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 50%, #E8D4B0 100%) !important;
+  border-right: 3px solid #1A1A3E !important;
+}
+
+ha-sidebar .link,
+ha-sidebar .title a {
+  color: #5C4A32 !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+}
+
+ha-sidebar .link:hover {
+  background: rgba(232, 180, 77, 0.15) !important;
+}
+
+ha-sidebar .link.active {
+  color: #1A1A3E !important;
+  background: linear-gradient(180deg, rgba(232, 180, 77, 0.3), rgba(232, 180, 77, 0.15)) !important;
+  border-left: 3px solid #E8B44D !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   APP HEADER — Sims 2 title bar chrome --------------------------------------
+   Gold gradient header with navy border.
+   ========================================================================== */
+
+app-header,
+ha-app-toolbar,
+.mdc-top-app-bar {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 40%, #D9C4A0 100%) !important;
+  border-bottom: 3px solid #1A1A3E !important;
+  color: #1A1A3E !important;
+  box-shadow: 0 2px 8px rgba(26, 26, 62, 0.2) !important;
+}
+
+app-header .title,
+.mdc-top-app-bar__title {
+  color: #1A1A3E !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   ENTITY ICONS — Sims 2 status indicator style ------------------------------
+   Entity icons get a circular cream background with navy border, mimicking
+   the Sims 2 need meter icons. Active entities glow green.
+   ========================================================================== */
+
+state-badge ha-icon {
+  color: #A08C6A !important;
+}
+
+state-badge[data-state="on"] ha-icon,
+state-badge[data-state="open"] ha-icon,
+state-badge[data-state="home"] ha-icon {
+  color: #7BC942 !important;
+  filter: drop-shadow(0 0 4px rgba(123, 201, 66, 0.5)) !important;
+}
+
+state-badge[data-state="unavailable"] ha-icon,
+state-badge[data-state="unknown"] ha-icon {
+  color: #8A7D6B !important;
+}
+
+/* ==========================================================================
+   CARD CONTENT — Sims 2 typography for card internals ----------------------- */
+
+.card-header {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 700 !important;
+  color: #1A1A3E !important;
+  font-size: 16px !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 16px 8px !important;
+  border-bottom: 2px solid rgba(26, 26, 62, 0.15) !important;
+}
+
+.card-content {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2A2320 !important;
+  padding: 8px 16px 12px !important;
+}
+
+.card-actions {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  padding: 8px 16px 12px !important;
+  border-top: 1px solid rgba(26, 26, 62, 0.08) !important;
+}
+
+/* ==========================================================================
+   MORE INFO DIALOG — Sims 2 detail panel ------------------------------------ */
+
+ha-more-info-dialog,
+.more-info-container {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+ha-more-info-dialog .header {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 700 !important;
+  color: #1A1A3E !important;
+}
+
+/* ==========================================================================
+   SERVICE DESCRIPTION — Sims 2 form panel ----------------------------------- */
+
+ha-service-description {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+ha-service-description paper-input-label {
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-weight: 600 !important;
+  color: #5C4A32 !important;
+}
+
+/* ==========================================================================
+   YAML EDITOR / CODE EDITOR — Sims 2 text panel ----------------------------- */
+
+ha-yaml-editor,
+code-editor {
+  font-family: 'Consolas', 'Monaco', monospace !important;
+}
+
+ha-yaml-editor textarea,
+code-editor textarea {
+  background: linear-gradient(180deg, #F5E6C8 0%, #EDE2CC 100%) !important;
+  color: #2A2320 !important;
+  border: 2px solid #1A1A3E !important;
+  border-radius: 8px !important;
+}
+
+/* ==========================================================================
+   ENERGY DASHBOARD — Sims 2 styled energy cards ----------------------------- */
+
+ha-energy-dashboard,
+ha-energy-date-pickerview,
+ha-energy-water-dashboard,
+ha-energy-gas-dashboard {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+/* ==========================================================================
+   SUPerviser / HA panel overrides ------------------------------------------- */
+
+ha-panel-supervisor,
+ha-panel-hassio {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+/* ==========================================================================
+   MEDIA PLAYER CARD — Sims 2 media panel ------------------------------------ */
+
+ha-media-player-browse {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+/* ==========================================================================
+   CALENDAR CARD — Sims 2 calendar panel ------------------------------------- */
+
+ha-calendar {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
 }
 
 /* ==========================================================================

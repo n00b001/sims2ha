@@ -13,7 +13,7 @@
    - Header: blue gradient (#2B5EA7 → #1A3D7A) — Sims 2 buy-mode bar
    - Sidebar: deep navy (#0E1628) — Sims 2 room navigator
    - Accent: warm gold (#E8B44D), plumbob green (#4ADE80)
-   - Text: warm dark brown/grey (#2A2320 on light, #D4C8F0 on dark)
+   - Text: warm dark brown/grey (#2A2320 on light, #D4C4A0 on dark)
 
    `!important` overrides Home Assistant defaults throughout the cascade.
    ========================================================================== */
@@ -55,8 +55,8 @@
 
   /* ---- Sidebar — deep navy panel (Sims 2 room navigator) -------------- */
   --sidebar-background-color: #0E1628 !important;
-  --sidebar-text-color: #C8BDE0 !important;
-  --sidebar-icon-color: #7A6FAA !important;
+  --sidebar-text-color: #C8B89A !important;
+  --sidebar-icon-color: #A08C6A !important;
   --sidebar-selected-background-color: #1E2A5E !important;
   --sidebar-selected-icon-color: #4ADE80 !important;
   --sidebar-selected-text-color: #F5E6C8 !important;
@@ -79,7 +79,7 @@
   --state-icon-color: #5A4E40 !important;
   --state-icon-active-color: #4ADE80 !important;
   --state-active-color: #4ADE80 !important;
-  --paper-item-icon-color: #7A6FAA !important;
+  --paper-item-icon-color: #A08C6A !important;
   --paper-item-icon-active-color: #4ADE80 !important;
 
   /* ---- Switches & sliders — plumbob green active ---------------------- */
@@ -159,7 +159,7 @@
     --primary-color: #FFD700 !important;
     --accent-color: #6EE7A0 !important;
     --dark-primary-color: #CCAA00 !important;
-    --light-primary-color: #2A2848 !important;
+    --light-primary-color: #2E2820 !important;
 
     /* ---- Header — deeper blue gradient ------------------------------- */
     --app-header-background-color: linear-gradient(
@@ -167,23 +167,23 @@
       #1E2A5E 0%,
       #0E1628 100%
     ) !important;
-    --app-header-text-color: #D4C8F0 !important;
+    --app-header-text-color: #D4C4A0 !important;
     --app-header-selection-background-color: #6EE7A0 !important;
 
     /* ---- Sidebar — darkest navy panel -------------------------------- */
     --sidebar-background-color: #080618 !important;
-    --sidebar-text-color: #9A8EC0 !important;
-    --sidebar-icon-color: #5A4E78 !important;
+    --sidebar-text-color: #B8A880 !important;
+    --sidebar-icon-color: #8A7A5A !important;
     --sidebar-selected-background-color: #1E2A5E !important;
     --sidebar-selected-icon-color: #6EE7A0 !important;
-    --sidebar-selected-text-color: #D4C8F0 !important;
+    --sidebar-selected-text-color: #D4C4A0 !important;
 
     /* ---- Text — warm light on dark ------------------------------------ */
-    --primary-text-color: #D4C8F0 !important;
-    --secondary-text-color: #9A8EC0 !important;
-    --text-primary-color: #E8DCF5 !important;
-    --disabled-text-color: #3A3060 !important;
-    --divider-color: #2A2050 !important;
+    --primary-text-color: #D4C4A0 !important;
+    --secondary-text-color: #A89870 !important;
+    --text-primary-color: #D4C4A0 !important;
+    --disabled-text-color: #4A4030 !important;
+    --divider-color: #3A3020 !important;
     --item-divider-color: #1A2040 !important;
 
     /* ---- Status colors — brighter for dark mode ----------------------- */
@@ -193,10 +193,10 @@
     --info-color: #6090E0 !important;
 
     /* ---- Entity / state icons ----------------------------------------- */
-    --state-icon-color: #9A8EC0 !important;
+    --state-icon-color: #A89870 !important;
     --state-icon-active-color: #6EE7A0 !important;
     --state-active-color: #6EE7A0 !important;
-    --paper-item-icon-color: #5A4E78 !important;
+    --paper-item-icon-color: #8A7A5A !important;
     --paper-item-icon-active-color: #6EE7A0 !important;
 
     /* ---- Switches & sliders ------------------------------------------- */
@@ -206,10 +206,10 @@
     --toggle-button-color: #6EE7A0 !important;
     --slider-color: #FFD700 !important;
     --slider-secondary-color: #6EE7A0 !important;
-    --slider-track-color: #2A2050 !important;
+    --slider-track-color: #2E2820 !important;
     --slider-bar-color: #FFD700 !important;
-    --slider-thumb-color: #D4C8F0 !important;
-    --slider-knob-color: #D4C8F0 !important;
+    --slider-thumb-color: #D4C4A0 !important;
+    --slider-knob-color: #D4C4A0 !important;
     --slider-pin-color: #FFD700 !important;
 
     /* ---- Badges ------------------------------------------------------- */
@@ -218,11 +218,11 @@
 
     /* ---- Cards — dark navy panels ------------------------------------- */
     --ha-card-border-radius: 12px !important;
-    --ha-card-border-color: #2A2050 !important;
+    --ha-card-border-color: #2E2820 !important;
     --ha-card-box-shadow:
       0 2px 8px rgba(0, 0, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-    --borders-color: #2A2050 !important;
+    --borders-color: #2E2820 !important;
 
     /* ---- Chips / menus ------------------------------------------------ */
     --chip-background-color: #162040 !important;
@@ -233,13 +233,13 @@
     --mdc-theme-on-primary: #080618 !important;
     --mdc-theme-surface: #1A2040 !important;
     --mdc-theme-background: #0C1025 !important;
-    --mdc-theme-on-surface: #D4C8F0 !important;
+    --mdc-theme-on-surface: #D4C4A0 !important;
     --mdc-theme-error: #FC5C5C !important;
 
     /* ---- Sims 2 custom tokens (dark mode) ----------------------------- */
     --sims2-cream: #1A2040 !important;
     --sims2-cream-deep: #141C38 !important;
-    --sims2-navy: #2A2050 !important;
+    --sims2-navy: #2E2820 !important;
     --sims2-navy-dark: #0E0A20 !important;
     --sims2-gold: #FFD700 !important;
     --sims2-gold-dark: #CCAA00 !important;
