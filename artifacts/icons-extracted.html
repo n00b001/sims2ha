@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sims 2 Icon Gallery — Extracted from Reference Images</title>
+<link rel="stylesheet" href="sims2-plumbob.css">
+<style>
+:root {
+    --bg-deep: #0e1628;
+    --bg-panel: #1a2940;
+    --gold-trim: #d8c9a;
+    --sky-blue: #7ec8e6;
+    --panel-blue: #2f86c5;
+    --header-blue: #235e8c;
+    --cream-text: #fff6e0;
+    --text-dim: #8a9aaa;
+    --plumbob-green: #7bc942;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-deep);
+    color: #c8d8e8;
+    padding: 2rem;
+    perspective: 600px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--gold-trim);
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 0 1px var(--gold-trim);
+    letter-spacing: 0.02em;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+    font-size: 0.85rem;
+}
+
+/* ---- Section headers ---- */
+section { margin-bottom: 3rem; }
+
+.section-title {
+    font-size: 1.15rem;
+    color: var(--sky-blue);
+    border-bottom: 2px solid rgba(216,195,154,0.25);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* ---- Icon grid ---- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* HQ PNG icon card */
+.card img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: rgba(26,41,64,0.5);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+/* SVG icon button (action bar style) */
+.btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #3a6a8a 0%, #2a5070 45%, #1e3e5a 100%);
+    border: 2px solid var(--gold-trim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+/* Glossy reflection on button */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 100%);
+    border-radius: 4px 4px 50% 50%;
+    pointer-events: none;
+}
+
+.btn svg {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+}
+.btn-flat::after { display: none; }
+.btn-flat svg { width: 48px; height: 48px; }
+
+.label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-align: center;
+    max-width: 95px;
+    line-height: 1.2;
+}
+
+/* ---- Need meter row ---- */
+.need-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.5rem;
+}
+
+.need-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+
+.need-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ============================================================ */
+/* Need bar — capsule-shaped glossy pill, matches Sims 2 UI      */
+/* The bar IS the capsule. Fill is a gradient from color to gray.*/
+/* Glossy top highlight gives 3D bulbous appearance.             */
+/* ============================================================ */
+.need-bar {
+    flex: 1;
+    min-width: 100px;
+    height: 18px;
+    border-radius: 9px;
+    position: relative;
+    overflow: hidden;
+    border: 1.5px solid rgba(0,0,0,0.55);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35), inset 0 -1px 2px rgba(0,0,0,0.2);
+}
+
+/* Grey empty background behind the fill */
+.need-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, #6a7080 5%, #4a5060 50%, #3e4450 95%);
+    z-index: 0;
+}
+
+/* Glossy top highlight — the defining 3D pill look */
+.need-bar::after {
+    content: '';
+    position: absolute;
+    top: 1px; left: 2px; right: 2px;
+    height: 48%;
+    border-radius: 7px 7px 50% 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 80%, transparent 100%);
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Fill layer — color gradient from bright to darker, width = fill % */
+.need-bar-fill {
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 9px 0 0 9px;
+}
+
+/* Thin black divider line at the right edge of the fill */
+.need-bar-fill::before {
+    content: '';
+    position: absolute;
+    top: 1px; right: 0; bottom: 1px;
+    width: 2px;
+    background: rgba(0,0,0,0.6);
+    z-index: 2;
+}
+
+/* Bottom subtle shadow band on fill */
+.need-bar-fill::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 35%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ============================================================ */
+/* Need meter variations — size, color, shape                   */
+/* ============================================================ */
+.need-variations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.var-group {
+    background: rgba(14,22,40,0.6);
+    border-radius: 6px;
+    padding: 1rem;
+    border: 1px solid rgba(216,195,154,0.1);
+}
+
+.var-group h3 {
+    font-size: 0.8rem;
+    color: var(--gold-trim);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.var-row {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.4rem;
+}
+
+.var-label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    width: 50px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+/* Thick bar variant */
+.need-bar--thick {
+    height: 26px;
+    border-radius: 13px;
+}
+
+.need-bar--thick::after {
+    border-radius: 10px 10px 50% 50%;
+    height: 46%;
+}
+
+.need-bar--thick .need-bar-fill {
+    border-radius: 13px 0 0 13px;
+}
+
+/* Thin bar variant */
+.need-bar--thin {
+    height: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+.need-bar--thin::after {
+    border-radius: 4px 4px 50% 50%;
+    height: 45%;
+}
+
+.need-bar--thin .need-bar-fill {
+    border-radius: 5px 0 0 5px;
+}
+
+.need-bar--thin .need-bar-fill::before {
+    width: 1.5px;
+}
+
+/* Extra thin variant */
+.need-bar--xthin {
+    height: 6px;
+    border-radius: 3px;
+    border-width: 0.5px;
+}
+
+.need-bar--xthin::after {
+    border-radius: 2px 2px 50% 50%;
+    height: 44%;
+}
+
+.need-bar--xthin .need-bar-fill {
+    border-radius: 3px 0 0 3px;
+}
+
+.need-bar--xthin .need-bar-fill::before {
+    width: 1px;
+}
+
+/* No-divider variant (no black line at fill edge) */
+.need-bar--nodivider .need-bar-fill::before {
+    display: none;
+}
+
+/* Glow variants — varying intensity, same color */
+.need-bar--glow-none {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.need-bar--glow-subtle {
+    box-shadow: 0 0 3px rgba(90,190,50,0.2), 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.need-bar--glow-medium {
+    box-shadow: 0 0 6px rgba(90,190,50,0.4), 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.need-bar--glow-strong {
+    box-shadow: 0 0 10px rgba(90,190,50,0.6), 0 0 20px rgba(90,190,50,0.25), 0 1px 3px rgba(0,0,0,0.35);
+}
+
+/* Standalone bar (no row wrapper) for variation display */
+.standalone-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.65rem;
+}
+
+.standalone-bar:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- Plumbob display ---- */
+.plumbob-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 1.2rem;
+}
+
+.plumbob-wrap {
+    width: 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---- Shopping category grid ---- */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.75rem;
+}
+
+.shop-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #4a7a9a 0%, #356080 50%, #254868 100%);
+    border: 2px solid var(--gold-trim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.shop-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.03) 100%);
+    border-radius: 8px 8px 50% 50%;
+    pointer-events: none;
+}
+
+.shop-btn svg {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Footer ---- */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(216,195,154,0.2);
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    line-height: 1.8;
+}
+
+footer .figma-ref { color: var(--sky-blue); }
+
+/* ============================================================ */
+/* VARIABLE-BASED PLUMBOB — all geometry from --plumbob-size    */
+/* ============================================================ */
+:root {
+    --plumbob-duration: 8s;
+    --plumbob-angle: 22deg;
+    --plumbob-perspective: 600px;
+}
+
+/* Scene container */
+.plumbob-scene {
+    position: relative;
+    perspective: var(--plumbob-perspective);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--_total);
+    width: var(--plumbob-size);
+}
+
+/* Derived dimensions */
+.plumbob-scene {
+    --_h: calc(var(--plumbob-size) * 4 / 3);
+    --_pinch: calc(var(--plumbob-size) / 5);
+    --_total: calc(var(--_h) * 2 - var(--_pinch));
+}
+
+/* Glow halo */
+.plumbob-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250%;
+    height: 250%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, var(--plumbob-glow) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 3D plumbob */
+.plumbob-body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: plumbob-spin var(--plumbob-duration) linear infinite;
+}
+
+@keyframes plumbob-spin {
+    to { transform: rotateY(360deg); }
+}
+
+.plumbob-body .top,
+.plumbob-body .bottom {
+    position: absolute;
+    left: 0;
+    width: var(--plumbob-size);
+    height: var(--_h);
+    transform-style: preserve-3d;
+    transform: translateZ(0.5px);
+}
+
+.plumbob-body .top { top: 0; }
+.plumbob-body .bottom { bottom: 0; }
+
+/* Faces via CSS triangle trick */
+.plumbob-body .top div,
+.plumbob-body .bottom div {
+    box-sizing: content-box;
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: var(--_h);
+    border-left: calc(var(--plumbob-size) / 2) solid transparent;
+    border-right: calc(var(--plumbob-size) / 2) solid transparent;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.45));
+}
+
+.plumbob-body .top div {
+    border-bottom: var(--_h) solid var(--plumbob-face-top);
+    bottom: 0;
+}
+
+.plumbob-body .bottom div {
+    border-top: var(--_h) solid var(--plumbob-face-bottom);
+    top: 0;
+}
+
+/* Face orientation */
+.plumbob-body .front  { transform: rotateX(var(--plumbob-angle)); }
+.plumbob-body .back   { transform: rotateX(calc(var(--plumbob-angle) * -1)); }
+.plumbob-body .left   { transform: rotateY(-90deg) rotateX(var(--plumbob-angle)); }
+.plumbob-body .right  { transform: rotateY(90deg) rotateX(var(--plumbob-angle)); }
+
+/* Color variants */
+.pb-green {
+    --plumbob-face-top: rgba(0,150,50,0.3);
+    --plumbob-face-bottom: rgba(0,150,50,0.4);
+    --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+}
+
+.pb-yellow {
+    --plumbob-face-top: rgba(200,200,0,0.3);
+    --plumbob-face-bottom: rgba(200,200,0,0.4);
+    --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+}
+
+.pb-orange {
+    --plumbob-face-top: rgba(224,128,0,0.3);
+    --plumbob-face-bottom: rgba(224,128,0,0.4);
+    --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+}
+
+.pb-red {
+    --plumbob-face-top: rgba(224,32,32,0.3);
+    --plumbob-face-bottom: rgba(224,32,32,0.4);
+    --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+}
+
+.pb-blue {
+    --plumbob-face-top: rgba(128,192,224,0.3);
+    --plumbob-face-bottom: rgba(128,192,224,0.4);
+    --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+}
+
+/* Size variant */
+.pb-xs { --plumbob-size: 30px; }
+.pb-sm { --plumbob-size: 50px; }
+.pb-md { --plumbob-size: 78px; }
+.pb-lg { --plumbob-size: 100px; }
+.pb-xl { --plumbob-size: 150px; }
+
+/* Color row layout */
+.plumbob-color-row {
+    margin-bottom: 2rem;
+}
+
+.plumbob-color-row .color-header {
+    font-size: 0.95rem;
+    color: var(--gold-trim);
+    margin-bottom: 0.75rem;
+}
+
+.plumbob-color-row .sizes-flex {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(216,195,154,0.1);
+}
+
+.plumbob-color-row .size-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.plumbob-color-row .size-label {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Sims 2 Icon Gallery</h1>
+<p class="subtitle">All icons extracted from reference images &mdash; HQ PNGs + SVG recreations</p>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: PLUMBOB DIAMOND (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Plumbob Diamond</h2>
+<div class="plumbob-grid">
+
+<!-- Happy Green Plumbob -->
+<div class="card">
+    <div class="plumbob-wrap">
+        <svg viewBox="0 0 40 56" width="48" height="67">
+            <defs>
+                <!-- Diagonal stripe pattern for plumbob -->
+                <pattern id="ps-green" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <rect width="4" height="8" fill="#8ae050"/>
+                    <rect x="4" width="4" height="8" fill="#6ab838"/>
+                </pattern>
+                <linearGradient id="pg-top" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#a0f060" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+                <filter id="pglow">
+                    <feGaussianBlur stdDeviation="1.5" result="b"/>
+                    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+            <g filter="url(#pglow)">
+                <!-- Top triangle — symmetric, seam at center (y=28) -->
+                <polygon points="20,4 30,28 10,28" fill="url(#ps-green)" stroke="#5aa028" stroke-width="0.5"/>
+                <!-- Bottom triangle — mirror of top -->
+                <polygon points="20,52 30,28 10,28" fill="url(#ps-green)" stroke="#4a8820" stroke-width="0.5"/>
+                <!-- Highlight on top facet -->
+                <polygon points="20,4 30,28 10,28" fill="url(#pg-top)"/>
+                <!-- Center vertical crease -->
+                <line x1="20" y1="4" x2="20" y2="28" stroke="#b0f880" stroke-width="0.5" opacity="0.6"/>
+                <!-- Horizontal seam at equator -->
+                <line x1="10" y1="28" x2="30" y2="28" stroke="#5aa028" stroke-width="0.3" opacity="0.4"/>
+            </g>
+        </svg>
+    </div>
+    <span class="label">Happy</span>
+</div>
+
+<!-- Neutral Yellow Plumbob -->
+<div class="card">
+    <div class="plumbob-wrap">
+        <svg viewBox="0 0 40 56" width="48" height="67">
+            <defs>
+                <pattern id="ps-yellow" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <rect width="4" height="8" fill="#f0d050"/>
+                    <rect x="4" width="4" height="8" fill="#d0a830"/>
+                </pattern>
+            </defs>
+            <g>
+                <polygon points="20,4 30,28 10,28" fill="url(#ps-yellow)" stroke="#b08820" stroke-width="0.5"/>
+                <polygon points="20,52 30,28 10,28" fill="url(#ps-yellow)" stroke="#907018" stroke-width="0.5"/>
+                <line x1="20" y1="4" x2="20" y2="28" stroke="#f8e070" stroke-width="0.5" opacity="0.6"/>
+            </g>
+        </svg>
+    </div>
+    <span class="label">Neutral</span>
+</div>
+
+<!-- Unhappy Orange Plumbob -->
+<div class="card">
+    <div class="plumbob-wrap">
+        <svg viewBox="0 0 40 56" width="48" height="67">
+            <defs>
+                <pattern id="ps-orange" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <rect width="4" height="8" fill="#f0a050"/>
+                    <rect x="4" width="4" height="8" fill="#d07830"/>
+                </pattern>
+            </defs>
+            <g>
+                <polygon points="20,4 30,28 10,28" fill="url(#ps-orange)" stroke="#a05820" stroke-width="0.5"/>
+                <polygon points="20,52 30,28 10,28" fill="url(#ps-orange)" stroke="#804018" stroke-width="0.5"/>
+                <line x1="20" y1="4" x2="20" y2="28" stroke="#f0b870" stroke-width="0.5" opacity="0.6"/>
+            </g>
+        </svg>
+    </div>
+    <span class="label">Unhappy</span>
+</div>
+
+<!-- Critical Red Plumbob -->
+<div class="card">
+    <div class="plumbob-wrap">
+        <svg viewBox="0 0 40 56" width="48" height="67">
+            <defs>
+                <pattern id="ps-red" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <rect width="4" height="8" fill="#f07070"/>
+                    <rect x="4" width="4" height="8" fill="#d04040"/>
+                </pattern>
+            </defs>
+            <g>
+                <polygon points="20,4 30,28 10,28" fill="url(#ps-red)" stroke="#a02828" stroke-width="0.5"/>
+                <polygon points="20,52 30,28 10,28" fill="url(#ps-red)" stroke="#801818" stroke-width="0.5"/>
+                <line x1="20" y1="4" x2="20" y2="28" stroke="#f09090" stroke-width="0.5" opacity="0.6"/>
+            </g>
+        </svg>
+    </div>
+    <span class="label">Critical</span>
+</div>
+
+<!-- Ghost Blue Plumbob -->
+<div class="card">
+    <div class="plumbob-wrap">
+        <svg viewBox="0 0 40 56" width="48" height="67">
+            <defs>
+                <pattern id="ps-blue" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+                    <rect width="4" height="8" fill="#80c0e0"/>
+                    <rect x="4" width="4" height="8" fill="#5090b0"/>
+                </pattern>
+            </defs>
+            <g>
+                <polygon points="20,4 30,28 10,28" fill="url(#ps-blue)" stroke="#386880" stroke-width="0.5"/>
+                <polygon points="20,52 30,28 10,28" fill="url(#ps-blue)" stroke="#285060" stroke-width="0.5"/>
+                <line x1="20" y1="4" x2="20" y2="28" stroke="#a0d8f0" stroke-width="0.5" opacity="0.6"/>
+            </g>
+        </svg>
+    </div>
+    <span class="label">Ghost</span>
+</div>
+
+<!-- Animated spinning plumbob row -->
+<div class="card">
+    <div class="plumbob plumbob-xs plumbob-flat plumbob-green">
+        <div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+        <div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+    </div>
+    <span class="label">Spinning Green</span>
+</div>
+
+<div class="card">
+    <div class="plumbob plumbob-xs plumbob-flat plumbob-yellow">
+        <div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+        <div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+    </div>
+    <span class="label">Spinning Yellow</span>
+</div>
+
+<div class="card">
+    <div class="plumbob plumbob-xs plumbob-flat plumbob-orange">
+        <div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+        <div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+    </div>
+    <span class="label">Spinning Orange</span>
+</div>
+
+<div class="card">
+    <div class="plumbob plumbob-xs plumbob-flat plumbob-red">
+        <div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+        <div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+    </div>
+    <span class="label">Spinning Red</span>
+</div>
+
+<div class="card">
+    <div class="plumbob plumbob-xs plumbob-flat plumbob-blue">
+        <div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+        <div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div>
+    </div>
+    <span class="label">Spinning Blue</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1b: ANIMATED PLUMBOB SIZES — Variable-Based 3D Pyramids -->
+<!-- All geometry derived from --plumbob-size; color via CSS classes -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Animated Plumbob Sizes &mdash; Variable-Based (Copy-Paste Ready)</h2>
+
+<!-- GREEN — Happy -->
+<div class="plumbob-color-row">
+    <h3 class="color-header">Green &mdash; Happy</h3>
+    <div class="sizes-flex">
+        <div class="size-item pb-green pb-xs"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XS</span></div>
+        <div class="size-item pb-green pb-sm"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">SM</span></div>
+        <div class="size-item pb-green pb-md"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">MD</span></div>
+        <div class="size-item pb-green pb-lg"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">LG</span></div>
+        <div class="size-item pb-green pb-xl"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XL</span></div>
+    </div>
+</div>
+
+<!-- YELLOW — Neutral -->
+<div class="plumbob-color-row">
+    <h3 class="color-header">Yellow &mdash; Neutral</h3>
+    <div class="sizes-flex">
+        <div class="size-item pb-yellow pb-xs"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XS</span></div>
+        <div class="size-item pb-yellow pb-sm"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">SM</span></div>
+        <div class="size-item pb-yellow pb-md"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">MD</span></div>
+        <div class="size-item pb-yellow pb-lg"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">LG</span></div>
+        <div class="size-item pb-yellow pb-xl"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XL</span></div>
+    </div>
+</div>
+
+<!-- ORANGE — Unhappy -->
+<div class="plumbob-color-row">
+    <h3 class="color-header">Orange &mdash; Unhappy</h3>
+    <div class="sizes-flex">
+        <div class="size-item pb-orange pb-xs"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XS</span></div>
+        <div class="size-item pb-orange pb-sm"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">SM</span></div>
+        <div class="size-item pb-orange pb-md"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">MD</span></div>
+        <div class="size-item pb-orange pb-lg"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">LG</span></div>
+        <div class="size-item pb-orange pb-xl"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XL</span></div>
+    </div>
+</div>
+
+<!-- RED — Critical -->
+<div class="plumbob-color-row">
+    <h3 class="color-header">Red &mdash; Critical</h3>
+    <div class="sizes-flex">
+        <div class="size-item pb-red pb-xs"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XS</span></div>
+        <div class="size-item pb-red pb-sm"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">SM</span></div>
+        <div class="size-item pb-red pb-md"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">MD</span></div>
+        <div class="size-item pb-red pb-lg"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">LG</span></div>
+        <div class="size-item pb-red pb-xl"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XL</span></div>
+    </div>
+</div>
+
+<!-- BLUE — Ghost -->
+<div class="plumbob-color-row">
+    <h3 class="color-header">Blue &mdash; Ghost</h3>
+    <div class="sizes-flex">
+        <div class="size-item pb-blue pb-xs"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XS</span></div>
+        <div class="size-item pb-blue pb-sm"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">SM</span></div>
+        <div class="size-item pb-blue pb-md"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">MD</span></div>
+        <div class="size-item pb-blue pb-lg"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">LG</span></div>
+        <div class="size-item pb-blue pb-xl"><div class="plumbob-scene"><div class="plumbob-glow"></div><div class="plumbob-body"><div class="top"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div><div class="bottom"><div class="front"></div><div class="left"></div><div class="right"></div><div class="back"></div></div></div></div><span class="size-label">XL</span></div>
+    </div>
+</div>
+
+</section>
+
+<!-- SECTION 2: NEED METERS (Capsule glossy bars matching Sims 2 UI) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Need Meters &mdash; Glossy Capsule Bars (Reference-Accurate)</h2>
+<div class="need-grid">
+
+<!-- Hunger — green ~85% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><circle cx="10" cy="11" r="6" fill="none" stroke="#c8dce8" stroke-width="1.2"/><path d="M10,5 C10,5 11.5,3.5 12.5,4 C13.5,4.5 12,6 12,6" fill="none" stroke="#c8dce8" stroke-width="0.9"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:85%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <span class="label">Hunger</span>
+</div>
+
+<!-- Energy — yellow-green ~60% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><polygon points="11,3 5,11 9,11 8,17 15,9 11,9" fill="#c8dce8"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:60%;background:linear-gradient(180deg,#c8d848 8%,#a0b820 92%)"></div></div>
+    <span class="label">Energy</span>
+</div>
+
+<!-- Comfort — green ~90% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><path d="M5,10 L5,7 C5,6 6,5 7,5 L13,5 C14,5 15,6 15,7 L15,10" fill="none" stroke="#c8dce8" stroke-width="1.1"/><rect x="5" y="10" width="10" height="4" rx="1" fill="none" stroke="#c8dce8" stroke-width="1.1"/><line x1="7" y1="14" x2="7" y2="16" stroke="#c8dce8" stroke-width="1"/><line x1="13" y1="14" x2="13" y2="16" stroke="#c8dce8" stroke-width="1"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:90%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <span class="label">Comfort</span>
+</div>
+
+<!-- Fun — yellow ~45% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><circle cx="7" cy="14" r="2.5" fill="none" stroke="#c8dce8" stroke-width="1.1"/><circle cx="13" cy="12" r="2.5" fill="none" stroke="#c8dce8" stroke-width="1.1"/><rect x="8.5" y="5" width="1.5" height="9" fill="#c8dce8"/><rect x="13" y="4" width="1.5" height="6" fill="#c8dce8"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:45%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
+    <span class="label">Fun</span>
+</div>
+
+<!-- Social — green ~70% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><circle cx="7.5" cy="7" r="2.5" fill="none" stroke="#c8dce8" stroke-width="1"/><path d="M3,17 C3,14 5.5,12 7.5,12 C9.5,12 12,14 12,17" fill="none" stroke="#c8dce8" stroke-width="1"/><circle cx="13" cy="8" r="2" fill="none" stroke="#c8dce8" stroke-width="0.9"/><path d="M10.5,17 C10.5,15 12,13 14,13" fill="none" stroke="#c8dce8" stroke-width="0.9"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:70%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <span class="label">Social</span>
+</div>
+
+<!-- Hygiene — orange ~30% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><rect x="7" y="3" width="2" height="14" rx="1" fill="#c8dce8"/><line x1="9" y1="6" x2="13" y2="8" stroke="#c8dce8" stroke-width="1.1" stroke-linecap="round"/><line x1="9" y1="10" x2="14" y2="12" stroke="#c8dce8" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:30%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
+    <span class="label">Hygiene</span>
+</div>
+
+<!-- Bladder — red ~20% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><circle cx="10" cy="11" r="6" fill="none" stroke="#c8dce8" stroke-width="1.2"/><line x1="10" y1="7" x2="10" y2="11" stroke="#c8dce8" stroke-width="1.1" stroke-linecap="round"/><line x1="10" y1="11" x2="13" y2="14" stroke="#c8dce8" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:20%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
+    <span class="label">Bladder</span>
+</div>
+
+<!-- Romance — pink ~55% -->
+<div class="need-row">
+    <svg class="need-icon" viewBox="0 0 20 20"><path d="M10,17 C5,13 2,10 2,7 C2,4.5 4,3 6,3 C7.5,3 9,4 10,5.5 C11,4 12.5,3 14,3 C16,3 18,4.5 18,7 C18,10 15,13 10,17Z" fill="#c8dce8"/></svg>
+    <div class="need-bar"><div class="need-bar-fill" style="width:55%;background:linear-gradient(180deg,#e88098 8%,#c85870 92%)"></div></div>
+    <span class="label">Romance</span>
+</div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- NEED METER VARIATIONS — height, glow, no-divider              -->
+<!-- ============================================================ -->
+<div class="need-variations">
+
+<!-- Height Variants -->
+<div class="var-group">
+    <h3>Height</h3>
+    <div class="standalone-bar"><span class="var-label">Thick</span>
+        <div class="need-bar need-bar--thick" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Standard</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Thin</span>
+        <div class="need-bar need-bar--thin" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">XThin</span>
+        <div class="need-bar need-bar--xthin" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+<!-- Fill Levels — all green, only width changes -->
+<div class="var-group">
+    <h3>Fill Level</h3>
+    <div class="standalone-bar"><span class="var-label">100%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:100%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">75%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">50%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:50%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">25%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:25%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+<!-- Glow Effect — same color, same fill, only glow intensity changes -->
+<div class="var-group">
+    <h3>Glow Intensity</h3>
+    <div class="standalone-bar"><span class="var-label">None</span>
+        <div class="need-bar need-bar--glow-none" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Subtle</span>
+        <div class="need-bar need-bar--glow-subtle" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Medium</span>
+        <div class="need-bar need-bar--glow-medium" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Strong</span>
+        <div class="need-bar need-bar--glow-strong" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+<!-- Color — all same fill level, only color changes -->
+<div class="var-group">
+    <h3>Color</h3>
+    <div class="standalone-bar"><span class="var-label">Green</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Yellow-G</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#b8d848 8%,#90b820 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Yellow</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Orange</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Red</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
+    </div>
+</div>
+
+<!-- No Edge Divider — same fill, only divider present/absent -->
+<div class="var-group">
+    <h3>No Edge Divider</h3>
+    <div class="standalone-bar"><span class="var-label">With</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Without</span>
+        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: ACTION BAR BUTTONS (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Bottom Action Bar Buttons</h2>
+<div class="grid">
+
+<!-- Sim Portrait -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><path d="M5,21 C5,16 8,14 12,14 C16,14 19,16 19,21" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
+    </div>
+    <span class="label">Sim Portrait</span>
+</div>
+
+<!-- Phone -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><path d="M8,15 C8,15 9.5,15.5 11,15 C13,14.5 16,13.5 18,11.5 C20,9.5 20.5,7 20.5,6 L18.5,5.5 C18.5,5.5 18.5,4.5 17.5,4 L13.5,1.5 C12.5,1 11.5,1.5 11.5,1.5 L9.5,3 C9.5,3 9,3.5 9.5,4.5 L11,7.5 C11,7.5 10.5,8.5 9.5,9 C8.5,9.5 7,10 7,10 Z" fill="none" stroke="#e0e8f0" stroke-width="1.1"/></svg>
+    </div>
+    <span class="label">Phone</span>
+</div>
+
+<!-- Catalog -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><rect x="5" y="6" width="14" height="13" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="5" y1="10" x2="19" y2="10" stroke="#e0e8f0" stroke-width="1"/><path d="M7,6 L7,4 C7,3 8,3 8,3 L16,3 C16,3 17,3 17,4 L17,6" fill="none" stroke="#e0e8f0" stroke-width="1"/></svg>
+    </div>
+    <span class="label">Catalog</span>
+</div>
+
+<!-- Computer -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="10" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><rect x="8" y="6" width="8" height="5" rx="0.5" fill="#e0e8f0" opacity="0.25"/><line x1="9" y1="17" x2="15" y2="17" stroke="#e0e8f0" stroke-width="1.3"/><line x1="7" y1="19" x2="17" y2="19" stroke="#e0e8f0" stroke-width="1.3"/></svg>
+    </div>
+    <span class="label">Computer</span>
+</div>
+
+<!-- Career -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><path d="M8,10 L8,7 C8,6 9,5.5 10,5.5 L14,5.5 C15,5.5 16,6 16,7 L16,10" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><line x1="7" y1="10" x2="17" y2="10" stroke="#e0e8f0" stroke-width="1.3"/><line x1="9" y1="10" x2="9" y2="18" stroke="#e0e8f0" stroke-width="1.1"/><line x1="15" y1="10" x2="15" y2="18" stroke="#e0e8f0" stroke-width="1.1"/></svg>
+    </div>
+    <span class="label">Career</span>
+</div>
+
+<!-- Rewards -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="12,3 14.5,9 21,9.5 16,14 17.5,21 12,17.5 6.5,21 8,14 3,9.5 9.5,9" fill="none" stroke="#e0d060" stroke-width="1.2"/></svg>
+    </div>
+    <span class="label">Rewards</span>
+</div>
+
+<!-- Settings -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><path d="M12,1 L13,4 L16,2 L14,5.5 L18,7 L15,8.5 L17,11 L14,10 L14,13 L12,10 L10,13 L10,10 L7,11 L9,8.5 L6,7 L10,5.5 L8,2 L11,4 Z" fill="none" stroke="#e0e8f0" stroke-width="0.9"/></svg>
+    </div>
+    <span class="label">Settings</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: SHOPPING CATEGORIES (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Shopping Categories</h2>
+<div class="shop-grid">
+
+<!-- Furniture (chair) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 L15,5 Z" fill="none" stroke="#e0e8f0" stroke-width="1.2"/></svg>
+    </div>
+    <span class="label">Furniture</span>
+</div>
+
+<!-- Electronics (TV) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="9" y1="20" x2="15" y2="20" stroke="#e0e8f0" stroke-width="1.3"/><line x1="7" y1="21" x2="17" y2="21" stroke="#e0e8f0" stroke-width="1.3"/></svg>
+    </div>
+    <span class="label">Electronics</span>
+</div>
+
+<!-- Plumbing (toilet) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><path d="M7,10 C7,7 9,5 12,5 C15,5 17,7 17,10 L17,18 C17,20 15,21 12,21 C9,21 7,20 7,18 Z" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><ellipse cx="12" cy="8" rx="4" ry="2.5" fill="none" stroke="#e0e8f0" stroke-width="1"/></svg>
+    </div>
+    <span class="label">Plumbing</span>
+</div>
+
+<!-- Lighting (lamp) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 L15,5" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><circle cx="12" cy="15" r="2.5" fill="#f0c040"/></svg>
+    </div>
+    <span class="label">Lighting</span>
+</div>
+
+<!-- Appliances (fridge) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="6" y1="10" x2="18" y2="10" stroke="#e0e8f0" stroke-width="1"/><circle cx="15" cy="7" r="0.8" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Appliances</span>
+</div>
+
+<!-- Decorative (plant/painting) -->
+<div class="card">
+    <div class="shop-btn">
+        <svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="1" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><circle cx="12" cy="13" r="2.5" fill="#e0e8f0" opacity="0.3"/><path d="M12,5 L12,8" stroke="#e0e8f0" stroke-width="1.2"/></svg>
+    </div>
+    <span class="label">Decorative</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: PLAY / PAUSE / STOP CONTROLS (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Play Controls</h2>
+<div class="grid">
+
+<!-- Play (green triangle) -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="7,5 19,12 7,19" fill="#50c828" stroke="#3da020" stroke-width="0.5"/></svg>
+    </div>
+    <span class="label">Play</span>
+</div>
+
+<!-- Pause (blue bars) -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="0.5" fill="#e0e8f0"/><rect x="14" y="4" width="4" height="16" rx="0.5" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Pause</span>
+</div>
+
+<!-- Stop (red square) -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2" fill="#d94040" stroke="#b02828" stroke-width="0.5"/></svg>
+    </div>
+    <span class="label">Stop</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: WEATHER INDICATORS (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Weather Indicators</h2>
+<div class="grid">
+
+<!-- Sun -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f0c040"/><line x1="12" y1="3" x2="12" y2="5.5" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="18.5" x2="12" y2="21" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="3" y1="12" x2="5.5" y2="12" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="18.5" y1="12" x2="21" y2="12" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="5.6" y1="5.6" x2="7.4" y2="7.4" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="16.6" y1="16.6" x2="18.4" y2="18.4" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="5.6" y1="18.4" x2="7.4" y2="16.6" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="16.6" y1="7.4" x2="18.4" y2="5.6" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </div>
+    <span class="label">Sunny</span>
+</div>
+
+<!-- Cloud -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24"><path d="M6,15 C3.5,15 2.5,17 2.5,19 C2.5,21 5.5,21.5 7,20.5 C8.5,21.5 12,20.5 13,19.5 C15,20.5 18,19.5 18.5,17.5 C19.5,18.5 22,17.5 22,15.5 C22,13.5 20,12.5 18,13.5 C17,10.5 14,10.5 12,11.5 C10,10.5 7,11.5 6,15Z" fill="#a0b8c8"/></svg>
+    </div>
+    <span class="label">Cloudy</span>
+</div>
+
+<!-- Rain -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24"><path d="M6,13 C3.5,13 2.5,15 2.5,17 C2.5,19 5.5,19.5 7,18.5" fill="none" stroke="#a0b8c8" stroke-width="1.5"/><line x1="8" y1="19" x2="7" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="19" x2="11" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="19" x2="15" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+    <span class="label">Rain</span>
+</div>
+
+<!-- Moon -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24"><path d="M14,4 C10,5.5 7.5,9.5 7.5,13.5 C7.5,18.5 11,21.5 16,21.5 C13,20 11,17 11,13.5 C11,9.5 13,5.5 14,4Z" fill="#c0d8e8"/></svg>
+    </div>
+    <span class="label">Night</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: CAMERA CONTROLS (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Camera Controls</h2>
+<div class="grid">
+
+<!-- Zoom In -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="#e0e8f0" stroke-width="1.8"/><line x1="7" y1="10" x2="13" y2="10" stroke="#e0e8f0" stroke-width="1.5"/><line x1="10" y1="7" x2="10" y2="13" stroke="#e0e8f0" stroke-width="1.5"/></svg>
+    </div>
+    <span class="label">Zoom In</span>
+</div>
+
+<!-- Zoom Out -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="#e0e8f0" stroke-width="1.8"/><line x1="7" y1="10" x2="13" y2="10" stroke="#e0e8f0" stroke-width="1.5"/></svg>
+    </div>
+    <span class="label">Zoom Out</span>
+</div>
+
+<!-- Rotate Left -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><path d="M4,12 C4,7.6 7.6,4 12,4 C15.8,4 19,6.8 19.5,10" fill="none" stroke="#e0e8f0" stroke-width="1.5"/><polyline points="17,7 19.5,10 22.5,8" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
+    </div>
+    <span class="label">Rotate Left</span>
+</div>
+
+<!-- Rotate Right -->
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><path d="M20,12 C20,7.6 16.4,4 12,4 C8.2,4 5,6.8 4.5,10" fill="none" stroke="#e0e8f0" stroke-width="1.5"/><polyline points="7,7 4.5,10 1.5,8" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
+    </div>
+    <span class="label">Rotate Right</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: NAVIGATION ARROWS (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Navigation Arrows</h2>
+<div class="grid">
+
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,15 12,8 18,15" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Up</span>
+</div>
+
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="6,9 12,16 18,9" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Down</span>
+</div>
+
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="15,6 8,12 15,18" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Left</span>
+</div>
+
+<div class="card">
+    <div class="btn">
+        <svg viewBox="0 0 24 24"><polygon points="9,6 16,12 9,18" fill="#e0e8f0"/></svg>
+    </div>
+    <span class="label">Right</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: THERMOMETER (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Thermometer</h2>
+<div class="grid">
+
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 16 56" width="32" height="72">
+            <defs>
+                <linearGradient id="therm-fill" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#d94040"/>
+                    <stop offset="50%" stop-color="#f0a030"/>
+                    <stop offset="100%" stop-color="#50c828"/>
+                </linearGradient>
+            </defs>
+            <rect x="5" y="2" width="6" height="42" rx="3" fill="#e0e8f0" stroke="#a0b0c0" stroke-width="0.5"/>
+            <rect x="6.5" y="12" width="3" height="30" rx="1.5" fill="url(#therm-fill)"/>
+            <circle cx="8" cy="48" r="6" fill="#e04040" stroke="#c03030" stroke-width="0.5"/>
+            <line x1="12" y1="10" x2="14" y2="10" stroke="#a0b0c0" stroke-width="0.5"/>
+            <line x1="12" y1="20" x2="14" y2="20" stroke="#a0b0c0" stroke-width="0.5"/>
+            <line x1="12" y1="30" x2="14" y2="30" stroke="#a0b0c0" stroke-width="0.5"/>
+        </svg>
+    </div>
+    <span class="label">Thermometer</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: WALL TOGGLE (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Wall Toggle</h2>
+<div class="grid">
+
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 36 36" width="48" height="48">
+            <rect x="6" y="4" width="24" height="28" rx="4" fill="#2a4a5a" stroke="#1a3a4a" stroke-width="1.5"/>
+            <circle cx="18" cy="14" r="5" fill="#50c828" stroke="#3da020" stroke-width="1"/>
+            <circle cx="18" cy="24" r="3" fill="#3a5a6a"/>
+        </svg>
+    </div>
+    <span class="label">Toggle On</span>
+</div>
+
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 36 36" width="48" height="48">
+            <rect x="6" y="4" width="24" height="28" rx="4" fill="#2a4a5a" stroke="#1a3a4a" stroke-width="1.5"/>
+            <circle cx="18" cy="14" r="5" fill="#3a5a6a"/>
+            <circle cx="18" cy="24" r="3" fill="#50c828" stroke="#3da020" stroke-width="0.5"/>
+        </svg>
+    </div>
+    <span class="label">Toggle Off</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 11: SIMOLEON COUNTER (SVG recreation) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Simoleon Counter</h2>
+<div class="grid">
+
+<!-- Simoleon coin -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24" width="48" height="48">
+            <defs>
+                <linearGradient id="sc1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#70d870"/>
+                    <stop offset="50%" stop-color="#48a848"/>
+                    <stop offset="100%" stop-color="#287828"/>
+                </linearGradient>
+            </defs>
+            <circle cx="12" cy="12" r="11" fill="url(#sc1)" stroke="#1a5a1a" stroke-width="0.8"/>
+            <circle cx="12" cy="12" r="9" fill="none" stroke="#90e890" stroke-width="0.5" opacity="0.5"/>
+            <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a4a1a" font-family="serif">&#167;</text>
+        </svg>
+    </div>
+    <span class="label">Simoleon</span>
+</div>
+
+<!-- Counter bar -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 120 36" width="96" height="28">
+            <defs>
+                <linearGradient id="sbg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6fa5b7"/>
+                    <stop offset="100%" stop-color="#3a7090"/>
+                </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="116" height="32" rx="16" fill="url(#sbg)" stroke="#2a5a7a" stroke-width="1"/>
+            <rect x="2" y="2" width="116" height="14" rx="7" fill="rgba(255,255,255,0.15)"/>
+            <text x="60" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#0a2a4a" font-family="serif">&#167;15,540</text>
+        </svg>
+    </div>
+    <span class="label">Counter Bar</span>
+</div>
+
+<!-- Plus/minus buttons -->
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <rect x="4" y="9" width="16" height="6" rx="3" fill="#6fa5b7" stroke="#4a8090" stroke-width="1"/>
+            <line x1="9" y1="12" x2="15" y2="12" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
+    <span class="label">Minus</span>
+</div>
+
+<div class="card">
+    <div class="btn btn-flat">
+        <svg viewBox="0 0 24 24" width="36" height="36">
+            <rect x="4" y="9" width="16" height="6" rx="3" fill="#6fa5b7" stroke="#4a8090" stroke-width="1"/>
+            <line x1="12" y1="9" x2="12" y2="15" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="9" y1="12" x2="15" y2="12" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
+    <span class="label">Plus</span>
+</div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 12: HQ PNG ICONS — Aspirations -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Aspirations</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Fortune.png" alt="Aspiration Fortune"/><span class="label">Fortune</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Fortune Fail.png" alt="Aspiration Fortune Fail"/><span class="label">Fortune Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Knowledge.png" alt="Aspiration Knowledge"/><span class="label">Knowledge</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Knowledge Fail.png" alt="Aspiration Knowledge Fail"/><span class="label">Knowledge Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Popularity.png" alt="Aspiration Popularity"/><span class="label">Popularity</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Popularity Fail.png" alt="Aspiration Popularity Fail"/><span class="label">Popularity Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Romance.png" alt="Aspiration Romance"/><span class="label">Romance</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Romance Fail.png" alt="Aspiration Romance Fail"/><span class="label">Romance Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Family.png" alt="Aspiration Family"/><span class="label">Family</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Family Fail.png" alt="Aspiration Family Fail"/><span class="label">Family Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Pleasure.png" alt="Aspiration Pleasure"/><span class="label">Pleasure</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Pleasure Fail.png" alt="Aspiration Pleasure Fail"/><span class="label">Pleasure Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Grow-Up.png" alt="Aspiration Grow-Up"/><span class="label">Grow Up</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Grow-Up Fail.png" alt="Aspiration Grow-Up Fail"/><span class="label">Grow Up Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Grilled Cheese.png" alt="Aspiration Grilled Cheese"/><span class="label">Grilled Cheese</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aspiration Grilled Cheese Fail.png" alt="Aspiration Grilled Cheese Fail"/><span class="label">Grilled Cheese Fail</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 13: HQ PNG ICONS — Relationships (Positive) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Relationships Positive</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Love.png" alt="Love"/><span class="label">Love</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Crush.png" alt="Crush"/><span class="label">Crush</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Steady.png" alt="Steady"/><span class="label">Steady</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Marriage.png" alt="Marriage"/><span class="label">Marriage</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Engaged.png" alt="Engaged"/><span class="label">Engaged</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Friend.png" alt="Friend"/><span class="label">Friend</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Best Friend.png" alt="Best Friend"/><span class="label">Best Friend</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/BFF.png" alt="BFF"/><span class="label">BFF</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Met.png" alt="Met"/><span class="label">Met</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Date.png" alt="Date"/><span class="label">Date</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Dream Date.png" alt="Dream Date"/><span class="label">Dream Date</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Kiss.png" alt="Kiss"/><span class="label">Kiss</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Makeout.png" alt="Makeout"/><span class="label">Makeout</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Love Affair.png" alt="Love Affair"/><span class="label">Love Affair</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/WooHoo.png" alt="WooHoo"/><span class="label">WooHoo</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Service.png" alt="Service"/><span class="label">Service</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relationship Positive.png" alt="Relationship Positive"/><span class="label">Rel. Positive</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Move In.png" alt="Move In"/><span class="label">Move In</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Overachiever.png" alt="Overachiever"/><span class="label">Overachiever</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 14: HQ PNG ICONS — Relationships (Negative / Lost) -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Relationships Negative</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Love Lost.png" alt="Love Lost"/><span class="label">Love Lost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Steady Breakup.png" alt="Steady Breakup"/><span class="label">Breakup</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Steady Reject.png" alt="Steady Reject"/><span class="label">Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Marriage Divorce.png" alt="Marriage Divorce"/><span class="label">Divorce</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Marriage Left Altar.png" alt="Marriage Left Altar"/><span class="label">Left at Altar</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Marriage Rich.png" alt="Marriage Rich"/><span class="label">Marry for Money</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Engaged Reject.png" alt="Engaged Reject"/><span class="label">Proposal Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Enemy.png" alt="Enemy"/><span class="label">Enemy</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Enemy Lost.png" alt="Enemy Lost"/><span class="label">Enemy Lost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Best Friend Lost.png" alt="Best Friend Lost"/><span class="label">BFF Lost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Friend Lost.png" alt="Friend Lost"/><span class="label">Friend Lost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relationship Negative.png" alt="Relationship Negative"/><span class="label">Rel. Negative</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Kiss Reject.png" alt="Kiss Reject"/><span class="label">Kiss Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Makeout Reject.png" alt="Makeout Reject"/><span class="label">Makeout Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/WooHoo Reject.png" alt="WooHoo Reject"/><span class="label">WooHoo Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/WooHoo Public.png" alt="WooHoo Public"/><span class="label">Public WooHoo</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/WooHoo Public Reject.png" alt="WooHoo Public Reject"/><span class="label">Public Reject</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/WooHoo Service.png" alt="WooHoo Service"/><span class="label">Service WooHoo</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Fight.png" alt="Fight"/><span class="label">Fight</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Fight Lost.png" alt="Fight Lost"/><span class="label">Fight Lost</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 15: HQ PNG ICONS — Life Events -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Life Events</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Baby.png" alt="Baby"/><span class="label">Baby</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Baby Grandchild.png" alt="Baby Grandchild"/><span class="label">Grandchild</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Baby Pregnant.png" alt="Baby Pregnant"/><span class="label">Pregnant</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Baby Neglect.png" alt="Baby Neglect"/><span class="label">Neglect</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Ghost.png" alt="Ghost"/><span class="label">Ghost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Aliens.png" alt="Aliens"/><span class="label">Aliens</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative.png" alt="Relative"/><span class="label">Relative</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative New.png" alt="Relative New"/><span class="label">New Relative</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative Marry.png" alt="Relative Marry"/><span class="label">Rel. Marry</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative Divorce.png" alt="Relative Divorce"/><span class="label">Rel. Divorce</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative Engaged.png" alt="Relative Engaged"/><span class="label">Rel. Engaged</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative Left Altar.png" alt="Relative Left Altar"/><span class="label">Rel. Left Altar</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Relative Aliens.png" alt="Relative Aliens"/><span class="label">Rel. Aliens</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 16: HQ PNG ICONS — Job / Skill -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Job and Skills</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Job.png" alt="Job"/><span class="label">Job</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Job Promote.png" alt="Job Promote"/><span class="label">Promotion</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Job Demote.png" alt="Job Demote"/><span class="label">Demotion</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Job Fired.png" alt="Job Fired"/><span class="label">Fired</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Job Quit.png" alt="Job Quit"/><span class="label">Quit Job</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Skill.png" alt="Skill"/><span class="label">Skill</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Skill Gain.png" alt="Skill Gain"/><span class="label">Skill Gain</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Skill Lost.png" alt="Skill Lost"/><span class="label">Skill Lost</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Skill Max.png" alt="Skill Max"/><span class="label">Skill Max</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Skill Max All.png" alt="Skill Max All"/><span class="label">All Skills Max</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 17: HQ PNG ICONS — Money / Party / Fire -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Money, Party, Fire</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Money.png" alt="Money"/><span class="label">Money</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Money Repo.png" alt="Money Repo"/><span class="label">Repo</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Party.png" alt="Party"/><span class="label">Party</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Party Great.png" alt="Party Great"/><span class="label">Great Party</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Party Failure.png" alt="Party Failure"/><span class="label">Party Fail</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Fire.png" alt="Fire"/><span class="label">Fire</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Fire Burned Food.png" alt="Fire Burned Food"/><span class="label">Burned Food</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 18: HQ PNG ICONS — Speech Bubbles -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">HQ Icons &mdash; Speech Bubbles</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Bubble Speech.png" alt="Bubble Speech"/><span class="label">Speech</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Bubble Yell.png" alt="Bubble Yell"/><span class="label">Yell</span></div>
+<div class="card"><img src="../reference-images/sims-2-hq-icon-pack/Bubble Thought.png" alt="Bubble Thought"/><span class="label">Thought</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 19: nunisimmer IconSet — Buy Mode Icons -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Buy Mode Icons</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy.png" alt="Buy Mode"/><span class="label">Buy Mode</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_2.png" alt="Buy Mode (alt)"/><span class="label">Buy Mode (alt)</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc.png" alt="Etcetera"/><span class="label">Etcetera</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_comfort.png" alt="Comfort"/><span class="label">Comfort</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc_cars.png" alt="Cars"/><span class="label">Cars</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc_pets.png" alt="Pets"/><span class="label">Pets</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies.png" alt="Hobbies"/><span class="label">Hobbies</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc_party.png" alt="Party"/><span class="label">Party</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing"/><span class="label">Plumbing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_surfaces.png" alt="Surfaces"/><span class="label">Surfaces</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Lighting"/><span class="label">Lighting</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Appliances"/><span class="label">Appliances</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_comfort_bed.png" alt="Bed"/><span class="label">Bed</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration.png" alt="Decoration"/><span class="label">Decoration</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc_storage.png" alt="Storage"/><span class="label">Storage</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="Electronics"/><span class="label">Electronics</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_etc_children.png" alt="Children"/><span class="label">Children</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_rugs.png" alt="Rugs"/><span class="label">Rugs</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_fitness.png" alt="Fitness"/><span class="label">Fitness</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_creation.png" alt="Creation"/><span class="label">Creation</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_surfaces_shelves.png" alt="Shelves"/><span class="label">Shelves</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_plants.png" alt="Plants"/><span class="label">Plants</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_knowledge.png" alt="Knowledge"/><span class="label">Knowledge</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_mirrors.png" alt="Mirrors"/><span class="label">Mirrors</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_recreation.png" alt="Recreation"/><span class="label">Recreation</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_curtains.png" alt="Curtains"/><span class="label">Curtains</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_paintings.png" alt="Paintings"/><span class="label">Paintings</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_sculptures.png" alt="Sculptures"/><span class="label">Sculptures</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_electronics_telephones.png" alt="Telephones"/><span class="label">Telephones</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/buy_electronics_entertainment.png" alt="Entertainment"/><span class="label">Entertainment</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 20: nunisimmer IconSet — Build Mode Icons -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Build Mode Icons</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build.png" alt="Build Mode"/><span class="label">Build Mode</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_pool.png" alt="Pool"/><span class="label">Pool</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_roof.png" alt="Roof"/><span class="label">Roof</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_gates.png" alt="Gates"/><span class="label">Gates</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_arches.png" alt="Arches"/><span class="label">Arches</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_garden.png" alt="Garden"/><span class="label">Garden</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_columns.png" alt="Columns"/><span class="label">Columns</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_stairs2.png" alt="Stairs"/><span class="label">Stairs</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace"/><span class="label">Fireplace</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_garden_trees.png" alt="Trees"/><span class="label">Trees</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_garden_bushes.png" alt="Bushes"/><span class="label">Bushes</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_terrainpaint.png" alt="Terrain Paint"/><span class="label">Terrain Paint</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_walls&floors.png" alt="Walls &amp; Floors"/><span class="label">Walls &amp; Floors</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_garden_flowers.png" alt="Flowers"/><span class="label">Flowers</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_windows&doors.png" alt="Windows &amp; Doors"/><span class="label">Windows &amp; Doors</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_walls&floors_walls.png" alt="Walls"/><span class="label">Walls</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_walls&floors_floors.png" alt="Floors"/><span class="label">Floors</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/build_windows&doors_windows.png" alt="Windows"/><span class="label">Windows</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 21: nunisimmer IconSet — Create-a-Sim Icons -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Create-a-Sim Icons</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas.png" alt="Create-a-Sim"/><span class="label">Create-a-Sim</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_hair.png" alt="Hair"/><span class="label">Hair</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_pets.png" alt="Pets"/><span class="label">Pets</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup.png" alt="Makeup"/><span class="label">Makeup</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_eyebrows.png" alt="Eyebrows"/><span class="label">Eyebrows</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_facialhair.png" alt="Facial Hair"/><span class="label">Facial Hair</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_accessories.png" alt="Accessories"/><span class="label">Accessories</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup_blush.png" alt="Blush"/><span class="label">Blush</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup_costume.png" alt="Costume Makeup"/><span class="label">Costume Makeup</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_formal.png" alt="Formal Clothing"/><span class="label">Formal Clothing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_undies.png" alt="Underwear"/><span class="label">Underwear</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup_eyeliner.png" alt="Eyeliner"/><span class="label">Eyeliner</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup_lipstick.png" alt="Lipstick"/><span class="label">Lipstick</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_makeup_eyeshadow.png" alt="Eyeshadow"/><span class="label">Eyeshadow</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_athletic.png" alt="Athletic Clothing"/><span class="label">Athletic Clothing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_everyday.png" alt="Everyday Clothing"/><span class="label">Everyday Clothing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_main_male.png" alt="Male Clothing"/><span class="label">Male Clothing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_swimming.png" alt="Swimwear"/><span class="label">Swimwear</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_sleepwear.png" alt="Sleepwear"/><span class="label">Sleepwear</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_main_female.png" alt="Female Clothing"/><span class="label">Female Clothing</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_main_unisex.png" alt="Unisex Clothing"/><span class="label">Unisex Clothing</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 22: nunisimmer IconSet — Room Type Icons -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Room Type Icons</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room.png" alt="Room Type"/><span class="label">Room Type</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_study.png" alt="Study"/><span class="label">Study</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_bedroom.png" alt="Bedroom"/><span class="label">Bedroom</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_kitchen.png" alt="Kitchen"/><span class="label">Kitchen</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_outdoor.png" alt="Outdoor Room"/><span class="label">Outdoor Room</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_bathroom.png" alt="Bathroom"/><span class="label">Bathroom</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_diningroom.png" alt="Dining Room"/><span class="label">Dining Room</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/room_livingroom.png" alt="Living Room"/><span class="label">Living Room</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 23: nunisimmer IconSet — Utility Icons -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Utility Icons</h2>
+<div class="grid">
+
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_cep.png" alt="Community Lots (CEP)"/><span class="label">Community Lots (CEP)</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_hood.png" alt="Neighborhood View"/><span class="label">Neighborhood View</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_mods.png" alt="Mods Manager"/><span class="label">Mods Manager</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_mods2.png" alt="Mods Browser"/><span class="label">Mods Browser</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_defaults.png" alt="Default Settings"/><span class="label">Default Settings</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_community1.png" alt="Community Lot"/><span class="label">Community Lot</span></div>
+<div class="card"><img src="../reference-images/nunisimmer_IconSet_png/x_community2.png" alt="Community Lot 2"/><span class="label">Community Lot 2</span></div>
+
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+    <p>Sims 2 Icon Gallery &mdash; All icons from reference images</p>
+    <p class="figma-ref">Figma: https://www.figma.com/design/m0WMWdkysUm7hd4TThNBvJ/Sims-2-UI-Design-Study--Community-</p>
+    <p style="margin-top:0.5rem;">Fan tribute. "The Sims 2" is a trademark of Electronic Arts Inc.</p>
+</footer>
+
+</body>
+</html>
