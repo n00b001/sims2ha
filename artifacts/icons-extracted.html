@@ -663,7 +663,7 @@ footer .figma-ref { color: var(--sky-blue); }
     gap: 0.6rem;
 }
 
-.comp-sims2.have svg {
+.comp-sims2.have img {
     filter: drop-shadow(0 1px 2px rgba(94, 216, 72, 0.3));
 }
 
@@ -1084,223 +1084,126 @@ footer .figma-ref { color: var(--sky-blue); }
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 2b: ICON INVENTORY MATRIX — HA Default vs Sims 2 Replacement -->
+<!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- SECTION 2b: ICON INVENTORY MATRIX — HA Default vs Sims 2 Replacement (REAL PNGs) -->
 <!-- ============================================================ -->
 <section>
 <h2 class="section-title">HA Default Icons vs Sims 2 Replacements</h2>
-<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left) and the Sims 2 replacement (right). Blank = no replacement yet.</p>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left) and the Sims 2 replacement from the reference images (right). Blank = no replacement yet. All "have" icons are real extracted PNGs from below.</p>
 
 <div class="inventory-summary">
-    <div class="inventory-summary-card"><span class="count have">9</span><span class="label">Have Replacement</span></div>
-    <div class="inventory-summary-card"><span class="count need">14</span><span class="label">Still Need Icon</span></div>
-    <div class="inventory-summary-card"><span class="count total">23</span><span class="label">Entity Types</span></div>
-    <div class="inventory-summary-card"><span class="count extra">167</span><span class="label">Total Sims 2 PNGs</span></div>
+    <div class="inventory-summary-card"><span class="count have">23</span><span class="label">Have Replacement</span></div>
+    <div class="inventory-summary-card"><span class="count need">3</span><span class="label">Still Need Icon</span></div>
+    <div class="inventory-summary-card"><span class="count total">26</span><span class="label">Entity Types</span></div>
+    <div class="inventory-summary-card"><span class="count extra">172</span><span class="label">Total Sims 2 PNGs</span></div>
 </div>
 
 <!-- Comparison Grid -->
 <div class="comparison-grid">
-
-<!-- light → type-lighting (HAVE) -->
 <div class="comp-row">
     <div class="comp-entity">light</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M9,21 C9,21.5 9.5,22 10,22 L14,22 C14.5,22 15,21.5 15,21 L15,20 L9,20 Z M16.5,13 C17.5,11.5 18,9.8 17.8,8 C17.6,5.7 15.7,4 13.5,4 C11.3,4 9.4,5.7 9.2,8 C9,9.8 9.5,11.5 10.5,13 C11.5,14.5 12,16 12,16 C12,16 11.5,14.5 10.5,13" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:light"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 L15,5 Z" fill="#e0e8f0"/><circle cx="12" cy="15" r="2.5" fill="#f0c040"/></svg>
-        <span class="comp-name">sims2:type-lighting</span>
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Lighting" width="48" height="48"/>
+        <span class="comp-name">Lighting — <code>buy_lightning.png</code></span>
     </div>
 </div>
 
-<!-- switch → type-appliances (HAVE) -->
 <div class="comp-row">
     <div class="comp-entity">switch</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="6" y="4" width="12" height="16" rx="3" fill="none" stroke="#90a4ae" stroke-width="1.5"/><circle cx="12" cy="10" r="2" fill="#90a4ae"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:switch"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="6" y="3" width="12" height="18" rx="1.5" fill="#e0e8f0"/><line x1="6" y1="10" x2="18" y2="10" stroke="#a0b0c0"/></svg>
-        <span class="comp-name">sims2:type-appliances</span>
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Appliances" width="48" height="48"/>
+        <span class="comp-name">Appliances — <code>buy_appliances.png</code></span>
     </div>
 </div>
 
-<!-- fan → type-electronics (HAVE) -->
 <div class="comp-row">
     <div class="comp-entity">fan</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="3" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M12,9 C12,9 14,4 16,5 C18,6 14,9 14,9" fill="none" stroke="#90a4ae" stroke-width="1.2"/><path d="M14.2,13.5 C14.2,13.5 19,14 19,12 C19,10 14.2,10.5 14.2,10.5" fill="none" stroke="#90a4ae" stroke-width="1.2"/><path d="M9.8,13.5 C9.8,13.5 5,14 5,12 C5,10 9.8,10.5 9.8,10.5" fill="none" stroke="#90a4ae" stroke-width="1.2"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:fan"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="6" y="3" width="12" height="18" rx="1.5" fill="#e0e8f0"/><line x1="6" y1="10" x2="18" y2="10" stroke="#a0b0c0"/></svg>
-        <span class="comp-name">sims2:type-appliances</span>
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="Electronics" width="48" height="48"/>
+        <span class="comp-name">Electronics — <code>buy_electronics.png</code></span>
     </div>
 </div>
 
-<!-- media_player → type-electronics (HAVE) -->
 <div class="comp-row">
     <div class="comp-entity">media_player</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="2" y="4" width="20" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="8" y1="20" x2="16" y2="20" stroke="#90a4ae" stroke-width="1.5"/><line x1="12" y1="18" x2="12" y2="20" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:media-player"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="4" y="5" width="16" height="10" rx="1.5" fill="#e0e8f0"/><line x1="9" y1="20" x2="15" y2="20" stroke="#a0b0c0"/></svg>
-        <span class="comp-name">sims2:type-electronics</span>
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics_entertainment.png" alt="Entertainment" width="48" height="48"/>
+        <span class="comp-name">Entertainment — <code>buy_electronics_entertainment.png</code></span>
     </div>
 </div>
 
-<!-- scene / automation → build-mode (HAVE) -->
-<div class="comp-row">
-    <div class="comp-entity">scene / automation</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" fill="none" stroke="#90a4ae" stroke-width="1.3"/></svg>
-    </div>
-    <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><polygon points="12,2 14.5,8.5 21,9 16,13.5 17.5,20 12,16.5 6.5,20 8,13.5 3,9 9.5,8.5" fill="#e0d060"/></svg>
-        <span class="comp-name">sims2:aspiration-star</span>
-    </div>
-</div>
-
-<!-- sensor (mood) → plumbob (HAVE) -->
-<div class="comp-row">
-    <div class="comp-entity">sensor (mood)</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="9" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M8,15 C8,15 10,13 12,13 C14,13 16,15 16,15" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
-    <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
-        <svg viewBox="0 0 40 56" width="24" height="34"><polygon points="20,4 30,28 10,28" fill="#4ad0a0" stroke="#2a8a6a" stroke-width="0.5"/><polygon points="20,52 30,28 10,28" fill="#4ad0a0" stroke="#1a6a4a" stroke-width="0.5"/></svg>
-        <span class="comp-name">sims2:plumbob</span>
-    </div>
-</div>
-
-<!-- sensor (energy) → need-energy (HAVE) -->
-<div class="comp-row">
-    <div class="comp-entity">sensor (energy)</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><polygon points="13,2 7,13 11,13 9,22 18,10 14,10" fill="#90a4ae"/></svg>
-    </div>
-    <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><polygon points="13,2 7,13 11,13 9,22 18,10 14,10" fill="#f0c040"/></svg>
-        <span class="comp-name">sims2:need-energy</span>
-    </div>
-</div>
-
-<!-- input_boolean → shop-window (HAVE) -->
-<div class="comp-row">
-    <div class="comp-entity">input_boolean</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M7,12 L10,15 L17,8" fill="none" stroke="#90a4ae" stroke-width="2"/></svg>
-    </div>
-    <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="5" width="18" height="16" rx="2" fill="#e0e8f0"/><rect x="7" y="9" width="4" height="4" rx="0.5" fill="#4a8090"/><rect x="13" y="9" width="4" height="4" rx="0.5" fill="#c0d0e0"/></svg>
-        <span class="comp-name">sims2:shop-window</span>
-    </div>
-</div>
-
-<!-- scene (mode) → live-mode (HAVE) -->
-<div class="comp-row">
-    <div class="comp-entity">scene (mode)</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="9" fill="none" stroke="#90a4ae" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#90a4ae"/></svg>
-    </div>
-    <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="9" fill="#50c828"/><polygon points="10,7 17,12 10,17" fill="#fff"/></svg>
-        <span class="comp-name">sims2:live-mode</span>
-    </div>
-</div>
-
-<!-- climate → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">climate</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="6" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="12" y1="2" x2="12" y2="6" stroke="#90a4ae" stroke-width="1.5"/><line x1="12" y1="18" x2="12" y2="22" stroke="#90a4ae" stroke-width="1.5"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76" stroke="#90a4ae" stroke-width="1.5"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:climate"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace / HVAC" width="48" height="48"/>
+        <span class="comp-name">Fireplace / HVAC — <code>build_fireplace.png</code></span>
     </div>
 </div>
 
-<!-- cover → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">cover</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="1" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="3" y1="9" x2="21" y2="9" stroke="#90a4ae" stroke-width="1"/><line x1="3" y1="15" x2="21" y2="15" stroke="#90a4ae" stroke-width="1"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:cover"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_curtains.png" alt="Curtains" width="48" height="48"/>
+        <span class="comp-name">Curtains — <code>buy_decoration_curtains.png</code></span>
     </div>
 </div>
 
-<!-- lock → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">lock</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M8,11 L8,7 C8,4.5 10,3 12,3 C14,3 16,4.5 16,7 L16,11" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:lock"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_gates.png" alt="Gates" width="48" height="48"/>
+        <span class="comp-name">Gates — <code>build_gates.png</code></span>
     </div>
 </div>
 
-<!-- binary_sensor.motion → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">binary_sensor.motion</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="5" r="3" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M12,8 L12,14" stroke="#90a4ae" stroke-width="1.5"/><path d="M8,20 L12,14 L16,20" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Bubble Speech.png" alt="Speech Bubble" width="48" height="48"/>
+        <span class="comp-name">Speech Bubble — <code>Bubble Speech.png</code></span>
     </div>
 </div>
 
-<!-- binary_sensor.door_window → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">binary_sensor.door_window</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M3,21 L3,3 L21,3 L21,21 Z" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="#90a4ae" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="21" stroke="#90a4ae" stroke-width="1.2"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_windows&doors.png" alt="Windows and Doors" width="48" height="48"/>
+        <span class="comp-name">Windows and Doors — <code>build_windows&amp;doors.png</code></span>
     </div>
 </div>
 
-<!-- binary_sensor.smoke → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">binary_sensor.smoke</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M6,18 L18,18 L15,10 C14.5,8.5 13.5,7.5 12,7.5 C10.5,7.5 9.5,8.5 9,10 Z" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="12" y1="3" x2="12" y2="7" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Fire.png" alt="Fire" width="48" height="48"/>
+        <span class="comp-name">Fire — <code>Fire.png</code></span>
     </div>
 </div>
 
-<!-- vacuum → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">vacuum</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="9" fill="none" stroke="#90a4ae" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="#90a4ae" stroke-width="1.2"/><line x1="12" y1="3" x2="12" y2="8" stroke="#90a4ae" stroke-width="1.2"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:vacuum"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 need">
         <div class="blank-icon"></div>
@@ -1308,12 +1211,9 @@ footer .figma-ref { color: var(--sky-blue); }
     </div>
 </div>
 
-<!-- camera → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">camera</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="#90a4ae" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="#90a4ae" stroke-width="1.2"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:camera"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 need">
         <div class="blank-icon"></div>
@@ -1321,64 +1221,49 @@ footer .figma-ref { color: var(--sky-blue); }
     </div>
 </div>
 
-<!-- humidifier → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">humidifier</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M12,3 C8,9 6,12 6,15 C6,19 9,21 12,21 C15,21 18,19 18,15 C18,12 16,9 12,3Z" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:humidifier"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
+        <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
     </div>
 </div>
 
-<!-- water_heater → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">water_heater</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="7" y="2" width="10" height="20" rx="3" fill="none" stroke="#90a4ae" stroke-width="1.5"/><circle cx="12" cy="16" r="2" fill="none" stroke="#90a4ae" stroke-width="1.2"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:water-heater"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
+        <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
     </div>
 </div>
 
-<!-- update → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">update</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M21,8 L9,8 L9,20" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M3,16 C3,11 6,7 10,6" fill="none" stroke="#90a4ae" stroke-width="1.5"/><polyline points="3,12 6,15 9,12" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:update"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Job Promote.png" alt="Promotion / Update" width="48" height="48"/>
+        <span class="comp-name">Promotion / Update — <code>Job Promote.png</code></span>
     </div>
 </div>
 
-<!-- calendar → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">calendar</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="3" y="4" width="18" height="17" rx="2" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="3" y1="9" x2="21" y2="9" stroke="#90a4ae" stroke-width="1.2"/><line x1="8" y1="2" x2="8" y2="6" stroke="#90a4ae" stroke-width="1.5"/><line x1="16" y1="2" x2="16" y2="6" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:calendar"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Party.png" alt="Party / Calendar" width="48" height="48"/>
+        <span class="comp-name">Party / Calendar — <code>Party.png</code></span>
     </div>
 </div>
 
-<!-- weather → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">weather</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="10" r="4" fill="none" stroke="#90a4ae" stroke-width="1.5"/><line x1="12" y1="2" x2="12" y2="4" stroke="#90a4ae" stroke-width="1.5"/><line x1="4.93" y1="4.93" x2="6.76" y2="6.76" stroke="#90a4ae" stroke-width="1.5"/><line x1="17.24" y1="6.76" x2="19.07" y2="4.93" stroke="#90a4ae" stroke-width="1.5"/><path d="M5,18 C5,18 6,16 9,16 C9.5,13 12.5,12 15.5,13.5 C17.5,12 20.5,13.5 20.5,16 C22,16 22,18 22,18" fill="none" stroke="#90a4ae" stroke-width="1.3"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:weather"></mdi-icon></div>
     <div class="comp-arrow">→</div>
     <div class="comp-sims2 need">
         <div class="blank-icon"></div>
@@ -1386,58 +1271,95 @@ footer .figma-ref { color: var(--sky-blue); }
     </div>
 </div>
 
-<!-- person → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">person</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="8" r="4" fill="none" stroke="#90a4ae" stroke-width="1.5"/><path d="M4,21 C4,17 7,15 12,15 C17,15 20,17 20,21" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:person"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/cas.png" alt="Create-a-Sim" width="48" height="48"/>
+        <span class="comp-name">Create-a-Sim — <code>cas.png</code></span>
     </div>
 </div>
 
-<!-- sensor.battery → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">sensor.battery</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><rect x="2" y="7" width="18" height="10" rx="2" fill="none" stroke="#90a4ae" stroke-width="1.5"/><rect x="20" y="10" width="2" height="4" rx="0.5" fill="#90a4ae"/><rect x="4" y="9" width="10" height="6" rx="1" fill="#90a4ae"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_surfaces.png" alt="Surfaces / Battery" width="48" height="48"/>
+        <span class="comp-name">Surfaces / Battery — <code>buy_surfaces.png</code></span>
     </div>
 </div>
 
-<!-- sensor.temperature → BLANK (NEED) -->
 <div class="comp-row">
     <div class="comp-entity">sensor.temperature</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M14,14 L14,20" stroke="#90a4ae" stroke-width="1.5"/><circle cx="14" cy="21" r="2" fill="none" stroke="#90a4ae" stroke-width="1.2"/><path d="M14,3 L14,12" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-ha"><mdi-icon icon="mdi:sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace / Heat" width="48" height="48"/>
+        <span class="comp-name">Fireplace / Heat — <code>build_fireplace.png</code></span>
     </div>
 </div>
 
-<!-- script → BLANK (NEED) -->
 <div class="comp-row">
-    <div class="comp-entity">script</div>
-    <div class="comp-ha">
-        <svg viewBox="0 0 24 24" width="32" height="32"><path d="M14,2 L14,22" stroke="#90a4ae" stroke-width="1.5"/><polyline points="8,16 14,22 20,16" fill="none" stroke="#90a4ae" stroke-width="1.5"/></svg>
-    </div>
+    <div class="comp-entity">scene</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:scene"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
-        <div class="blank-icon"></div>
-        <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Aspiration Fortune.png" alt="Fortune Star" width="48" height="48"/>
+        <span class="comp-name">Fortune Star — <code>Aspiration Fortune.png</code></span>
     </div>
 </div>
 
+<div class="comp-row">
+    <div class="comp-entity">alarm_control_panel</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:alarm-control-panel"></mdi-icon></div>
+    <div class="comp-arrow">→</div>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_gates.png" alt="Gates / Lock" width="48" height="48"/>
+        <span class="comp-name">Gates / Lock — <code>build_gates.png</code></span>
+    </div>
+</div>
+
+<div class="comp-row">
+    <div class="comp-entity">siren</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:siren"></mdi-icon></div>
+    <div class="comp-arrow">→</div>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Fire.png" alt="Fire Alert" width="48" height="48"/>
+        <span class="comp-name">Fire Alert — <code>Fire.png</code></span>
+    </div>
+</div>
+
+<div class="comp-row">
+    <div class="comp-entity">valve</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:valve"></mdi-icon></div>
+    <div class="comp-arrow">→</div>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
+        <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
+    </div>
+</div>
+
+<div class="comp-row">
+    <div class="comp-entity">input_boolean</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:input-boolean"></mdi-icon></div>
+    <div class="comp-arrow">→</div>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_walls&floors.png" alt="Walls and Floors" width="48" height="48"/>
+        <span class="comp-name">Walls and Floors — <code>build_walls&amp;floors.png</code></span>
+    </div>
+</div>
+
+<div class="comp-row">
+    <div class="comp-entity">automation / script</div>
+    <div class="comp-ha"><mdi-icon icon="mdi:automation / script"></mdi-icon></div>
+    <div class="comp-arrow">→</div>
+    <div class="comp-sims2 have">
+        <img src="../reference-images/sims-2-hq-icon-pack/Aspiration Knowledge.png" alt="Knowledge Star" width="48" height="48"/>
+        <span class="comp-name">Knowledge Star — <code>Aspiration Knowledge.png</code></span>
+    </div>
+</div>
 </div><!-- end comparison-grid -->
 </section>
 
