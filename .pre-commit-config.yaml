@@ -1,0 +1,16 @@
+# Pre-commit hooks for Sims 2 Home Assistant theme.
+# Install: pip install pre-commit && pre-commit install --hook-type pre-push
+
+default_language_version:
+  node: node
+
+repos:
+  - repo: local
+    hooks:
+      - id: sims2-screenshots
+        name: Sims 2 screenshots (pre-push)
+        entry: scripts/sims2-pre-push.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+        stages: [push]
