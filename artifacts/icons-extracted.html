@@ -318,21 +318,21 @@ section { margin-bottom: 3rem; }
     display: none;
 }
 
-/* Glow variant — colored glow on the bar border */
-.need-bar--glow-green {
+/* Glow variants — varying intensity, same color */
+.need-bar--glow-none {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.need-bar--glow-subtle {
+    box-shadow: 0 0 3px rgba(90,190,50,0.2), 0 1px 3px rgba(0,0,0,0.35);
+}
+
+.need-bar--glow-medium {
     box-shadow: 0 0 6px rgba(90,190,50,0.4), 0 1px 3px rgba(0,0,0,0.35);
 }
 
-.need-bar--glow-yellow {
-    box-shadow: 0 0 6px rgba(200,180,30,0.4), 0 1px 3px rgba(0,0,0,0.35);
-}
-
-.need-bar--glow-orange {
-    box-shadow: 0 0 6px rgba(210,130,30,0.4), 0 1px 3px rgba(0,0,0,0.35);
-}
-
-.need-bar--glow-red {
-    box-shadow: 0 0 8px rgba(210,50,40,0.5), 0 1px 3px rgba(0,0,0,0.35);
+.need-bar--glow-strong {
+    box-shadow: 0 0 10px rgba(90,190,50,0.6), 0 0 20px rgba(90,190,50,0.25), 0 1px 3px rgba(0,0,0,0.35);
 }
 
 /* Standalone bar (no row wrapper) for variation display */
@@ -909,63 +909,68 @@ footer .figma-ref { color: var(--sky-blue); }
     </div>
 </div>
 
-<!-- Full Color Spectrum — like the reference image -->
+<!-- Fill Levels — all green, only width changes -->
 <div class="var-group">
-    <h3>Fill Levels (Reference Match)</h3>
+    <h3>Fill Level</h3>
     <div class="standalone-bar"><span class="var-label">100%</span>
         <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:100%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
     </div>
-    <div class="standalone-bar"><span class="var-label">85%</span>
-        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:85%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <div class="standalone-bar"><span class="var-label">75%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:75%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
     </div>
-    <div class="standalone-bar"><span class="var-label">65%</span>
+    <div class="standalone-bar"><span class="var-label">50%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:50%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">25%</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:25%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+<!-- Glow Effect — same color, same fill, only glow intensity changes -->
+<div class="var-group">
+    <h3>Glow Intensity</h3>
+    <div class="standalone-bar"><span class="var-label">None</span>
+        <div class="need-bar need-bar--glow-none" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Subtle</span>
+        <div class="need-bar need-bar--glow-subtle" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Medium</span>
+        <div class="need-bar need-bar--glow-medium" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+    <div class="standalone-bar"><span class="var-label">Strong</span>
+        <div class="need-bar need-bar--glow-strong" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    </div>
+</div>
+
+<!-- Color — all same fill level, only color changes -->
+<div class="var-group">
+    <h3>Color</h3>
+    <div class="standalone-bar"><span class="var-label">Green</span>
         <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
     </div>
-    <div class="standalone-bar"><span class="var-label">55% YG</span>
-        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:55%;background:linear-gradient(180deg,#b8d848 8%,#90b820 92%)"></div></div>
-    </div>
-    <div class="standalone-bar"><span class="var-label">40% Y</span>
-        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:40%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
-    </div>
-    <div class="standalone-bar"><span class="var-label">25% O</span>
-        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:25%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
-    </div>
-    <div class="standalone-bar"><span class="var-label">10% R</span>
-        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:10%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
-    </div>
-</div>
-
-<!-- Glow Variants -->
-<div class="var-group">
-    <h3>Glow Effect</h3>
-    <div class="standalone-bar"><span class="var-label">Green</span>
-        <div class="need-bar need-bar--glow-green" style="flex:1"><div class="need-bar-fill" style="width:80%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <div class="standalone-bar"><span class="var-label">Yellow-G</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#b8d848 8%,#90b820 92%)"></div></div>
     </div>
     <div class="standalone-bar"><span class="var-label">Yellow</span>
-        <div class="need-bar need-bar--glow-yellow" style="flex:1"><div class="need-bar-fill" style="width:55%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
     </div>
     <div class="standalone-bar"><span class="var-label">Orange</span>
-        <div class="need-bar need-bar--glow-orange" style="flex:1"><div class="need-bar-fill" style="width:30%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
     </div>
     <div class="standalone-bar"><span class="var-label">Red</span>
-        <div class="need-bar need-bar--glow-red" style="flex:1"><div class="need-bar-fill" style="width:15%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
     </div>
 </div>
 
-<!-- No Divider Variant -->
+<!-- No Edge Divider — same fill, only divider present/absent -->
 <div class="var-group">
     <h3>No Edge Divider</h3>
-    <div class="standalone-bar"><span class="var-label">Green</span>
-        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:70%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
+    <div class="standalone-bar"><span class="var-label">With</span>
+        <div class="need-bar" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
     </div>
-    <div class="standalone-bar"><span class="var-label">Yellow</span>
-        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:50%;background:linear-gradient(180deg,#e8d848 8%,#c8b820 92%)"></div></div>
-    </div>
-    <div class="standalone-bar"><span class="var-label">Orange</span>
-        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:30%;background:linear-gradient(180deg,#e8a038 8%,#c87818 92%)"></div></div>
-    </div>
-    <div class="standalone-bar"><span class="var-label">Red</span>
-        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:15%;background:linear-gradient(180deg,#e84838 8%,#c82820 92%)"></div></div>
+    <div class="standalone-bar"><span class="var-label">Without</span>
+        <div class="need-bar need-bar--nodivider" style="flex:1"><div class="need-bar-fill" style="width:65%;background:linear-gradient(180deg,#5ed848 8%,#3ab828 92%)"></div></div>
     </div>
 </div>
 
