@@ -2,7 +2,7 @@
    Sims 2 for Home Assistant — AUTHENTIC LIVE-MODE OVERRIDES
    ========================================================================
    Full shell transformation: navy/gold sunburst, navy outlines, bubbly
-   rounded shapes, cream/beige surfaces, gold accents.
+   rounded shapes, beige-blue/beige surfaces, gold accents.
 
    These pierce HA's light DOM. For shadow-DOM cards use card-mod
    (see docs/CARD-MOD.md).
@@ -14,9 +14,9 @@
        contours.
      - Outlines: thick dark navy (2–3 px solid var(--sims2-panel-blue-deep, #173A52)) on EVERY element.
        Sims 2 UI is defined by its bold outlines.
-     - Gradients: multi-stop cream / gold gradients, never simple
+     - Gradients: multi-stop beige-blue / gold gradients, never simple
        two-colour stops.
-     - Colours: deep navy, cream/beige, bright gold (#FFD700), plumbob green.
+     - Colours: deep navy, beige-blue/beige, bright gold (#FFD700), plumbob green.
    ========================================================================== */
 
 /* ==========================================================================
@@ -105,7 +105,7 @@ app-header paper-icon-button,
 app-header .title,
 app-header ha-icon-button {
   font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
-  color: var(--sims2-cream, #FBF4DF) !important;
+  color: var(--sims2-sky-blue, #7EC8E6) !important;
 }
 
 app-header .title {
@@ -129,7 +129,7 @@ paper-listbox {
 /* ==========================================================================
    BUTTONS — bubbly rounded (not pills)
    Sims 2 buttons have ~8–12 px corner radius, not extreme pills.
-   Multi-stop cream/gold gradient with subtle inner highlight — authentic
+   Multi-stop beige-blue/gold gradient with subtle inner highlight — authentic
    Sims 2 Live Mode button chrome.
    ========================================================================== */
 mwc-button,
@@ -142,8 +142,8 @@ button:not([disabled]) {
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 40%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 40%,
     #D9C4A0 100%
   ) !important;
   color: var(--sims2-panel-blue-deep, #173A52) !important;
@@ -162,7 +162,7 @@ button:not([disabled]):hover {
   background: linear-gradient(
     180deg,
     #FFF3B0 0%,
-    var(--sims2-cream, #FBF4DF) 50%,
+    var(--sims2-sky-blue, #7EC8E6) 50%,
     #D9C4A0 100%
   ) !important;
   box-shadow:
@@ -181,7 +181,7 @@ button:not([disabled]):active {
 }
 
 /* ==========================================================================
-   INPUT FIELDS — cream background, navy border, bubbly rounded
+   INPUT FIELDS — beige-blue background, navy border, bubbly rounded
    ========================================================================== */
 ha-textfield,
 ha-select,
@@ -194,8 +194,8 @@ textarea {
   --mdc-shape-small: 12px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 100%
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 100%
   ) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   color: #2A2320 !important;
@@ -243,7 +243,7 @@ paper-dialog,
 }
 
 /* ==========================================================================
-   LINKS — gold/blue links on cream backgrounds
+   LINKS — gold/blue links on beige-blue backgrounds
    ========================================================================== */
 a {
   color: var(--sims2-blue, #2B5EA7);
@@ -298,7 +298,7 @@ paper-chip,
 }
 
 /* ==========================================================================
-   LOGIN PAGE — cream panel on sunburst
+   LOGIN PAGE — beige-blue panel on sunburst
    ========================================================================== */
 .login-container,
 .login-content,
@@ -309,7 +309,7 @@ iron-form {
 }
 
 /* ==========================================================================
-   TABLE ROWS — subtle gold/cream striping
+   TABLE ROWS — subtle gold/beige-blue striping
    ========================================================================== */
 table,
 [data-component="table"] {
@@ -329,7 +329,7 @@ md-linear-progress {
 }
 
 /* ==========================================================================
-   DROPDOWNS / MENUS — cream/gold background
+   DROPDOWNS / MENUS — beige-blue/gold background
    ========================================================================== */
 paper-listbox,
 mwc-menu,
@@ -638,8 +638,8 @@ ha-login-card {
   border-radius: 24px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 50%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 50%,
     #D9C4A0 100%
   ) !important;
   box-shadow:
@@ -760,15 +760,15 @@ ha-panel-config,
   background: transparent !important;
 }
 
-/* Settings cards — cream panels with thick navy border */
+/* Settings cards — beige-blue panels with thick navy border */
 ha-panel-config ha-card,
 [panel="config"] ha-card,
 .config-section ha-card,
 .settings-card {
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 50%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 50%,
     #D9C4A0 100%
   ) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
@@ -830,8 +830,8 @@ paper-dialog .paper-dialog-content,
   border-radius: 20px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 100%
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 100%
   ) !important;
   box-shadow:
     0 12px 48px rgba(26, 26, 62, 0.3),
@@ -855,7 +855,7 @@ paper-dialog .paper-dialog-button-panel button {
   border-radius: 12px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
     #D9C4A0 100%
   ) !important;
   color: var(--sims2-panel-blue-deep, #173A52) !important;
@@ -882,8 +882,8 @@ ha-state-card,
 .entity-card {
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 100%
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 100%
   ) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
@@ -935,14 +935,14 @@ ha-entity-row ha-svg-icon[data-active],
 
 /* ==========================================================================
    HA-CARD — default card styling override
-   Cards get warm cream background with dark navy border and authentic Sims 2
+   Cards get warm beige-blue background with dark navy border and authentic Sims 2
    panel shape (12px radius). Custom Sims 2 cards (gauge, panel, plumbob) set
    their own styles internally.
    ========================================================================== */
 ha-card {
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
     #EDD9B4 50%,
     #E2CC9A 100%
   ) !important;
@@ -976,7 +976,7 @@ ha-card .card-content {
 }
 
 /* ==========================================================================
-   MATERIAL DESIGN OVERRIDES — bubbly rounded everything, cream/gold chrome
+   MATERIAL DESIGN OVERRIDES — bubbly rounded everything, beige-blue/gold chrome
    ========================================================================== */
 .mdc-button,
 mdc-button,
@@ -986,8 +986,8 @@ mdc-button,
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-cream, #FBF4DF) 0%,
-    var(--sims2-cream, #FBF4DF) 40%,
+    var(--sims2-sky-blue, #7EC8E6) 0%,
+    var(--sims2-sky-blue, #7EC8E6) 40%,
     #D9C4A0 100%
   ) !important;
   color: var(--sims2-panel-blue-deep, #173A52) !important;
@@ -1003,7 +1003,7 @@ mdc-button:hover {
   background: linear-gradient(
     180deg,
     #FFF3B0 0%,
-    var(--sims2-cream, #FBF4DF) 50%,
+    var(--sims2-sky-blue, #7EC8E6) 50%,
     #D9C4A0 100%
   ) !important;
   box-shadow:
@@ -1037,7 +1037,7 @@ mdc-chip {
 mdc-menu {
   border-radius: 12px !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   color: #2A2320 !important;
   box-shadow:
     0 8px 32px rgba(26, 26, 62, 0.25),
@@ -1142,7 +1142,7 @@ ha-date-control {
    HA-TEMPLATE — template card styling --------------------------------------- */
 ha-template,
 .template-card {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 12px !important;
   color: #2A2320 !important;
@@ -1162,7 +1162,7 @@ ha-map,
    LOGBOOK CARD — log entries ------------------------------------------------ */
 ha-logbook,
 [card-type="logbook"] {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 12px !important;
   color: #2A2320 !important;
@@ -1172,7 +1172,7 @@ ha-logbook,
    HISTORY CARD — graph container -------------------------------------------- */
 ha-history,
 [card-type="history"] {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1182,7 +1182,7 @@ ha-history,
    GARDEN CARD — plant cards ------------------------------------------------- */
 ha-garden,
 [card-type="garden"] {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1192,7 +1192,7 @@ ha-garden,
    BUTTONS-CARD — third party card support ----------------------------------- */
 buttons-card,
 paper-buttons-row {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1202,7 +1202,7 @@ paper-buttons-row {
    TILE-CARD — tile styling -------------------------------------------------- */
 tile-card,
 .entity-button {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1211,7 +1211,7 @@ tile-card,
 /* ==========================================================================
    CUSTOM-CARD-BUILDER cards ------------------------------------------------- */
 [card-config] {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1290,7 +1290,7 @@ ha-progress-ring,
 .mdc-tooltip,
 mdc-tooltip {
   border-radius: 8px !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   color: #2A2320 !important;
   font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
@@ -1302,7 +1302,7 @@ app-drawer,
 [part="drawer"],
 ha-app-drawer {
   border-right: 2px solid rgba(26, 26, 62, 0.45) !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
 }
 
 app-drawer .drawer-handle,
@@ -1383,7 +1383,7 @@ data-table tbody tr:hover {
    TIMELINE / CHRONOLOGICAL VIEWS -------------------------------------------- */
 ha-timeline,
 .timeline-view {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 20px !important;
   color: #2A2320 !important;
@@ -1394,7 +1394,7 @@ ha-timeline,
 label-badge,
 .badge-container {
   border-radius: 20px !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   box-shadow:
     0 4px 16px rgba(26, 26, 62, 0.18),
@@ -1452,7 +1452,7 @@ carousel-dot[active],
 ha-expansion-panel,
 .expansion-panel {
   border-radius: 16px !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   color: #2A2320 !important;
 }
@@ -1564,7 +1564,7 @@ ha-panel-manage paper-dialog,
 }
 
 /* ==========================================================================
-   LOVELACE VIEW — cream surface behind cards --------------------------- */
+   LOVELACE VIEW — beige-blue surface behind cards --------------------------- */
 #view {
   padding: 8px !important;
 }
@@ -1599,7 +1599,7 @@ ha-switch[data-checked="true"] .mdc-switch__track {
 
 .mdc-switch .mdc-switch__thumb-knob,
 ha-switch .mdc-switch__thumb-knob {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, #D9C4A0 40%, #B8942E 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, #D9C4A0 40%, #B8942E 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
   width: 20px !important;
@@ -1666,8 +1666,8 @@ input[type="range"]::-moz-range-track {
 }
 
 /* ==========================================================================
-   CHECKBOXES — Sims 2 navy-bordered cream boxes ------------------------------
-   Unchecked: cream panel with navy border. Checked: gold fill with navy check.
+   CHECKBOXES — Sims 2 navy-bordered beige-blue boxes ------------------------------
+   Unchecked: beige-blue panel with navy border. Checked: gold fill with navy check.
    ========================================================================== */
 
 .mdc-checkbox .mdc-checkbox__native-control,
@@ -1678,7 +1678,7 @@ ha-checkbox .mdc-checkbox__native-control {
 
 .mdc-checkbox .mdc-checkbox__background,
 ha-checkbox .mdc-checkbox__background {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 4px !important;
   width: 18px !important;
@@ -1710,12 +1710,12 @@ ha-radio .mdc-radio__native-control {
 .mdc-radio .mdc-radio__outer-circle,
 ha-radio .mdc-radio__outer-circle {
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
 }
 
 .mdc-radio--checked .mdc-radio__outer-circle {
   border-color: var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
 }
 
 .mdc-radio .mdc-radio__inner-circle {
@@ -1765,7 +1765,7 @@ progress::-moz-progress-bar {
 }
 
 /* ==========================================================================
-   TAB BAR — Sims 2 gold-on-cream navigation tabs ----------------------------
+   TAB BAR — Sims 2 gold-on-beige-blue navigation tabs ----------------------------
    The Sims 2 uses rounded tab buttons with a gold highlight for the active tab.
    ========================================================================== */
 
@@ -1794,12 +1794,12 @@ mwc-tab .mdc-tab__indicator,
 }
 
 /* ==========================================================================
-   TEXTAREAS — cream panel with navy border ----------------------------------- */
+   TEXTAREAS — beige-blue panel with navy border ----------------------------------- */
 
 textarea,
 .mdc-text-field--outlined.mdc-text-field--textarea,
 ha-textarea {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 8px !important;
   color: #2A2320 !important;
@@ -1819,7 +1819,7 @@ ha-textarea:focus {
 select,
 .mdc-select,
 ha-select {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 8px !important;
   color: #2A2320 !important;
@@ -1840,7 +1840,7 @@ select:focus,
 ha-tooltip,
 [role="tooltip"] {
   background: var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-cream, #FBF4DF) !important;
+  color: var(--sims2-sky-blue, #7EC8E6) !important;
   border: 2px solid #E8B44D !important;
   border-radius: 6px !important;
   font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
@@ -1853,7 +1853,7 @@ ha-tooltip,
    ========================================================================== */
 
 .mdc-chip {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 50%, #D9C4A0 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 50%, #D9C4A0 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 8px !important;
   color: #2A2320 !important;
@@ -1877,7 +1877,7 @@ ha-entity-row:hover {
 
 /* ==========================================================================
    ICON BUTTONS — Sims 2 circular brass buttons ------------------------------
-   The Sims 2 icon buttons are circular with a brass rim and cream fill.
+   The Sims 2 icon buttons are circular with a brass rim and beige-blue fill.
    ========================================================================== */
 
 .mdc-icon-button {
@@ -1911,12 +1911,12 @@ ha-icon-button,
 /* ==========================================================================
    ALERT BANNERS — Sims 2 styled alerts --------------------------------------
    Info: blue panel with gold border. Warning: amber panel. Error: red panel.
-   Success: green plumbob panel. All navy-bordered cream backgrounds.
+   Success: green plumbob panel. All navy-bordered beige-blue backgrounds.
    ========================================================================== */
 
 ha-alert,
 .mdc-alert {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-left: 5px solid #E8B44D !important;
   border-radius: 8px !important;
@@ -1952,7 +1952,7 @@ paper-toast,
 .mdc-snackbar,
 ha-toast {
   background: var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-cream, #FBF4DF) !important;
+  color: var(--sims2-sky-blue, #7EC8E6) !important;
   border: 2px solid #E8B44D !important;
   border-radius: 8px !important;
   font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
@@ -1966,7 +1966,7 @@ paper-toast .mdc-button {
 
 /* ==========================================================================
    LIST ITEMS — Sims 2 panel list style --------------------------------------
-   Each list item is a cream row with navy separator.
+   Each list item is a beige-blue row with navy separator.
    ========================================================================== */
 
 ha-list-item,
@@ -1989,12 +1989,12 @@ ha-list-item:hover,
 
 /* ==========================================================================
    SIDEBAR NAVIGATION — Sims 2 menu panel ------------------------------------
-   Cream sidebar with gold active indicator, navy borders.
+   Sky-blue sidebar with gold active indicator, navy borders.
    ========================================================================== */
 
 app-drawer,
 ha-sidebar {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 50%, #E8D4B0 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 50%, #E8D4B0 100%) !important;
   border-right: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
 }
 
@@ -2026,7 +2026,7 @@ ha-sidebar .link.active {
 app-header,
 ha-app-toolbar,
 .mdc-top-app-bar {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 40%, #D9C4A0 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 40%, #D9C4A0 100%) !important;
   border-bottom: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
   color: var(--sims2-panel-blue-deep, #173A52) !important;
   box-shadow: 0 2px 8px rgba(26, 26, 62, 0.2) !important;
@@ -2041,7 +2041,7 @@ app-header .title,
 
 /* ==========================================================================
    ENTITY ICONS — Sims 2 status indicator style ------------------------------
-   Entity icons get a circular cream background with navy border, mimicking
+   Entity icons get a circular beige-blue background with navy border, mimicking
    the Sims 2 need meter icons. Active entities glow green.
    ========================================================================== */
 
@@ -2123,7 +2123,7 @@ code-editor {
 
 ha-yaml-editor textarea,
 code-editor textarea {
-  background: linear-gradient(180deg, var(--sims2-cream, #FBF4DF) 0%, var(--sims2-cream, #FBF4DF) 100%) !important;
+  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
   color: #2A2320 !important;
   border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
   border-radius: 8px !important;
@@ -2349,7 +2349,7 @@ input[type="range"]::-moz-range-thumb {
 
 /* ==========================================================================
    BLUE-TINTED TEXT AREAS — Sims 2 dialog text background -------------------
-   Text in Sims 2 dialogs sits on a light blue-tinted background (not cream),
+   Text in Sims 2 dialogs sits on a light blue-tinted background (not beige-blue),
    creating a translucent "frosted glass" reading area within the panel.
 
    Applied to: dialog body text, notification content, input fields,
