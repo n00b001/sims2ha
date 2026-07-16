@@ -580,6 +580,110 @@ footer .figma-ref { color: var(--sky-blue); }
     letter-spacing: 0.06em;
 }
 
+/* Icon Inventory Table */
+.inventory-table-wrap {
+    overflow-x: auto;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+}
+
+.inventory-table thead th {
+    background: linear-gradient(180deg, #5a8aa0 0%, #3a6a80 100%);
+    color: #f0f4f8;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid #2a4a60;
+    white-space: nowrap;
+}
+
+.inventory-table tbody td {
+    padding: 0.45rem 0.75rem;
+    border: 1px solid #2a4a60;
+    vertical-align: middle;
+}
+
+.inventory-table tbody tr:nth-child(even) {
+    background: rgba(60, 90, 120, 0.15);
+}
+
+.inventory-table tbody tr:hover {
+    background: rgba(80, 130, 170, 0.2);
+}
+
+.inventory-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+}
+
+.inventory-icon img {
+    max-width: 24px;
+    max-height: 24px;
+    image-rendering: pixelated;
+}
+
+.status-have {
+    color: #5ed848;
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+.status-need {
+    color: #e0a030;
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+.status-extra {
+    color: #8ab0c8;
+    font-size: 0.7rem;
+}
+
+.inventory-summary {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.inventory-summary-card {
+    background: linear-gradient(135deg, rgba(40, 70, 90, 0.6), rgba(30, 50, 70, 0.8));
+    border: 1px solid #3a6a80;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+    min-width: 100px;
+}
+
+.inventory-summary-card .count {
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block;
+}
+
+.inventory-summary-card .count.have { color: #5ed848; }
+.inventory-summary-card .count.need { color: #e0a030; }
+.inventory-summary-card .count.extra { color: #8ab0c8; }
+.inventory-summary-card .count.total { color: var(--gold-trim); }
+
+.inventory-summary-card .label {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
 </style>
 </head>
 <body>
@@ -978,415 +1082,81 @@ footer .figma-ref { color: var(--sky-blue); }
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 3: ACTION BAR BUTTONS (SVG recreation) -->
+<!-- SECTION 2b: ICON INVENTORY MATRIX -->
 <!-- ============================================================ -->
 <section>
-<h2 class="section-title">Bottom Action Bar Buttons</h2>
-<div class="grid">
+<h2 class="section-title">Icon Inventory Matrix</h2>
 
-<!-- Sim Portrait -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><path d="M5,21 C5,16 8,14 12,14 C16,14 19,16 19,21" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
-    </div>
-    <span class="label">Sim Portrait</span>
+<div class="inventory-summary">
+    <div class="inventory-summary-card"><span class="count have">9</span><span class="label">Registered Icons</span></div>
+    <div class="inventory-summary-card"><span class="count have">88</span><span class="label">HQ PNG Icons</span></div>
+    <div class="inventory-summary-card"><span class="count have">79</span><span class="label">Nunisimmer PNG Icons</span></div>
+    <div class="inventory-summary-card"><span class="count need">14</span><span class="label">HA Entities Need Icons</span></div>
+    <div class="inventory-summary-card"><span class="count extra">60+</span><span class="label">Extra (Non-HA) Icons</span></div>
 </div>
 
-<!-- Phone -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><path d="M8,15 C8,15 9.5,15.5 11,15 C13,14.5 16,13.5 18,11.5 C20,9.5 20.5,7 20.5,6 L18.5,5.5 C18.5,5.5 18.5,4.5 17.5,4 L13.5,1.5 C12.5,1 11.5,1.5 11.5,1.5 L9.5,3 C9.5,3 9,3.5 9.5,4.5 L11,7.5 C11,7.5 10.5,8.5 9.5,9 C8.5,9.5 7,10 7,10 Z" fill="none" stroke="#e0e8f0" stroke-width="1.1"/></svg>
-    </div>
-    <span class="label">Phone</span>
+<h3 style="color:var(--gold-trim);margin-top:1.5rem;font-size:1.1rem;">Registered Home Assistant Icons</h3>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:0.8rem;">These icons are registered in <code>custom_components/sims2ha/</code> and available via <code>icon:</code> in dashboards.</p>
+<div class="inventory-table-wrap">
+<table class="inventory-table">
+<thead><tr><th>Sims 2 Icon Name</th><th>Icon</th><th>HA Entity Mapping</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><code>sims2:plumbob</code></td><td class="inventory-icon"><svg viewBox="0 0 40 56" width="24" height="34"><polygon points="20,4 30,28 10,28" fill="#4ad0a0" stroke="#2a8a6a" stroke-width="0.5"/><polygon points="20,52 30,28 10,28" fill="#4ad0a0" stroke="#1a6a4a" stroke-width="0.5"/></svg></td><td>Overall status / mood overview</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:need-energy</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><polygon points="13,2 7,13 11,13 9,22 18,10 14,10" fill="#f0c040"/></svg></td><td>sensor.energy / power monitoring</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:build-mode</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><rect x="3" y="8" width="18" height="13" rx="1.5" fill="#e0e8f0"/><polygon points="2,8 12,2 22,8" fill="#c0d0e0"/></svg></td><td>scene / automation (build mode toggle)</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:live-mode</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><circle cx="12" cy="12" r="9" fill="#50c828"/><polygon points="10,7 17,12 10,17" fill="#fff"/></svg></td><td>scene / automation (live mode toggle)</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:shop-window</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><rect x="3" y="5" width="18" height="16" rx="2" fill="#e0e8f0"/><rect x="7" y="9" width="4" height="4" rx="0.5" fill="#4a8090"/><rect x="13" y="9" width="4" height="4" rx="0.5" fill="#c0d0e0"/></svg></td><td>input_boolean (buy mode toggle)</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:type-appliances</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><rect x="6" y="3" width="12" height="18" rx="1.5" fill="#e0e8f0"/><line x1="6" y1="10" x2="18" y2="10" stroke="#a0b0c0"/></svg></td><td>switch / fan (appliances)</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:type-electronics</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><rect x="4" y="5" width="16" height="10" rx="1.5" fill="#e0e8f0"/><line x1="9" y1="20" x2="15" y2="20" stroke="#a0b0c0"/></svg></td><td>media_player / light (electronics)</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:type-lighting</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 Z" fill="#e0e8f0"/><circle cx="12" cy="15" r="2.5" fill="#f0c040"/></svg></td><td>light entities</td><td class="status-have">&#10004; HAVE</td></tr>
+<tr><td><code>sims2:aspiration-star</code></td><td class="inventory-icon"><svg viewBox="0 0 24 24" width="20"><polygon points="12,2 14.5,8.5 21,9 16,13.5 17.5,20 12,16.5 6.5,20 8,13.5 3,9 9.5,8.5" fill="#e0d060"/></svg></td><td>sensor (aspiration / goal tracking)</td><td class="status-have">&#10004; HAVE</td></tr>
+</tbody>
+</table>
 </div>
 
-<!-- Catalog -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><rect x="5" y="6" width="14" height="13" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="5" y1="10" x2="19" y2="10" stroke="#e0e8f0" stroke-width="1"/><path d="M7,6 L7,4 C7,3 8,3 8,3 L16,3 C16,3 17,3 17,4 L17,6" fill="none" stroke="#e0e8f0" stroke-width="1"/></svg>
-    </div>
-    <span class="label">Catalog</span>
+<h3 style="color:var(--gold-trim);margin-top:1.8rem;font-size:1.1rem;">HA Entities Still Needing Sims 2 Icons</h3>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:0.8rem;">Common Home Assistant entity types used in the dashboards that do not yet have a dedicated Sims 2 icon. These can be mapped from existing HQ or nunisimmer PNG icons, or created as new SVGs.</p>
+<div class="inventory-table-wrap">
+<table class="inventory-table">
+<thead><tr><th>HA Entity / Domain</th><th>Typical Use</th><th>Suggested Sims 2 Source</th><th>Status</th></th></tr></thead>
+<tbody>
+<tr><td><code>climate</code></td><td>Thermostat, HVAC control</td><td>Nunisimmer: <code>buy_appliances</code> (heater/AC icon)</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>cover</code></td><td>Blinds, curtains, garage doors</td><td>Nunisimmer: <code>buy_decoration_curtains</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>lock</code></td><td>Door locks, security</td><td>Nunisimmer: <code>build_gates</code> or <code>build_windows&amp;doors</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>binary_sensor.motion</code></td><td>Motion detectors, PIR sensors</td><td>HQ: <code>Service.png</code> (bell icon) or create new</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>binary_sensor.door_window</code></td><td>Door/window open-close sensors</td><td>Nunisimmer: <code>build_windows&amp;doors</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>binary_sensor.smoke</code></td><td>Smoke / fire alarm</td><td>HQ: <code>Fire.png</code>, <code>Fire Burned Food.png</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>vacuum</code></td><td>Robot vacuum cleaners</td><td>Nunisimmer: <code>buy_appliances</code> or create new</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>camera</code></td><td>Security cameras, video feeds</td><td>Nunisimmer: <code>buy_electronics_entertainment</code> (TV icon)</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>humidifier</code></td><td>Humidity control devices</td><td>Nunisimmer: <code>buy_plumbing</code> or <code>buy_appliances</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>water_heater</code></td><td>Hot water tanks</td><td>Nunisimmer: <code>buy_plumbing</code></td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>update_entity</code></td><td>Firmware / software updates</td><td>HQ: <code>Job Promote.png</code> (up arrow)</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>calendar</code></td><td>Calendars, schedules</td><td>HQ: <code>Job.png</code> or create from catalog icon</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>weather</code></td><td>Weather conditions, forecast</td><td>Create: sun/cloud/rain SVGs (Sims 2 UI style)</td><td class="status-need">&#9888; NEED</td></tr>
+<tr><td><code>person</code></td><td>People presence tracking</td><td>HQ: <code>Baby.png</code> silhouette or CAS portrait icon</td><td class="status-need">&#9888; NEED</td></tr>
+</tbody>
+</table>
 </div>
 
-<!-- Computer -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="10" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><rect x="8" y="6" width="8" height="5" rx="0.5" fill="#e0e8f0" opacity="0.25"/><line x1="9" y1="17" x2="15" y2="17" stroke="#e0e8f0" stroke-width="1.3"/><line x1="7" y1="19" x2="17" y2="19" stroke="#e0e8f0" stroke-width="1.3"/></svg>
-    </div>
-    <span class="label">Computer</span>
+<h3 style="color:var(--gold-trim);margin-top:1.8rem;font-size:1.1rem;">Extra Sims 2 Icons (Not Directly Needed for HA)</h3>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:0.8rem;">These Sims 2 icons exist in the reference image collections but do not map to standard HA entity types. They are valuable for decorative use, custom automations, or future features.</p>
+<div class="inventory-table-wrap">
+<table class="inventory-table">
+<thead><tr><th>Category</th><th>Icons (HQ PNG names)</th><th>Potential Use</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Relationships</td><td style="font-size:0.72rem;color:var(--text-dim)">Friend, Best Friend, Enemy, Crush, Date, Love, Kiss, Makeout, WooHoo, Marriage, BFF, Met, Relative (6 variants), Steady (3 variants)</td><td>Person cards, relationship dashboards</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Life Events</td><td style="font-size:0.72rem;color:var(--text-dim)">Baby, Baby Grandchild, Baby Pregnant, Ghost, Move In, Party (3 variants)</td><td>Event notifications, custom sensors</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Career / Skills</td><td style="font-size:0.72rem;color:var(--text-dim)">Job, Job Demote, Job Promote, Job Fired, Job Quit, Skill, Skill Gain, Skill Lost, Skill Max, Skill Max All, Overachiever</td><td>Achievement tracking dashboards</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Bubbles</td><td style="font-size:0.72rem;color:var(--text-dim)">Bubble Speech, Bubble Thought, Bubble Yell</td><td>Notification indicators, thought bubbles on cards</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>CAS (Create-a-Sim)</td><td style="font-size:0.72rem;color:var(--text-dim)">nunisimmer: cas, cas_accessories, cas_clothing_* (9), cas_eyebrows, cas_facialhair, cas_hair, cas_makeup* (5), cas_pets</td><td>Sim avatar customization UI</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Room Types</td><td style="font-size:0.72rem;color:var(--text-dim)">nunisimmer: room_* (8): bathroom, bedroom, diningroom, kitchen, livingroom, outdoor, study</td><td>Area/zone navigation tabs</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Build Elements</td><td style="font-size:0.72rem;color:var(--text-dim)">nunisimmer: build_* (14): arches, columns, fireplace, garden*, gates, pool, roof, stairs2, terrainpaint, walls&amp;floors*, windows&amp;doors*</td><td>Build mode furniture categories</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Buy Subcategories</td><td style="font-size:0.72rem;color:var(--text-dim)">nunisimmer: buy_decoration_* (6), buy_electronics_*, buy_hobbies_*, buy_surfaces_*, buy_etc_* (4)</td><td>Furniture catalog filtering</td><td class="status-extra">EXTRA</td></tr>
+<tr><td>Special</td><td style="font-size:0.72rem;color:var(--text-dim)">Aliens, Money, Money Repo, Dream Date, Engaged (2), Fight (2), Love Affair, Marriage Rich, Party Failure/Great, Relationship +/-</td><td>Custom sensors, milestone tracking</td><td class="status-extra">EXTRA</td></tr>
+</tbody>
+</table>
 </div>
 
-<!-- Career -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><path d="M8,10 L8,7 C8,6 9,5.5 10,5.5 L14,5.5 C15,5.5 16,6 16,7 L16,10" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><line x1="7" y1="10" x2="17" y2="10" stroke="#e0e8f0" stroke-width="1.3"/><line x1="9" y1="10" x2="9" y2="18" stroke="#e0e8f0" stroke-width="1.1"/><line x1="15" y1="10" x2="15" y2="18" stroke="#e0e8f0" stroke-width="1.1"/></svg>
-    </div>
-    <span class="label">Career</span>
-</div>
-
-<!-- Rewards -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="12,3 14.5,9 21,9.5 16,14 17.5,21 12,17.5 6.5,21 8,14 3,9.5 9.5,9" fill="none" stroke="#e0d060" stroke-width="1.2"/></svg>
-    </div>
-    <span class="label">Rewards</span>
-</div>
-
-<!-- Settings -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><path d="M12,1 L13,4 L16,2 L14,5.5 L18,7 L15,8.5 L17,11 L14,10 L14,13 L12,10 L10,13 L10,10 L7,11 L9,8.5 L6,7 L10,5.5 L8,2 L11,4 Z" fill="none" stroke="#e0e8f0" stroke-width="0.9"/></svg>
-    </div>
-    <span class="label">Settings</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 4: SHOPPING CATEGORIES (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Shopping Categories</h2>
-<div class="shop-grid">
-
-<!-- Furniture (chair) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 L15,5 Z" fill="none" stroke="#e0e8f0" stroke-width="1.2"/></svg>
-    </div>
-    <span class="label">Furniture</span>
-</div>
-
-<!-- Electronics (TV) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="9" y1="20" x2="15" y2="20" stroke="#e0e8f0" stroke-width="1.3"/><line x1="7" y1="21" x2="17" y2="21" stroke="#e0e8f0" stroke-width="1.3"/></svg>
-    </div>
-    <span class="label">Electronics</span>
-</div>
-
-<!-- Plumbing (toilet) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><path d="M7,10 C7,7 9,5 12,5 C15,5 17,7 17,10 L17,18 C17,20 15,21 12,21 C9,21 7,20 7,18 Z" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><ellipse cx="12" cy="8" rx="4" ry="2.5" fill="none" stroke="#e0e8f0" stroke-width="1"/></svg>
-    </div>
-    <span class="label">Plumbing</span>
-</div>
-
-<!-- Lighting (lamp) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><path d="M9,5 L9,10 C9,12 7,13 6,14 L4,21 L20,21 L18,14 C17,13 15,12 15,10 L15,5" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><circle cx="12" cy="15" r="2.5" fill="#f0c040"/></svg>
-    </div>
-    <span class="label">Lighting</span>
-</div>
-
-<!-- Appliances (fridge) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="6" y1="10" x2="18" y2="10" stroke="#e0e8f0" stroke-width="1"/><circle cx="15" cy="7" r="0.8" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Appliances</span>
-</div>
-
-<!-- Decorative (plant/painting) -->
-<div class="card">
-    <div class="shop-btn">
-        <svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="10" rx="1" fill="none" stroke="#e0e8f0" stroke-width="1.2"/><circle cx="12" cy="13" r="2.5" fill="#e0e8f0" opacity="0.3"/><path d="M12,5 L12,8" stroke="#e0e8f0" stroke-width="1.2"/></svg>
-    </div>
-    <span class="label">Decorative</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 5: PLAY / PAUSE / STOP CONTROLS (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Play Controls</h2>
-<div class="grid">
-
-<!-- Play (green triangle) -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="7,5 19,12 7,19" fill="#50c828" stroke="#3da020" stroke-width="0.5"/></svg>
-    </div>
-    <span class="label">Play</span>
-</div>
-
-<!-- Pause (blue bars) -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="0.5" fill="#e0e8f0"/><rect x="14" y="4" width="4" height="16" rx="0.5" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Pause</span>
-</div>
-
-<!-- Stop (red square) -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2" fill="#d94040" stroke="#b02828" stroke-width="0.5"/></svg>
-    </div>
-    <span class="label">Stop</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 6: WEATHER INDICATORS (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Weather Indicators</h2>
-<div class="grid">
-
-<!-- Sun -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f0c040"/><line x1="12" y1="3" x2="12" y2="5.5" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="18.5" x2="12" y2="21" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="3" y1="12" x2="5.5" y2="12" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="18.5" y1="12" x2="21" y2="12" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="5.6" y1="5.6" x2="7.4" y2="7.4" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="16.6" y1="16.6" x2="18.4" y2="18.4" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="5.6" y1="18.4" x2="7.4" y2="16.6" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/><line x1="16.6" y1="7.4" x2="18.4" y2="5.6" stroke="#f0c040" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </div>
-    <span class="label">Sunny</span>
-</div>
-
-<!-- Cloud -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24"><path d="M6,15 C3.5,15 2.5,17 2.5,19 C2.5,21 5.5,21.5 7,20.5 C8.5,21.5 12,20.5 13,19.5 C15,20.5 18,19.5 18.5,17.5 C19.5,18.5 22,17.5 22,15.5 C22,13.5 20,12.5 18,13.5 C17,10.5 14,10.5 12,11.5 C10,10.5 7,11.5 6,15Z" fill="#a0b8c8"/></svg>
-    </div>
-    <span class="label">Cloudy</span>
-</div>
-
-<!-- Rain -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24"><path d="M6,13 C3.5,13 2.5,15 2.5,17 C2.5,19 5.5,19.5 7,18.5" fill="none" stroke="#a0b8c8" stroke-width="1.5"/><line x1="8" y1="19" x2="7" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="19" x2="11" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="19" x2="15" y2="22" stroke="#60a0d0" stroke-width="1.5" stroke-linecap="round"/></svg>
-    </div>
-    <span class="label">Rain</span>
-</div>
-
-<!-- Moon -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24"><path d="M14,4 C10,5.5 7.5,9.5 7.5,13.5 C7.5,18.5 11,21.5 16,21.5 C13,20 11,17 11,13.5 C11,9.5 13,5.5 14,4Z" fill="#c0d8e8"/></svg>
-    </div>
-    <span class="label">Night</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 7: CAMERA CONTROLS (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Camera Controls</h2>
-<div class="grid">
-
-<!-- Zoom In -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="#e0e8f0" stroke-width="1.8"/><line x1="7" y1="10" x2="13" y2="10" stroke="#e0e8f0" stroke-width="1.5"/><line x1="10" y1="7" x2="10" y2="13" stroke="#e0e8f0" stroke-width="1.5"/></svg>
-    </div>
-    <span class="label">Zoom In</span>
-</div>
-
-<!-- Zoom Out -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6" fill="none" stroke="#e0e8f0" stroke-width="1.3"/><line x1="14.5" y1="14.5" x2="20" y2="20" stroke="#e0e8f0" stroke-width="1.8"/><line x1="7" y1="10" x2="13" y2="10" stroke="#e0e8f0" stroke-width="1.5"/></svg>
-    </div>
-    <span class="label">Zoom Out</span>
-</div>
-
-<!-- Rotate Left -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><path d="M4,12 C4,7.6 7.6,4 12,4 C15.8,4 19,6.8 19.5,10" fill="none" stroke="#e0e8f0" stroke-width="1.5"/><polyline points="17,7 19.5,10 22.5,8" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
-    </div>
-    <span class="label">Rotate Left</span>
-</div>
-
-<!-- Rotate Right -->
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><path d="M20,12 C20,7.6 16.4,4 12,4 C8.2,4 5,6.8 4.5,10" fill="none" stroke="#e0e8f0" stroke-width="1.5"/><polyline points="7,7 4.5,10 1.5,8" fill="none" stroke="#e0e8f0" stroke-width="1.3"/></svg>
-    </div>
-    <span class="label">Rotate Right</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 8: NAVIGATION ARROWS (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Navigation Arrows</h2>
-<div class="grid">
-
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="6,15 12,8 18,15" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Up</span>
-</div>
-
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="6,9 12,16 18,9" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Down</span>
-</div>
-
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="15,6 8,12 15,18" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Left</span>
-</div>
-
-<div class="card">
-    <div class="btn">
-        <svg viewBox="0 0 24 24"><polygon points="9,6 16,12 9,18" fill="#e0e8f0"/></svg>
-    </div>
-    <span class="label">Right</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 9: THERMOMETER (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Thermometer</h2>
-<div class="grid">
-
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 16 56" width="32" height="72">
-            <defs>
-                <linearGradient id="therm-fill" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0%" stop-color="#d94040"/>
-                    <stop offset="50%" stop-color="#f0a030"/>
-                    <stop offset="100%" stop-color="#50c828"/>
-                </linearGradient>
-            </defs>
-            <rect x="5" y="2" width="6" height="42" rx="3" fill="#e0e8f0" stroke="#a0b0c0" stroke-width="0.5"/>
-            <rect x="6.5" y="12" width="3" height="30" rx="1.5" fill="url(#therm-fill)"/>
-            <circle cx="8" cy="48" r="6" fill="#e04040" stroke="#c03030" stroke-width="0.5"/>
-            <line x1="12" y1="10" x2="14" y2="10" stroke="#a0b0c0" stroke-width="0.5"/>
-            <line x1="12" y1="20" x2="14" y2="20" stroke="#a0b0c0" stroke-width="0.5"/>
-            <line x1="12" y1="30" x2="14" y2="30" stroke="#a0b0c0" stroke-width="0.5"/>
-        </svg>
-    </div>
-    <span class="label">Thermometer</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 10: WALL TOGGLE (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Wall Toggle</h2>
-<div class="grid">
-
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 36 36" width="48" height="48">
-            <rect x="6" y="4" width="24" height="28" rx="4" fill="#2a4a5a" stroke="#1a3a4a" stroke-width="1.5"/>
-            <circle cx="18" cy="14" r="5" fill="#50c828" stroke="#3da020" stroke-width="1"/>
-            <circle cx="18" cy="24" r="3" fill="#3a5a6a"/>
-        </svg>
-    </div>
-    <span class="label">Toggle On</span>
-</div>
-
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 36 36" width="48" height="48">
-            <rect x="6" y="4" width="24" height="28" rx="4" fill="#2a4a5a" stroke="#1a3a4a" stroke-width="1.5"/>
-            <circle cx="18" cy="14" r="5" fill="#3a5a6a"/>
-            <circle cx="18" cy="24" r="3" fill="#50c828" stroke="#3da020" stroke-width="0.5"/>
-        </svg>
-    </div>
-    <span class="label">Toggle Off</span>
-</div>
-
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 11: SIMOLEON COUNTER (SVG recreation) -->
-<!-- ============================================================ -->
-<section>
-<h2 class="section-title">Simoleon Counter</h2>
-<div class="grid">
-
-<!-- Simoleon coin -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24" width="48" height="48">
-            <defs>
-                <linearGradient id="sc1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#70d870"/>
-                    <stop offset="50%" stop-color="#48a848"/>
-                    <stop offset="100%" stop-color="#287828"/>
-                </linearGradient>
-            </defs>
-            <circle cx="12" cy="12" r="11" fill="url(#sc1)" stroke="#1a5a1a" stroke-width="0.8"/>
-            <circle cx="12" cy="12" r="9" fill="none" stroke="#90e890" stroke-width="0.5" opacity="0.5"/>
-            <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a4a1a" font-family="serif">&#167;</text>
-        </svg>
-    </div>
-    <span class="label">Simoleon</span>
-</div>
-
-<!-- Counter bar -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 120 36" width="96" height="28">
-            <defs>
-                <linearGradient id="sbg" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#6fa5b7"/>
-                    <stop offset="100%" stop-color="#3a7090"/>
-                </linearGradient>
-            </defs>
-            <rect x="2" y="2" width="116" height="32" rx="16" fill="url(#sbg)" stroke="#2a5a7a" stroke-width="1"/>
-            <rect x="2" y="2" width="116" height="14" rx="7" fill="rgba(255,255,255,0.15)"/>
-            <text x="60" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#0a2a4a" font-family="serif">&#167;15,540</text>
-        </svg>
-    </div>
-    <span class="label">Counter Bar</span>
-</div>
-
-<!-- Plus/minus buttons -->
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24" width="36" height="36">
-            <rect x="4" y="9" width="16" height="6" rx="3" fill="#6fa5b7" stroke="#4a8090" stroke-width="1"/>
-            <line x1="9" y1="12" x2="15" y2="12" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-    </div>
-    <span class="label">Minus</span>
-</div>
-
-<div class="card">
-    <div class="btn btn-flat">
-        <svg viewBox="0 0 24 24" width="36" height="36">
-            <rect x="4" y="9" width="16" height="6" rx="3" fill="#6fa5b7" stroke="#4a8090" stroke-width="1"/>
-            <line x1="12" y1="9" x2="12" y2="15" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
-            <line x1="9" y1="12" x2="15" y2="12" stroke="#2a5a6a" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-    </div>
-    <span class="label">Plus</span>
-</div>
-
-</div>
 </section>
 
 <!-- ============================================================ -->
