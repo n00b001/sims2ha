@@ -624,7 +624,7 @@ footer .figma-ref { color: var(--sky-blue); }
 
 .comp-row {
     display: grid;
-    grid-template-columns: 150px 56px 32px 1fr;
+    grid-template-columns: 150px 56px 24px 1fr 24px 1fr;
     align-items: center;
     background: rgba(30, 50, 70, 0.4);
     border: 1px solid #2a4a60;
@@ -663,8 +663,21 @@ footer .figma-ref { color: var(--sky-blue); }
     gap: 0.6rem;
 }
 
-.comp-sims2.have img {
+.comp-sims2.mono.have img {
     filter: drop-shadow(0 1px 2px rgba(94, 216, 72, 0.3));
+}
+
+.comp-sims2.colour.have img {
+    filter: drop-shadow(0 1px 2px rgba(224, 160, 48, 0.3));
+}
+
+.comp-sims2.empty {
+    opacity: 0.3;
+}
+
+.comp-header {
+    background: rgba(20, 40, 60, 0.6);
+    border-color: #3a5a70;
 }
 
 .comp-name {
@@ -1090,92 +1103,117 @@ footer .figma-ref { color: var(--sky-blue); }
 <!-- ============================================================ -->
 <section>
 <h2 class="section-title">HA Default Icons vs Sims 2 Replacements</h2>
-<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left) and the Sims 2 replacement from the reference images (right). Blank = no replacement yet. All "have" icons are real extracted PNGs from below.</p>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left), then the Sims 2 monochrome replacement (nunisimmer IconSet) and coloured replacement (HQ Icon Pack). A replacement should be monochrome where possible.</p>
 
 <div class="inventory-summary">
-    <div class="inventory-summary-card"><span class="count have">23</span><span class="label">Have Replacement</span></div>
-    <div class="inventory-summary-card"><span class="count need">3</span><span class="label">Still Need Icon</span></div>
-    <div class="inventory-summary-card"><span class="count total">26</span><span class="label">Entity Types</span></div>
+    <div class="inventory-summary-card"><span class="count have">16</span><span class="label">Monochrome Replacement</span></div>
+    <div class="inventory-summary-card"><span class="count need" style="color:#e0a030;">7</span><span class="label">Coloured Replacement</span></div>
+    <div class="inventory-summary-card"><span class="count total">3</span><span class="label">Still Need Any</span></div>
     <div class="inventory-summary-card"><span class="count extra">172</span><span class="label">Total Sims 2 PNGs</span></div>
 </div>
 
 <!-- Comparison Grid -->
 <div class="comparison-grid">
+<div class="comp-row comp-header">
+    <div class="comp-entity"></div>
+    <div class="comp-ha"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#8ab0c8;text-transform:uppercase;letter-spacing:0.5px;">Monochrome</strong></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#e0a030;text-transform:uppercase;letter-spacing:0.5px;">Colour</strong></div>
+</div>
+
 <div class="comp-row">
     <div class="comp-entity">light</div>
     <div class="comp-ha"><mdi-icon icon="mdi:light"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Lighting" width="48" height="48"/>
         <span class="comp-name">Lighting — <code>buy_lightning.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">switch</div>
     <div class="comp-ha"><mdi-icon icon="mdi:switch"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Appliances" width="48" height="48"/>
         <span class="comp-name">Appliances — <code>buy_appliances.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">fan</div>
     <div class="comp-ha"><mdi-icon icon="mdi:fan"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="Electronics" width="48" height="48"/>
         <span class="comp-name">Electronics — <code>buy_electronics.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">media_player</div>
     <div class="comp-ha"><mdi-icon icon="mdi:media-player"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics_entertainment.png" alt="Entertainment" width="48" height="48"/>
         <span class="comp-name">Entertainment — <code>buy_electronics_entertainment.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">climate</div>
     <div class="comp-ha"><mdi-icon icon="mdi:climate"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace / HVAC" width="48" height="48"/>
         <span class="comp-name">Fireplace / HVAC — <code>build_fireplace.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">cover</div>
     <div class="comp-ha"><mdi-icon icon="mdi:cover"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_curtains.png" alt="Curtains" width="48" height="48"/>
         <span class="comp-name">Curtains — <code>buy_decoration_curtains.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">lock</div>
     <div class="comp-ha"><mdi-icon icon="mdi:lock"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_gates.png" alt="Gates" width="48" height="48"/>
         <span class="comp-name">Gates — <code>build_gates.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">binary_sensor.motion</div>
     <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Bubble Speech.png" alt="Speech Bubble" width="48" height="48"/>
         <span class="comp-name">Speech Bubble — <code>Bubble Speech.png</code></span>
     </div>
@@ -1185,17 +1223,21 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">binary_sensor.door_window</div>
     <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_windows&doors.png" alt="Windows and Doors" width="48" height="48"/>
         <span class="comp-name">Windows and Doors — <code>build_windows&amp;doors.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">binary_sensor.smoke</div>
     <div class="comp-ha"><mdi-icon icon="mdi:binary-sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Fire.png" alt="Fire" width="48" height="48"/>
         <span class="comp-name">Fire — <code>Fire.png</code></span>
     </div>
@@ -1205,47 +1247,57 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">vacuum</div>
     <div class="comp-ha"><mdi-icon icon="mdi:vacuum"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
+    <div class="comp-sims2 mono need">
         <div class="blank-icon"></div>
         <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">camera</div>
     <div class="comp-ha"><mdi-icon icon="mdi:camera"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
+    <div class="comp-sims2 mono need">
         <div class="blank-icon"></div>
         <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">humidifier</div>
     <div class="comp-ha"><mdi-icon icon="mdi:humidifier"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
         <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">water_heater</div>
     <div class="comp-ha"><mdi-icon icon="mdi:water-heater"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
         <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">update</div>
     <div class="comp-ha"><mdi-icon icon="mdi:update"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Job Promote.png" alt="Promotion / Update" width="48" height="48"/>
         <span class="comp-name">Promotion / Update — <code>Job Promote.png</code></span>
     </div>
@@ -1255,7 +1307,9 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">calendar</div>
     <div class="comp-ha"><mdi-icon icon="mdi:calendar"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Party.png" alt="Party / Calendar" width="48" height="48"/>
         <span class="comp-name">Party / Calendar — <code>Party.png</code></span>
     </div>
@@ -1265,47 +1319,57 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">weather</div>
     <div class="comp-ha"><mdi-icon icon="mdi:weather"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 need">
+    <div class="comp-sims2 mono need">
         <div class="blank-icon"></div>
         <span class="comp-name blank-label">— no Sims 2 icon yet —</span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">person</div>
     <div class="comp-ha"><mdi-icon icon="mdi:person"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/cas.png" alt="Create-a-Sim" width="48" height="48"/>
         <span class="comp-name">Create-a-Sim — <code>cas.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">sensor.battery</div>
     <div class="comp-ha"><mdi-icon icon="mdi:sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_surfaces.png" alt="Surfaces / Battery" width="48" height="48"/>
         <span class="comp-name">Surfaces / Battery — <code>buy_surfaces.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">sensor.temperature</div>
     <div class="comp-ha"><mdi-icon icon="mdi:sensor"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace / Heat" width="48" height="48"/>
         <span class="comp-name">Fireplace / Heat — <code>build_fireplace.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">scene</div>
     <div class="comp-ha"><mdi-icon icon="mdi:scene"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Aspiration Fortune.png" alt="Fortune Star" width="48" height="48"/>
         <span class="comp-name">Fortune Star — <code>Aspiration Fortune.png</code></span>
     </div>
@@ -1315,17 +1379,21 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">alarm_control_panel</div>
     <div class="comp-ha"><mdi-icon icon="mdi:alarm-control-panel"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_gates.png" alt="Gates / Lock" width="48" height="48"/>
         <span class="comp-name">Gates / Lock — <code>build_gates.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">siren</div>
     <div class="comp-ha"><mdi-icon icon="mdi:siren"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Fire.png" alt="Fire Alert" width="48" height="48"/>
         <span class="comp-name">Fire Alert — <code>Fire.png</code></span>
     </div>
@@ -1335,27 +1403,33 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity">valve</div>
     <div class="comp-ha"><mdi-icon icon="mdi:valve"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing" width="48" height="48"/>
         <span class="comp-name">Plumbing — <code>buy_plumbing.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">input_boolean</div>
     <div class="comp-ha"><mdi-icon icon="mdi:input-boolean"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono have">
         <img src="../reference-images/nunisimmer_IconSet_png/build_walls&floors.png" alt="Walls and Floors" width="48" height="48"/>
         <span class="comp-name">Walls and Floors — <code>build_walls&amp;floors.png</code></span>
     </div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour empty"></div>
 </div>
 
 <div class="comp-row">
     <div class="comp-entity">automation / script</div>
     <div class="comp-ha"><mdi-icon icon="mdi:automation / script"></mdi-icon></div>
     <div class="comp-arrow">→</div>
-    <div class="comp-sims2 have">
+    <div class="comp-sims2 mono empty"></div>
+    <div class="comp-arrow"></div>
+    <div class="comp-sims2 colour have">
         <img src="../reference-images/sims-2-hq-icon-pack/Aspiration Knowledge.png" alt="Knowledge Star" width="48" height="48"/>
         <span class="comp-name">Knowledge Star — <code>Aspiration Knowledge.png</code></span>
     </div>
