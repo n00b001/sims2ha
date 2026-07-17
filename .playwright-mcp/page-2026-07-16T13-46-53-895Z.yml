@@ -1,0 +1,83 @@
+- generic [active] [ref=e1]:
+  - heading "Directory listing for /" [level=1] [ref=e2]
+  - separator [ref=e3]
+  - list [ref=e4]:
+    - listitem [ref=e5]:
+      - link ".claude/" [ref=e6] [cursor=pointer]:
+        - /url: .claude/
+    - listitem [ref=e7]:
+      - link ".codegraph/" [ref=e8] [cursor=pointer]:
+        - /url: .codegraph/
+    - listitem [ref=e9]:
+      - link ".git/" [ref=e10] [cursor=pointer]:
+        - /url: .git/
+    - listitem [ref=e11]:
+      - link ".gitattributes" [ref=e12] [cursor=pointer]:
+        - /url: .gitattributes
+    - listitem [ref=e13]:
+      - link ".github/" [ref=e14] [cursor=pointer]:
+        - /url: .github/
+    - listitem [ref=e15]:
+      - link ".gitignore" [ref=e16] [cursor=pointer]:
+        - /url: .gitignore
+    - listitem [ref=e17]:
+      - link ".omc/" [ref=e18] [cursor=pointer]:
+        - /url: .omc/
+    - listitem [ref=e19]:
+      - link ".pre-commit-config.yaml" [ref=e20] [cursor=pointer]:
+        - /url: .pre-commit-config.yaml
+    - listitem [ref=e21]:
+      - link ".remember/" [ref=e22] [cursor=pointer]:
+        - /url: .remember/
+    - listitem [ref=e23]:
+      - link ".tenet/" [ref=e24] [cursor=pointer]:
+        - /url: .tenet/
+    - listitem [ref=e25]:
+      - link "artifacts/" [ref=e26] [cursor=pointer]:
+        - /url: artifacts/
+    - listitem [ref=e27]:
+      - link "assets/" [ref=e28] [cursor=pointer]:
+        - /url: assets/
+    - listitem [ref=e29]:
+      - link "build.sh" [ref=e30] [cursor=pointer]:
+        - /url: build.sh
+    - listitem [ref=e31]:
+      - link "CHANGELOG.md" [ref=e32] [cursor=pointer]:
+        - /url: CHANGELOG.md
+    - listitem [ref=e33]:
+      - link "custom_components/" [ref=e34] [cursor=pointer]:
+        - /url: custom_components/
+    - listitem [ref=e35]:
+      - link "docs/" [ref=e36] [cursor=pointer]:
+        - /url: docs/
+    - listitem [ref=e37]:
+      - link "hacs.json" [ref=e38] [cursor=pointer]:
+        - /url: hacs.json
+    - listitem [ref=e39]:
+      - link "LICENSE" [ref=e40] [cursor=pointer]:
+        - /url: LICENSE
+    - listitem [ref=e41]:
+      - link "logs/" [ref=e42] [cursor=pointer]:
+        - /url: logs/
+    - listitem [ref=e43]:
+      - link "node_modules/" [ref=e44] [cursor=pointer]:
+        - /url: node_modules/
+    - listitem [ref=e45]:
+      - link "package-lock.json" [ref=e46] [cursor=pointer]:
+        - /url: package-lock.json
+    - listitem [ref=e47]:
+      - link "package.json" [ref=e48] [cursor=pointer]:
+        - /url: package.json
+    - listitem [ref=e49]:
+      - link "README.md" [ref=e50] [cursor=pointer]:
+        - /url: README.md
+    - listitem [ref=e51]:
+      - link "reference-images/" [ref=e52] [cursor=pointer]:
+        - /url: reference-images/
+    - listitem [ref=e53]:
+      - link "scripts/" [ref=e54] [cursor=pointer]:
+        - /url: scripts/
+    - listitem [ref=e55]:
+      - link "src/" [ref=e56] [cursor=pointer]:
+        - /url: src/
+  - separator [ref=e57]
