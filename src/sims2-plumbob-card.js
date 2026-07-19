@@ -149,14 +149,28 @@ class Sims2PlumbobCard extends HTMLElement {
     return `
       :host { display: block; }
       .sims2-plumbob-card {
-        background: linear-gradient(180deg, #F7EDDA 0%, #EDE0C8 100%);
+        background: linear-gradient(170deg, #8AD4ED 0%, #7EC8E6 30%, #6DBFDF 100%);
         border-radius: 14px;
-        box-shadow: 0 2px 12px rgba(74, 51, 32, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        box-shadow:
+          0 2px 12px rgba(14, 22, 40, 0.15),
+          0 1px 4px rgba(14, 22, 40, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.35);
         border: 1px solid #D4B878;
         padding: 18px 14px 16px;
         display: flex; flex-direction: column; align-items: center; gap: 12px;
         text-align: center;
         font-family: var(--sims2-font-display, "Fredoka", system-ui, sans-serif);
+        position: relative;
+        overflow: hidden;
+      }
+      .sims2-plumbob-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 45%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+        pointer-events: none;
+        border-radius: 14px 14px 0 0;
       }
       .sims2-plumbob-wrap { height: ${cfg.size}px; display: flex; align-items: center; }
       .sims2-plumbob {
@@ -179,14 +193,14 @@ class Sims2PlumbobCard extends HTMLElement {
         0%,100% { transform: translateY(0); }
         50%     { transform: translateY(-7px); }
       }
-      .sims2-plumbob-text { color: var(--primary-text-color, #4A3320); }
+      .sims2-plumbob-text { color: var(--primary-text-color, #1A3350); }
       .sims2-title {
         font-size: 17px; font-weight: 600; letter-spacing: 0.02em;
-        color: var(--primary-text-color, #4A3320);
+        color: var(--primary-text-color, #1A3350);
       }
       .sims2-subtitle {
         font-size: 12px; margin-top: 2px;
-        color: var(--secondary-text-color, #7A5A38);
+        color: var(--secondary-text-color, #3A5A78);
       }
       .sims2-value {
         font-size: 13px; margin-top: 6px; letter-spacing: 0.04em;
