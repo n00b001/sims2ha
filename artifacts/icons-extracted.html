@@ -699,6 +699,761 @@ footer .figma-ref { color: var(--sky-blue); }
     background: rgba(20, 40, 60, 0.3);
 }
 
+/* ============================================================ */
+/* SIMS 2 UI ELEMENTS — Buttons, Text Boxes, Panels */
+/* Reference: ui.jpeg (live game UI), ui-2.jpg (login screen)       */
+/*    SimDesktop - InGame.png (desktop overlay)                     */
+/*    someone-elses-homeassistant-theme.jpeg (HA theme reference)   */
+
+/* ---- Root Sims 2 Variables ---- */
+/* Colours sampled from actual Sims 2 UI (ui.jpeg) and HA theme (someone-elses-homeassistant-theme.jpeg) */
+:root {
+    /* Font — Frutiger is the actual Sims 2 UI font family */
+    --font-sims2: 'Frutiger', 'Segoe UI', 'Arial', sans-serif;
+
+    /* Backgrounds — Dark panels now match the game's medium blue-purple, NOT deep navy */
+    --bg-deep: #0a1628;
+    --bg-dark: #0e1f38;
+    --bg-panel-dark: linear-gradient(180deg, #6b7db3 0%, #5a6da0 30%, #4a5d90 60%, #3e5180 100%);
+    --bg-panel-light: radial-gradient(ellipse at 50% 30%, #d4e2f0 0%, #b8cada 40%, #a0b4c8 100%);
+    --bg-glass: linear-gradient(180deg, rgba(120,170,220,0.35) 0%, rgba(60,120,180,0.15) 100%);
+
+    /* Borders — Dark gray (#444) like the actual game, NOT navy */
+    --border-navy: #444;
+    --border-navy-light: #666;
+    --border-blue: #2a4a6a;
+    --border-dark: #333;
+    --border-darkblue: #1a2a5a;
+
+    /* Legacy gold (kept for dialogs that use parchment) */
+    --gold-trim: #c8a040;
+    --gold-light: #e8d080;
+    --gold-dark: #8a6820;
+
+    /* Button colours — Vivid saturated like the actual game */
+    --btn-green-top: #55ff55;
+    --btn-green-mid: #00cc00;
+    --btn-green-bot: #009900;
+    --btn-blue-top: #7799ff;
+    --btn-blue-mid: #4477dd;
+    --btn-blue-bot: #2244aa;
+    --btn-red-top: #ff5555;
+    --btn-red-mid: #dd3333;
+    --btn-red-bot: #aa1111;
+
+    /* Text */
+    --text-light: #e8eef6;
+    --text-bright: #f0f4fa;
+    --text-dark: #1a2a4a;
+    --text-dim: #8898aa;
+}
+
+/* ---- UI Container ---- */
+.sims2-ui {
+    font-family: var(--font-sims2);
+}
+
+/* ---- Panel (Dark — default) ---- */
+.sims2-panel {
+    background: var(--bg-panel-dark);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow:
+        0 3px 8px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---- Panel (Light — HA theme style) ---- */
+.sims2-panel--light {
+    background: var(--bg-panel-light);
+    border: 1px solid var(--border-darkblue);
+    border-radius: 14px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    color: var(--text-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---- Glossy overlay on panels ---- */
+/* Dark panel: subtle top highlight like the game's lit-from-above effect */
+.sims2-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 60%, transparent 100%);
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+}
+/* Light panel: stronger glossy highlight like HA theme's plastic cards */
+.sims2-panel--light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.1) 70%, transparent 100%);
+    border-radius: 14px 14px 0 0;
+    pointer-events: none;
+}
+
+/* ---- Device Card Grid ---- */
+.sims2-device-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.sims2-device-card {
+    background: radial-gradient(ellipse at 50% 35%, #d8e4f0 0%, #b8cce0 50%, #a0b8d0 100%);
+    border: 1px solid var(--border-darkblue);
+    border-radius: 12px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.55);
+    color: var(--text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glossy overlay on device cards — matches HA theme's plastic look */
+.sims2-device-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 70%, transparent 100%);
+    border-radius: 12px 12px 0 0;
+    pointer-events: none;
+}
+
+.sims2-device-card--active {
+    border-color: #2a8a20;
+    box-shadow:
+        0 2px 6px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        0 0 10px rgba(0,180,0,0.25);
+}
+
+.sims2-device-card img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    position: relative;
+    z-index: 1;
+}
+
+.sims2-device-card--label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.sims2-device-card--status {
+    font-size: 0.6rem;
+    color: #5a6a7a;
+    position: relative;
+    z-index: 1;
+}
+
+.sims2-device-card--active .sims2-device-card--status {
+    color: #2a7a1a;
+    font-weight: 600;
+}
+
+/* ---- Device Card Toggle (circular button) ---- */
+.sims2-device-toggle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #555;
+    background: radial-gradient(circle at 40% 35%, #a0b8d0, #7a98b8 60%, #607898 100%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.sims2-device-toggle--on {
+    background: radial-gradient(circle at 40% 35%, #66ee50, #22cc00 50%, #009900 100%);
+    border-color: #006600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 0 8px rgba(0,200,0,0.35);
+}
+
+/* ---- Buttons ---- */
+.sims2-btn {
+    font-family: var(--font-sims2);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.15s, box-shadow 0.15s;
+}
+
+/* Glossy top-half highlight — the "plastic" Sims 2 look */
+.sims2-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1px;
+    right: 1px;
+    height: 48%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 80%, transparent 100%);
+    border-radius: 7px 7px 0 0;
+    pointer-events: none;
+}
+
+.sims2-btn:hover {
+    filter: brightness(1.12);
+    box-shadow: 0 0 10px rgba(100,160,255,0.3);
+}
+
+.sims2-btn:active {
+    filter: brightness(0.88);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Button: Green (Play, Login, Active) — vivid saturated green from game */
+.sims2-btn--green {
+    background: linear-gradient(180deg,
+        #55ff55 0%,
+        #33dd33 20%,
+        #00cc00 45%,
+        #00aa00 70%,
+        #009900 100%);
+    border-color: #006600;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Button: Blue (Navigation, default) — vivid blue from game */
+.sims2-btn--blue {
+    background: linear-gradient(180deg,
+        #7799ff 0%,
+        #5577ee 20%,
+        #4466dd 45%,
+        #3355cc 70%,
+        #2244aa 100%);
+    border-color: #1a3366;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* Button: Red (Cancel, Exit, Delete) */
+.sims2-btn--red {
+    background: linear-gradient(180deg,
+        #ff6666 0%,
+        #ee4444 20%,
+        #dd3333 45%,
+        #cc2222 70%,
+        #aa1111 100%);
+    border-color: #660000;
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Button: Gold (Favorites, Star) — parchment dialogs */
+.sims2-btn--gold {
+    background: linear-gradient(180deg,
+        #f0e090 0%,
+        #e0cc60 20%,
+        #d0b840 45%,
+        #b8a030 70%,
+        #9a8020 100%);
+    border-color: #6a5010;
+    color: #3a2a10;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Button: Wide (full-width login-style) */
+.sims2-btn--wide {
+    width: 100%;
+    justify-content: center;
+    padding: 0.55rem 1.25rem;
+    font-size: 0.8rem;
+}
+
+/* Button: Icon (with image) */
+.sims2-btn--icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Button: Pill (rounded nav style from HA theme reference) */
+.sims2-btn--pill {
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.7rem;
+}
+
+/* Button row */
+.sims2-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* ---- Color Dots (HA theme reference) ---- */
+.sims2-color-dots {
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.sims2-color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.3);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.sims2-color-dot--green {
+    background: radial-gradient(circle at 35% 35%, #7ae060, #4ab040);
+}
+
+.sims2-color-dot--yellow {
+    background: radial-gradient(circle at 35% 35%, #f0d860, #d0b830);
+}
+
+.sims2-color-dot--red {
+    background: radial-gradient(circle at 35% 35%, #e87070, #c04040);
+}
+
+/* ---- Text Inputs ---- */
+.sims2-input,
+.sims2-textarea,
+.sims2-select {
+    font-family: var(--font-sims2);
+    font-size: 0.8rem;
+    /* Light gray gradient like the actual Sims 2 text fields */
+    background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%);
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    color: #222;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.sims2-input:focus,
+.sims2-textarea:focus,
+.sims2-select:focus {
+    border-color: #4466dd;
+    box-shadow: 0 0 6px rgba(68,102,221,0.25), inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.sims2-input::placeholder,
+.sims2-textarea::placeholder {
+    color: #999;
+}
+
+.sims2-textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.sims2-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0,0 L5,6 L10,0' fill='%234466dd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+}
+
+/* ---- Labels ---- */
+.sims2-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e8eef6;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* ---- Form Groups ---- */
+.sims2-form-group {
+    margin-bottom: 0.75rem;
+}
+.sims2-form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* ---- Checkbox ---- */
+.sims2-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #e8eef6;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.sims2-checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+    border: 1px solid #666;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.sims2-checkbox input[type="checkbox"]:checked {
+    background: linear-gradient(180deg, #33dd33 0%, #009900 100%);
+    border-color: #006600;
+}
+
+.sims2-checkbox input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+/* ---- List ---- */
+.sims2-list {
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 320px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.sims2-list-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgba(68,68,68,0.4);
+    font-size: 0.75rem;
+    color: #e8eef6;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sims2-list-item:last-child {
+    border-bottom: none;
+}
+
+.sims2-list-item:hover {
+    background: rgba(100,140,220,0.2);
+}
+
+.sims2-list-item--selected {
+    background: linear-gradient(90deg, rgba(100,140,220,0.35) 0%, rgba(100,140,220,0.1) 100%);
+    border-left: 3px solid #5577ee;
+    padding-left: 0.5rem;
+    color: #f0f4fa;
+}
+
+.sims2-list-item img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* ---- Dialog (Parchment style — login screen) ---- */
+.sims2-dialog {
+    background: linear-gradient(180deg, #e8dcc0 0%, #d8c8a0 50%, #c8b890 100%);
+    border: 2px solid var(--gold-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 16px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    max-width: 360px;
+}
+
+.sims2-dialog-header {
+    background: linear-gradient(180deg, #d8c898 0%, #c0a870 100%);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--gold-dark);
+}
+
+.sims2-dialog-title {
+    flex: 1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #3a2a10;
+    text-align: center;
+}
+
+.sims2-dialog-ornament {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.sims2-dialog-close {
+    background: none;
+    border: none;
+    color: #5a4a30;
+    font-size: 0.7rem;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+}
+
+.sims2-dialog-close:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.sims2-dialog-body {
+    padding: 0.75rem;
+}
+
+/* ---- Section Header ---- */
+.sims2-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.sims2-section-badge {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(180deg, #e8d080 0%, #c8a040 50%, #a88030 100%);
+    border: 1px solid var(--gold-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sims2-section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #ffe870;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* ---- Status Bar ---- */
+.sims2-statusbar {
+    background: linear-gradient(180deg, #5a6da0 0%, #4a5d90 50%, #3e5180 100%);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.sims2-statusbar-left {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.sims2-statusbar-center {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+}
+
+.sims2-statusbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.65rem;
+    color: #8898aa;
+}
+
+.sims2-statusbar-text {
+    color: #e8eef6;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.sims2-statusbar-text--highlight {
+    color: #ffe870;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* ---- Tab Bar ---- */
+.sims2-tabbar {
+    display: flex;
+    gap: 3px;
+    background: linear-gradient(180deg, #5a6da0 0%, #4a5d90 50%, #3e5180 100%);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 3px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.sims2-tab {
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8898aa;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.sims2-tab:hover {
+    color: #e8eef6;
+    background: rgba(100,140,220,0.2);
+}
+
+.sims2-tab--active {
+    background: linear-gradient(180deg, #7799ff 0%, #4466dd 45%, #2244aa 100%);
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    box-shadow:
+        0 1px 3px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* ---- Demo Grid / Cards ---- */
+.sims2-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.sims2-demo-card {
+    background: rgba(50,65,100,0.35);
+    border: 1px solid rgba(90,110,160,0.3);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.sims2-demo-card h4 {
+    font-size: 0.75rem;
+    color: #8898aa;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ---- Media Player Controls (HA theme reference) ---- */
+.sims2-media-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.sims2-media-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #444;
+    background: radial-gradient(circle at 40% 35%, #8898b8, #5a6a8a 60%, #4a5a7a 100%);
+    color: #e8eef6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.65rem;
+    transition: filter 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.sims2-media-btn:hover {
+    filter: brightness(1.15);
+}
+
+.sims2-media-btn--play {
+    width: 34px;
+    height: 34px;
+    background: radial-gradient(circle at 40% 35%, #55ff55, #00cc00 50%, #009900 100%);
+    border-color: #006600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 0 8px rgba(0,200,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+/* ---- Slider (HA theme reference) ---- */
+.sims2-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, #3a4a6a 0%, #2a3a5a 100%);
+    border: 1px solid #444;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.sims2-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #7799ff, #4466dd 50%, #2244aa 100%);
+    border: 1px solid #1a3366;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+
+
 </style>
 </head>
 <body>
@@ -1103,11 +1858,11 @@ footer .figma-ref { color: var(--sky-blue); }
 <!-- ============================================================ -->
 <section>
 <h2 class="section-title">HA Default Icons vs Sims 2 Replacements</h2>
-<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left), then the Sims 2 monochrome replacement (nunisimmer IconSet) and coloured replacement (HQ Icon Pack). A replacement should be monochrome where possible.</p>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.2rem;">Each row shows the Home Assistant default icon (left), then the Sims 2 monochrome replacement (nunisimmer IconSet) — <strong style="color:#5ed848;">the default</strong> — and an optional coloured alternative (HQ Icon Pack). Monochrome icons are used by default; coloured icons are not.</p>
 
 <div class="inventory-summary">
-    <div class="inventory-summary-card"><span class="count have">26</span><span class="label">Monochrome Replacement</span></div>
-    <div class="inventory-summary-card"><span class="count need" style="color:#e0a030;">25</span><span class="label">Coloured Replacement</span></div>
+    <div class="inventory-summary-card"><span class="count have">26</span><span class="label">Monochrome (Default)</span></div>
+    <div class="inventory-summary-card"><span class="count need" style="color:#8ab0c8;">25</span><span class="label">Colour (Optional)</span></div>
     <div class="inventory-summary-card"><span class="count total">1</span><span class="label">Still Need Any</span></div>
     <div class="inventory-summary-card"><span class="count extra">172</span><span class="label">Total Sims 2 PNGs</span></div>
 </div>
@@ -1118,9 +1873,9 @@ footer .figma-ref { color: var(--sky-blue); }
     <div class="comp-entity"></div>
     <div class="comp-ha"></div>
     <div class="comp-arrow"></div>
-    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#8ab0c8;text-transform:uppercase;letter-spacing:0.5px;">Monochrome</strong></div>
+    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#5ed848;text-transform:uppercase;letter-spacing:0.5px;">Monochrome (Default)</strong></div>
     <div class="comp-arrow"></div>
-    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#e0a030;text-transform:uppercase;letter-spacing:0.5px;">Colour</strong></div>
+    <div class="comp-sims2"><strong style="font-size:0.7rem;color:#8ab0c8;text-transform:uppercase;letter-spacing:0.5px;">Colour (Optional)</strong></div>
 </div>
 
 <div class="comp-row">
@@ -1820,6 +2575,531 @@ footer .figma-ref { color: var(--sky-blue); }
 </section>
 
 <!-- ============================================================ -->
+<!-- ============================================================ -->
+<!-- SECTION 24: SIMS 2 UI ELEMENTS — Buttons, Text Boxes, Panels -->
+<!-- Reference: ui.jpeg (live game), ui-2.jpg (login screen)     -->
+<!--          SimDesktop - InGame.png (desktop overlay)           -->
+<!--          someone-elses-homeassistant-theme.jpeg              -->
+<!-- ============================================================ -->
+<section>
+<h2 class="section-title">Sims 2 UI Elements &mdash; Buttons, Text Boxes &amp; Panels</h2>
+<p style="font-size:0.75rem;color:var(--text-dim);margin-bottom:1.5rem;">Interactive elements styled to match The Sims 2 game UI. Navy borders, glassy gradients, rounded panels, and pill buttons — based on live game screenshots and the Sims 2 Home Assistant theme reference.</p>
+
+<div class="sims2-ui">
+
+<!-- ============================================ -->
+<!-- ROW 1: PANEL VARIANTS -->
+<!-- ============================================ -->
+<div class="sims2-demo-grid">
+
+<div class="sims2-demo-card">
+<h4>Dark Panel (Game UI)</h4>
+<div class="sims2-panel" style="margin-bottom:0;">
+    <p style="font-size:0.75rem;color:#e8eef6;margin:0;line-height:1.5;text-shadow:0 1px 2px rgba(0,0,0,0.4);">
+        This is the default dark panel used throughout the Sims 2 game UI — deep blue gradient with navy border and glossy overlay.
+    </p>
+    <div class="sims2-btn-row" style="margin-top:0.75rem;">
+        <button class="sims2-btn sims2-btn--blue">Confirm</button>
+        <button class="sims2-btn sims2-btn--green">Apply</button>
+    </div>
+</div>
+</div>
+
+<div class="sims2-demo-card">
+<h4>Light Panel (HA Theme Style)</h4>
+<div class="sims2-panel--light" style="margin-bottom:0;">
+    <p style="font-size:0.75rem;color:#1a2a4a;margin:0;line-height:1.5;">
+        Light panel variant inspired by Home Assistant dashboards themed to look like Sims 2 — lighter gradient, navy border, gloss overlay.
+    </p>
+    <div class="sims2-btn-row" style="margin-top:0.75rem;">
+        <button class="sims2-btn sims2-btn--blue" style="font-size:0.65rem;padding:0.3rem 0.75rem;">Options</button>
+        <div class="sims2-color-dots">
+            <span class="sims2-color-dot sims2-color-dot--green"></span>
+            <span class="sims2-color-dot sims2-color-dot--yellow"></span>
+            <span class="sims2-color-dot sims2-color-dot--red"></span>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 2: DEVICE CARD GRID (HA Theme Reference) -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-card" style="max-width:100%;">
+<h4>Device Cards (2x2 Grid)</h4>
+<div class="sims2-panel--light" style="margin-bottom:0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <span style="font-size:0.8rem;font-weight:700;color:#1a2a4a;">Living Room</span>
+        <div class="sims2-color-dots">
+            <span class="sims2-color-dot sims2-color-dot--green"></span>
+            <span class="sims2-color-dot sims2-color-dot--yellow"></span>
+            <span class="sims2-color-dot sims2-color-dot--red"></span>
+        </div>
+    </div>
+    <div class="sims2-device-grid">
+        <!-- Card 1: Light — ACTIVE -->
+        <div class="sims2-device-card sims2-device-card--active">
+            <img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Light"/>
+            <span class="sims2-device-card--label">Ceiling Light</span>
+            <span class="sims2-device-card--status">on · 80%</span>
+            <div class="sims2-media-controls">
+                <div class="sims2-device-toggle sims2-device-toggle--on"></div>
+            </div>
+            <input type="range" class="sims2-slider" value="80"/>
+        </div>
+        <!-- Card 2: TV -->
+        <div class="sims2-device-card">
+            <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="TV"/>
+            <span class="sims2-device-card--label">Television</span>
+            <span class="sims2-device-card--status">off</span>
+            <div class="sims2-media-controls">
+                <div class="sims2-device-toggle"></div>
+            </div>
+            <input type="range" class="sims2-slider" value="0"/>
+        </div>
+        <!-- Card 3: Climate -->
+        <div class="sims2-device-card">
+            <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Climate"/>
+            <span class="sims2-device-card--label">Thermostat</span>
+            <span class="sims2-device-card--status">22°C · heat</span>
+            <div class="sims2-media-controls">
+                <div class="sims2-device-toggle"></div>
+            </div>
+            <input type="range" class="sims2-slider" value="55"/>
+        </div>
+        <!-- Card 4: Fan -->
+        <div class="sims2-device-card">
+            <img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Fan"/>
+            <span class="sims2-device-card--label">Standing Fan</span>
+            <span class="sims2-device-card--status">off</span>
+            <div class="sims2-media-controls">
+                <div class="sims2-device-toggle"></div>
+            </div>
+            <input type="range" class="sims2-slider" value="0"/>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 3: BUTTON VARIANTS -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-grid">
+
+<div class="sims2-demo-card">
+<h4>Action Buttons</h4>
+<div class="sims2-btn-row" style="margin-bottom:0.75rem;">
+    <!-- Green Play button (top action bar) -->
+    <button class="sims2-btn sims2-btn--green">
+        <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13" fill="#fff"/></svg>
+        Play
+    </button>
+    <!-- Blue nav buttons -->
+    <button class="sims2-btn sims2-btn--blue">
+        <svg width="14" height="14" viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1" fill="#fff"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#fff"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#fff"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#fff"/></svg>
+        Build
+    </button>
+    <button class="sims2-btn sims2-btn--blue">
+        <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="5" r="3" fill="#fff"/><path d="M2,13 C2,10 5,8 7,8 C9,8 12,10 12,13" fill="#fff"/></svg>
+        CAS
+    </button>
+    <button class="sims2-btn sims2-btn--red">
+        <svg width="14" height="14" viewBox="0 0 14 14"><line x1="3" y1="3" x2="11" y2="11" stroke="#fff" stroke-width="2"/><line x1="11" y1="3" x2="3" y2="11" stroke="#fff" stroke-width="2"/></svg>
+        Cancel
+    </button>
+</div>
+<div class="sims2-btn-row">
+    <button class="sims2-btn sims2-btn--gold">
+        <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,1 9,5 13,5.5 10,8.5 11,13 7,11 3,13 4,8.5 1,5.5 5,5" fill="#3a2a10"/></svg>
+        Favorites
+    </button>
+    <button class="sims2-btn sims2-btn--blue">
+        <svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="none" stroke="#fff" stroke-width="1.5"/><line x1="7" y1="4" x2="7" y2="7" stroke="#fff" stroke-width="1.5"/><line x1="7" y1="7" x2="10" y2="10" stroke="#fff" stroke-width="1.5"/></svg>
+        Pause
+    </button>
+</div>
+</div>
+
+<div class="sims2-demo-card">
+<h4>Pill Buttons (Nav Style)</h4>
+<div class="sims2-btn-row" style="margin-bottom:0.75rem;">
+    <button class="sims2-btn sims2-btn--green sims2-btn--pill">Live Mode</button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--pill">Build Mode</button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--pill">Buy Mode</button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--pill">Manage</button>
+</div>
+<div class="sims2-btn-row">
+    <button class="sims2-btn sims2-btn--blue sims2-btn--pill">Neighborhood</button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--pill">Gallery</button>
+    <button class="sims2-btn sims2-btn--red sims2-btn--pill">Quit</button>
+</div>
+<h4 style="margin-top:1rem;">Wide Buttons (Login Style)</h4>
+<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem;">
+    <button class="sims2-btn sims2-btn--green sims2-btn--wide">
+        <svg width="16" height="16" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13" fill="#fff"/></svg>
+        LOGIN
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--wide">
+        Browse Sims
+    </button>
+    <button class="sims2-btn sims2-btn--red sims2-btn--wide">
+        Exit
+    </button>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 4: ICON BUTTONS (Bottom Category Bar) -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-card" style="max-width:100%;">
+<h4>Category Bar Icons (Buy Mode Style)</h4>
+<div class="sims2-btn-row">
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Lighting"/>
+        Lighting
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Appliances"/>
+        Appliances
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_comfort.png" alt="Comfort"/>
+        Comfort
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="Electronics"/>
+        Electronics
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration.png" alt="Decoration"/>
+        Decor
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Plumbing"/>
+        Plumbing
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_fitness.png" alt="Fitness"/>
+        Fitness
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_hobbies_knowledge.png" alt="Knowledge"/>
+        Knowledge
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Fireplace"/>
+        Fireplace
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_garden.png" alt="Garden"/>
+        Garden
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_etc_party.png" alt="Party"/>
+        Party
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_surfaces.png" alt="Surfaces"/>
+        Surfaces
+    </button>
+</div>
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 5: TEXT INPUTS (Login Screen Style) -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-grid">
+
+<div class="sims2-demo-card">
+<h4>Login Form (ui-2.jpg Reference)</h4>
+<div class="sims2-panel" style="margin-bottom:0;">
+    <div class="sims2-form-group">
+        <label class="sims2-label">User Name</label>
+        <input class="sims2-input" type="text" placeholder="Enter username..." value="n00b001"/>
+    </div>
+    <div class="sims2-form-group">
+        <label class="sims2-label">Password</label>
+        <input class="sims2-input" type="password" placeholder="Enter password..." value="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"/>
+    </div>
+    <div style="display:flex;gap:1rem;margin:0.75rem 0;">
+        <label class="sims2-checkbox">
+            <input type="checkbox" checked/> Remember Password
+        </label>
+        <label class="sims2-checkbox">
+            <input type="checkbox"/> Auto Login
+        </label>
+    </div>
+    <button class="sims2-btn sims2-btn--green sims2-btn--wide" style="margin-top:0.5rem;">
+        <svg width="16" height="16" viewBox="0 0 14 14"><polygon points="3,1 13,7 3,13" fill="#fff"/></svg>
+        LOGIN
+    </button>
+</div>
+</div>
+
+<div class="sims2-demo-card">
+<h4>Form Controls</h4>
+<div class="sims2-form-group">
+    <label class="sims2-label">Search</label>
+    <input class="sims2-input" type="text" placeholder="Type to search..."/>
+</div>
+<div class="sims2-form-group">
+    <label class="sims2-label">Category</label>
+    <select class="sims2-select" style="width:100%;max-width:320px;">
+        <option>All Categories</option>
+        <option>Lighting</option>
+        <option>Appliances</option>
+        <option>Comfort</option>
+        <option>Electronics</option>
+    </select>
+</div>
+<div class="sims2-form-group">
+    <label class="sims2-label">Notes</label>
+    <textarea class="sims2-textarea" placeholder="Enter notes...">Sims 2 styled textarea with dark background and navy focus border.</textarea>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 6: DIALOG BOX + LIST -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-grid">
+
+<div class="sims2-demo-card">
+<h4>Dialog Box (In-Game Popup Style)</h4>
+<div class="sims2-dialog">
+    <div class="sims2-dialog-header">
+        <!-- Gold leaf ornament (left) -->
+        <svg class="sims2-dialog-ornament" viewBox="0 0 24 24">
+            <path d="M12,2 C10,6 6,8 6,12 C6,15 9,18 12,22 C15,18 18,15 18,12 C18,8 14,6 12,2Z" fill="#c8a040" stroke="#e8c850" stroke-width="0.5"/>
+            <path d="M12,6 C11,9 9,10 9,13 C9,15 10.5,17 12,19" fill="none" stroke="#e8d870" stroke-width="0.5"/>
+        </svg>
+        <span class="sims2-dialog-title">Sims in Your Neighborhood</span>
+        <svg class="sims2-dialog-ornament" viewBox="0 0 24 24" style="transform:scaleX(-1);">
+            <path d="M12,2 C10,6 6,8 6,12 C6,15 9,18 12,22 C15,18 18,15 18,12 C18,8 14,6 12,2Z" fill="#c8a040" stroke="#e8c850" stroke-width="0.5"/>
+            <path d="M12,6 C11,9 9,10 9,13 C9,15 10.5,17 12,19" fill="none" stroke="#e8d870" stroke-width="0.5"/>
+        </svg>
+        <button class="sims2-dialog-close">&#10005;</button>
+    </div>
+    <div class="sims2-dialog-body">
+        <p style="font-family:var(--font-sims2);font-size:0.8rem;color:#3a2a10;margin-bottom:0.75rem;line-height:1.5;">
+            Select a Sim to control. Click the name to enter live mode.
+        </p>
+        <div class="sims2-list" style="max-width:100%;border-color:#b0a080;">
+            <div class="sims2-list-item sims2-list-item--selected" style="background:linear-gradient(90deg,#d8c898,#e8dcc0);border-left-color:#8a6820;color:#3a2a10;">
+                <img src="../reference-images/nunisimmer_IconSet_png/cas.png" alt="Sim"/>
+                <div>
+                    <div style="font-weight:700;">Goth Family</div>
+                    <div style="font-size:0.65rem;opacity:0.7;">4 Sims &middot; Desert Tract</div>
+                </div>
+            </div>
+            <div class="sims2-list-item" style="background:#e8dcc0;color:#5a4a30;">
+                <img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_main_female.png" alt="Sim"/>
+                <div>
+                    <div style="font-weight:600;">Landgraab Family</div>
+                    <div style="font-size:0.65rem;opacity:0.7;">2 Sims &middot; Lazy University</div>
+                </div>
+            </div>
+            <div class="sims2-list-item" style="background:#f0e4c8;color:#5a4a30;">
+                <img src="../reference-images/nunisimmer_IconSet_png/cas_clothing_main_male.png" alt="Sim"/>
+                <div>
+                    <div style="font-weight:600;">Deity Family</div>
+                    <div style="font-size:0.65rem;opacity:0.7;">1 Sim &middot; Desert Tract</div>
+                </div>
+            </div>
+        </div>
+        <div class="sims2-btn-row" style="margin-top:0.75rem;justify-content:flex-end;">
+            <button class="sims2-btn sims2-btn--blue" style="min-width:60px;font-size:0.7rem;">
+                Cancel
+            </button>
+            <button class="sims2-btn sims2-btn--green" style="min-width:60px;font-size:0.7rem;">
+                Select
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="sims2-demo-card">
+<h4>List &amp; Selection (Dark Panel Style)</h4>
+<div class="sims2-section-header">
+    <div class="sims2-section-badge">
+        <svg width="16" height="16" viewBox="0 0 14 14"><circle cx="7" cy="5" r="3" fill="#3a2a10"/><path d="M2,13 C2,10 5,8 7,8 C9,8 12,10 12,13" fill="#3a2a10"/></svg>
+    </div>
+    <span class="sims2-section-label">Entity List</span>
+</div>
+<div class="sims2-list">
+    <div class="sims2-list-item sims2-list-item--selected">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_lightning.png" alt="Light"/>
+        <div>
+            <div style="font-weight:600;">light.living_room</div>
+            <div style="font-size:0.65rem;opacity:0.6;">on &middot; brightness 80%</div>
+        </div>
+    </div>
+    <div class="sims2-list-item">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_appliances.png" alt="Switch"/>
+        <div>
+            <div>switch.kitchen</div>
+            <div style="font-size:0.65rem;opacity:0.6;">off</div>
+        </div>
+    </div>
+    <div class="sims2-list-item">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_electronics.png" alt="Fan"/>
+        <div>
+            <div>fan.bedroom</div>
+            <div style="font-size:0.65rem;opacity:0.6;">on &middot; speed 2</div>
+        </div>
+    </div>
+    <div class="sims2-list-item">
+        <img src="../reference-images/nunisimmer_IconSet_png/build_fireplace.png" alt="Climate"/>
+        <div>
+            <div>climate.thermostat</div>
+            <div style="font-size:0.65rem;opacity:0.6;">22°C &middot; heat</div>
+        </div>
+    </div>
+    <div class="sims2-list-item">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_plumbing.png" alt="Humidifier"/>
+        <div>
+            <div>humidifier.bathroom</div>
+            <div style="font-size:0.65rem;opacity:0.6;">45% humidity</div>
+        </div>
+    </div>
+    <div class="sims2-list-item">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_curtains.png" alt="Cover"/>
+        <div>
+            <div>cover.balcony</div>
+            <div style="font-size:0.65rem;opacity:0.6;">closed</div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 7: STATUS BAR + TAB BAR + MEDIA -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-grid">
+
+<div class="sims2-demo-card">
+<h4>Bottom Status Bar</h4>
+<div class="sims2-statusbar">
+    <div class="sims2-statusbar-left">
+        <button class="sims2-btn sims2-btn--blue" style="min-width:auto;padding:0.25rem 0.6rem;font-size:0.65rem;">
+            <svg width="10" height="10" viewBox="0 0 14 14"><circle cx="7" cy="5" r="3" fill="#fff"/><path d="M2,13 C2,10 5,8 7,8 C9,8 12,10 12,13" fill="#fff"/></svg>
+            CAS
+        </button>
+        <button class="sims2-btn sims2-btn--blue" style="min-width:auto;padding:0.25rem 0.6rem;font-size:0.65rem;">
+            <svg width="10" height="10" viewBox="0 0 14 14"><rect x="1" y="1" width="5" height="5" rx="1" fill="#fff"/><rect x="8" y="1" width="5" height="5" rx="1" fill="#fff"/><rect x="1" y="8" width="5" height="5" rx="1" fill="#fff"/><rect x="8" y="8" width="5" height="5" rx="1" fill="#fff"/></svg>
+            Build
+        </button>
+        <button class="sims2-btn sims2-btn--green" style="min-width:auto;padding:0.25rem 0.6rem;font-size:0.65rem;">
+            <svg width="10" height="10" viewBox="0 0 14 14"><polygon points="3,1 12,7 3,13" fill="#fff"/></svg>
+            Play
+        </button>
+    </div>
+    <div class="sims2-statusbar-center">
+        <span class="sims2-statusbar-text sims2-statusbar-text--highlight">Goth Family</span>
+        <span class="sims2-statusbar-text"> &middot; Desert Tract</span>
+    </div>
+    <div class="sims2-statusbar-right">
+        <!-- SIMLEDS indicator -->
+        <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#5ec850" stroke="#3a8030" stroke-width="1"/></svg>
+        <span class="sims2-statusbar-text">SIMLEDS</span>
+    </div>
+</div>
+</div>
+
+<div class="sims2-demo-card">
+<h4>Tab Navigation</h4>
+<div class="sims2-tabbar" style="margin-bottom:1rem;">
+    <span class="sims2-tab sims2-tab--active">Buy</span>
+    <span class="sims2-tab">Build</span>
+    <span class="sims2-tab">CAS</span>
+    <span class="sims2-tab">Manage</span>
+</div>
+<div style="margin-top:0.5rem;">
+<div class="sims2-section-header">
+    <div class="sims2-section-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,1 9,5 13,5.5 10,8.5 11,13 7,11 3,13 4,8.5 1,5.5 5,5" fill="#3a2a10"/></svg>
+    </div>
+    <span class="sims2-section-label">Buy Mode</span>
+</div>
+<div class="sims2-btn-row" style="margin-top:0.5rem;">
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_comfort_bed.png" alt="Bed"/>
+        Beds
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_plants.png" alt="Plants"/>
+        Plants
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_rugs.png" alt="Rugs"/>
+        Rugs
+    </button>
+    <button class="sims2-btn sims2-btn--blue sims2-btn--icon">
+        <img src="../reference-images/nunisimmer_IconSet_png/buy_decoration_paintings.png" alt="Art"/>
+        Art
+    </button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- ROW 8: MEDIA PLAYER CONTROLS -->
+<!-- ============================================ -->
+<div style="margin-top:1.5rem;">
+<div class="sims2-demo-card" style="max-width:100%;">
+<h4>Media Player Controls</h4>
+<div class="sims2-panel--light" style="margin-bottom:0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+        <span style="font-size:0.8rem;font-weight:700;color:#1a2a4a;">Kitchen Speaker</span>
+        <div class="sims2-color-dots">
+            <span class="sims2-color-dot sims2-color-dot--green"></span>
+        </div>
+    </div>
+    <div style="text-align:center;margin-bottom:0.5rem;">
+        <span style="font-size:0.7rem;color:#1a2a4a;">Now Playing &middot; Ambient Sounds</span>
+    </div>
+    <div class="sims2-media-controls">
+        <button class="sims2-media-btn">&#9630;</button>
+        <button class="sims2-media-btn">&#9664;&#9664;</button>
+        <button class="sims2-media-btn sims2-media-btn--play">&#9658;</button>
+        <button class="sims2-media-btn">&#9654;&#9654;</button>
+        <button class="sims2-media-btn">&#9630;</button>
+    </div>
+    <div style="margin-top:0.5rem;">
+        <input type="range" class="sims2-slider" value="60"/>
+    </div>
+</div>
+</div>
+</div>
+
+</div><!-- end .sims2-ui -->
+
+</section>
+
+
+<!-- ============================================================ -->
 <!-- FOOTER -->
 <!-- ============================================================ -->
 <footer>
@@ -1830,3 +3110,4 @@ footer .figma-ref { color: var(--sky-blue); }
 
 </body>
 </html>
+
