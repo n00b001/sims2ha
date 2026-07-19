@@ -1886,7 +1886,7 @@ ha-entity-row:hover {
    ========================================================================== */
 
 .mdc-icon-button {
-  color: #5C4A32 !important;
+  color: var(--sims2-cream-text, #FFF6E0) !important;
 }
 
 .mdc-icon-button:hover {
@@ -1999,13 +1999,13 @@ ha-list-item:hover,
 
 app-drawer,
 ha-sidebar {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 50%, #E8D4B0 100%) !important;
+  background: linear-gradient(180deg, #1E3D5A 0%, #1A3350 50%, #0E2240 100%) !important;
   border-right: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
 }
 
 ha-sidebar .link,
 ha-sidebar .title a {
-  color: #5C4A32 !important;
+  color: var(--sims2-cream-text, #FFF6E0) !important;
   font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
   font-weight: 600 !important;
   text-decoration: none !important;
@@ -2115,7 +2115,7 @@ ha-service-description {
 ha-service-description paper-input-label {
   font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
   font-weight: 600 !important;
-  color: #5C4A32 !important;
+  color: var(--sims2-espresso, #4A3320) !important;
 }
 
 /* ==========================================================================
