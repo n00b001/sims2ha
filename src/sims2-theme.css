@@ -164,6 +164,18 @@ home-assistant-shell-gaia {
   --sims2-espresso: #4A3320 !important;
   --sims2-cream-text: #FFF6E0 !important;
 
+  /* ---- Gloss / reflection tokens (Sims 2 "plastic" panel look) --------
+     These create the characteristic glossy highlight overlay on panels.
+     Applied via ::before pseudo-elements clipped with border-radius. ------ */
+  --sims2-gloss-top: rgba(255, 255, 255, 0.30) !important;
+  --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
+  --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.15) !important;
+  --sims2-panel-gloss-overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+
   /* ---- Typography tokens --------------------------------------------- */
   --sims2-font-display: "Benguiat Gothic", serif !important;
   --sims2-font-body: "Fredoka", sans-serif !important;
@@ -245,10 +257,10 @@ home-assistant-shell-gaia {
     --switch-checked-color: #7BC942 !important;
     --slider-color: #9CCBE6 !important;
     --slider-secondary-color: #3E5A78 !important;
-    --slider-track-color: #3D3856 !important;
+    --slider-track-color: #4A3A28 !important;
     --slider-thumb-color: #4A7A94 !important;
     --slider-knob-color: #4A7A94 !important;
-    --divider-color: #3D3856 !important;
+    --divider-color: #C29A3C !important;
 
     /* Badge colours */
     --label-badge-background-color: #9CCBE6 !important;
@@ -265,8 +277,8 @@ home-assistant-shell-gaia {
     /* ---- Cards — muted blue panels --------------------------------- */
     --ha-card-border-radius: 12px !important;
     --ha-card-border-width: 0 !important;
-    --ha-card-border-color: #3D3856 !important;
-    --ha-card-outline-color: #3D3856 !important;
+    --ha-card-border-color: #C29A3C !important;
+    --ha-card-outline-color: #C29A3C !important;
     --ha-card-background: linear-gradient(
       170deg,
       #56889E 0%,
@@ -292,9 +304,20 @@ home-assistant-shell-gaia {
     --sims2-panel-blue: #9CCBE6 !important;
     --sims2-header-blue: #1B3A52 !important;
     --sims2-panel-navy: #0F2035 !important;
-    --sims2-gold-trim: #3D3856 !important;
+    --sims2-gold-trim: #C29A3C !important;
     --sims2-plumbob-green: #7BC942 !important;
     --sims2-espresso: #FFF6E0 !important;
     --sims2-cream-text: #FFF6E0 !important;
+
+    /* ---- Gloss / reflection tokens (dark) ----------------------------
+       Subtler gloss on darker panels to maintain the plastic sheen. ------ */
+    --sims2-gloss-top: rgba(255, 255, 255, 0.12) !important;
+    --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
+    --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.06) !important;
+    --sims2-panel-gloss-overlay: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ) !important;
   }
 }
