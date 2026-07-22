@@ -100,10 +100,15 @@ home-assistant-shell-gaia {
   /* ---- Component-specific tokens ------------------------------------- */
   --switch-checked-color: #7BC942 !important;
   --slider-color: #2F86C5 !important;
-  --slider-secondary-color: #6AB0D0 !important;
-  --slider-track-color: #D8C39A !important;
-  --slider-thumb-color: #7EC8E6 !important;
-  --slider-knob-color: #7EC8E6 !important;
+  --slider-secondary-color: #7BC942 !important;
+  --slider-track-color: #235E8C !important;
+  --slider-thumb-color: #FFF6E0 !important;
+  --slider-knob-color: #FFF6E0 !important;
+  --slider-pin-color: #7BC942 !important;
+  --paper-slider-active-color: #7BC942 !important;
+  --paper-slider-container-color: #235E8C !important;
+  --paper-slider-knob-color: #FFF6E0 !important;
+  --paper-slider-pin-color: #7BC942 !important;
   --divider-color: #D8C39A !important;
 
   /* Badge colours */

@@ -42,6 +42,18 @@ jobs:
           for f in src/*.js; do node --check "$f"; done
           node --check custom_components/sims2ha/frontend/sims2-bundle.js
 
+      - name: Lint JavaScript
+        run: npm run lint
+
+      - name: Lint Python
+        run: uv run ruff check .
+
+      - name: Run Python tests
+        run: uv run pytest
+
+      - name: Run JavaScript tests
+        run: npm test
+
       - name: hassfest (Home Assistant integration validator)
         uses: home-assistant/actions/hassfest@master
 

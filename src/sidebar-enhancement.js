@@ -1,12 +1,12 @@
 // Sims 2 Sidebar Customization
 // Transforms the sidebar to resemble the Sims 2 Buy/Build mode category navigator
 
-customElements.whenDefined('ha-sidebar').then(() => {
+customElements.whenDefined("ha-sidebar").then(() => {
   const original = HTMLElement.prototype.attachShadow;
-  HTMLElement.prototype.attachShadow = function(options) {
+  HTMLElement.prototype.attachShadow = function (options) {
     const shadow = original.call(this, options);
-    if (this.tagName === 'HA-SIDEBAR') {
-      const style = document.createElement('style');
+    if (this.tagName === "HA-SIDEBAR") {
+      const style = document.createElement("style");
       style.textContent = `
         /* Sims 2 Sidebar Customization */
         app-drawer,

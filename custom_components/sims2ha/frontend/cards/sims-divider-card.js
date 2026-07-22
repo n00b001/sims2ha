@@ -3,21 +3,21 @@ class SimsDividerCard extends LitElement {
   static properties = {
     ornamentType: { type: String },
     ornamentSize: { type: String },
-    height: { type: String }
+    height: { type: String },
   };
 
   constructor() {
     super();
-    this.ornamentType = 'plumbob';
-    this.ornamentSize = 'medium';
-    this.height = '24px';
+    this.ornamentType = "plumbob";
+    this.ornamentSize = "medium";
+    this.height = "24px";
   }
 
   setConfig(config) {
-    if (!config) throw new Error('Invalid configuration');
-    this.ornamentType = config.ornamentType || 'plumbob';
-    this.ornamentSize = config.ornamentSize || 'medium';
-    this.height = config.height || '24px';
+    if (!config) throw new Error("Invalid configuration");
+    this.ornamentType = config.ornamentType || "plumbob";
+    this.ornamentSize = config.ornamentSize || "medium";
+    this.height = config.height || "24px";
   }
 
   static get styles() {
@@ -97,4 +97,4 @@ class SimsDividerCard extends LitElement {
   }
 }
 
-customElements.define('sims-divider-card', SimsDividerCard);
+customElements.define("sims-divider-card", SimsDividerCard);
