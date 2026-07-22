@@ -56,6 +56,8 @@ _PACKAGE_DIR = Path(__file__).parent
 _DASHBOARDS_DIR = _PACKAGE_DIR / "dashboards"
 _THEMES_TARGET_DIR = "themes"  # relative to the HA config directory
 
+PLATFORMS = ["sensor"]
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up the Sims 2 integration from a config entry."""
@@ -66,6 +68,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await _async_create_dashboards(hass)
     await _async_install_theme(hass)
     await _async_register_services(hass)
+    await _async_register_websocket(hass)
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
 
@@ -274,5 +278,49 @@ async def _async_register_services(hass: HomeAssistant) -> None:
     async def _reload_theme(_call: Any) -> None:
         await _async_install_theme(hass)
 
+    async def _toggle_animations(call: Any) -> None:
+        enabled = call.data.get("enabled", True)
+        entry = hass.config_entries.async_entries(DOMAIN)
+        if entry:
+            hass.config_entries.async_update_entry(
+                entry[0], options={**entry[0].options, "enable_animations": enabled}
+            )
+        hass.bus.async_fire(
+            "sims2ha_config_changed",
+            {"enable_animations": enabled},
+        )
+
+    async def _set_sidebar_width(call: Any) -> None:
+        width = call.data.get("width", 280)
+        entry = hass.config_entries.async_entries(DOMAIN)
+        if entry:
+            hass.config_entries.async_update_entry(
+                entry[0], options={**entry[0].options, "sidebar_width": width}
+            )
+        hass.bus.async_fire(
+            "sims2ha_config_changed",
+            {"sidebar_width": width},
+        )
+
+    async def _set_mood_handler(call: Any) -> None:
+        mood = call.data.get("mood", 100)
+        clamped = max(0, min(100, int(mood)))
+        hass.data.setdefault(DOMAIN, {})["mood"] = clamped
+        hass.bus.async_fire("sims2ha_mood_changed", {"sims2_mood": clamped})
+
     hass.services.async_register(DOMAIN, "reload_theme", _reload_theme)
-    _LOGGER.info("Registered service %s.reload_theme", DOMAIN)
+    hass.services.async_register(DOMAIN, "toggle_animations", _toggle_animations)
+    hass.services.async_register(DOMAIN, "set_sidebar_width", _set_sidebar_width)
+    hass.services.async_register(DOMAIN, "set_mood", _set_mood_handler)
+    _LOGGER.info("Registered services for %s", DOMAIN)
+
+
+# --------------------------------------------------------------------------- #
+# (6) Register websocket commands — expose mood, config, and icon set info.
+# --------------------------------------------------------------------------- #
+async def _async_register_websocket(hass: HomeAssistant) -> None:
+    """Register every Sims 2 websocket command (idempotent across reloads)."""
+    from .websocket_api import async_register
+
+    await async_register(hass)
+    _LOGGER.info("Registered Sims 2 websocket commands")

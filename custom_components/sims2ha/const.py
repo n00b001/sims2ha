@@ -8,31 +8,69 @@ every manual copy/paste/register/import step.
 """
 DOMAIN = "sims2ha"
 
-# The single frontend module the integration serves and registers. It bundles
-# the sims2: icon pack, custom:sims2-loading, custom:sims2-plumbob, the
-# document-level fonts/overrides CSS, and a vendored copy of auto-entities.
+# ---------------------------------------------------------------------------
+# Frontend bundle
+# ---------------------------------------------------------------------------
 BUNDLE_FILE = "frontend/sims2-bundle.js"
-
-# URL the browser fetches the module at. The integration registers a static
-# path for this (see __init__.py); it is the URL also used as the Lovelace
-# module resource.
 BUNDLE_URL_PATH = "/sims2ha/bundle.js"
 
-# Theme file the integration copies into <config>/themes/ so HA's theme system
-# can pick it up (requires the user's one-time `frontend: themes:` block — the
-# one manual prerequisite that HA itself imposes; see README).
+# ---------------------------------------------------------------------------
+# Theme
+# ---------------------------------------------------------------------------
 THEME_FILE = "themes/sims2.yaml"
 
-# Login screen CSS file (for reverse proxy injection or development_repo)
+# ---------------------------------------------------------------------------
+# Login & loading screen CSS
+# ---------------------------------------------------------------------------
 LOGIN_CSS_FILE = "www/login-screen.css"
 LOGIN_CSS_URL_PATH = "/sims2ha/login-screen.css"
-
-# Loading screen CSS file (for post-auth loading screen, to be loaded as a Lovelace resource)
 LOADING_CSS_FILE = "www/loading-screen.css"
 LOADING_CSS_URL_PATH = "/sims2ha/loading-screen.css"
 
-# Premade dashboards the integration creates (storage mode) on setup, idempotent.
-# `file` is relative to the `dashboards/` folder shipped inside this package.
+# ---------------------------------------------------------------------------
+# Configuration option keys
+# ---------------------------------------------------------------------------
+CONF_THEME_MODE = "theme_mode"
+CONF_ENABLE_ANIMATIONS = "enable_animations"
+CONF_SIDEBAR_WIDTH = "sidebar_width"
+CONF_ICON_SET_VERSION = "icon_set_version"
+CONF_NEEDS_ENTITIES = "needs_entities"
+
+# ---------------------------------------------------------------------------
+# Entity attributes
+# ---------------------------------------------------------------------------
+ATTR_MOOD = "sims2_mood"
+ATTR_ACTIVE_NEEDS = "sims2ha_active_needs"
+
+# ---------------------------------------------------------------------------
+# Events
+# ---------------------------------------------------------------------------
+EVENT_MOOD_CHANGED = "sims2ha_mood_changed"
+EVENT_CONFIG_CHANGED = "sims2ha_config_changed"
+
+# ---------------------------------------------------------------------------
+# WebSocket command names
+# ---------------------------------------------------------------------------
+WS_GET_CONFIG = "sims2ha/get_config"
+WS_SUBSCRIBE_CONFIG = "sims2ha/subscribe_config"
+WS_SET_MOOD = "sims2ha/set_mood"
+WS_GET_ICON_SET = "sims2ha/get_icon_set"
+
+# ---------------------------------------------------------------------------
+# Default values
+# ---------------------------------------------------------------------------
+DEFAULT_MOOD = 100
+DEFAULT_OPTIONS = {
+    CONF_THEME_MODE: "auto",
+    CONF_ENABLE_ANIMATIONS: True,
+    CONF_SIDEBAR_WIDTH: 280,
+    CONF_ICON_SET_VERSION: "1.0",
+    CONF_NEEDS_ENTITIES: "",
+}
+
+# ---------------------------------------------------------------------------
+# Premade dashboards (storage-mode, created idempotently on setup)
+# ---------------------------------------------------------------------------
 DASHBOARDS = [
     {
         "file": "sims2-overview.yaml",

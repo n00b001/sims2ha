@@ -1,225 +1,280 @@
-/**
- * sims2-plumbob-card.js
- * ---------------------------------------------------------------------------
- * Custom Lovelace card:  custom:sims2-plumbob
- *
- * A decorative, floating plumbob — the diamond that floats above every Sim's
- * head — repurposed as a charming Home Assistant status indicator. Its colour
- * (green / yellow / red) reflects the state or value of a bound entity, or a
- * fixed mood you choose.
- *
- * No build step, no dependencies. Vanilla web component, Shadow DOM.
- *
- * Example configuration:
- *
- *   type: custom:sims2-plumbob
- *   title: Household Morale
- *   entity: sensor.house_mood_score      # numeric: >= green_above is green, etc.
- *   green_above: 66
- *   yellow_above: 33
- *
- *   # Or map explicit states:
- *   type: custom:sims2-plumbob
- *   title: Bella Goth
- *   entity: person.bella_goth
- *   state_map:
- *     home: green
- *     away: yellow
- *     not_home: red
- *
- * Fan tribute. "The Sims 2" and the plumbob are trademarks of Electronic Arts.
- * ---------------------------------------------------------------------------
- */
+// Sims 2 Plumbob Card - Custom Lovelace card for displaying entity states as plumbob diamonds
+class SimsPlumbobCard extends LitElement {
+  static properties = {
+    entity: { type: String },
+    size: { type: String },
+    color: { type: String },
+    animationSpeed: { type: String },
+    showGlow: { type: Boolean }
+  };
 
-const SIMS2_PLUMBOB_DEFAULTS = {
-  title: "Plumbob",
-  subtitle: "",
-  mood: "green",           // green | yellow | red  (used when no entity)
-  size: 70,                // plumbob height in pixels
-  float: true,             // gentle bob animation
-  entity: null,
-  green_above: 66,         // numeric thresholds
-  yellow_above: 33,
-  state_map: {},           // explicit { state: mood }
-  unit: "",
-};
-
-class Sims2PlumbobCard extends HTMLElement {
   constructor() {
     super();
-    this._shadow = this.attachShadow({ mode: "open" });
-    this._config = { ...SIMS2_PLUMBOB_DEFAULTS };
-    this._hass = null;
-  }
-
-  static getStubConfig() {
-    return { title: "Household Morale", mood: "green", size: 70 };
+    this._state = undefined;
   }
 
   setConfig(config) {
-    if (!config) throw new Error("Invalid configuration for sims2-plumbob");
-    this._config = { ...SIMS2_PLUMBOB_DEFAULTS, ...config };
-    this._render();
-  }
-
-  set hass(value) {
-    this._hass = value;
-    this._update();
-  }
-
-  getCardSize() {
-    return 2;
-  }
-
-  _resolveMood() {
-    const cfg = this._config;
-    if (!cfg.entity || !this._hass) {
-      return cfg.mood || "green";
+    if (!config.entity) {
+      throw new Error('Entity is required');
     }
-    const stateObj = this._hass.states[cfg.entity];
-    if (!stateObj) return cfg.mood || "green";
-
-    const state = stateObj.state;
-    if (cfg.state_map && cfg.state_map[state]) {
-      return cfg.state_map[state];
-    }
-
-    const numeric = parseFloat(state);
-    if (!isNaN(numeric)) {
-      if (numeric >= cfg.green_above) return "green";
-      if (numeric >= cfg.yellow_above) return "yellow";
-      return "red";
-    }
-
-    // Sensible fallbacks for common binary-ish states.
-    const onStates = ["on", "home", "active", "running", "cooling", "heating", "ok"];
-    const warnStates = ["idle", "pending", "standby", "paused", "not_home", "away"];
-    const offStates = ["off", "unavailable", "unknown", "error", "problem"];
-    if (onStates.includes(state)) return "green";
-    if (warnStates.includes(state)) return "yellow";
-    if (offStates.includes(state)) return "red";
-    return cfg.mood || "green";
+    this.entity = config.entity;
+    this.size = config.size || '48px';
+    this.color = config.color || '';
+    this.animationSpeed = config.animationSpeed || '8s';
+    this.showGlow = config.showGlow !== undefined ? config.showGlow : true;
   }
 
-  _update() {
-    const plumbob = this._shadow.getElementById("sims2-plumbob");
-    const valueEl = this._shadow.getElementById("sims2-plumbob-value");
-    if (!plumbob) return;
-    const mood = this._resolveMood();
-    plumbob.setAttribute("data-mood", mood);
+  set hass(hass) {
+    const state = hass.states[this.entity];
+    if (!state) {
+      this._state = undefined;
+      return;
+    }
+    this._state = state.state;
+  }
 
-    if (valueEl && this._config.entity && this._hass) {
-      const stateObj = this._hass.states[this._config.entity];
-      if (stateObj) {
-        valueEl.textContent = `${stateObj.state}${this._config.unit || ""}`.trim();
+  static get styles() {
+    return css`
+      :host {
+        --plumbob-size: 48px;
+        --plumbob-duration: 8s;
+        --plumbob-angle: 22deg;
+        --plumbob-perspective: 600px;
+        --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
+        --plumbob-face-top: rgba(0,150,50,0.3);
+        --plumbob-face-bottom: rgba(0,150,50,0.4);
+        display: inline-block;
+        width: var(--plumbob-size);
+        height: var(--plumbob-size);
       }
-    }
+
+      .plumbob-xs { --plumbob-size: 30px; }
+      .plumbob-sm { --plumbob-size: 50px; }
+      .plumbob-md { --plumbob-size: 78px; }
+      .plumbob-lg { --plumbob-size: 100px; }
+      .plumbob-xl { --plumbob-size: 150px; }
+
+      .plumbob-slow { --plumbob-duration: 12s; }
+      .plumbob-fast { --plumbob-duration: 4s; }
+
+      .plumbob-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .plumbob-scene {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        perspective: var(--plumbob-perspective);
+      }
+
+      .plumbob-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--plumbob-glow);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .plumbob-body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%) rotateX(var(--plumbob-angle));
+        transform-style: preserve-3d;
+      }
+
+      .plumbob-body > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--plumbob-face-top);
+      }
+
+      .plumbob-body .front {
+        transform: translateZ(calc(100% / 2));
+        background: var(--plumbob-face-top);
+      }
+
+      .plumbob-body .back {
+        transform: rotateY(180deg) translateZ(calc(100% / 2));
+        background: var(--plumbob-face-bottom);
+      }
+
+      .plumbob-body .left {
+        transform: rotateY(-90deg) translateZ(calc(100% / 2));
+        background: var(--plumbob-face-top);
+      }
+
+      .plumbob-body .right {
+        transform: rotateY(90deg) translateZ(calc(100% / 2));
+        background: var(--plumbob-face-top);
+      }
+
+      .plumbob-body .top {
+        transform: rotateX(90deg) translateZ(calc(100% / 2));
+        background: var(--plumbob-face-bottom);
+      }
+
+      .plumbob-body .bottom {
+        transform: rotateX(-90deg) translateZ(calc(100% / 2));
+        background: var(--plumbob-face-bottom);
+      }
+
+      :host([animated]) .plumbob-body {
+        animation: plumbob-spin var(--plumbob-duration) linear infinite;
+      }
+
+      @keyframes plumbob-spin {
+        from { transform: translate(-50%, -50%) rotateX(var(--plumbob-angle)) rotateY(0deg); }
+        to { transform: translate(-50%, -50%) rotateX(var(--plumbob-angle)) rotateY(360deg); }
+      }
+
+      :host(:hover) .plumbob-glow {
+        animation: plumbob-glow-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes plumbob-glow-pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+      }
+
+      /* Tooltip */
+      .plumbob-container:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+      }
+
+      :host([disabled]) {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    `;
   }
 
-  _render() {
-    const cfg = this._config;
-    const widthPx = Math.round(cfg.size * 0.78);
-    this._shadow.innerHTML = `
-      <style>${Sims2PlumbobCard._styles(cfg, widthPx)}</style>
-      <div class="sims2-plumbob-card">
-        <div class="sims2-plumbob-wrap">
-          <div id="sims2-plumbob" class="sims2-plumbob${cfg.float ? " sims2-float" : ""}" data-mood="${this._escapeAttr(cfg.mood)}"></div>
-        </div>
-        <div class="sims2-plumbob-text">
-          <div class="sims2-title">${this._escapeHtml(cfg.title)}</div>
-          ${cfg.subtitle ? `<div class="sims2-subtitle">${this._escapeHtml(cfg.subtitle)}</div>` : ""}
-          ${cfg.entity ? `<div id="sims2-plumbob-value" class="sims2-value">—</div>` : ""}
+  render() {
+    const plumbobColor = this.computePlumbobColor(this._state);
+    const sizeValue = this.size || '48px';
+    const animationSpeed = this.animationSpeed || '8s';
+    const showGlow = this.showGlow !== undefined ? this.showGlow : true;
+
+    // Update CSS variables based on plumbob color
+    this.style.setProperty('--plumbob-face-top', this.getFaceTopColor(plumbobColor));
+    this.style.setProperty('--plumbob-face-bottom', this.getFaceBottomColor(plumbobColor));
+    this.style.setProperty('--plumbob-size', sizeValue);
+    this.style.setProperty('--plumbob-duration', animationSpeed);
+    this.style.setProperty('--plumbob-glow', showGlow ?
+      `radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%)` :
+      'transparent');
+
+    return html`
+      <div
+        class="plumbob-container"
+        @click=${this._handleClick}
+        data-tooltip=${this._computeTooltip()}
+        ?animated=${this._state !== undefined}
+        ?disabled=${this._state === undefined}
+      >
+        <div class="plumbob-scene">
+          <div class="plumbob-glow"></div>
+          <div class="plumbob-body">
+            <div class="top">
+              <div class="front"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="back"></div>
+            </div>
+            <div class="bottom">
+              <div class="front"></div>
+              <div class="left"></div>
+              <div class="right"></div>
+              <div class="back"></div>
+            </div>
+          </div>
         </div>
       </div>
     `;
-    this._update();
   }
 
-  _escapeHtml(text) {
-    if (text === null || text === undefined) return "";
-    return String(text).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-    }[c]));
-  }
-  _escapeAttr(text) {
-    return this._escapeHtml(text);
+  computePlumbobColor(state) {
+    switch(state) {
+      case 'on': case 'open': case 'home': return 'green';
+      case 'off': case 'closed': case 'not_home': return 'red';
+      case 'idle': case 'standby': case 'unknown': return 'blue';
+      default: return this.computeGradientColor(state);
+    }
   }
 
-  static _styles(cfg, widthPx) {
-    return `
-      :host { display: block; }
-      .sims2-plumbob-card {
-        background: linear-gradient(170deg, #8AD4ED 0%, #7EC8E6 30%, #6DBFDF 100%);
-        border-radius: 14px;
-        box-shadow:
-          0 2px 12px rgba(14, 22, 40, 0.15),
-          0 1px 4px rgba(14, 22, 40, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.35);
-        border: 1px solid #D4B878;
-        padding: 18px 14px 16px;
-        display: flex; flex-direction: column; align-items: center; gap: 12px;
-        text-align: center;
-        font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif);
-        position: relative;
-        overflow: hidden;
-      }
-      .sims2-plumbob-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 45%;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
-        pointer-events: none;
-        border-radius: 14px 14px 0 0;
-      }
-      .sims2-plumbob-wrap { height: ${cfg.size}px; display: flex; align-items: center; }
-      .sims2-plumbob {
-        width: ${widthPx}px; height: ${cfg.size}px;
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        background: linear-gradient(105deg, #B7F36B 0%, #7BC942 42%, #4E9A26 58%, #2F6B12 100%);
-        filter: drop-shadow(0 0 10px rgba(123,201,66,0.7));
-        transition: filter 0.5s ease, background 0.5s ease;
-      }
-      .sims2-plumbob[data-mood="yellow"] {
-        background: linear-gradient(105deg, #FFE079 0%, #F2C14E 42%, #C28A1F 58%, #8A5E0E 100%);
-        filter: drop-shadow(0 0 10px rgba(242,193,78,0.75));
-      }
-      .sims2-plumbob[data-mood="red"] {
-        background: linear-gradient(105deg, #FF9A8A 0%, #E55B45 42%, #B03320 58%, #6E1C10 100%);
-        filter: drop-shadow(0 0 10px rgba(229,91,69,0.75));
-      }
-      .sims2-float { animation: sims2plum-float 3.2s ease-in-out infinite; }
-      @keyframes sims2plum-float {
-        0%,100% { transform: translateY(0); }
-        50%     { transform: translateY(-7px); }
-      }
-      .sims2-plumbob-text { color: var(--primary-text-color, #1A3350); }
-      .sims2-title {
-        font-size: 17px; font-weight: 600; letter-spacing: 0.02em;
-        color: var(--primary-text-color, #1A3350);
-      }
-      .sims2-subtitle {
-        font-size: 12px; margin-top: 2px;
-        color: var(--secondary-text-color, #3A5A78);
-      }
-      .sims2-value {
-        font-size: 13px; margin-top: 6px; letter-spacing: 0.04em;
-        color: var(--secondary-text-color, #7A5A38);
-        text-transform: capitalize;
-      }
-    `;
+  computeGradientColor(state) {
+    // For numeric states, return a color based on the value
+    const numValue = parseFloat(state);
+    if (!isNaN(numValue)) {
+      // Normalize to 0-100 range
+      const clamped = Math.max(0, Math.min(100, numValue));
+      if (clamped < 30) return 'red';
+      if (clamped < 50) return 'orange';
+      if (clamped < 70) return 'yellow';
+      return 'green';
+    }
+    return 'blue'; // default
+  }
+
+  getFaceTopColor(color) {
+    switch(color) {
+      case 'green': return 'rgba(123,201,66,0.3)';
+      case 'red': return 'rgba(192,57,43,0.3)';
+      case 'yellow': return 'rgba(242,193,78,0.3)';
+      case 'blue': return 'rgba(47,134,197,0.3)';
+      case 'orange': return 'rgba(255,152,0,0.3)';
+      default: return 'rgba(47,134,197,0.3)';
+    }
+  }
+
+  getFaceBottomColor(color) {
+    switch(color) {
+      case 'green': return 'rgba(123,201,66,0.4)';
+      case 'red': return 'rgba(192,57,43,0.4)';
+      case 'yellow': return 'rgba(242,193,78,0.4)';
+      case 'blue': return 'rgba(47,134,197,0.4)';
+      case 'orange': return 'rgba(255,152,0,0.4)';
+      default: return 'rgba(47,134,197,0.4)';
+    }
+  }
+
+  _computeTooltip() {
+    if (!this._state) return 'Unknown';
+    return `${this.entity}: ${this._state}`;
+  }
+
+  _handleClick() {
+    // Toggle binary entities on click
+    if (this._state === 'on' || this._state === 'off' ||
+        this._state === 'open' || this._state === 'closed') {
+      // Fire a lovelace event to toggle the entity
+      this.dispatchEvent(new Event('hass-more-info', {
+        composed: true,
+        bubbles: true
+      }));
+    }
   }
 }
 
-customElements.define("sims2-plumbob", Sims2PlumbobCard);
-
-window.customCards = window.customCards || [];
-window.customCards.push({
-  type: "sims2-plumbob",
-  name: "Sims 2 Plumbob",
-  description:
-    "A floating plumbob that turns green, yellow, or red to reflect the state " +
-    "of a bound entity. The Sim above your smart home.",
-  preview: false,
-  documentationURL: "https://github.com/n00b001/sims2ha",
-});
+// Register the custom element
+customElements.define('sims-plumbob-card', SimsPlumbobCard);

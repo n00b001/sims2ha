@@ -62,19 +62,21 @@ const section = (name) =>
 const out =
   banner +
   styleInjection +
-  section("sims2-icons.js — registers window.customIcons['sims2'] (38 icons)") +
+  section("sims2-icons.js — registers window.customIcons[\"sims2\"] (38 icons)") +
   read("src/sims2-icons.js") +
-  section("sims2-loading-card.js — customElements.define('sims2-loading')") +
+  section("sims2-loading-card.js — customElements.define(\"sims2-loading\")") +
   read("src/sims2-loading-card.js") +
-  section("sims2-plumbob-card.js — customElements.define('sims2-plumbob')") +
+  section("sims2-plumbob-card.js — customElements.define(\"sims2-plumbob\")") +
   read("src/sims2-plumbob-card.js") +
-  section("sims2-panel-card.js — customElements.define('sims2-panel')") +
+  section("sims2-panel-card.js — customElements.define(\"sims2-panel\")") +
   read("src/sims2-panel-card.js") +
-  section("sims2-gauge-card.js — customElements.define('sims2-gauge')") +
+  section("sims2-gauge-card.js — customElements.define(\"sims2-gauge\")") +
   read("src/sims2-gauge-card.js") +
-  section("sims2-divider-card.js — customElements.define('sims2-divider')") +
+  section("sims2-divider-card.js — customElements.define(\"sims2-divider\")") +
   read("src/sims2-divider-card.js") +
-  section("VENDORED DEP: auto-entities.js — MIT, (c) Thomas Lovén — customElements.define('auto-entities')") +
+  section("sims2-loading-splash-card.js — customElements.define(\"sims2-loading-splash\")") +
+  read("src/sims2-loading-splash-card.js") +
+  section("VENDORED DEP: auto-entities.js — MIT, (c) Thomas Lovén — customElements.define(\"auto-entities\")") +
   "/* Vendored from thomasloven/lovelace-auto-entities so users need no separate */\n" +
   "/* HACS install. License: see src/vendor/auto-entities.LICENSE.txt in the repo. */\n" +
   read("src/vendor/auto-entities.js");
