@@ -22,6 +22,7 @@ function loadCard(file, tagName) {
   global.HTMLElement = class HTMLElement {};
   global.customElements = { define: (name, cls) => { registry[name] = cls; } };
   global.window = {};
+global.LitElement = class LitElement extends HTMLElement { static properties = {}; constructor() { super(); this._config = {}; this._hass = null; } };
 
   const full = path.resolve(__dirname, "..", "src", file);
   delete require.cache[require.resolve(full)];
@@ -34,7 +35,7 @@ function loadCard(file, tagName) {
 
 // Convenience: a plumbob instance with the standard thresholds pre-filled.
 function plumbobWith(overrides) {
-  const { instance } = loadCard("sims2-plumbob-card.js", "sims2-plumbob");
+  const { instance } = loadCard("sims2-plumbob-card.js", "sims-plumbob-card");
   instance._config = {
     entity: "sensor.test",
     mood: "green",
@@ -48,7 +49,7 @@ function plumbobWith(overrides) {
 
 // ============================================================ sims2-plumbob
 test("plumbob: getCardSize reports 2", () => {
-  const { Klass, instance } = loadCard("sims2-plumbob-card.js", "sims2-plumbob");
+  const { Klass, instance } = loadCard("sims2-plumbob-card.js", "sims-plumbob-card");
   assert.equal(instance.getCardSize(), 2);
   assert.deepEqual(Klass.getStubConfig(), { title: "Household Morale", mood: "green", size: 70 });
 });

@@ -263,18 +263,81 @@ class SimsPlumbobCard extends LitElement {
     return `${this.entity}: ${this._state}`;
   }
 
-  _handleClick() {
-    // Toggle binary entities on click
-    if (this._state === 'on' || this._state === 'off' ||
-        this._state === 'open' || this._state === 'closed') {
-      // Fire a lovelace event to toggle the entity
-      this.dispatchEvent(new Event('hass-more-info', {
-        composed: true,
-        bubbles: true
-      }));
+  static getStubConfig() {
+    return { title: "Household Morale", mood: "green", size: 70 };
+  }
+
+  getCardSize() {
+    return 2;
+  }
+
+  _resolveMood(state) {
+    // If no state passed, look up from hass
+    if (state === undefined) {
+      if (this._hass && this._config && this._config.entity) {
+        const entityState = this._hass.states[this._config.entity];
+        if (entityState && entityState.state !== undefined) {
+          state = entityState.state;
+        }
+      }
     }
+
+    // No state to work with — fall back to configured mood (default green)
+    if (state === undefined) {
+      return this._config.mood || "green";
+    }
+
+    // Check state_map first (highest priority)
+    if (this._config.state_map && this._config.state_map[state] !== undefined) {
+      return this._config.state_map[state];
+    }
+
+    // Handle known string states
+    switch (state) {
+      // green = on / ok
+      case 'on':
+      case 'home':
+      case 'active':
+      case 'running':
+      case 'cooling':
+      case 'heating':
+      case 'ok':
+      case 'open':
+        return 'green';
+      // red = off / error
+      case 'off':
+      case 'unavailable':
+      case 'unknown':
+      case 'error':
+      case 'problem':
+      case 'closed':
+        return 'red';
+      // yellow = warning / idle
+      case 'idle':
+      case 'pending':
+      case 'standby':
+      case 'paused':
+      case 'not_home':
+      case 'away':
+        return 'yellow';
+    }
+
+    // Try to parse as number
+    const numValue = parseFloat(state);
+    if (!isNaN(numValue)) {
+      // Check thresholds in order from highest to lowest
+      if (numValue >= this._config.green_above) {
+        return 'green';
+      }
+      if (numValue >= this._config.yellow_above) {
+        return 'yellow';
+      }
+      return 'red';
+    }
+
+    // Fall back to configured mood for unknown strings
+    return this._config.mood || "green";
   }
 }
-
 // Register the custom element
 customElements.define('sims-plumbob-card', SimsPlumbobCard);
