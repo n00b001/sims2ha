@@ -26,14 +26,14 @@ views:
           action: call-service
           service: light.turn_off
           target:
-            entity_id: all
+            domain: light
           confirmation:
             text: Switch off every light in the neighbourhood?
         hold_action:
           action: call-service
           service: light.turn_on
           target:
-            entity_id: all
+            domain: light
 
       # --- Tile grid of every light ----------------------------------------
       - type: custom:auto-entities

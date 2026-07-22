@@ -1,266 +1,263 @@
-// Sims 2 Plumbob Card - Custom Lovelace card for displaying entity states as plumbob diamonds
+// Sims 2 Plumbob Card - 3D spinning diamond using pure CSS border triangles
+// Pattern from artifacts/sims2-plumbob.css: two pyramids (top/bottom),
+// each with 4 faces made from CSS border triangles.
 class SimsPlumbobCard extends LitElement {
   static properties = {
     entity: { type: String },
-    size: { type: String },
-    color: { type: String },
-    animationSpeed: { type: String },
-    showGlow: { type: Boolean }
+    mood: { type: String },
+    size: { type: Number },
+    greenAbove: { type: Number, attribute: 'green_above' },
+    yellowAbove: { type: Number, attribute: 'yellow_above' },
+    stateMap: { type: Object, attribute: 'state_map' }
   };
 
   constructor() {
     super();
-    this._state = undefined;
+    this.mood = 'green';
+    this.size = 70;
+    this.greenAbove = 70;
+    this.yellowAbove = 40;
+    this.stateMap = {};
+    this._hass = null;
+    this._config = null;
   }
 
   setConfig(config) {
-    if (!config.entity) {
-      throw new Error('Entity is required');
-    }
-    this.entity = config.entity;
-    this.size = config.size || '48px';
-    this.color = config.color || '';
-    this.animationSpeed = config.animationSpeed || '8s';
-    this.showGlow = config.showGlow !== undefined ? config.showGlow : true;
+    if (!config) throw new Error('Invalid configuration');
+    this._config = config;
+    this.mood = config.mood || 'green';
+    this.size = config.size || 70;
+    this.greenAbove = config.green_above !== undefined ? config.green_above : 70;
+    this.yellowAbove = config.yellow_above !== undefined ? config.yellow_above : 40;
+    this.stateMap = config.state_map || {};
   }
 
   set hass(hass) {
-    const state = hass.states[this.entity];
-    if (!state) {
-      this._state = undefined;
-      return;
-    }
-    this._state = state.state;
+    this._hass = hass;
   }
 
   static get styles() {
     return css`
       :host {
-        --plumbob-size: 48px;
-        --plumbob-duration: 8s;
-        --plumbob-angle: 22deg;
-        --plumbob-perspective: 600px;
-        --plumbob-glow: radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%);
-        --plumbob-face-top: rgba(0,150,50,0.3);
-        --plumbob-face-bottom: rgba(0,150,50,0.4);
-        display: inline-block;
-        width: var(--plumbob-size);
-        height: var(--plumbob-size);
+        display: block;
+        text-align: center;
+        padding: 8px 0;
       }
-
-      .plumbob-xs { --plumbob-size: 30px; }
-      .plumbob-sm { --plumbob-size: 50px; }
-      .plumbob-md { --plumbob-size: 78px; }
-      .plumbob-lg { --plumbob-size: 100px; }
-      .plumbob-xl { --plumbob-size: 150px; }
-
-      .plumbob-slow { --plumbob-duration: 12s; }
-      .plumbob-fast { --plumbob-duration: 4s; }
-
-      .plumbob-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
+      .plumbob-wrapper {
+        text-align: center;
       }
-
-      .plumbob-scene {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        perspective: var(--plumbob-perspective);
+      .plumbob-card-title {
+        font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif);
+        color: var(--sims2-gold, #E8B44D);
+        font-size: 16px;
+        margin-bottom: 4px;
       }
-
-      .plumbob-glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--plumbob-glow);
-        border-radius: 50%;
-        pointer-events: none;
-      }
-
-      .plumbob-body {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        transform: translate(-50%, -50%) rotateX(var(--plumbob-angle));
-        transform-style: preserve-3d;
-      }
-
-      .plumbob-body > div {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: var(--plumbob-face-top);
-      }
-
-      .plumbob-body .front {
-        transform: translateZ(calc(100% / 2));
-        background: var(--plumbob-face-top);
-      }
-
-      .plumbob-body .back {
-        transform: rotateY(180deg) translateZ(calc(100% / 2));
-        background: var(--plumbob-face-bottom);
-      }
-
-      .plumbob-body .left {
-        transform: rotateY(-90deg) translateZ(calc(100% / 2));
-        background: var(--plumbob-face-top);
-      }
-
-      .plumbob-body .right {
-        transform: rotateY(90deg) translateZ(calc(100% / 2));
-        background: var(--plumbob-face-top);
-      }
-
-      .plumbob-body .top {
-        transform: rotateX(90deg) translateZ(calc(100% / 2));
-        background: var(--plumbob-face-bottom);
-      }
-
-      .plumbob-body .bottom {
-        transform: rotateX(-90deg) translateZ(calc(100% / 2));
-        background: var(--plumbob-face-bottom);
-      }
-
-      :host([animated]) .plumbob-body {
-        animation: plumbob-spin var(--plumbob-duration) linear infinite;
-      }
-
-      @keyframes plumbob-spin {
-        from { transform: translate(-50%, -50%) rotateX(var(--plumbob-angle)) rotateY(0deg); }
-        to { transform: translate(-50%, -50%) rotateX(var(--plumbob-angle)) rotateY(360deg); }
-      }
-
-      :host(:hover) .plumbob-glow {
-        animation: plumbob-glow-pulse 2s ease-in-out infinite;
-      }
-
-      @keyframes plumbob-glow-pulse {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.6; }
-      }
-
-      /* Tooltip */
-      .plumbob-container:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
+      .plumbob-card-subtitle {
+        font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif);
+        color: var(--sims2-cream-text, #FFF6E0);
         font-size: 12px;
-        white-space: nowrap;
-        z-index: 1000;
+        opacity: 0.7;
+        margin-top: 4px;
       }
 
-      :host([disabled]) {
-        opacity: 0.5;
-        pointer-events: none;
+      /* --- Spin animation --- */
+      @keyframes plumbob-spin {
+        from { transform: rotateY(0deg); }
+        to   { transform: rotateY(360deg); }
+      }
+
+      /* --- Plumbob root element --- */
+      .plumbob {
+        position: relative;
+        display: inline-block;
+        transform-style: preserve-3d;
+        animation: plumbob-spin 8s linear infinite;
+      }
+
+      .plumbob, .top, .bottom, .top div, .bottom div {
+        /* NO box-sizing: border-box here - critical for triangle geometry */
+      }
+
+      /* --- Top and bottom pyramids --- */
+      .top, .bottom {
+        position: absolute;
+        left: 0;
+        transform-style: preserve-3d;
+        transform: translateZ(1px);
+      }
+      .top    { top: 0; }
+      .bottom { bottom: 0; }
+
+      /* --- Faces — CSS border triangles --- */
+      .top div,
+      .bottom div {
+        position: absolute;
+        left: 0;
+        width: 0;
+      }
+      .top div    { bottom: 0; }
+      .bottom div { top: 0; }
+
+      /* --- Face orientation — CodePen angles --- */
+      .front { transform: rotateX(22deg); }
+      .back  { transform: rotateX(-22deg); }
+      .left  { transform: rotateY(-90deg) rotateX(22deg); }
+      .right { transform: rotateY(90deg) rotateX(22deg); }
+
+      /* --- Size variants --- */
+      .plumbob-xs { width: 30px;  height: 74px; }
+      .plumbob-xs .top, .plumbob-xs .bottom { height: 40px; width: 30px; }
+      .plumbob-xs .top div, .plumbob-xs .bottom div {
+        height: 40px !important;
+        border-left: 15px solid transparent !important;
+        border-right: 15px solid transparent !important;
+      }
+
+      .plumbob-sm { width: 50px;  height: 123px; }
+      .plumbob-sm .top, .plumbob-sm .bottom { height: 67px; width: 50px; }
+      .plumbob-sm .top div, .plumbob-sm .bottom div {
+        height: 67px !important;
+        border-left: 25px solid transparent !important;
+        border-right: 25px solid transparent !important;
+      }
+
+      .plumbob-md { width: 78px;  height: 192px; }
+      .plumbob-md .top, .plumbob-md .bottom { height: 104px; width: 78px; }
+      .plumbob-md .top div, .plumbob-md .bottom div {
+        height: 104px !important;
+        border-left: 39px solid transparent !important;
+        border-right: 39px solid transparent !important;
+      }
+
+      .plumbob-lg { width: 100px; height: 247px; }
+      .plumbob-lg .top, .plumbob-lg .bottom { height: 133px; width: 100px; }
+      .plumbob-lg .top div, .plumbob-lg .bottom div {
+        height: 133px !important;
+        border-left: 50px solid transparent !important;
+        border-right: 50px solid transparent !important;
       }
     `;
   }
 
-  render() {
-    const plumbobColor = this.computePlumbobColor(this._state);
-    const sizeValue = this.size || '48px';
-    const animationSpeed = this.animationSpeed || '8s';
-    const showGlow = this.showGlow !== undefined ? this.showGlow : true;
+  _resolveMood() {
+    if (!this._hass || !this._config || !this._config.entity) {
+      return this.mood;
+    }
+    const stateObj = this._hass.states[this._config.entity];
+    if (!stateObj || stateObj.state === undefined) {
+      return this.mood;
+    }
+    const state = stateObj.state;
 
-    // Update CSS variables based on plumbob color
-    this.style.setProperty('--plumbob-face-top', this.getFaceTopColor(plumbobColor));
-    this.style.setProperty('--plumbob-face-bottom', this.getFaceBottomColor(plumbobColor));
-    this.style.setProperty('--plumbob-size', sizeValue);
-    this.style.setProperty('--plumbob-duration', animationSpeed);
-    this.style.setProperty('--plumbob-glow', showGlow ?
-      `radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, transparent 50%)` :
-      'transparent');
+    // Check state_map first
+    if (this.stateMap[state] !== undefined) {
+      return this.stateMap[state];
+    }
+
+    // Known string states
+    switch (state) {
+      case 'on': case 'home': case 'active': case 'running':
+      case 'cooling': case 'heating': case 'ok': case 'open':
+        return 'green';
+      case 'off': case 'unavailable': case 'unknown': case 'error':
+      case 'problem': case 'closed':
+        return 'red';
+      case 'idle': case 'pending': case 'standby': case 'paused':
+      case 'not_home': case 'away':
+        return 'yellow';
+    }
+
+    const numValue = parseFloat(state);
+    if (!isNaN(numValue)) {
+      if (numValue >= this.greenAbove) return 'green';
+      if (numValue >= this.yellowAbove) return 'yellow';
+      return 'red';
+    }
+
+    return this.mood;
+  }
+
+  _getColorValues(mood) {
+    switch(mood) {
+      case 'red':
+        return {
+          topColor: 'rgba(200,0,0,0.3)',
+          bottomColor: 'rgba(200,0,0,0.4)',
+          shadow: 'rgba(180,0,0,0.5)'
+        };
+      case 'yellow':
+        return {
+          topColor: 'rgba(200,200,0,0.3)',
+          bottomColor: 'rgba(200,200,0,0.4)',
+          shadow: 'rgba(180,180,0,0.5)'
+        };
+      case 'orange':
+        return {
+          topColor: 'rgba(240,160,80,0.35)',
+          bottomColor: 'rgba(240,160,80,0.45)',
+          shadow: 'rgba(200,100,30,0.5)'
+        };
+      case 'blue':
+        return {
+          topColor: 'rgba(128,192,224,0.35)',
+          bottomColor: 'rgba(128,192,224,0.45)',
+          shadow: 'rgba(80,144,176,0.5)'
+        };
+      case 'green':
+      default:
+        return {
+          topColor: 'rgba(0,150,50,0.3)',
+          bottomColor: 'rgba(0,150,50,0.4)',
+          shadow: 'rgba(0,100,0,0.5)'
+        };
+    }
+  }
+
+  _sizeClass() {
+    if (this.size <= 30) return 'plumbob-xs';
+    if (this.size <= 50) return 'plumbob-sm';
+    if (this.size <= 78) return 'plumbob-md';
+    return 'plumbob-lg';
+  }
+
+  render() {
+    const mood = this._resolveMood();
+    const colors = this._getColorValues(mood);
+    const title = this._config && this._config.title || '';
+    const subtitle = this._config && this._config.subtitle || '';
+
+    const topFaceStyle = `border-bottom: ${this._pyramidHeight()}px solid ${colors.topColor}; filter: drop-shadow(0 0 5px ${colors.shadow});`;
+    const bottomFaceStyle = `border-top: ${this._pyramidHeight()}px solid ${colors.bottomColor}; filter: drop-shadow(0 0 5px ${colors.shadow});`;
+    const sideBorder = `${this._halfWidth()}px`;
 
     return html`
-      <div
-        class="plumbob-container"
-        @click=${this._handleClick}
-        data-tooltip=${this._computeTooltip()}
-        ?animated=${this._state !== undefined}
-        ?disabled=${this._state === undefined}
-      >
-        <div class="plumbob-scene">
-          <div class="plumbob-glow"></div>
-          <div class="plumbob-body">
-            <div class="top">
-              <div class="front"></div>
-              <div class="left"></div>
-              <div class="right"></div>
-              <div class="back"></div>
-            </div>
-            <div class="bottom">
-              <div class="front"></div>
-              <div class="left"></div>
-              <div class="right"></div>
-              <div class="back"></div>
-            </div>
+      <div class="plumbob-wrapper">
+        ${title ? html`<div class="plumbob-card-title">${title}</div>` : ''}
+        <div class="plumbob ${this._sizeClass()}">
+          <div class="top">
+            <div class="front" style="${topFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="left" style="${topFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="right" style="${topFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="back" style="${topFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+          </div>
+          <div class="bottom">
+            <div class="front" style="${bottomFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="left" style="${bottomFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="right" style="${bottomFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
+            <div class="back" style="${bottomFaceStyle} border-left: ${sideBorder} solid transparent; border-right: ${sideBorder} solid transparent;"></div>
           </div>
         </div>
+        ${subtitle ? html`<div class="plumbob-card-subtitle">${subtitle}</div>` : ''}
       </div>
     `;
   }
 
-  computePlumbobColor(state) {
-    switch(state) {
-      case 'on': case 'open': case 'home': return 'green';
-      case 'off': case 'closed': case 'not_home': return 'red';
-      case 'idle': case 'standby': case 'unknown': return 'blue';
-      default: return this.computeGradientColor(state);
-    }
+  _halfWidth() {
+    return Math.round(this.size / 2);
   }
 
-  computeGradientColor(state) {
-    // For numeric states, return a color based on the value
-    const numValue = parseFloat(state);
-    if (!isNaN(numValue)) {
-      // Normalize to 0-100 range
-      const clamped = Math.max(0, Math.min(100, numValue));
-      if (clamped < 30) return 'red';
-      if (clamped < 50) return 'orange';
-      if (clamped < 70) return 'yellow';
-      return 'green';
-    }
-    return 'blue'; // default
-  }
-
-  getFaceTopColor(color) {
-    switch(color) {
-      case 'green': return 'rgba(123,201,66,0.3)';
-      case 'red': return 'rgba(192,57,43,0.3)';
-      case 'yellow': return 'rgba(242,193,78,0.3)';
-      case 'blue': return 'rgba(47,134,197,0.3)';
-      case 'orange': return 'rgba(255,152,0,0.3)';
-      default: return 'rgba(47,134,197,0.3)';
-    }
-  }
-
-  getFaceBottomColor(color) {
-    switch(color) {
-      case 'green': return 'rgba(123,201,66,0.4)';
-      case 'red': return 'rgba(192,57,43,0.4)';
-      case 'yellow': return 'rgba(242,193,78,0.4)';
-      case 'blue': return 'rgba(47,134,197,0.4)';
-      case 'orange': return 'rgba(255,152,0,0.4)';
-      default: return 'rgba(47,134,197,0.4)';
-    }
-  }
-
-  _computeTooltip() {
-    if (!this._state) return 'Unknown';
-    return `${this.entity}: ${this._state}`;
+  _pyramidHeight() {
+    return Math.round(this.size * 1.33);
   }
 
   static getStubConfig() {
@@ -270,74 +267,6 @@ class SimsPlumbobCard extends LitElement {
   getCardSize() {
     return 2;
   }
-
-  _resolveMood(state) {
-    // If no state passed, look up from hass
-    if (state === undefined) {
-      if (this._hass && this._config && this._config.entity) {
-        const entityState = this._hass.states[this._config.entity];
-        if (entityState && entityState.state !== undefined) {
-          state = entityState.state;
-        }
-      }
-    }
-
-    // No state to work with — fall back to configured mood (default green)
-    if (state === undefined) {
-      return this._config.mood || "green";
-    }
-
-    // Check state_map first (highest priority)
-    if (this._config.state_map && this._config.state_map[state] !== undefined) {
-      return this._config.state_map[state];
-    }
-
-    // Handle known string states
-    switch (state) {
-      // green = on / ok
-      case 'on':
-      case 'home':
-      case 'active':
-      case 'running':
-      case 'cooling':
-      case 'heating':
-      case 'ok':
-      case 'open':
-        return 'green';
-      // red = off / error
-      case 'off':
-      case 'unavailable':
-      case 'unknown':
-      case 'error':
-      case 'problem':
-      case 'closed':
-        return 'red';
-      // yellow = warning / idle
-      case 'idle':
-      case 'pending':
-      case 'standby':
-      case 'paused':
-      case 'not_home':
-      case 'away':
-        return 'yellow';
-    }
-
-    // Try to parse as number
-    const numValue = parseFloat(state);
-    if (!isNaN(numValue)) {
-      // Check thresholds in order from highest to lowest
-      if (numValue >= this._config.green_above) {
-        return 'green';
-      }
-      if (numValue >= this._config.yellow_above) {
-        return 'yellow';
-      }
-      return 'red';
-    }
-
-    // Fall back to configured mood for unknown strings
-    return this._config.mood || "green";
-  }
 }
-// Register the custom element
+
 customElements.define('sims-plumbob-card', SimsPlumbobCard);

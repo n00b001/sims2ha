@@ -95,10 +95,85 @@ header,
   border-bottom: 2px solid rgba(26, 26, 62, 0.45) !important;
 }
 
-/* ---- Main content area — navy typography ---------------------------- */
+/* ---- Main content area — Sims 2 typography on navy background ------------- */
 home-assistant {
   --primary-text-color: #2A2320 !important;
   --secondary-text-color: #5A4E40 !important;
+}
+
+/* Dark mode text — cream on dark panels */
+@media (prefers-color-scheme: dark) {
+  home-assistant {
+    --primary-text-color: #FFF6E0 !important;
+    --secondary-text-color: #C4B696 !important;
+  }
+
+  /* Force cream text on all card surfaces in dark mode */
+  ha-card,
+  .card,
+  .card-content,
+  ha-card .card-content,
+  ha-state-card,
+  .state-card,
+  .entity-card,
+  ha-entity-row {
+    color: #FFF6E0 !important;
+  }
+
+  /* ha-card header text in dark mode */
+  ha-card .card-header,
+  .card-header {
+    color: #E8B44D !important;
+  }
+
+  /* Entity state text in dark mode */
+  ha-state-card .state,
+  .state-text,
+  ha-entity-row .state {
+    color: #FFF6E0 !important;
+  }
+
+  /* Input fields in dark mode */
+  ha-textfield,
+  ha-textarea,
+  paper-input,
+  mwc-textfield,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea {
+    background-color: rgba(30, 60, 90, 0.5) !important;
+    color: #FFF6E0 !important;
+    border: 2px solid #173A52 !important;
+  }
+
+  /* Buttons text in dark mode */
+  mwc-button,
+  md-filled-button,
+  .mdc-button,
+  button {
+    color: #FFF6E0 !important;
+  }
+
+  /* Dialog text in dark mode */
+  ha-dialog,
+  .dialog-surface {
+    color: #FFF6E0 !important;
+  }
+
+  /* Settings text in dark mode */
+  ha-settings-list paper-item,
+  .config-menu-item {
+    color: #FFF6E0 !important;
+  }
+
+  /* Tooltip text in dark mode */
+  .mdc-tooltip,
+  ha-tooltip,
+  [role="tooltip"] {
+    color: #FFF6E0 !important;
+  }
 }
 
 app-header paper-icon-button,
@@ -281,13 +356,13 @@ paper-toggle-button {
 }
 
 /* ==========================================================================
-   SLIDERS — gold track, round thumb
+   SLIDERS — use theme variables for colors
    ========================================================================== */
 ha-slider,
 paper-slider {
-  --paper-slider-knob-color: var(--sims2-gold, #FFD700) !important;
-  --paper-slider-container-color: var(--sims2-gold-dark, #E6C200) !important;
-  --paper-slider-secondary-color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  --paper-slider-knob-color: var(--slider-thumb-color, #7EC8E6) !important;
+  --paper-slider-container-color: var(--slider-track-color, #D8C39A) !important;
+  --paper-slider-secondary-color: var(--slider-secondary-color, #6AB0D0) !important;
 }
 
 /* ==========================================================================

@@ -20,6 +20,97 @@ body {
   background-attachment: fixed !important;
   font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
   color: #2A2320 !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Plumbob on login screen */
+.login-plumbob {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 200px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: login-plumbob-spin 8s linear infinite;
+}
+
+/* Plumbob structure using CSS border triangles (from artifacts/sims2-plumbob.css) */
+.login-plumbob .plumbob {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: login-plumbob-spin 8s linear infinite;
+}
+
+.login-plumbob .top, .login-plumbob .bottom {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 40px;
+  transform-style: preserve-3d;
+  transform: translateZ(1px);
+}
+.login-plumbob .top { top: 0; }
+.login-plumbob .bottom { bottom: 0; }
+
+.login-plumbob .top div,
+.login-plumbob .bottom div {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+.login-plumbob .top div { bottom: 0; }
+.login-plumbob .bottom div { top: 0; }
+
+.login-plumbob .front { transform: rotateX(22deg); }
+.login-plumbob .back  { transform: rotateX(-22deg); }
+.login-plumbob .left  { transform: rotateY(-90deg) rotateX(22deg); }
+.login-plumbob .right { transform: rotateY(90deg) rotateX(22deg); }
+
+/* Green plumbob colors */
+.login-plumbob-green .top div    { border-bottom: 100px solid rgba(0,150,50,.3); filter: drop-shadow(0 0 5px rgba(0,100,0,.5)); }
+.login-plumbob-green .bottom div { border-top:    100px solid rgba(0,150,50,.4); filter: drop-shadow(0 0 5px rgba(0,100,0,.5)); }
+
+/* Funny messages */
+.login-messages {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;
+  color: var(--sims2-cream-text, #FFF6E0);
+  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  animation: message-cycle 12s infinite;
+}
+
+@keyframes login-plumbob-spin {
+  from { transform: translateX(-50%) rotateY(0deg); }
+  to   { transform: translateX(-50%) rotateY(360deg); }
+}
+
+@keyframes message-cycle {
+  0%, 8.33%   { content: "The plumbob is hovering green today"; }
+  8.34%, 16.66% { content: "Welcome to Pleasantview"; }
+  16.67%, 25%   { content: "Bella Goth is watering her roses"; }
+  25.01%, 33.33%{ content: "The Goth mansion needs painting"; }
+  33.34%, 41.66%{ content: "Don't wake the sleeping baby!"; }
+  41.67%, 50%   { content: "Time to get a promotion at work"; }
+  50.01%, 58.33%{ content: "Your sim needs to use the bathroom"; }
+  58.34%, 66.66%{ content: "Hunger motive dropping - grab a snack"; }
+  66.67%, 75%   { content: "Fun motive is low - go play!"; }
+  75.01%, 83.33%{ content: "Energy depleted - time for a nap"; }
+  83.34%, 91.66%{ content: "Social need calling - call a friend"; }
+  91.67%, 100%  { content: "Hygiene dropping - take a shower"; }
 }
 
 .login-card,
