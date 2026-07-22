@@ -1,0 +1,78 @@
+/* Sims 2 Login Screen Customization */
+body {
+  background-color: #0E1628 !important;
+  background-image:
+    radial-gradient(ellipse 40% 35% at 50% 30%, rgba(74, 222, 128, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232, 180, 77, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 25% 55% at 60% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 50% at 75% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 45% at 70% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 40% at 55% 55%, rgba(56, 120, 180, 0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 45% at 35% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 50% at 25% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 25% 55% at 40% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 50% at 50% 15%, rgba(74, 160, 210, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 50% at 68% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 50% at 32% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 18% 40% at 80% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 18% 40% at 20% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 75% 75% at 50% 30%, transparent 10%, rgba(14, 22, 40, 0.6) 100%);
+  background-attachment: fixed !important;
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2A2320 !important;
+}
+
+.login-card,
+[class*="login"] {
+  background: linear-gradient(
+    180deg,
+    #A8D8F0 0%,
+    var(--sims2-sky-blue, #7EC8E6) 50%,
+    #5BB4D8 100%
+  ) !important;
+  border: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 8px 48px rgba(26, 26, 62, 0.25),
+    0 2px 12px rgba(26, 26, 62, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+.login-card h1,
+.login-card .login-brand h1 {
+  color: var(--sims2-gold, #E8B44D) !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  text-shadow: 0 1px 3px rgba(232, 180, 77, 0.4) !important;
+  letter-spacing: 0.06em !important;
+}
+
+.login-card ha-textfield,
+.login-card paper-input-container {
+  border-radius: 12px !important;
+  --mdc-shape-large: 12px !important;
+  --mdc-shape-medium: 12px !important;
+  background-color: rgba(126, 200, 230, 0.5) !important;
+}
+
+.login-card mwc-button,
+.login-card .login-form button {
+  background: linear-gradient(
+    180deg,
+    #6EE7A0 0%,
+    var(--sims2-plumbob-green, #7BC942) 40%,
+    #22C55E 100%
+  ) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 2px 8px rgba(74, 222, 128, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border: 2px solid #16A34A !important;
+  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.login-card mwc-button:hover {
+  background: linear-gradient(180deg, #A7F3D0 0%, var(--sims2-plumbob-green, #7BC942) 100%) !important;
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.5) !important;
+}

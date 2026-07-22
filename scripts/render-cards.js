@@ -281,15 +281,15 @@ function buildHtml(page) {
     body {
       margin: 0;
       padding: 24px;
-      background: #e8e0d0;
-      font-family: "Fredoka", system-ui, sans-serif;
-      color: #3A2E1E;
+      background: #0E1628;
+      font-family: "Benguiat Gothic", system-ui, sans-serif;
+      color: #EAF2FB;
     }
     h1 {
       text-align: center;
       font-size: 22px;
       margin: 0 0 20px 0;
-      color: #5A4A2E;
+      color: #E0B66B;
       letter-spacing: 0.04em;
     }
     .card-row {

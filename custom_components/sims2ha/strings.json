@@ -5,6 +5,9 @@
         "title": "Sims 2",
         "description": "Installs the full Sims 2 theme system in one step: serves the frontend bundle, registers it as a Lovelace resource, and creates the nine premade dashboards."
       }
+    },
+    "abort": {
+      "single_instance_allowed": "Only a single Sims 2 instance is supported. The whole theme system installs in one step, so a second instance adds nothing."
     }
   }
 }

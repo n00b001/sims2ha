@@ -33,7 +33,7 @@ function buildPage(title, body, extraScripts) {
 <title>${esc(title)}</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; padding: 0; font-family: "Fredoka", system-ui, sans-serif; background: #0E2A44; color: #F3E9D2; }
+  body { margin: 0; padding: 0; font-family: "Benguiat Gothic", system-ui, sans-serif; background: #0E2A44; color: #FFF6E0; }
 </style>
 <style>${readCss("sims2-overrides.css")}</style>
 <style>${readCss("sims2-theme.css")}</style>
@@ -54,40 +54,40 @@ function buildSettingsPage() {
     <app-header>
       <app-toolbar class="header-toolbar">
         <paper-icon-button icon="hass:menu"></paper-icon-button>
-        <span class="title" style="color:#F3E9D2;font-size:18px;letter-spacing:0.04em;text-transform:uppercase;">Settings</span>
+        <span class="title" style="color:#FFF6E0;font-size:18px;letter-spacing:0.04em;text-transform:uppercase;">Settings</span>
       </app-toolbar>
     </app-header>
   </app-drawer-slot>
   <div style="padding:24px;max-width:700px;margin:0 auto;">
-    <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Configuration</h2>
+    <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Configuration</h2>
     <ha-card style="margin-bottom:16px;padding:16px;">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-bottom:1px solid rgba(224,182,107,0.15);">
         <ha-svg-icon style="color:#E0B66B;width:32px;height:32px;"></ha-svg-icon>
-        <div><strong style="color:#F3E9D2;">Users</strong><br><small style="color:#8AA4BC;">Manage user accounts and permissions</small></div>
+        <div><strong style="color:#FFF6E0;">Users</strong><br><small style="color:#8AA4BC;">Manage user accounts and permissions</small></div>
       </div>
     </ha-card>
     <ha-card style="margin-bottom:16px;padding:16px;">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-bottom:1px solid rgba(224,182,107,0.15);">
         <ha-svg-icon style="color:#E0B66B;width:32px;height:32px;"></ha-svg-icon>
-        <div><strong style="color:#F3E9D2;">Z-Wave</strong><br><small style="color:#8AA4BC;">Configure Z-Wave network and devices</small></div>
+        <div><strong style="color:#FFF6E0;">Z-Wave</strong><br><small style="color:#8AA4BC;">Configure Z-Wave network and devices</small></div>
       </div>
     </ha-card>
     <ha-card style="margin-bottom:16px;padding:16px;">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-bottom:1px solid rgba(224,182,107,0.15);">
         <ha-svg-icon style="color:#E0B66B;width:32px;height:32px;"></ha-svg-icon>
-        <div><strong style="color:#F3E9D2;">Integrations</strong><br><small style="color:#8AA4BC;">View and manage connected integrations</small></div>
+        <div><strong style="color:#FFF6E0;">Integrations</strong><br><small style="color:#8AA4BC;">View and manage connected integrations</small></div>
       </div>
     </ha-card>
     <ha-card style="margin-bottom:16px;padding:16px;">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-bottom:1px solid rgba(224,182,107,0.15);">
         <ha-svg-icon style="color:#E0B66B;width:32px;height:32px;"></ha-svg-icon>
-        <div><strong style="color:#F3E9D2;">System</strong><br><small style="color:#8AA4BC;">Hardware, network, and updates</small></div>
+        <div><strong style="color:#FFF6E0;">System</strong><br><small style="color:#8AA4BC;">Hardware, network, and updates</small></div>
       </div>
     </ha-card>
     <ha-card style="margin-bottom:16px;padding:16px;">
       <div style="display:flex;align-items:center;gap:12px;padding:12px 8px;">
         <ha-svg-icon style="color:#E0B66B;width:32px;height:32px;"></ha-svg-icon>
-        <div><strong style="color:#F3E9D2;">Dashboards</strong><br><small style="color:#8AA4BC;">Manage dashboards and views</small></div>
+        <div><strong style="color:#FFF6E0;">Dashboards</strong><br><small style="color:#8AA4BC;">Manage dashboards and views</small></div>
       </div>
     </ha-card>
   </div>
@@ -103,13 +103,13 @@ function buildLoginPage() {
   <ha-login-card style="max-width:380px;width:100%;">
     <div class="login-brand" style="text-align:center;margin-bottom:24px;">
       <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 95,50 50,95 5,50' fill='%237BC942'/%3E%3C/svg%3E" style="width:64px;height:64px;border-radius:50%;box-shadow:0 0 16px rgba(123,201,66,0.4);" alt="Plumbob">
-      <h1 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;text-shadow:0 1px 3px rgba(224,182,107,0.4);letter-spacing:0.06em;margin-top:12px;">Home Assistant</h1>
+      <h1 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;text-shadow:0 1px 3px rgba(224,182,107,0.4);letter-spacing:0.06em;margin-top:12px;">Home Assistant</h1>
     </div>
     <div class="card-content">
       <ha-textfield outlined label="Username" placeholder="Enter your username" style="width:100%;margin-bottom:16px;"></ha-textfield>
       <ha-textfield outlined label="Password" type="password" placeholder="Enter your password" style="width:100%;margin-bottom:16px;"></ha-textfield>
       <div style="text-align:center;">
-        <button style="background:linear-gradient(180deg,#9CE04A 0%,#7BC942 40%,#5BA832 100%);border-radius:8px;padding:12px 32px;border:1px solid #4E9A26;color:#0E2A44;font-weight:600;font-family:'Fredoka',system-ui,sans-serif;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;">
+        <button style="background:linear-gradient(180deg,#9CE04A 0%,#7BC942 40%,#5BA832 100%);border-radius:8px;padding:12px 32px;border:1px solid #4E9A26;color:#0E2A44;font-weight:600;font-family:'Benguiat Gothic',system-ui,sans-serif;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;">
           Sign In
         </button>
       </div>
@@ -148,12 +148,12 @@ function buildIconsPage() {
   const iconsHtml = iconDefs.map((ic) => `
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;">
       <div style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;background:rgba(14,42,68,0.6);border:2px solid rgba(224,182,107,0.35);border-radius:50%;">${ic.svg}</div>
-      <span style="color:#E0B66B;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:'Fredoka',Georgia,serif;">${esc(ic.name)}</span>
+      <span style="color:#E0B66B;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:'Benguiat Gothic',Georgia,serif;">${esc(ic.name)}</span>
     </div>`).join("\n");
 
   const body = `
 <div style="padding:24px;max-width:800px;margin:0 auto;">
-  <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Sims 2 Icon Collection</h2>
+  <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Sims 2 Icon Collection</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:16px;">${iconsHtml}</div>
 </div>`;
 
@@ -164,7 +164,7 @@ function buildIconsPage() {
 function buildLogbookPage() {
   const body = `
 <div style="padding:24px;max-width:700px;margin:0 auto;">
-  <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Logbook</h2>
+  <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Logbook</h2>
   <ha-logbook style="display:block;margin-top:16px;">
     <div style="padding:12px 0;border-bottom:1px solid rgba(224,182,107,0.15);">
       <span style="color:#E0B66B;font-size:12px;">10:32 AM</span>
@@ -191,14 +191,14 @@ function buildLogbookPage() {
 function buildHistoryPage() {
   const body = `
 <div style="padding:24px;max-width:700px;margin:0 auto;">
-  <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">History</h2>
-  <ha-history style="display:block;margin-top:16px;background:linear-gradient(180deg,#F7EDDA 0%,#EDE0C8 100%);border:1.5px solid rgba(224,182,107,0.45);border-radius:12px;padding:16px;">
+  <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">History</h2>
+  <ha-history style="display:block;margin-top:16px;background:linear-gradient(180deg,#7EC8E6 0%,#5BAEDC 100%);border:1.5px solid rgba(224,182,107,0.45);border-radius:12px;padding:16px;">
     <div style="height:200px;background:rgba(224,182,107,0.08);border:1px solid rgba(224,182,107,0.25);border-radius:8px;position:relative;overflow:hidden;">
       <svg style="position:absolute;top:0;left:0;width:100%;height:100%;" viewBox="0 0 600 200">
         <polyline points="0,180 50,170 100,160 150,140 200,120 250,130 300,100 350,90 400,80 450,85 500,60 550,70 600,50" fill="none" stroke="#7BC942" stroke-width="2"/>
         <polyline points="0,160 50,155 100,150 150,145 200,160 250,170 300,165 350,150 400,140 450,145 500,130 550,120 600,110" fill="none" stroke="#E0B66B" stroke-width="2"/>
-        <text x="10" y="20" fill="#7BC942" font-size="12" font-family="'Fredoka',Georgia,serif">Temperature</text>
-        <text x="100" y="20" fill="#E0B66B" font-size="12" font-family="'Fredoka',Georgia,serif">Power Draw</text>
+        <text x="10" y="20" fill="#7BC942" font-size="12" font-family="'Benguiat Gothic',Georgia,serif">Temperature</text>
+        <text x="100" y="20" fill="#E0B66B" font-size="12" font-family="'Benguiat Gothic',Georgia,serif">Power Draw</text>
       </svg>
     </div>
   </ha-history>
@@ -210,7 +210,7 @@ function buildHistoryPage() {
 function buildStatesPage() {
   const body = `
 <div style="padding:24px;max-width:700px;margin:0 auto;">
-  <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">States</h2>
+  <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">States</h2>
   <div style="margin-top:16px;">
     <ha-card style="padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
       <span style="color:#4A3320;">light.lamp</span>
@@ -241,9 +241,9 @@ function buildStatesPage() {
 function buildDeveloperToolsPage() {
   const body = `
 <div style="padding:24px;max-width:700px;margin:0 auto;">
-  <h2 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Developer Tools</h2>
+  <h2 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid rgba(224,182,107,0.3);padding-bottom:8px;margin-top:0;">Developer Tools</h2>
   <div style="display:flex;gap:0;margin:16px 0;border-bottom:2px solid rgba(224,182,107,0.4);">
-    <span style="padding:8px 16px;color:#E0B66B;border-bottom:3px solid #C49A3C;font-family:'Fredoka',Georgia,serif;letter-spacing:0.04em;">Services</span>
+    <span style="padding:8px 16px;color:#E0B66B;border-bottom:3px solid #C49A3C;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.04em;">Services</span>
     <span style="padding:8px 16px;color:#D4C4A8;">Templates</span>
     <span style="padding:8px 16px;color:#D4C4A8;">States</span>
     <span style="padding:8px 16px;color:#D4C4A8;">YAML</span>
@@ -251,15 +251,15 @@ function buildDeveloperToolsPage() {
     <span style="padding:8px 16px;color:#D4C4A8;">Options</span>
   </div>
   <ha-card style="padding:16px;margin-top:8px;">
-    <h3 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.04em;margin-top:0;">Service Call</h3>
+    <h3 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.04em;margin-top:0;">Service Call</h3>
     <ha-textfield outlined label="Domain" placeholder="light" style="width:48%;margin-right:4%;"></ha-textfield>
     <ha-textfield outlined label="Service" placeholder="turn_on" style="width:48%;"></ha-textfield>
     <div style="margin-top:16px;">
-      <button style="background:linear-gradient(180deg,#9CE04A 0%,#7BC942 40%,#5BA832 100%);border-radius:8px;padding:10px 24px;border:1px solid #4E9A26;color:#0E2A44;font-weight:600;font-family:'Fredoka',system-ui,sans-serif;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;">Call Service</button>
+      <button style="background:linear-gradient(180deg,#9CE04A 0%,#7BC942 40%,#5BA832 100%);border-radius:8px;padding:10px 24px;border:1px solid #4E9A26;color:#0E2A44;font-weight:600;font-family:'Benguiat Gothic',system-ui,sans-serif;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;">Call Service</button>
     </div>
   </ha-card>
   <ha-card style="padding:16px;margin-top:12px;">
-    <h3 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.04em;margin-top:0;">Response</h3>
+    <h3 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.04em;margin-top:0;">Response</h3>
     <pre style="color:#4A3320;font-size:13px;background:rgba(14,42,68,0.1);padding:12px;border-radius:8px;border:1px solid rgba(224,182,107,0.2);">Service successfully called</pre>
   </ha-card>
 </div>`;
@@ -278,7 +278,7 @@ function buildAnimationFrames() {
   return states.map((s) => {
     const body = `
 <div style="padding:24px;max-width:500px;margin:0 auto;">
-  <h3 style="color:#E0B66B;font-family:'Fredoka',Georgia,serif;letter-spacing:0.06em;margin-top:0;text-align:center;">${esc(s.label)}</h3>
+  <h3 style="color:#E0B66B;font-family:'Benguiat Gothic',Georgia,serif;letter-spacing:0.06em;margin-top:0;text-align:center;">${esc(s.label)}</h3>
   <ha-card style="padding:16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
     <span style="color:#4A3320;">light.lamp</span>
     <span style="color:${s.color};font-weight:600;font-size:16px;">on</span>
@@ -325,11 +325,17 @@ async function main() {
   fs.mkdirSync(cardsDir, { recursive: true });
   fs.mkdirSync(screenshotsDir, { recursive: true });
 
-  // Copy bundle to both output dirs
+  // Copy bundle into every dir the rendered HTML pages live in. Each page
+  // references the bundle with a relative <script src="sims2-bundle.js">, so it
+  // must sit beside the HTML — including the animations/ subdir.
   const cardBundle   = path.join(cardsDir, "sims2-bundle.js");
   const screenshotBundle = path.join(screenshotsDir, "sims2-bundle.js");
-  fs.writeFileSync(cardBundle, fs.readFileSync(BUNDLE_SRC));
-  fs.writeFileSync(screenshotBundle, fs.readFileSync(BUNDLE_SRC));
+  const animationsDir = path.join(screenshotsDir, "animations");
+  fs.mkdirSync(animationsDir, { recursive: true });
+  const bundleBytes = fs.readFileSync(BUNDLE_SRC);
+  fs.writeFileSync(cardBundle, bundleBytes);
+  fs.writeFileSync(screenshotBundle, bundleBytes);
+  fs.writeFileSync(path.join(animationsDir, "sims2-bundle.js"), bundleBytes);
 
   console.log(`Output: ${OUTPUT_DIR}`);
 

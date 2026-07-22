@@ -56,6 +56,53 @@ entities:
   - light.bedroom
 ```
 
+## Per-card shadow-DOM tweaks (gauge / weather / alarm)
+
+A few built-in cards render their distinctive pieces inside Shadow DOM that
+the document-level stylesheet cannot reach. The theme already drives their
+base colours through CSS variables (for example `--state-weather-sunny-color`
+and the global `mwc-button` rules that style the alarm keypad). To recolour
+the pieces below, add a `card_mod` block to the individual card:
+
+```yaml
+# Gauge — recolour the arc to plumbob green
+type: gauge
+entity: sensor.cpu_temp
+card_mod:
+  style:
+    ha-gauge:
+      $: |
+        .dial, .value {
+          --gauge-color: var(--sims2-plumbob-green) !important;
+        }
+```
+
+```yaml
+# Weather forecast — tint the forecast-row icons sky blue
+type: weather-forecast
+entity: weather.pleasantview
+card_mod:
+  style: |
+    ha-state-icon { --state-icon-color: var(--sims2-sky-blue); }
+```
+
+```yaml
+# Alarm panel — plumbob-green "armed" keypad buttons
+type: alarm-panel
+entity: alarm_control_panel.house
+card_mod:
+  style:
+    ha-alarm-panel-card:
+      $: |
+        mwc-button[armed] {
+          --mdc-theme-primary: var(--sims2-plumbob-green);
+        }
+```
+
+The selector names track the current Home Assistant frontend; if a future HA
+release renames a Shadow DOM node, the card simply falls back to the themed
+default until the snippet is updated.
+
 ## Why this is optional
 The theme, the loading screen, the plumbob card, and the dashboards all look
 correct and cohesive without card-mod — they carry their own styling in

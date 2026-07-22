@@ -1,0 +1,50 @@
+# Service descriptions for the sims2ha integration.
+# Handlers are registered in __init__.py:_async_register_services.
+
+reload_theme:
+  name: Reload theme
+  description: >-
+    Re-copies the Sims 2 theme file into the themes folder (without overwriting
+    your edits) and refreshes Home Assistant themes, so changes to the theme
+    appear without restarting Home Assistant.
+
+toggle_animations:
+  name: Toggle animations
+  description: Enable or disable all Sims 2 UI animations.
+  fields:
+    enabled:
+      name: Enabled
+      description: Whether animations should be enabled.
+      required: true
+      selector:
+        boolean:
+
+set_sidebar_width:
+  name: Set sidebar width
+  description: Adjust the sidebar expanded width in pixels.
+  fields:
+    width:
+      name: Width
+      description: Sidebar width in pixels (200-350).
+      required: true
+      selector:
+        number:
+          min: 200
+          max: 350
+          unit_of_measurement: px
+
+set_mood:
+  name: Set household mood
+  description: >-
+    Set the overall household mood (0-100) shown by the household-mood sensor
+    and the plumbob mascot card. 100 = all needs met, 0 = critical needs unmet.
+  fields:
+    mood:
+      name: Mood
+      description: Mood value from 0 (worst) to 100 (best).
+      required: true
+      selector:
+        number:
+          min: 0
+          max: 100
+          unit_of_measurement: "%"

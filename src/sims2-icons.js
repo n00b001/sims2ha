@@ -61,7 +61,7 @@ const GRADIENT_DEFS = `
       <stop offset="0%" stop-color="#4AA0D8"/><stop offset="100%" stop-color="#1E5078"/>
     </linearGradient>
     <linearGradient id="s2g-surface" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#F5EBD8"/><stop offset="100%" stop-color="#EDE0C8"/>
+      <stop offset="0%" stop-color="#7EC8E6"/><stop offset="100%" stop-color="#5BAEDC"/>
     </linearGradient>
     <linearGradient id="s2g-dark" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#2A3A50"/><stop offset="100%" stop-color="#162236"/>

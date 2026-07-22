@@ -5,8 +5,12 @@ single HACS step with no manual copying. On setup it:
 
   1. serves the bundled frontend module over HTTP,
   2. registers that module as a Lovelace resource (so the custom cards resolve),
-  3. creates the nine premade storage-mode dashboards with their view configs,
-  4. copies the theme file into <config>/themes/ and reloads themes.
+  3. serves the login and loading screen CSS files as static paths,
+  4. registers the loading screen CSS as a Lovelace CSS resource,
+  5. serves the service worker for login screen theming as a static path,
+  6. creates the nine premade storage-mode dashboards with their view configs,
+  7. copies the theme file into <config>/themes/ and reloads themes,
+  8. registers the sims2ha.reload_theme service.
 
 Everything is idempotent so repeated setup (restarts, entry reloads) never
 duplicates state. The one thing it cannot do is register a SELECTABLE theme
@@ -35,7 +39,19 @@ from homeassistant.components.lovelace.dashboard import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 
-from .const import BUNDLE_FILE, BUNDLE_URL_PATH, DASHBOARDS, DOMAIN, THEME_FILE
+from .const import (
+    BUNDLE_FILE,
+    BUNDLE_URL_PATH,
+    DASHBOARDS,
+    DOMAIN,
+    LOADING_CSS_FILE,
+    LOADING_CSS_URL_PATH,
+    LOGIN_CSS_FILE,
+    LOGIN_CSS_URL_PATH,
+    SERVICE_WORKER_FILE,
+    SERVICE_WORKER_URL_PATH,
+    THEME_FILE,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -43,15 +59,20 @@ _PACKAGE_DIR = Path(__file__).parent
 _DASHBOARDS_DIR = _PACKAGE_DIR / "dashboards"
 _THEMES_TARGET_DIR = "themes"  # relative to the HA config directory
 
+PLATFORMS = ["sensor"]
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up the Sims 2 integration from a config entry."""
     bookkeeping: dict[str, Any] = hass.data.setdefault(DOMAIN, {})
 
-    await _async_serve_bundle(hass, bookkeeping)
-    await _async_register_resource(hass)
+    await _async_serve_static_files(hass, bookkeeping)
+    await _async_register_lovelace_resources(hass)
     await _async_create_dashboards(hass)
     await _async_install_theme(hass)
+    await _async_register_services(hass)
+    await _async_register_websocket(hass)
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
 
@@ -67,30 +88,50 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 
 # --------------------------------------------------------------------------- #
-# (1) Serve the bundled frontend module over HTTP (once per process).
+# (1) Serve static files (bundle, login CSS, loading CSS, service worker) over HTTP.
 # --------------------------------------------------------------------------- #
-async def _async_serve_bundle(
+async def _async_serve_static_files(
     hass: HomeAssistant, bookkeeping: dict[str, Any]
 ) -> None:
-    """Register the static path that serves sims2-bundle.js."""
-    if bookkeeping.get("static_path_registered"):
+    """Register static paths for the bundle, login CSS, loading CSS, and service worker."""
+    if bookkeeping.get("static_paths_registered"):
         return
+
+    # Bundle (JS module)
     bundle_path = str(_PACKAGE_DIR / BUNDLE_FILE)
+    # Login CSS
+    login_css_path = str(_PACKAGE_DIR / LOGIN_CSS_FILE)
+    # Loading CSS
+    loading_css_path = str(_PACKAGE_DIR / LOADING_CSS_FILE)
+    # Service worker
+    service_worker_path = str(_PACKAGE_DIR / SERVICE_WORKER_FILE)
+
     await hass.http.async_register_static_paths(
-        [StaticPathConfig(BUNDLE_URL_PATH, bundle_path, True)]
+        [
+            StaticPathConfig(BUNDLE_URL_PATH, bundle_path, True),
+            StaticPathConfig(LOGIN_CSS_URL_PATH, login_css_path, True),
+            StaticPathConfig(LOADING_CSS_URL_PATH, loading_css_path, True),
+            StaticPathConfig(SERVICE_WORKER_URL_PATH, service_worker_path, True),
+        ]
     )
-    bookkeeping["static_path_registered"] = True
-    _LOGGER.info("Sims 2 bundle served at %s", BUNDLE_URL_PATH)
+    bookkeeping["static_paths_registered"] = True
+    _LOGGER.info(
+        "Sims 2 static files served at %s, %s, %s, %s",
+        BUNDLE_URL_PATH,
+        LOGIN_CSS_URL_PATH,
+        LOADING_CSS_URL_PATH,
+        SERVICE_WORKER_URL_PATH,
+    )
 
 
 # --------------------------------------------------------------------------- #
-# (2) Register the module as a Lovelace resource (idempotent, de-duped by URL).
+# (2) Register resources as Lovelace resources (bundle as module, loading CSS as CSS).
 # --------------------------------------------------------------------------- #
-async def _async_register_resource(hass: HomeAssistant) -> None:
-    """Register the bundle as a Lovelace module resource."""
+async def _async_register_lovelace_resources(hass: HomeAssistant) -> None:
+    """Register the bundle as a Lovelace module resource and the loading CSS as a CSS resource."""
     lovelace_data = hass.data.get(LOVELACE_DATA)
     if lovelace_data is None:
-        _LOGGER.warning("Lovelace not set up; cannot register Sims 2 resource")
+        _LOGGER.warning("Lovelace not set up; cannot register Sims 2 resources")
         return
 
     resources = lovelace_data.resources
@@ -101,17 +142,30 @@ async def _async_register_resource(hass: HomeAssistant) -> None:
         )
         return
 
-    # async_items() does not lazy-load, so ensure the collection has loaded
-    # before scanning for an existing entry.
+    # Ensure the collection has loaded before scanning for existing entries.
     if hasattr(resources, "_async_ensure_loaded"):
         await resources._async_ensure_loaded()
 
+    # Check if the bundle module is already registered.
+    bundle_exists = False
+    loading_css_exists = False
     for item in resources.async_items():
-        if item.get("url") == BUNDLE_URL_PATH:
-            return  # Already registered.
+        if item.get("url") == BUNDLE_URL_PATH and item.get("res_type") == "module":
+            bundle_exists = True
+        if item.get("url") == LOADING_CSS_URL_PATH and item.get("res_type") == "css":
+            loading_css_exists = True
 
-    await resources.async_create_item({"res_type": "module", "url": BUNDLE_URL_PATH})
-    _LOGGER.info("Registered Lovelace resource: %s", BUNDLE_URL_PATH)
+    if not bundle_exists:
+        await resources.async_create_item(
+            {"res_type": "module", "url": BUNDLE_URL_PATH}
+        )
+        _LOGGER.info("Registered Lovelace resource: %s (module)", BUNDLE_URL_PATH)
+
+    if not loading_css_exists:
+        await resources.async_create_item(
+            {"res_type": "css", "url": LOADING_CSS_URL_PATH}
+        )
+        _LOGGER.info("Registered Lovelace resource: %s (css)", LOADING_CSS_URL_PATH)
 
 
 # --------------------------------------------------------------------------- #
@@ -219,3 +273,61 @@ def _write_if_missing(source: str, target: str) -> None:
     if Path(target).exists():
         return  # Respect any edits the user has made to the theme.
     Path(target).write_bytes(Path(source).read_bytes())
+
+
+# --------------------------------------------------------------------------- #
+# (5) Register the sims2ha.reload_theme service — re-installs the theme and
+#     refreshes HA's themes so edits appear without a full restart.
+# --------------------------------------------------------------------------- #
+async def _async_register_services(hass: HomeAssistant) -> None:
+    """Register the Sims 2 domain services."""
+
+    async def _reload_theme(_call: Any) -> None:
+        await _async_install_theme(hass)
+
+    async def _toggle_animations(call: Any) -> None:
+        enabled = call.data.get("enabled", True)
+        entry = hass.config_entries.async_entries(DOMAIN)
+        if entry:
+            hass.config_entries.async_update_entry(
+                entry[0], options={**entry[0].options, "enable_animations": enabled}
+            )
+        hass.bus.async_fire(
+            "sims2ha_config_changed",
+            {"enable_animations": enabled},
+        )
+
+    async def _set_sidebar_width(call: Any) -> None:
+        width = call.data.get("width", 280)
+        entry = hass.config_entries.async_entries(DOMAIN)
+        if entry:
+            hass.config_entries.async_update_entry(
+                entry[0], options={**entry[0].options, "sidebar_width": width}
+            )
+        hass.bus.async_fire(
+            "sims2ha_config_changed",
+            {"sidebar_width": width},
+        )
+
+    async def _set_mood_handler(call: Any) -> None:
+        mood = call.data.get("mood", 100)
+        clamped = max(0, min(100, int(mood)))
+        hass.data.setdefault(DOMAIN, {})["mood"] = clamped
+        hass.bus.async_fire("sims2ha_mood_changed", {"sims2_mood": clamped})
+
+    hass.services.async_register(DOMAIN, "reload_theme", _reload_theme)
+    hass.services.async_register(DOMAIN, "toggle_animations", _toggle_animations)
+    hass.services.async_register(DOMAIN, "set_sidebar_width", _set_sidebar_width)
+    hass.services.async_register(DOMAIN, "set_mood", _set_mood_handler)
+    _LOGGER.info("Registered services for %s", DOMAIN)
+
+
+# --------------------------------------------------------------------------- #
+# (6) Register websocket commands — expose mood, config, and icon set info.
+# --------------------------------------------------------------------------- #
+async def _async_register_websocket(hass: HomeAssistant) -> None:
+    """Register every Sims 2 websocket command (idempotent across reloads)."""
+    from .websocket_api import async_register
+
+    await async_register(hass)
+    _LOGGER.info("Registered Sims 2 websocket commands")

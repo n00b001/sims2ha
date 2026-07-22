@@ -1,20 +1,17 @@
 // Sims 2 Panel Card - Custom Lovelace card for panel-style containers
 class SimsPanelCard extends LitElement {
   static properties = {
-    header: { type: String },
-    content: { type: String }
+    header: { type: String }
   };
 
   constructor() {
     super();
     this.header = '';
-    this.content = '';
   }
 
   setConfig(config) {
     if (!config) throw new Error('Invalid configuration');
     this.header = config.header || '';
-    this.content = config.content || '';
   }
 
   static get styles() {
@@ -43,6 +40,7 @@ class SimsPanelCard extends LitElement {
         color: var(--sims2-cream-text, #FFF6E0);
         text-align: center;
         letter-spacing: 0.04em;
+        position: relative;
       }
       .card-header::after {
         content: '';
@@ -72,7 +70,7 @@ class SimsPanelCard extends LitElement {
     return html`
       <div class="card-container">
         ${this.header ? html`<div class="card-header">${this.header}</div>` : ''}
-        <div class="card-content">${this.content}</div>
+        <div class="card-content"><slot></slot></div>
       </div>
     `;
   }

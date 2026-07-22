@@ -178,7 +178,7 @@ home-assistant-shell-gaia {
 
   /* ---- Typography tokens --------------------------------------------- */
   --sims2-font-display: "Benguiat Gothic", serif !important;
-  --sims2-font-body: "Fredoka", sans-serif !important;
+  --sims2-font-body: "Benguiat Gothic", system-ui, sans-serif !important;
 }
 
 /* ==========================================================================
