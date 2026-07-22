@@ -7,9 +7,10 @@ single HACS step with no manual copying. On setup it:
   2. registers that module as a Lovelace resource (so the custom cards resolve),
   3. serves the login and loading screen CSS files as static paths,
   4. registers the loading screen CSS as a Lovelace CSS resource,
-  5. creates the nine premade storage-mode dashboards with their view configs,
-  6. copies the theme file into <config>/themes/ and reloads themes,
-  7. registers the sims2ha.reload_theme service.
+  5. serves the service worker for login screen theming as a static path,
+  6. creates the nine premade storage-mode dashboards with their view configs,
+  7. copies the theme file into <config>/themes/ and reloads themes,
+  8. registers the sims2ha.reload_theme service.
 
 Everything is idempotent so repeated setup (restarts, entry reloads) never
 duplicates state. The one thing it cannot do is register a SELECTABLE theme
@@ -47,6 +48,8 @@ from .const import (
     LOADING_CSS_URL_PATH,
     LOGIN_CSS_FILE,
     LOGIN_CSS_URL_PATH,
+    SERVICE_WORKER_FILE,
+    SERVICE_WORKER_URL_PATH,
     THEME_FILE,
 )
 
@@ -85,12 +88,12 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 
 # --------------------------------------------------------------------------- #
-# (1) Serve static files (bundle, login CSS, loading CSS) over HTTP.
+# (1) Serve static files (bundle, login CSS, loading CSS, service worker) over HTTP.
 # --------------------------------------------------------------------------- #
 async def _async_serve_static_files(
     hass: HomeAssistant, bookkeeping: dict[str, Any]
 ) -> None:
-    """Register static paths for the bundle, login CSS, and loading CSS."""
+    """Register static paths for the bundle, login CSS, loading CSS, and service worker."""
     if bookkeeping.get("static_paths_registered"):
         return
 
@@ -100,20 +103,24 @@ async def _async_serve_static_files(
     login_css_path = str(_PACKAGE_DIR / LOGIN_CSS_FILE)
     # Loading CSS
     loading_css_path = str(_PACKAGE_DIR / LOADING_CSS_FILE)
+    # Service worker
+    service_worker_path = str(_PACKAGE_DIR / SERVICE_WORKER_FILE)
 
     await hass.http.async_register_static_paths(
         [
             StaticPathConfig(BUNDLE_URL_PATH, bundle_path, True),
             StaticPathConfig(LOGIN_CSS_URL_PATH, login_css_path, True),
             StaticPathConfig(LOADING_CSS_URL_PATH, loading_css_path, True),
+            StaticPathConfig(SERVICE_WORKER_URL_PATH, service_worker_path, True),
         ]
     )
     bookkeeping["static_paths_registered"] = True
     _LOGGER.info(
-        "Sims 2 static files served at %s, %s, %s",
+        "Sims 2 static files served at %s, %s, %s, %s",
         BUNDLE_URL_PATH,
         LOGIN_CSS_URL_PATH,
         LOADING_CSS_URL_PATH,
+        SERVICE_WORKER_URL_PATH,
     )
 
 

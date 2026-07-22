@@ -41,6 +41,23 @@ const styleInjection = [
   ""
 ].join("\n");
 
+// Service worker registration for login screen theming
+const serviceWorkerRegistration = [
+  "/* --- Service worker registration for login screen theming --- */",
+  "(function () {",
+  "  if ('serviceWorker' in navigator) {",
+  "    navigator.serviceWorker.register('/sims2ha/sw.js', {scope: '/'})",
+  "      .then(registration => {",
+  "        console.log(\"Service worker registered with scope:\", registration.scope);",
+  "      })",
+  "      .catch(error => {",
+  "        console.log(\"Service worker registration failed:\", error);",
+  "      });",
+  "  }",
+  "})();",
+  ""
+].join("\n");
+
 const banner = [
   "/*!",
   " * Sims 2 bundle for Home Assistant (sims2-bundle.js)",
@@ -62,6 +79,7 @@ const section = (name) =>
 const out =
   banner +
   styleInjection +
+  serviceWorkerRegistration +
   section("sims2-icons.js — registers window.customIcons[\"sims2\"] (38 icons)") +
   read("src/sims2-icons.js") +
   section("sims2-loading-card.js — customElements.define(\"sims2-loading\")") +

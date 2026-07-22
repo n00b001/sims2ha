@@ -28,6 +28,12 @@ LOADING_CSS_FILE = "www/loading-screen.css"
 LOADING_CSS_URL_PATH = "/sims2ha/loading-screen.css"
 
 # ---------------------------------------------------------------------------
+# Service worker for login screen theming
+# ---------------------------------------------------------------------------
+SERVICE_WORKER_FILE = "frontend/sw.js"
+SERVICE_WORKER_URL_PATH = "/sims2ha/sw.js"
+
+# ---------------------------------------------------------------------------
 # Configuration option keys
 # ---------------------------------------------------------------------------
 CONF_THEME_MODE = "theme_mode"
