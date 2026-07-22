@@ -394,7 +394,7 @@ class Sims2GaugeCard extends HTMLElement {
                 fill="#E8D4B0"
                 font-size="13"
                 font-weight="700"
-                font-family="'Benguiat Gothic', 'Fredoka', system-ui, sans-serif">${this._escapeHtml(displayValue)}</text>
+                font-family="'Benguiat Gothic', system-ui, sans-serif">${this._escapeHtml(displayValue)}</text>
         </svg>
         ${cfg.name ? `<div class="sims2-gauge-name">${this._escapeHtml(cfg.name.toUpperCase())}</div>` : ""}
       </div>
@@ -463,7 +463,7 @@ class Sims2GaugeCard extends HTMLElement {
         align-items: center;
         gap: 8px;
         text-align: center;
-        font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif);
+        font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif);
         overflow: hidden;
       }
 

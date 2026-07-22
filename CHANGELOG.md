@@ -19,7 +19,7 @@ no dashboard import.
   `:root` CSS block (with a `prefers-color-scheme: dark` variant), so no
   `configuration.yaml` edit is required for the look to take effect.
 - `sims2:` icon pack (52 icons), `custom:sims2-loading` and
-  `custom:sims2-plumbob` cards, the Fredoka typeface, themed scrollbars.
+  `custom:sims2-plumbob` cards, the Benguiat Gothic typeface, themed scrollbars.
 - Nine premade dashboards — seven auto-populate from the user's entities via
   the bundled `auto-entities`.
 - `auto-entities` (MIT, Thomas Lovén) vendored into the bundle, so the

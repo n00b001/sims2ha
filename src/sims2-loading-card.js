@@ -290,7 +290,7 @@ class Sims2LoadingCard extends HTMLElement {
         min-height: 360px;
         background:
           radial-gradient(120% 90% at 50% 0%, var(--sims2-sky-top, #2E76AE) 0%, var(--sims2-sky-mid, #1E5C92) 45%, var(--sims2-sky-bottom, #0E2C4D) 100%);
-        font-family: var(--sims2-font-display, "Fredoka", "Segoe UI", system-ui, sans-serif);
+        font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif);
         color: #FFF6E0;
         display: flex;
         align-items: center;

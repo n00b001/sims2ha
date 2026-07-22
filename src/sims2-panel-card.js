@@ -289,7 +289,7 @@ class Sims2PanelCard extends HTMLElement {
         border-radius: 14px;
         overflow: hidden;
         background: linear-gradient(175deg, #1A3856 0%, #122A44 40%, #0E2238 100%);
-        font-family: var(--sims2-font-display, "Benguiat Gothic", "Fredoka", system-ui, sans-serif);
+        font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif);
         color: var(--sims2-espresso, #D4C4A8);
         border: 2px solid transparent;
         background-clip: padding-box;

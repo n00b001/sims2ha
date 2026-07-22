@@ -159,7 +159,7 @@ class Sims2PlumbobCard extends HTMLElement {
         padding: 18px 14px 16px;
         display: flex; flex-direction: column; align-items: center; gap: 12px;
         text-align: center;
-        font-family: var(--sims2-font-display, "Fredoka", system-ui, sans-serif);
+        font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif);
         position: relative;
         overflow: hidden;
       }

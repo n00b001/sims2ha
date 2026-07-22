@@ -67,20 +67,23 @@ Default numeric thresholds for `custom:sims2-plumbob`:
 `>= 66` green, `>= 33` yellow, else red.
 
 ## Typography
-- **Display / headers / wordmark:** *Benguiat Gothic* (self-hosted base64 data
-  URI) for headings and titles, with *Fredoka* (Google Fonts) as the body font.
-  Both exposed via CSS custom properties. Loaded by `sims2-fonts.css`.
-- **Body:** Fredoka at weight 400 for cohesion; falls back to system sans
-  (`Segoe UI`, system-ui) if the web font is unavailable.
+- **One typeface, two roles:** *Benguiat Gothic* is used for everything —
+  display, headers, wordmark, and body text. It is self-hosted as a base64
+  `@font-face` in `sims2-fonts.css` (sourced from
+  `reference-images/benguiat-gothic-regular/benguiat-gothic-regular.ttf`), so
+  no external font fetch is needed. No other font is bundled or loaded.
+- **Roles via CSS custom properties:** `--sims2-font-display` and
+  `--sims2-font-body` both resolve to Benguiat Gothic and fall back to
+  `system-ui, sans-serif` if the web font is unavailable.
 - **Letter-spacing:** a hair more than default (`0.005em` body,
   `0.14em` wordmark) to match the slightly airy Sims feel.
-- **Corners:** cards use `--ha-card-border-radius: 12px`. Pills/badges are
+- **Corners:** cards use `--ha-card-border-radius: 14px`. Pills/badges are
   fully rounded (`999px`).
 
 The Sims 2 ships its own proprietary fonts ("The Sims Sans" family). We do
 not bundle them. Benguiat Gothic is the closest libre approximation of the
-Sims 2 display face; Fredoka matches the friendly body tone. Users may swap
-`--sims2-font-display` to their own locally-hosted face.
+Sims 2 display face and is the project's only font. Users may swap
+`--sims2-font-display` / `--sims2-font-body` to their own locally-hosted face.
 
 ## Voice & copy
 - Tone: warm, a little ridiculous, gently fourth-wall-breaking — exactly like

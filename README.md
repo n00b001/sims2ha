@@ -11,7 +11,7 @@
 </p>
 
 A fan-made tribute that restyles Home Assistant to look and feel like **The
-Sims 2** — and installs in **one step**. Parchment panels, the signature
+Sims 2** — and installs in **one step**. Navy + sky-blue panels, the signature
 panel-blue, gold trim, a glowing plumbob, nine auto-created dashboards, and a
 loading screen that *reticulates your splines*.
 
@@ -23,7 +23,7 @@ loading screen that *reticulates your splines*.
 
 ## ✨ What one install gives you
 
-- **The Sims 2 look, applied automatically** — warm parchment surfaces, panel
+- **The Sims 2 look, applied automatically** — navy and sky-blue surfaces, panel
   blue, gold trim and a plumbob green, wired into Home Assistant's own theme
   variables so it covers the header, sidebar, cards, switches, sliders, badges
   and Material components. It even follows your system light/dark preference.
@@ -33,10 +33,10 @@ loading screen that *reticulates your splines*.
   Integration* they appear in your sidebar. Seven auto-populate from whatever
   entities exist in your instance.
 - **A custom icon pack** (`sims2:` — the plumbob, simoleons, the eight Sim
-  needs, buy-mode rooms and more — 52 icons).
+  needs, buy-mode rooms and more — 38 icons).
 - **Custom cards** — a Sims 2 loading splash (`custom:sims2-loading`) with
   rotating ridiculous tips, and a status plumbob (`custom:sims2-plumbob`).
-- **The Fredoka typeface** and themed scrollbars, focus rings and selection.
+- **The Benguiat Gothic typeface** and themed scrollbars, focus rings and selection.
 - **`auto-entities` is bundled in** — the auto-populating dashboards need no
   separate install.
 - **Easter eggs** — Bella Goth, Mortimer Goth, Don Lothario and friends.
@@ -209,8 +209,10 @@ only `node` (used to escape the CSS into a JS string).
   Assistant **2025.8** or newer.
 - **Theme look didn't change** — hard-refresh the browser (Ctrl+Shift+R). The
   style layer is injected by the bundle and cached aggressively.
-- **Fonts look plain** — the Fredoka web font loads from Google Fonts. If your
-  network blocks it, set `--sims2-font-display` to a locally-hosted face.
+- **Fonts look plain** — hard-refresh the browser. Benguiat Gothic is bundled
+  as base64 inside the resource (no Google Fonts fetch), so it can only be
+  missing if the resource itself failed to load. If you swap to your own face,
+  set `--sims2-font-display` / `--sims2-font-body` to a locally-hosted one.
 
 ---
 
@@ -227,7 +229,7 @@ only `node` (used to escape the CSS into a JS string).
 - **`auto-entities`** by Thomas Lovén (MIT) is **vendored into the bundle** so
   the auto-populating dashboards need no separate install — see
   `src/vendor/auto-entities.LICENSE.txt`.
-- Fredoka font via Google Fonts (Open Font License).
+- Benguiat Gothic, self-hosted as base64 in `sims2-fonts.css`.
 - Inspired by the r/homeassistant ["Sims 2 inspired dashboard" project of the
   day](https://www.reddit.com/r/homeassistant/comments/1usr3qp/project_of_the_day_a_sims_2_inspired_dashboard/).
 - *The Sims 2*, the plumbob, Pleasantview, and all character names are

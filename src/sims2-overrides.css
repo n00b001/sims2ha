@@ -2167,6 +2167,29 @@ ha-calendar {
 }
 
 /* ==========================================================================
+   WEATHER FORECAST CARD — Sims 2 weather panel ------------------------------
+   Host font + state colours. The sunny/cloudy/rainy/snowy tints resolve
+   from the --state-weather-* variables in sims2.yaml. Forecast-row icons and
+   the temperature glyph live in shadow DOM — reach those with card_mod
+   (see docs/CARD-MOD.md). */
+
+ha-weather-forecast,
+ha-weather-card {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+/* ==========================================================================
+   ALARM PANEL CARD — Sims 2 keypad panel -------------------------------------
+   Host font. The number-pad buttons are mwc-button instances, already styled
+   bubbly + rounded by the global mwc-button rules above. For per-button
+   plumbob-green "armed" colouring, use card_mod (see docs/CARD-MOD.md). */
+
+ha-alarm-panel-card,
+ha-panel-alarm {
+  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+}
+
+/* ==========================================================================
    CIRCULAR BUTTONS — Sims 2 navigation cluster style ------------------------
    The Sims 2 pie menu uses circular buttons with a glossy top-half reflection.
    These styles target common HA button patterns and make them circular with

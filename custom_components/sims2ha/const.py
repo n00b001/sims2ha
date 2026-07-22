@@ -6,7 +6,6 @@ a Lovelace resource, (3) creates the premade storage-mode dashboards, and
 (4) drops the theme file into <config>/themes/ and reloads themes. That removes
 every manual copy/paste/register/import step.
 """
-
 DOMAIN = "sims2ha"
 
 # The single frontend module the integration serves and registers. It bundles
@@ -23,6 +22,14 @@ BUNDLE_URL_PATH = "/sims2ha/bundle.js"
 # can pick it up (requires the user's one-time `frontend: themes:` block — the
 # one manual prerequisite that HA itself imposes; see README).
 THEME_FILE = "themes/sims2.yaml"
+
+# Login screen CSS file (for reverse proxy injection or development_repo)
+LOGIN_CSS_FILE = "www/login-screen.css"
+LOGIN_CSS_URL_PATH = "/sims2ha/login-screen.css"
+
+# Loading screen CSS file (for post-auth loading screen, to be loaded as a Lovelace resource)
+LOADING_CSS_FILE = "www/loading-screen.css"
+LOADING_CSS_URL_PATH = "/sims2ha/loading-screen.css"
 
 # Premade dashboards the integration creates (storage mode) on setup, idempotent.
 # `file` is relative to the `dashboards/` folder shipped inside this package.
