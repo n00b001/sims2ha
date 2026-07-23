@@ -15,8 +15,8 @@ is a trademark of EA, referenced here as an unaffiliated fan tribute.
 2. Add it as a Lovelace resource (**Settings → Dashboards → Resources → Add
    resource**):
 
-   | URL | Type |
-   |---|---|
+   | URL                                       | Type              |
+   | ----------------------------------------- | ----------------- |
    | `/local/community/sims2ha/sims2-icons.js` | JavaScript module |
 
    (Or add it under `frontend.extra_module_url` — see
@@ -47,29 +47,35 @@ theme (active entities glow plumbob-green, inactive ones sit in espresso).
 ## Icon catalogue (52 icons)
 
 ### Core & mascot
-| Name | Reads as |
-|---|---|
-| `sims2:plumbob` | the diamond |
-| `sims2:plumbob-mood-green` / `-yellow` / `-red` | faceted mood diamonds |
-| `sims2:simoleon` | a coin bearing a small plumbob |
-| `sims2:simoleon-stack` | stacked coins |
-| `sims2:sim` / `sims2:sim-head` | a Sim with a plumbob above |
-| `sims2:aspiration-star` | the aspiration star |
-| `sims2:want-bubble` | a "want" thought bubble |
+
+| Name                                            | Reads as                       |
+| ----------------------------------------------- | ------------------------------ |
+| `sims2:plumbob`                                 | the diamond                    |
+| `sims2:plumbob-mood-green` / `-yellow` / `-red` | faceted mood diamonds          |
+| `sims2:simoleon`                                | a coin bearing a small plumbob |
+| `sims2:simoleon-stack`                          | stacked coins                  |
+| `sims2:sim` / `sims2:sim-head`                  | a Sim with a plumbob above     |
+| `sims2:aspiration-star`                         | the aspiration star            |
+| `sims2:want-bubble`                             | a "want" thought bubble        |
 
 ### Game-mode marks
+
 `sims2:live-mode` · `sims2:buy-mode` · `sims2:build-mode` · `sims2:cas-mode` · `sims2:story-mode`
 
 ### The eight Sim needs
+
 `sims2:need-hunger` · `sims2:need-energy` · `sims2:need-social` · `sims2:need-hygiene` · `sims2:need-fun` · `sims2:need-comfort` · `sims2:need-bladder` · `sims2:need-room`
 
 ### Shopping — sort by room
+
 `sims2:room-kitchen` · `sims2:room-bathroom` · `sims2:room-bedroom` · `sims2:room-living` · `sims2:room-dining` · `sims2:room-outside` · `sims2:room-study` · `sims2:room-kids` · `sims2:room-garage` · `sims2:room-hallway`
 
 ### Shopping — sort by type / function
+
 `sims2:type-comfort` · `sims2:type-surfaces` · `sims2:type-storage` · `sims2:type-beds` · `sims2:type-electronics` · `sims2:type-appliances` · `sims2:type-plumbing` · `sims2:type-decorative` · `sims2:type-lighting` · `sims2:type-skills` · `sims2:type-toys`
 
 ### Shopping — category & sort controls
+
 `sims2:shop-tag` · `sims2:shop-cart` · `sims2:shop-window` · `sims2:sort-rooms` · `sims2:sort-type` · `sims2:sort-function` · `sims2:sort-name` · `sims2:sort-price`
 
 ## Customising / extending

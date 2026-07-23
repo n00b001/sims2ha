@@ -25,129 +25,129 @@
 ha-root,
 home-assistant,
 home-assistant-shell-gaia {
-    /* ---- Base surfaces — deeper midnight navy ------------------------ */
-    --primary-background-color: #080d18 !important;
-    --secondary-background-color: #0a0f1c !important;
+  /* ---- Base surfaces — deeper midnight navy ------------------------ */
+  --primary-background-color: #080d18 !important;
+  --secondary-background-color: #0a0f1c !important;
 
-    /* Cards, dialogs — muted blue panels */
-    --card-background-color: #4a7a94 !important;
-    ha-card {
-      background: linear-gradient(
-        170deg,
-        #56889e 0%,
-        #4a7a94 30%,
-        #3e6c82 100%
-      ) !important;
-    }
-
-    --dialog-background-color: #4a7a94 !important;
-    --mdc-dialog-background-color: #4a7a94 !important;
-    --ha-dialog-background-color: #4a7a94 !important;
-    --table-row-background-color: #4a7a94 !important;
-
-    /* Sidebar — deeper navy */
-    --app-header-background-color: #1b3a52 !important;
-    --app-drawer-background-color: #0f2035 !important;
-
-    /* Input fields — darker tinted blue */
-    --input-fill-color: #2e4060 !important;
-    --input-dropdown-background-color: #2e4060 !important;
-
-    /* ---- Brand / Action colours ------------------------------------ */
-    --primary-color: #9ccbe6 !important;
-    --accent-color: #7bc942 !important;
-    --dark-primary-color: #1b3a52 !important;
-    --light-primary-color: #6ba3c7 !important;
-
-    /* ---- Text colours ---------------------------------------------- */
-    --primary-text-color: #fff6e0 !important;
-    --secondary-text-color: #c4b696 !important;
-    --text-primary-color: #fff6e0 !important;
-    --disabled-text-color: #6b6280 !important;
-
-    /* App header text (cream on dark blue) */
-    --app-header-text-color: #fff6e0 !important;
-
-    /* Sidebar text */
-    --sidebar-text-color: #8ba4be !important;
-    --sidebar-icon-color: #6ba3c7 !important;
-    --sidebar-selected-color: rgba(123, 201, 66, 0.12) !important;
-    --sidebar-selected-text-color: #fff6e0 !important;
-
-    /* ---- State icon colours ---------------------------------------- */
-    --state-icon-color: #8b80a0 !important;
-    --state-icon-active-color: #7bc942 !important;
-    --state-icon-unavailable-color: #5c5470 !important;
-
-    /* ---- Status / Feedback (same as light) ------------------------- */
-    --error-color: #c0392b !important;
-    --warning-color: #e09a2b !important;
-    --success-color: #5ba82c !important;
-    --info-color: #2f86c5 !important;
-
-    /* ---- Component-specific tokens --------------------------------- */
-    --switch-checked-color: #7bc942 !important;
-    --slider-color: #9ccbe6 !important;
-    --slider-secondary-color: #3e5a78 !important;
-    --slider-track-color: #4a3a28 !important;
-    --slider-thumb-color: #4a7a94 !important;
-    --slider-knob-color: #4a7a94 !important;
-    --divider-color: #c29a3c !important;
-
-    /* Badge colours */
-    --label-badge-background-color: #9ccbe6 !important;
-    --label-badge-text-color: #080d18 !important;
-
-    /* Paper card styling */
-    --paper-card-background-color: #4a7a94 !important;
-    --paper-card-header-color: #fff6e0 !important;
-    --paper-item-icon-color: #9ccbe6 !important;
-    --paper-item-icon-active-color: #7bc942 !important;
-    --paper-listbox-background-color: #0f2035 !important;
-    --paper-tabs-selection-bar-color: #9ccbe6 !important;
-
-    /* ---- Cards — muted blue panels --------------------------------- */
-    --ha-card-border-radius: 12px !important;
-    --ha-card-border-width: 0 !important;
-    --ha-card-border-color: #c29a3c !important;
-    --ha-card-outline-color: #c29a3c !important;
-    --ha-card-background: linear-gradient(
+  /* Cards, dialogs — muted blue panels */
+  --card-background-color: #4a7a94 !important;
+  ha-card {
+    background: linear-gradient(
       170deg,
       #56889e 0%,
       #4a7a94 30%,
       #3e6c82 100%
     ) !important;
-    --ha-card-box-shadow:
-      0 1px 4px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
-
-    /* ---- Material Design tokens ------------------------------------ */
-    --mdc-theme-default-background: #080d18 !important;
-    --mdc-theme-surface: #4a7a94 !important;
-    --mdc-theme-background: #080d18 !important;
-    --mdc-theme-primary: #9ccbe6 !important;
-    --mdc-theme-secondary: #7bc942 !important;
-    --mdc-theme-on-primary: #fff6e0 !important;
-
-    /* ---- Sims 2 custom tokens (dark) ------------------------------- */
-    --sims2-navy-base: #080d18 !important;
-    --sims2-sky-blue: #4a7a94 !important;
-    --sims2-panel-blue: #9ccbe6 !important;
-    --sims2-header-blue: #1b3a52 !important;
-    --sims2-panel-navy: #0f2035 !important;
-    --sims2-gold-trim: #c29a3c !important;
-    --sims2-plumbob-green: #7bc942 !important;
-    --sims2-espresso: #fff6e0 !important;
-    --sims2-cream-text: #fff6e0 !important;
-
-    /* ---- Gloss / reflection tokens (dark) ----------------------------
-       Subtler gloss on darker panels to maintain the plastic sheen. ------ */
-    --sims2-gloss-top: rgba(255, 255, 255, 0.12) !important;
-    --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
-    --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.06) !important;
-    --sims2-panel-gloss-overlay: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ) !important;
   }
+
+  --dialog-background-color: #4a7a94 !important;
+  --mdc-dialog-background-color: #4a7a94 !important;
+  --ha-dialog-background-color: #4a7a94 !important;
+  --table-row-background-color: #4a7a94 !important;
+
+  /* Sidebar — deeper navy */
+  --app-header-background-color: #1b3a52 !important;
+  --app-drawer-background-color: #0f2035 !important;
+
+  /* Input fields — darker tinted blue */
+  --input-fill-color: #2e4060 !important;
+  --input-dropdown-background-color: #2e4060 !important;
+
+  /* ---- Brand / Action colours ------------------------------------ */
+  --primary-color: #9ccbe6 !important;
+  --accent-color: #7bc942 !important;
+  --dark-primary-color: #1b3a52 !important;
+  --light-primary-color: #6ba3c7 !important;
+
+  /* ---- Text colours ---------------------------------------------- */
+  --primary-text-color: #fff6e0 !important;
+  --secondary-text-color: #c4b696 !important;
+  --text-primary-color: #fff6e0 !important;
+  --disabled-text-color: #6b6280 !important;
+
+  /* App header text (cream on dark blue) */
+  --app-header-text-color: #fff6e0 !important;
+
+  /* Sidebar text */
+  --sidebar-text-color: #8ba4be !important;
+  --sidebar-icon-color: #6ba3c7 !important;
+  --sidebar-selected-color: rgba(123, 201, 66, 0.12) !important;
+  --sidebar-selected-text-color: #fff6e0 !important;
+
+  /* ---- State icon colours ---------------------------------------- */
+  --state-icon-color: #8b80a0 !important;
+  --state-icon-active-color: #7bc942 !important;
+  --state-icon-unavailable-color: #5c5470 !important;
+
+  /* ---- Status / Feedback (same as light) ------------------------- */
+  --error-color: #c0392b !important;
+  --warning-color: #e09a2b !important;
+  --success-color: #5ba82c !important;
+  --info-color: #2f86c5 !important;
+
+  /* ---- Component-specific tokens --------------------------------- */
+  --switch-checked-color: #7bc942 !important;
+  --slider-color: #9ccbe6 !important;
+  --slider-secondary-color: #3e5a78 !important;
+  --slider-track-color: #4a3a28 !important;
+  --slider-thumb-color: #4a7a94 !important;
+  --slider-knob-color: #4a7a94 !important;
+  --divider-color: #c29a3c !important;
+
+  /* Badge colours */
+  --label-badge-background-color: #9ccbe6 !important;
+  --label-badge-text-color: #080d18 !important;
+
+  /* Paper card styling */
+  --paper-card-background-color: #4a7a94 !important;
+  --paper-card-header-color: #fff6e0 !important;
+  --paper-item-icon-color: #9ccbe6 !important;
+  --paper-item-icon-active-color: #7bc942 !important;
+  --paper-listbox-background-color: #0f2035 !important;
+  --paper-tabs-selection-bar-color: #9ccbe6 !important;
+
+  /* ---- Cards — muted blue panels --------------------------------- */
+  --ha-card-border-radius: 12px !important;
+  --ha-card-border-width: 0 !important;
+  --ha-card-border-color: #c29a3c !important;
+  --ha-card-outline-color: #c29a3c !important;
+  --ha-card-background: linear-gradient(
+    170deg,
+    #56889e 0%,
+    #4a7a94 30%,
+    #3e6c82 100%
+  ) !important;
+  --ha-card-box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+
+  /* ---- Material Design tokens ------------------------------------ */
+  --mdc-theme-default-background: #080d18 !important;
+  --mdc-theme-surface: #4a7a94 !important;
+  --mdc-theme-background: #080d18 !important;
+  --mdc-theme-primary: #9ccbe6 !important;
+  --mdc-theme-secondary: #7bc942 !important;
+  --mdc-theme-on-primary: #fff6e0 !important;
+
+  /* ---- Sims 2 custom tokens (dark) ------------------------------- */
+  --sims2-navy-base: #080d18 !important;
+  --sims2-sky-blue: #4a7a94 !important;
+  --sims2-panel-blue: #9ccbe6 !important;
+  --sims2-header-blue: #1b3a52 !important;
+  --sims2-panel-navy: #0f2035 !important;
+  --sims2-gold-trim: #c29a3c !important;
+  --sims2-plumbob-green: #7bc942 !important;
+  --sims2-espresso: #fff6e0 !important;
+  --sims2-cream-text: #fff6e0 !important;
+
+  /* ---- Gloss / reflection tokens (dark) ----------------------------
+       Subtler gloss on darker panels to maintain the plastic sheen. ------ */
+  --sims2-gloss-top: rgba(255, 255, 255, 0.12) !important;
+  --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
+  --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.06) !important;
+  --sims2-panel-gloss-overlay: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+}

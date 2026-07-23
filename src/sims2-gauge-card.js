@@ -168,8 +168,7 @@ class Sims2GaugeCard extends HTMLElement {
     this._updateSegments(value, fraction);
   }
 
-  _updateSegments(value, fraction) {
-    const { min, max } = this._config;
+  _updateSegments(value, _) {
     const severity = this._config.severity || {};
     const greenThreshold = severity.green || 70;
     const yellowThreshold = severity.yellow || 40;
@@ -213,28 +212,35 @@ class Sims2GaugeCard extends HTMLElement {
     const fraction = value !== null ? this._fraction(value) : 0.5;
     const angle = this._needleAngle(fraction);
     const mood = value !== null ? this._resolveMood(value) : "green";
-    const needleColor = { green: "#7BC942", yellow: "#F2C14E", red: "#E55B45" }[
-      mood
-    ];
     const displayValue =
       value !== null
         ? `${Number.isInteger(value) ? value : value.toFixed(1)}${cfg.unit || ""}`
         : "—";
 
-    // Pre-compute arc segments for initial render.
+    // Pre-compute arc segments for consistent rendering
     const severity = cfg.severity || {};
     const greenThreshold = severity.green || 70;
     const yellowThreshold = severity.yellow || 40;
-    const greenFrac = this._fraction(Math.min(100, greenThreshold));
-    const yellowFrac = this._fraction(
-      Math.min(100, Math.max(greenThreshold, yellowThreshold)),
-    );
-    const redFrac = this._fraction(yellowThreshold);
     const totalArc = 2 * Math.PI * 48 * (270 / 360);
-    const greenLen = this._arcLength(48, greenFrac);
-    const yellowStart = this._arcLength(48, redFrac);
-    const yellowLen = this._arcLength(48, yellowFrac) - yellowStart;
-    const redLen = this._arcLength(48, redFrac);
+
+    const greenLen = this._arcLength(
+      48,
+      this._fraction(Math.min(value, greenThreshold)),
+    );
+    const yellowStart = this._arcLength(48, this._fraction(yellowThreshold));
+    const yellowLen = Math.max(
+      0,
+      this._arcLength(
+        48,
+        this._fraction(
+          Math.min(value, Math.max(greenThreshold, yellowThreshold)),
+        ),
+      ) - yellowStart,
+    );
+    const redLen = this._arcLength(
+      48,
+      this._fraction(Math.min(value, yellowThreshold)),
+    );
 
     this._shadow.innerHTML = `
       <style>${Sims2GaugeCard._styles()}</style>
@@ -367,7 +373,7 @@ class Sims2GaugeCard extends HTMLElement {
                 stroke="url(#sims2-grad-yellow)"
                 stroke-width="8"
                 stroke-linecap="butt"
-                stroke-dasharray="${Math.max(0, yellowLen).toFixed(1)} ${totalArc.toFixed(1)}"
+                stroke-dasharray="${yellowLen.toFixed(1)} ${totalArc.toFixed(1)}"
                 stroke-dashoffset="-${yellowStart.toFixed(1)}"
                 filter="url(#sims2-inner-shadow)"/>
 
