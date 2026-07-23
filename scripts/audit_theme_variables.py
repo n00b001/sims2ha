@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Parse HA_THEMING_CAPABILITIES.md and verify every variable exists in sims2.yaml."""
+"""Audit theme variables for missing definitions."""
 
 import re
+import sys
 
 import yaml
 
+THEME_FILE = "custom_components/sims2ha/themes/sims2.yaml"
+DOC_FILE = "docs/HA_THEMING_CAPABILITIES.md"
+
 
 def audit():
-    with open("docs/HA_THEMING_CAPABILITIES.md") as f:
+    """Audit theme variables for missing definitions."""
+    with open(DOC_FILE, encoding="utf-8") as f:
         doc = f.read()
 
-    with open("custom_components/sims2ha/themes/sims2.yaml") as f:
+    with open(THEME_FILE, encoding="utf-8") as f:
         theme = yaml.safe_load(f)
 
     # Extract CSS variable names from the doc. The capabilities doc writes
@@ -23,7 +28,7 @@ def audit():
     variables = set()
     for match in re.findall(r"--[\w*-]+", doc):
         name = match[2:]
-        if not name or name.endswith("-") or name.endswith("*"):
+        if not name or name.endswith(("-", "*")):
             continue
         variables.add(name)
 
@@ -31,22 +36,26 @@ def audit():
     themed = set()
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
-        for _mode_name, theme_vars in modes.values():
-            themed.update(theme_vars.keys())
+        for vars_dict in modes.values():
+            if isinstance(vars_dict, dict):
+                themed.update(vars_dict.keys())
 
+    # Find missing variables
     missing = variables - themed
 
     if missing:
-        print(  # noqa: T201
-            f"Missing: {len(missing)} — {', '.join(sorted(missing)[:10])}{'...' if len(missing) > 10 else ''}"
-        )
+        # Limit output for readability
+        sorted_missing = sorted(missing)
+        if len(sorted_missing) > 10:
+            displayed = ", ".join(sorted_missing[:10]) + "..."
+        else:
+            displayed = ", ".join(sorted_missing)
+        print(f"Missing: {len(missing)} — {displayed}")
+        return False
     else:
-        print("Missing: 0")  # noqa: T201
-
-    return len(missing) == 0
+        print("Missing: 0")
+        return True
 
 
 if __name__ == "__main__":
-    import sys
-
     sys.exit(0 if audit() else 1)
