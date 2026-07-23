@@ -115,9 +115,9 @@ sims2:
       state-climate-heat-color: "#E8A23C"
       state-climate-cool-color: "#3FA0D8"
       state-climate-idle-color: "#5F84A8"
-      state-device_tracker-home-color: "$8BD64A"
+      state-device_tracker-home-color: "#8BD64A"
       state-device_tracker-not_home-color: "#E55B45"
-      state-locked-color: "$8BD64A"
+      state-locked-color: "#8BD64A"
       state-unlocked-color: "#E8A23C"
       state-alarm_control_panel-armed_away-color: "#E55B45"
       state-alarm_control_panel-disarmed-color: "#8BD64A"
@@ -137,7 +137,7 @@ sims2:
 
       # --- energy dashboard (PLAN section 2.3) --------------------------------
       energy-grid-consumption-color: "#E55B45"
-      energy-grid-return-color: "$8BD64A"
+      energy-grid-return-color: "#8BD64A"
       energy-solar-color: "#F2C14E"
       energy-non-fossil-color: "#8BD64A"
       energy-battery-out-color: "#E8A23C"
