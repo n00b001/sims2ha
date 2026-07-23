@@ -134,7 +134,10 @@ class Sims2GaugeCard extends HTMLElement {
     // Update needle rotation.
     const needleGroup = this._shadow.getElementById("sims2-needle");
     if (needleGroup) {
-      needleGroup.setAttribute("transform", `rotate(${angle.toFixed(1)}, 58, 58)`);
+      needleGroup.setAttribute(
+        "transform",
+        `rotate(${angle.toFixed(1)}, 58, 58)`,
+      );
     }
 
     // Update value text.
@@ -180,12 +183,17 @@ class Sims2GaugeCard extends HTMLElement {
     }
 
     // Yellow segment: from yellow threshold to green threshold
-    const yellowFrac = this._fraction(Math.min(value, Math.max(greenThreshold, yellowThreshold)));
+    const yellowFrac = this._fraction(
+      Math.min(value, Math.max(greenThreshold, yellowThreshold)),
+    );
     const yellowStart = this._arcLength(48, this._fraction(yellowThreshold));
     const yellowLen = this._arcLength(48, yellowFrac) - yellowStart;
     const yellowArc = this._shadow.querySelector(".sims2-gauge-yellow");
     if (yellowArc) {
-      yellowArc.setAttribute("stroke-dasharray", `${Math.max(0, yellowLen).toFixed(1)} 302`);
+      yellowArc.setAttribute(
+        "stroke-dasharray",
+        `${Math.max(0, yellowLen).toFixed(1)} 302`,
+      );
       yellowArc.setAttribute("stroke-dashoffset", `-${yellowStart.toFixed(1)}`);
     }
 
@@ -205,7 +213,9 @@ class Sims2GaugeCard extends HTMLElement {
     const fraction = value !== null ? this._fraction(value) : 0.5;
     const angle = this._needleAngle(fraction);
     const mood = value !== null ? this._resolveMood(value) : "green";
-    const needleColor = { green: "#7BC942", yellow: "#F2C14E", red: "#E55B45" }[mood];
+    const needleColor = { green: "#7BC942", yellow: "#F2C14E", red: "#E55B45" }[
+      mood
+    ];
     const displayValue =
       value !== null
         ? `${Number.isInteger(value) ? value : value.toFixed(1)}${cfg.unit || ""}`
@@ -216,7 +226,9 @@ class Sims2GaugeCard extends HTMLElement {
     const greenThreshold = severity.green || 70;
     const yellowThreshold = severity.yellow || 40;
     const greenFrac = this._fraction(Math.min(100, greenThreshold));
-    const yellowFrac = this._fraction(Math.min(100, Math.max(greenThreshold, yellowThreshold)));
+    const yellowFrac = this._fraction(
+      Math.min(100, Math.max(greenThreshold, yellowThreshold)),
+    );
     const redFrac = this._fraction(yellowThreshold);
     const totalArc = 2 * Math.PI * 48 * (270 / 360);
     const greenLen = this._arcLength(48, greenFrac);
@@ -311,7 +323,12 @@ class Sims2GaugeCard extends HTMLElement {
           <circle cx="58" cy="58" r="54" fill="none" stroke="url(#sims2-bezel)" stroke-width="3"/>
 
           <!-- Bezel highlight arc (top half) -->
-          <path d="${this._arcPath(54, 58, 58).replace('A 54 54', 'A 54 54').substring(0, this._arcPath(54, 58, 58).indexOf('A'))} A 54 54 0 0 1 ${this._arcPathEnd(54, 58, 58)}"
+          <path d="${this._arcPath(54, 58, 58)
+            .replace("A 54 54", "A 54 54")
+            .substring(
+              0,
+              this._arcPath(54, 58, 58).indexOf("A"),
+            )} A 54 54 0 0 1 ${this._arcPathEnd(54, 58, 58)}"
                 fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
 
           <!-- Dark recessed track -->
@@ -403,8 +420,10 @@ class Sims2GaugeCard extends HTMLElement {
 
   _renderTicks() {
     const ticks = [];
-    const cx = 58, cy = 58;
-    const innerR = 36, outerR = 42;
+    const cx = 58,
+      cy = 58;
+    const innerR = 36,
+      outerR = 42;
     const numTicks = 9;
     for (let i = 0; i <= numTicks; i++) {
       const frac = i / numTicks;
@@ -437,13 +456,17 @@ class Sims2GaugeCard extends HTMLElement {
 
   _escapeHtml(text) {
     if (text === null || text === undefined) return "";
-    return String(text).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    }[c]));
+    return String(text).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
   }
 
   _escapeAttr(text) {

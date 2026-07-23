@@ -1,7 +1,7 @@
 // Sims 2 Header Enhancement - Custom styling for the app header/toolbar to match Sims 2 main menu
 (function () {
-  const style = document.createElement('style');
-  style.id = 'sims2-header-enhancement';
+  const style = document.createElement("style");
+  style.id = "sims2-header-enhancement";
   style.textContent = `
     /* Sims 2 Header Customization */
     app-header,
@@ -57,8 +57,8 @@
   `;
 
   // Wait for the document to be ready before appending
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
       document.head.appendChild(style);
     });
   } else {

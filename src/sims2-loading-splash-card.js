@@ -18,7 +18,7 @@ class SimsLoadingSplashCard extends HTMLElement {
       "Initializing aspiration system...",
       "Preparing the want/fear matrix...",
       "Loading social interaction protocols...",
-      "Initializing object placement AI..."
+      "Initializing object placement AI...",
     ];
     this._currentTipIndex = 0;
     this._tipInterval = null;
@@ -53,7 +53,7 @@ class SimsLoadingSplashCard extends HTMLElement {
   }
 
   _updateTip() {
-    const tipElement = this.shadowRoot?.querySelector('.loading-tip');
+    const tipElement = this.shadowRoot?.querySelector(".loading-tip");
     if (tipElement) {
       tipElement.textContent = this._tips[this._currentTipIndex];
     }
@@ -64,11 +64,11 @@ class SimsLoadingSplashCard extends HTMLElement {
     this._unsubscribe = () => {
       this.remove();
     };
-    window.addEventListener('homeassistant-connected', this._unsubscribe);
+    window.addEventListener("homeassistant-connected", this._unsubscribe);
   }
 
   _render() {
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `
       <style>
         :host {
@@ -185,14 +185,15 @@ class SimsLoadingSplashCard extends HTMLElement {
   }
 }
 
-customElements.define('sims-loading-splash', SimsLoadingSplashCard);
+customElements.define("sims-loading-splash", SimsLoadingSplashCard);
 
 // Register as a custom card for Lovelace
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: "sims-loading-splash",
   name: "Sims 2 Loading Splash",
-  description: "Full-screen boot screen mimicking 'Reticulating Splines' from The Sims 2 loading screen",
+  description:
+    "Full-screen boot screen mimicking 'Reticulating Splines' from The Sims 2 loading screen",
   preview: false,
   documentationURL: "https://github.com/n00b001/sims2ha",
 });

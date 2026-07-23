@@ -71,7 +71,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await _async_create_dashboards(hass)
     await _async_install_theme(hass)
     await _async_register_services(hass)
-    await _async_register_websocket(hass)
+    _async_register_websocket(hass)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
@@ -325,9 +325,9 @@ async def _async_register_services(hass: HomeAssistant) -> None:
 # --------------------------------------------------------------------------- #
 # (6) Register websocket commands — expose mood, config, and icon set info.
 # --------------------------------------------------------------------------- #
-async def _async_register_websocket(hass: HomeAssistant) -> None:
+def _async_register_websocket(hass: HomeAssistant) -> None:
     """Register every Sims 2 websocket command (idempotent across reloads)."""
     from .websocket_api import async_register
 
-    await async_register(hass)
+    async_register(hass)
     _LOGGER.info("Registered Sims 2 websocket commands")

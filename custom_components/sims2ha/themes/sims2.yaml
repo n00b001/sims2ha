@@ -10,13 +10,12 @@
 #  Typography: Benguiat Gothic is the ONLY font, baked into the frontend
 #  bundle as a base64 @font-face and wired here via --sims2-font-* tokens.
 #
-#  Installs three selectable themes:
+#  Installs two selectable themes:
 #    sims2        - follows your system light/dark preference (recommended)
-#    sims2-light  - forces the bright daytime sky-blue look
 #    sims2-dark   - forces the deeper midnight-navy plumbob look
 #
 #  YAML anchors are attached to the real theme keys below so that exactly
-#  three themes register (no leftover helper themes).
+#  two themes register (no leftover helper themes).
 #
 #  Variable coverage is verified by scripts/audit_theme_variables.py against
 #  docs/HA_THEMING_CAPABILITIES.md. PLAN.md section 2 is the source of truth
@@ -26,6 +25,8 @@
 # == LIGHT MODE =============================================================
 # Bright daytime look: deep-navy sky backdrop with sky-blue panel cards,
 # espresso text on the panels, gold trim, and a vivid plumbob green.
+# Note: sims2-light is no longer a standalone theme, but its YAML anchor is
+# retained for the sims2 theme's light mode.
 sims2-light: &sims2_light
   # --- base surfaces -------------------------------------------------------
   primary-background-color: "#0E1628"

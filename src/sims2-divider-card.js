@@ -68,13 +68,17 @@ class Sims2DividerCard extends HTMLElement {
   }
 
   _escapeAttr(text) {
-    return String(text).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    }[c]));
+    return String(text).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
   }
 
   static _styles(cfg) {

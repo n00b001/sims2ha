@@ -1,36 +1,259 @@
 /* Sims 2 Login Screen Customization */
 body {
-  background-color: #0E1628 !important;
+  background-color: #0e1628 !important;
   background-image:
-    radial-gradient(ellipse 40% 35% at 50% 30%, rgba(74, 222, 128, 0.10) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232, 180, 77, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 25% 55% at 60% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
-    radial-gradient(ellipse 20% 50% at 75% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
-    radial-gradient(ellipse 22% 45% at 70% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
-    radial-gradient(ellipse 20% 40% at 55% 55%, rgba(56, 120, 180, 0.07) 0%, transparent 100%),
-    radial-gradient(ellipse 22% 45% at 35% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
-    radial-gradient(ellipse 20% 50% at 25% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
-    radial-gradient(ellipse 25% 55% at 40% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
-    radial-gradient(ellipse 20% 50% at 50% 15%, rgba(74, 160, 210, 0.08) 0%, transparent 100%),
-    radial-gradient(ellipse 22% 50% at 68% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
-    radial-gradient(ellipse 22% 50% at 32% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
-    radial-gradient(ellipse 18% 40% at 80% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
-    radial-gradient(ellipse 18% 40% at 20% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
-    radial-gradient(ellipse 75% 75% at 50% 30%, transparent 10%, rgba(14, 22, 40, 0.6) 100%);
+    radial-gradient(
+      ellipse 40% 35% at 50% 30%,
+      rgba(74, 222, 128, 0.1) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 50% 30%,
+      rgba(232, 180, 77, 0.04) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 25% 55% at 60% 30%,
+      rgba(74, 160, 210, 0.12) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 20% 50% at 75% 35%,
+      rgba(56, 120, 180, 0.08) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 22% 45% at 70% 45%,
+      rgba(74, 160, 210, 0.1) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 20% 40% at 55% 55%,
+      rgba(56, 120, 180, 0.07) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 22% 45% at 35% 45%,
+      rgba(74, 160, 210, 0.1) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 20% 50% at 25% 35%,
+      rgba(56, 120, 180, 0.08) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 25% 55% at 40% 30%,
+      rgba(74, 160, 210, 0.12) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 20% 50% at 50% 15%,
+      rgba(74, 160, 210, 0.08) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 22% 50% at 68% 25%,
+      rgba(100, 170, 220, 0.06) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 22% 50% at 32% 25%,
+      rgba(100, 170, 220, 0.06) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 18% 40% at 80% 40%,
+      rgba(56, 120, 180, 0.05) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 18% 40% at 20% 40%,
+      rgba(56, 120, 180, 0.05) 0%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 75% 75% at 50% 30%,
+      transparent 10%,
+      rgba(14, 22, 40, 0.6) 100%
+    );
   background-attachment: fixed !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
-  color: #2A2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
+  color: #2a2320 !important;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Plumbob on login screen */
+.login-plumbob {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 200px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: login-plumbob-spin 8s linear infinite;
+}
+
+/* Plumbob structure using CSS border triangles (from artifacts/sims2-plumbob.css) */
+.login-plumbob .plumbob {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: login-plumbob-spin 8s linear infinite;
+}
+
+.login-plumbob .top,
+.login-plumbob .bottom {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 40px;
+  transform-style: preserve-3d;
+  transform: translateZ(1px);
+}
+.login-plumbob .top {
+  top: 0;
+}
+.login-plumbob .bottom {
+  bottom: 0;
+}
+
+.login-plumbob .top div,
+.login-plumbob .bottom div {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+.login-plumbob .top div {
+  bottom: 0;
+}
+.login-plumbob .bottom div {
+  top: 0;
+}
+
+.login-plumbob .front {
+  transform: rotateX(22deg);
+}
+.login-plumbob .back {
+  transform: rotateX(-22deg);
+}
+.login-plumbob .left {
+  transform: rotateY(-90deg) rotateX(22deg);
+}
+.login-plumbob .right {
+  transform: rotateY(90deg) rotateX(22deg);
+}
+
+/* Green plumbob colors */
+.login-plumbob-green .top div {
+  border-bottom: 100px solid rgba(0, 150, 50, 0.3);
+  filter: drop-shadow(0 0 5px rgba(0, 100, 0, 0.5));
+}
+.login-plumbob-green .bottom div {
+  border-top: 100px solid rgba(0, 150, 50, 0.4);
+  filter: drop-shadow(0 0 5px rgba(0, 100, 0, 0.5));
+}
+
+/* Funny messages */
+.login-messages {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;
+  color: var(--sims2-cream-text, #fff6e0);
+  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif);
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-messages::before {
+  content: "The plumbob is hovering green today";
+  animation: message-cycle 12s infinite;
+}
+
+@keyframes login-plumbob-spin {
+  from {
+    transform: translateX(-50%) rotateY(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotateY(360deg);
+  }
+}
+
+@keyframes message-cycle {
+  0%,
+  8.33% {
+    content: "The plumbob is hovering green today";
+  }
+  8.34%,
+  16.66% {
+    content: "Welcome to Pleasantview";
+  }
+  16.67%,
+  25% {
+    content: "Bella Goth is watering her roses";
+  }
+  25.01%,
+  33.33% {
+    content: "The Goth mansion needs painting";
+  }
+  33.34%,
+  41.66% {
+    content: "Don't wake the sleeping baby!";
+  }
+  41.67%,
+  50% {
+    content: "Time to get a promotion at work";
+  }
+  50.01%,
+  58.33% {
+    content: "Your sim needs to use the bathroom";
+  }
+  58.34%,
+  66.66% {
+    content: "Hunger motive dropping - grab a snack";
+  }
+  66.67%,
+  75% {
+    content: "Fun motive is low - go play!";
+  }
+  75.01%,
+  83.33% {
+    content: "Energy depleted - time for a nap";
+  }
+  83.34%,
+  91.66% {
+    content: "Social need calling - call a friend";
+  }
+  91.67%,
+  100% {
+    content: "Hygiene dropping - take a shower";
+  }
 }
 
 .login-card,
 [class*="login"] {
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 50%,
-    #5BB4D8 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 50%,
+    #5bb4d8 100%
   ) !important;
-  border: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 3px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 24px !important;
   box-shadow:
     0 8px 48px rgba(26, 26, 62, 0.25),
@@ -40,8 +263,13 @@ body {
 
 .login-card h1,
 .login-card .login-brand h1 {
-  color: var(--sims2-gold, #E8B44D) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #e8b44d) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   text-shadow: 0 1px 3px rgba(232, 180, 77, 0.4) !important;
   letter-spacing: 0.06em !important;
 }
@@ -58,21 +286,30 @@ body {
 .login-card .login-form button {
   background: linear-gradient(
     180deg,
-    #6EE7A0 0%,
-    var(--sims2-plumbob-green, #7BC942) 40%,
-    #22C55E 100%
+    #6ee7a0 0%,
+    var(--sims2-plumbob-green, #7bc942) 40%,
+    #22c55e 100%
   ) !important;
   border-radius: 12px !important;
   box-shadow:
     0 2px 8px rgba(74, 222, 128, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-  border: 2px solid #16A34A !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  border: 2px solid #16a34a !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
 }
 
 .login-card mwc-button:hover {
-  background: linear-gradient(180deg, #A7F3D0 0%, var(--sims2-plumbob-green, #7BC942) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #a7f3d0 0%,
+    var(--sims2-plumbob-green, #7bc942) 100%
+  ) !important;
   box-shadow: 0 0 16px rgba(74, 222, 128, 0.5) !important;
 }

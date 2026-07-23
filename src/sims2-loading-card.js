@@ -189,7 +189,10 @@ class Sims2LoadingCard extends HTMLElement {
     this._moodTimer = setInterval(() => this._cycleMood(), 4200);
     // Auto-dismiss unless persistent or duration is zero.
     if (!this._config.persistent && this._config.duration > 0) {
-      this._hideTimer = setTimeout(() => this._dismiss(), this._config.duration * 1000);
+      this._hideTimer = setTimeout(
+        () => this._dismiss(),
+        this._config.duration * 1000,
+      );
     }
   }
 
@@ -248,8 +251,12 @@ class Sims2LoadingCard extends HTMLElement {
       <div id="sims2-loading" class="sims2-loading${fullscreenClass}" data-mood="green">
         <div class="sims2-stars" aria-hidden="true"></div>
         <div class="sims2-content">
-          ${cfg.plumbob ? `
-            <div id="sims2-plumbob" class="sims2-plumbob" data-mood="green" title="Click for a fresh task"></div>` : ""}
+          ${
+            cfg.plumbob
+              ? `
+            <div id="sims2-plumbob" class="sims2-plumbob" data-mood="green" title="Click for a fresh task"></div>`
+              : ""
+          }
           <div class="sims2-wordmark">${this._escapeHtml(cfg.wordmark)}</div>
           <div class="sims2-tip-row">
             <span class="sims2-dot"></span>
