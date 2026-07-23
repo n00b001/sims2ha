@@ -694,9 +694,9 @@ Create 5+ custom Lovelace cards as web components (vanilla JS/Lit) that embody S
             <div
               class="plumbob-body"
               style=${styleMap({
-              "--plumbob-angle": "22deg",
-              "--plumbob-perspective": "600px",
-            })}
+                "--plumbob-angle": "22deg",
+                "--plumbob-perspective": "600px",
+              })}
             >
               <div class="top">
                 <div class="front"></div>
