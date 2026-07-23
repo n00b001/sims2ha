@@ -51,7 +51,7 @@ jobs:
         run: ruff check .
 
       - name: Format check Python (ruff format)
-        run: ruff format --preview --check .
+        run: ruff format --check .
 
       - name: Run Python tests
         run: |
