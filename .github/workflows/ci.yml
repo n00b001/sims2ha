@@ -25,6 +25,9 @@ jobs:
       - name: Install uv
         run: pip install uv
 
+      - name: Install Node.js dependencies
+        run: npm ci
+
       - name: Validate manifest.json and hacs.json
         run: |
           python -c "import json; json.load(open('custom_components/sims2ha/manifest.json'))"
