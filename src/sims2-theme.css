@@ -1,318 +1,144 @@
 /**
  * sims2-theme.css
  * ---------------------------------------------------------------------------
- * Sims 2 for Home Assistant — Theme CSS Variables
+ * Sims 2 for Home Assistant — Dark Theme CSS Variables
  *
  * The Sims 2 UI is blue-dominant: deep navy backgrounds with sunburst rays,
- * light sky-blue panels, panel-blue primary actions, gold trim accents, and
+ * muted sky-blue panels, panel-blue primary actions, gold trim accents, and
  * plumbob green for active states. Every color variable HA exposes is
- * overridden to match this palette.
+ * overridden to match the Midnight Plumbob palette.
  *
- * Two modes are supported via the @media (prefers-color-scheme: dark) block:
- *   Light  — signature Sims 2 navy + sky-blue daytime look
- *   Dark   — deeper midnight navy with muted blue panels
+ * Dark-only theme: deeper midnight navy backgrounds, muted blue panels,
+ * preserved green for active states, adjusted contrast for use.
  *
  * Fan tribute. "The Sims 2" and the plumbob are trademarks of Electronic Arts.
  * ---------------------------------------------------------------------------
  */
 
 /* ==========================================================================
-   LIGHT MODE (default) — Signature Sims 2 Navy + Sky-Blue Daytime Look
+   DARK MODE — Midnight Plumbob Look
    ==========================================================================
-   sims2-navy-base:     #0E1628  main app background (with sunburst rays)
-   sims2-sky-blue:      #7EC8E6  cards, dialogs, light panels
-   sims2-panel-blue:    #2F86C5  primary actions, links
-   sims2-header-blue:   #235E8C  header bar
-   sims2-panel-navy:    #1A3350  sidebar panel
-   sims2-gold-trim:     #D8C39A  borders, dividers, decoration
-   sims2-plumbob-green: #7BC942  active/on states
-   sims2-espresso:      #4A3320  body text on light panels
-   sims2-cream-text:    #FFF6E0  text on dark surfaces (header/sidebar)
+   Deeper midnight navy backgrounds, muted blue panels, preserved green
+   for active states, adjusted contrast for comfortable use.
 */
 
 ha-root,
 home-assistant,
 home-assistant-shell-gaia {
-
-  /* ---- Base surfaces — deep navy with sunburst rays --------------------
-     The signature Sims 2 background: a dark navy base overlaid with
-     radiating lighter blue lines that create a starburst pattern. */
-  --primary-background-color: #0E1628 !important;
-  --secondary-background-color: #131C2F !important;
-
-  /* Cards, dialogs — sky-blue panels (the Sims 2 light blue surfaces) */
-  --card-background-color: #7EC8E6 !important;
-  ha-card {
-    background: linear-gradient(
-      170deg,
-      #8AD4ED 0%,
-      #7EC8E6 30%,
-      #6DBFDF 100%
-    ) !important;
-  }
-
-  /* Dialog surfaces — sky-blue panels */
-  --dialog-background-color: #7EC8E6 !important;
-  --mdc-dialog-background-color: #7EC8E6 !important;
-  --ha-dialog-background-color: #7EC8E6 !important;
-  --table-row-background-color: #7EC8E6 !important;
-
-  /* Sidebar — panel navy (the Sims 2 side navigation) */
-  --app-header-background-color: #235E8C !important;
-  --app-drawer-background-color: #1A3350 !important;
-
-  /* Input fields — tinted blue */
-  --input-fill-color: #6AB0D0 !important;
-  --input-dropdown-background-color: #6AB0D0 !important;
-
-  /* ---- Brand / Action colours ---------------------------------------- */
-  --primary-color: #2F86C5 !important;
-  --accent-color: #7BC942 !important;
-  --dark-primary-color: #235E8C !important;
-  --light-primary-color: #9CCBE6 !important;
-
-  /* ---- Text colours -------------------------------------------------- */
-  --primary-text-color: #4A3320 !important;
-  --secondary-text-color: #5C7A96 !important;
-  --text-primary-color: #FFF6E0 !important;
-  --disabled-text-color: #6B8299 !important;
-
-  /* App header text (cream on dark blue) */
-  --app-header-text-color: #FFF6E0 !important;
-
-  /* Sidebar text (cream on navy) */
-  --sidebar-text-color: #C4D8E8 !important;
-  --sidebar-icon-color: #9CCBE6 !important;
-  --sidebar-selected-color: rgba(123, 201, 66, 0.15) !important;
-  --sidebar-selected-text-color: #FFF6E0 !important;
-
-  /* ---- State icon colours -------------------------------------------- */
-  --state-icon-color: #5C7A96 !important;
-  --state-icon-active-color: #7BC942 !important;
-  --state-icon-unavailable-color: #6B8299 !important;
-
-  /* ---- Status / Feedback --------------------------------------------- */
-  --error-color: #C0392B !important;
-  --warning-color: #E09A2B !important;
-  --success-color: #5BA82C !important;
-  --info-color: #2F86C5 !important;
-
-  /* ---- Component-specific tokens ------------------------------------- */
-  --switch-checked-color: #7BC942 !important;
-  --slider-color: #2F86C5 !important;
-  --slider-secondary-color: #7BC942 !important;
-  --slider-track-color: #235E8C !important;
-  --slider-thumb-color: #FFF6E0 !important;
-  --slider-knob-color: #FFF6E0 !important;
-  --slider-pin-color: #7BC942 !important;
-  --paper-slider-active-color: #7BC942 !important;
-  --paper-slider-container-color: #235E8C !important;
-  --paper-slider-knob-color: #FFF6E0 !important;
-  --paper-slider-pin-color: #7BC942 !important;
-  --divider-color: #D8C39A !important;
-
-  /* Badge colours */
-  --label-badge-background-color: #2F86C5 !important;
-  --label-badge-text-color: #FFF6E0 !important;
-  --label-badge-red: #C0392B !important;
-  --label-badge-green: #7BC942 !important;
-  --label-badge-yellow: #F2C14E !important;
-  --label-badge-blue: #2F86C5 !important;
-  --label-badge-green: #7BC942 !important;
-  --label-badge-grey: #5C7A96 !important;
-
-  /* Paper card styling */
-  --paper-card-background-color: #7EC8E6 !important;
-  --paper-card-header-color: #4A3320 !important;
-  --paper-item-icon-color: #2F86C5 !important;
-  --paper-item-icon-active-color: #7BC942 !important;
-  --paper-listbox-background-color: #1A3350 !important;
-  --paper-tabs-selection-bar-color: #2F86C5 !important;
-
-  /* ---- Cards — sky-blue panels with gold border -----------------------
-     Every HA card renders on a navy sunburst background.
-     The card surface is a sky-blue gradient with a subtle gold border. */
-  --ha-card-border-radius: 12px !important;
-  --ha-card-border-width: 0 !important;
-  --ha-card-border-color: #D8C39A !important;
-  --ha-card-outline-color: #D8C39A !important;
-  --ha-card-background: linear-gradient(
-    170deg,
-    #8AD4ED 0%,
-    #7EC8E6 30%,
-    #6DBFDF 100%
-  ) !important;
-  --ha-card-box-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.25),
-    0 2px 8px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-  --ha-card-header-font-size: 16px !important;
-  --ha-card-primary-font-size: 14px !important;
-  --ha-card-secondary-font-size: 12px !important;
-
-  /* ---- Material Design tokens — sky-blue/gold/panel-blue theme ------- */
-  --mdc-theme-default-background: #0E1628 !important;
-  --mdc-theme-surface: #7EC8E6 !important;
-  --mdc-theme-background: #0E1628 !important;
-  --mdc-theme-primary: #2F86C5 !important;
-  --mdc-theme-secondary: #7BC942 !important;
-  --mdc-theme-on-primary: #FFF6E0 !important;
-
-  /* ---- Sims 2 custom tokens ------------------------------------------ */
-  --sims2-navy-base: #0E1628 !important;
-  --sims2-sky-blue: #7EC8E6 !important;
-  --sims2-panel-blue: #2F86C5 !important;
-  --sims2-header-blue: #235E8C !important;
-  --sims2-panel-navy: #1A3350 !important;
-  --sims2-gold-trim: #D8C39A !important;
-  --sims2-plumbob-green: #7BC942 !important;
-  --sims2-espresso: #4A3320 !important;
-  --sims2-cream-text: #FFF6E0 !important;
-
-  /* ---- Gloss / reflection tokens (Sims 2 "plastic" panel look) --------
-     These create the characteristic glossy highlight overlay on panels.
-     Applied via ::before pseudo-elements clipped with border-radius. ------ */
-  --sims2-gloss-top: rgba(255, 255, 255, 0.30) !important;
-  --sims2-gloss-bottom: rgba(255, 255, 255, 0) !important;
-  --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.15) !important;
-  --sims2-panel-gloss-overlay: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0) 100%
-  ) !important;
-
-  /* ---- Typography tokens --------------------------------------------- */
-  --sims2-font-display: "Benguiat Gothic", serif !important;
-  --sims2-font-body: "Benguiat Gothic", system-ui, sans-serif !important;
-}
-
-/* ==========================================================================
-   DARK MODE — Midnight Plumbob Look
-   ==========================================================================
-   Deeper midnight navy backgrounds, muted blue panels, preserved green
-   for active states, adjusted contrast for comfortable evening use.
-*/
-
-@media (prefers-color-scheme: dark) {
-  ha-root,
-  home-assistant,
-  home-assistant-shell-gaia {
-
     /* ---- Base surfaces — deeper midnight navy ------------------------ */
-    --primary-background-color: #080D18 !important;
-    --secondary-background-color: #0A0F1C !important;
+    --primary-background-color: #080d18 !important;
+    --secondary-background-color: #0a0f1c !important;
 
     /* Cards, dialogs — muted blue panels */
-    --card-background-color: #4A7A94 !important;
+    --card-background-color: #4a7a94 !important;
     ha-card {
       background: linear-gradient(
         170deg,
-        #56889E 0%,
-        #4A7A94 30%,
-        #3E6C82 100%
+        #56889e 0%,
+        #4a7a94 30%,
+        #3e6c82 100%
       ) !important;
     }
 
-    --dialog-background-color: #4A7A94 !important;
-    --mdc-dialog-background-color: #4A7A94 !important;
-    --ha-dialog-background-color: #4A7A94 !important;
-    --table-row-background-color: #4A7A94 !important;
+    --dialog-background-color: #4a7a94 !important;
+    --mdc-dialog-background-color: #4a7a94 !important;
+    --ha-dialog-background-color: #4a7a94 !important;
+    --table-row-background-color: #4a7a94 !important;
 
     /* Sidebar — deeper navy */
-    --app-header-background-color: #1B3A52 !important;
-    --app-drawer-background-color: #0F2035 !important;
+    --app-header-background-color: #1b3a52 !important;
+    --app-drawer-background-color: #0f2035 !important;
 
     /* Input fields — darker tinted blue */
-    --input-fill-color: #2E4060 !important;
-    --input-dropdown-background-color: #2E4060 !important;
+    --input-fill-color: #2e4060 !important;
+    --input-dropdown-background-color: #2e4060 !important;
 
     /* ---- Brand / Action colours ------------------------------------ */
-    --primary-color: #9CCBE6 !important;
-    --accent-color: #7BC942 !important;
-    --dark-primary-color: #1B3A52 !important;
-    --light-primary-color: #6BA3C7 !important;
+    --primary-color: #9ccbe6 !important;
+    --accent-color: #7bc942 !important;
+    --dark-primary-color: #1b3a52 !important;
+    --light-primary-color: #6ba3c7 !important;
 
     /* ---- Text colours ---------------------------------------------- */
-    --primary-text-color: #FFF6E0 !important;
-    --secondary-text-color: #C4B696 !important;
-    --text-primary-color: #FFF6E0 !important;
-    --disabled-text-color: #6B6280 !important;
+    --primary-text-color: #fff6e0 !important;
+    --secondary-text-color: #c4b696 !important;
+    --text-primary-color: #fff6e0 !important;
+    --disabled-text-color: #6b6280 !important;
 
     /* App header text (cream on dark blue) */
-    --app-header-text-color: #FFF6E0 !important;
+    --app-header-text-color: #fff6e0 !important;
 
     /* Sidebar text */
-    --sidebar-text-color: #8BA4BE !important;
-    --sidebar-icon-color: #6BA3C7 !important;
+    --sidebar-text-color: #8ba4be !important;
+    --sidebar-icon-color: #6ba3c7 !important;
     --sidebar-selected-color: rgba(123, 201, 66, 0.12) !important;
-    --sidebar-selected-text-color: #FFF6E0 !important;
+    --sidebar-selected-text-color: #fff6e0 !important;
 
     /* ---- State icon colours ---------------------------------------- */
-    --state-icon-color: #8B80A0 !important;
-    --state-icon-active-color: #7BC942 !important;
-    --state-icon-unavailable-color: #5C5470 !important;
+    --state-icon-color: #8b80a0 !important;
+    --state-icon-active-color: #7bc942 !important;
+    --state-icon-unavailable-color: #5c5470 !important;
 
     /* ---- Status / Feedback (same as light) ------------------------- */
-    --error-color: #C0392B !important;
-    --warning-color: #E09A2B !important;
-    --success-color: #5BA82C !important;
-    --info-color: #2F86C5 !important;
+    --error-color: #c0392b !important;
+    --warning-color: #e09a2b !important;
+    --success-color: #5ba82c !important;
+    --info-color: #2f86c5 !important;
 
     /* ---- Component-specific tokens --------------------------------- */
-    --switch-checked-color: #7BC942 !important;
-    --slider-color: #9CCBE6 !important;
-    --slider-secondary-color: #3E5A78 !important;
-    --slider-track-color: #4A3A28 !important;
-    --slider-thumb-color: #4A7A94 !important;
-    --slider-knob-color: #4A7A94 !important;
-    --divider-color: #C29A3C !important;
+    --switch-checked-color: #7bc942 !important;
+    --slider-color: #9ccbe6 !important;
+    --slider-secondary-color: #3e5a78 !important;
+    --slider-track-color: #4a3a28 !important;
+    --slider-thumb-color: #4a7a94 !important;
+    --slider-knob-color: #4a7a94 !important;
+    --divider-color: #c29a3c !important;
 
     /* Badge colours */
-    --label-badge-background-color: #9CCBE6 !important;
-    --label-badge-text-color: #080D18 !important;
+    --label-badge-background-color: #9ccbe6 !important;
+    --label-badge-text-color: #080d18 !important;
 
     /* Paper card styling */
-    --paper-card-background-color: #4A7A94 !important;
-    --paper-card-header-color: #FFF6E0 !important;
-    --paper-item-icon-color: #9CCBE6 !important;
-    --paper-item-icon-active-color: #7BC942 !important;
-    --paper-listbox-background-color: #0F2035 !important;
-    --paper-tabs-selection-bar-color: #9CCBE6 !important;
+    --paper-card-background-color: #4a7a94 !important;
+    --paper-card-header-color: #fff6e0 !important;
+    --paper-item-icon-color: #9ccbe6 !important;
+    --paper-item-icon-active-color: #7bc942 !important;
+    --paper-listbox-background-color: #0f2035 !important;
+    --paper-tabs-selection-bar-color: #9ccbe6 !important;
 
     /* ---- Cards — muted blue panels --------------------------------- */
     --ha-card-border-radius: 12px !important;
     --ha-card-border-width: 0 !important;
-    --ha-card-border-color: #C29A3C !important;
-    --ha-card-outline-color: #C29A3C !important;
+    --ha-card-border-color: #c29a3c !important;
+    --ha-card-outline-color: #c29a3c !important;
     --ha-card-background: linear-gradient(
       170deg,
-      #56889E 0%,
-      #4A7A94 30%,
-      #3E6C82 100%
+      #56889e 0%,
+      #4a7a94 30%,
+      #3e6c82 100%
     ) !important;
     --ha-card-box-shadow:
-      0 1px 4px rgba(0, 0, 0, 0.35),
-      0 2px 8px rgba(0, 0, 0, 0.18),
+      0 1px 4px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
 
     /* ---- Material Design tokens ------------------------------------ */
-    --mdc-theme-default-background: #080D18 !important;
-    --mdc-theme-surface: #4A7A94 !important;
-    --mdc-theme-background: #080D18 !important;
-    --mdc-theme-primary: #9CCBE6 !important;
-    --mdc-theme-secondary: #7BC942 !important;
-    --mdc-theme-on-primary: #FFF6E0 !important;
+    --mdc-theme-default-background: #080d18 !important;
+    --mdc-theme-surface: #4a7a94 !important;
+    --mdc-theme-background: #080d18 !important;
+    --mdc-theme-primary: #9ccbe6 !important;
+    --mdc-theme-secondary: #7bc942 !important;
+    --mdc-theme-on-primary: #fff6e0 !important;
 
     /* ---- Sims 2 custom tokens (dark) ------------------------------- */
-    --sims2-navy-base: #080D18 !important;
-    --sims2-sky-blue: #4A7A94 !important;
-    --sims2-panel-blue: #9CCBE6 !important;
-    --sims2-header-blue: #1B3A52 !important;
-    --sims2-panel-navy: #0F2035 !important;
-    --sims2-gold-trim: #C29A3C !important;
-    --sims2-plumbob-green: #7BC942 !important;
-    --sims2-espresso: #FFF6E0 !important;
-    --sims2-cream-text: #FFF6E0 !important;
+    --sims2-navy-base: #080d18 !important;
+    --sims2-sky-blue: #4a7a94 !important;
+    --sims2-panel-blue: #9ccbe6 !important;
+    --sims2-header-blue: #1b3a52 !important;
+    --sims2-panel-navy: #0f2035 !important;
+    --sims2-gold-trim: #c29a3c !important;
+    --sims2-plumbob-green: #7bc942 !important;
+    --sims2-espresso: #fff6e0 !important;
+    --sims2-cream-text: #fff6e0 !important;
 
     /* ---- Gloss / reflection tokens (dark) ----------------------------
        Subtler gloss on darker panels to maintain the plastic sheen. ------ */
@@ -321,8 +147,7 @@ home-assistant-shell-gaia {
     --sims2-shadow-inner-highlight: rgba(255, 255, 255, 0.06) !important;
     --sims2-panel-gloss-overlay: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.1) 0%,
       rgba(255, 255, 255, 0) 100%
     ) !important;
   }
-}

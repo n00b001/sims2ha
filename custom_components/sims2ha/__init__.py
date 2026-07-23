@@ -25,7 +25,6 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-
 from homeassistant.components import frontend
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.components.lovelace.const import (
@@ -90,9 +89,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 # --------------------------------------------------------------------------- #
 # (1) Serve static files (bundle, login CSS, loading CSS, service worker) over HTTP.
 # --------------------------------------------------------------------------- #
-async def _async_serve_static_files(
-    hass: HomeAssistant, bookkeeping: dict[str, Any]
-) -> None:
+async def _async_serve_static_files(hass: HomeAssistant, bookkeeping: dict[str, Any]) -> None:
     """Register static paths for the bundle, login CSS, loading CSS, and service worker."""
     if bookkeeping.get("static_paths_registered"):
         return
@@ -137,9 +134,7 @@ async def _async_register_lovelace_resources(hass: HomeAssistant) -> None:
     resources = lovelace_data.resources
     if not hasattr(resources, "async_create_item"):
         # YAML resource mode — resources are read-only and user-managed.
-        _LOGGER.info(
-            "Lovelace resources in YAML mode; skipping resource registration"
-        )
+        _LOGGER.info("Lovelace resources in YAML mode; skipping resource registration")
         return
 
     # Ensure the collection has loaded before scanning for existing entries.
@@ -156,15 +151,11 @@ async def _async_register_lovelace_resources(hass: HomeAssistant) -> None:
             loading_css_exists = True
 
     if not bundle_exists:
-        await resources.async_create_item(
-            {"res_type": "module", "url": BUNDLE_URL_PATH}
-        )
+        await resources.async_create_item({"res_type": "module", "url": BUNDLE_URL_PATH})
         _LOGGER.info("Registered Lovelace resource: %s (module)", BUNDLE_URL_PATH)
 
     if not loading_css_exists:
-        await resources.async_create_item(
-            {"res_type": "css", "url": LOADING_CSS_URL_PATH}
-        )
+        await resources.async_create_item({"res_type": "css", "url": LOADING_CSS_URL_PATH})
         _LOGGER.info("Registered Lovelace resource: %s (css)", LOADING_CSS_URL_PATH)
 
 
@@ -190,9 +181,7 @@ async def _async_upsert_dashboard(
 ) -> None:
     """Create a dashboard if absent, or refresh its views if it already exists."""
     url_path = spec["url_path"]
-    views_config = await hass.async_add_executor_job(
-        _read_dashboard_config, spec["file"]
-    )
+    views_config = await hass.async_add_executor_job(_read_dashboard_config, spec["file"])
 
     # Dashboard already attached in this process (restart after install) —
     # refresh its views so shipped dashboard updates reach the user.

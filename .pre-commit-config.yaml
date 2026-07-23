@@ -5,9 +5,11 @@ repos:
       - id: prettier
         files: \.(js|ts|css|html|md|json|yaml|yml)$
         options: --write
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.4.2
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.2
     hooks:
       - id: ruff
         args: [--fix]
+        files: \.(py)$
+      - id: ruff-format
         files: \.(py)$

@@ -13,9 +13,9 @@
 A fan-made tribute that restyles Home Assistant to look and feel like **The
 Sims 2** — and installs in **one step**. Navy + sky-blue panels, the signature
 panel-blue, gold trim, a glowing plumbob, nine auto-created dashboards, and a
-loading screen that *reticulates your splines*.
+loading screen that _reticulates your splines_.
 
-> **Fan tribute.** *The Sims 2* is a trademark of Electronic Arts Inc. This
+> **Fan tribute.** _The Sims 2_ is a trademark of Electronic Arts Inc. This
 > project is not affiliated with, endorsed by, or sponsored by EA. All Sims
 > names and references are parody and homage. No EA assets are bundled.
 
@@ -29,8 +29,8 @@ loading screen that *reticulates your splines*.
   and Material components. It even follows your system light/dark preference.
   **No `configuration.yaml` edit required** — the look is live the moment you
   add the integration.
-- **Nine premade dashboards, created for you** — the moment you click *Add
-  Integration* they appear in your sidebar. Seven auto-populate from whatever
+- **Nine premade dashboards, created for you** — the moment you click _Add
+  Integration_ they appear in your sidebar. Seven auto-populate from whatever
   entities exist in your instance.
 - **A custom icon pack** (`sims2:` — the plumbob, simoleons, the eight Sim
   needs, buy-mode rooms and more — 38 icons).
@@ -61,30 +61,30 @@ look are all delivered automatically.
 
 > 💡 **Optional — Home Assistant's native theme picker.**
 > The Sims 2 look is already applied by an injected style layer (above), so this
-> step is *not* required. If you'd rather switch themes from your profile page,
+> step is _not_ required. If you'd rather switch themes from your profile page,
 > add this once to `configuration.yaml` and the three Sims 2 themes (`sims2`,
 > `sims2-light`, `sims2-dark`) become selectable under your profile:
+>
 > ```yaml
 > frontend:
->   themes:
->     !include_dir_merge_named themes
+>   themes: !include_dir_merge_named themes
 > ```
 
 ---
 
 ## 🗺️ The premade dashboards
 
-| Dashboard | What's in it |
-|---|---|
-| Pleasantview Overview | Splash, plumbob mascot, live household snapshot |
-| Lighting Bureau | Every `light.*`, with a Bella Goth Memorial touch |
-| Climate Control | Climate, fans, humidifiers, temperature gauges |
-| Power & Energy | Power gauges, energy meters, batteries (reticulating) |
-| Security Grid | Locks, alarms, doors, windows, motion (Mortimer Goth's) |
-| Automation Suite | Automations, scenes, scripts (Don Lothario's) |
-| Plumbob Command | Updates, system vitals, connectivity |
-| Household Needs | The eight Sim needs mapped to your sensors |
-| Pleasantview Starter | A no-dependency static starter dashboard |
+| Dashboard             | What's in it                                            |
+| --------------------- | ------------------------------------------------------- |
+| Pleasantview Overview | Splash, plumbob mascot, live household snapshot         |
+| Lighting Bureau       | Every `light.*`, with a Bella Goth Memorial touch       |
+| Climate Control       | Climate, fans, humidifiers, temperature gauges          |
+| Power & Energy        | Power gauges, energy meters, batteries (reticulating)   |
+| Security Grid         | Locks, alarms, doors, windows, motion (Mortimer Goth's) |
+| Automation Suite      | Automations, scenes, scripts (Don Lothario's)           |
+| Plumbob Command       | Updates, system vitals, connectivity                    |
+| Household Needs       | The eight Sim needs mapped to your sensors              |
+| Pleasantview Starter  | A no-dependency static starter dashboard                |
 
 Seven of the nine use the bundled `auto-entities` card and populate themselves
 from your entities. The starter dashboard needs nothing extra.
@@ -97,10 +97,10 @@ from your entities. The starter dashboard needs nothing extra.
 
 ```yaml
 type: custom:sims2-loading
-wordmark: PLEASANTVIEW        # the gold wordmark text
-duration: 6                    # seconds before auto-dismiss (0 = forever)
-fullscreen: true               # overlay the whole viewport
-tips:                          # optional: override the built-in tip list
+wordmark: PLEASANTVIEW # the gold wordmark text
+duration: 6 # seconds before auto-dismiss (0 = forever)
+fullscreen: true # overlay the whole viewport
+tips: # optional: override the built-in tip list
   - Reticulating your Zigbee mesh
   - Convincing the thermostat it is happy
 ```
@@ -159,7 +159,7 @@ there adding `custom_integrations/sims2ha/icons/icon.png` (256×256) and
 
 This is a **custom integration** (not a plain theme repo) because that's the
 only HACS category whose setup code can create dashboards and register frontend
-resources for you. On *Add Integration* it:
+resources for you. On _Add Integration_ it:
 
 1. serves `sims2-bundle.js` over HTTP,
 2. registers it as a Lovelace module resource (so the custom cards resolve),
@@ -232,7 +232,7 @@ only `node` (used to escape the CSS into a JS string).
 - Benguiat Gothic, self-hosted as base64 in `sims2-fonts.css`.
 - Inspired by the r/homeassistant ["Sims 2 inspired dashboard" project of the
   day](https://www.reddit.com/r/homeassistant/comments/1usr3qp/project_of_the_day_a_sims_2_inspired_dashboard/).
-- *The Sims 2*, the plumbob, Pleasantview, and all character names are
+- _The Sims 2_, the plumbob, Pleasantview, and all character names are
   trademarks of Electronic Arts Inc., referenced affectionately and without any
   EA assets.
 

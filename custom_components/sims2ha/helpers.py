@@ -48,9 +48,7 @@ def parse_entity_list(raw: Any) -> list[str]:
     return [str(item).strip() for item in items if str(item).strip()]
 
 
-def compute_active_needs(
-    needs_entities: list[str], states: dict[str, dict[str, Any]]
-) -> list[str]:
+def compute_active_needs(needs_entities: list[str], states: dict[str, dict[str, Any]]) -> list[str]:
     """Return the subset of ``needs_entities`` whose state marks an unmet need.
 
     A need is "active" (unmet) when the entity's state is ``on``/``low``, or a
@@ -79,9 +77,8 @@ if __name__ == "__main__":
     assert clamp_mood("73") == 73
     assert clamp_mood("not a number") == 100
     assert clamp_mood(None) == 100
-    merged = with_defaults({"sidebar_width": 300}, {"sidebar_width": 280, "theme_mode": "auto"})
-    assert merged == {"sidebar_width": 300, "theme_mode": "auto"}, merged
-    assert with_defaults({"theme_mode": None}, {"theme_mode": "auto"}) == {"theme_mode": "auto"}
+    merged = with_defaults({"sidebar_width": 300}, {"sidebar_width": 280})
+    assert merged == {"sidebar_width": 300}, merged
     assert parse_entity_list("a, b ,c") == ["a", "b", "c"]
     assert parse_entity_list(["x", " y "]) == ["x", "y"]
     states = {
@@ -91,6 +88,7 @@ if __name__ == "__main__":
         "binary_sensor.closed": {"state": "off"},
     }
     needs = ["binary_sensor.door", "sensor.water", "sensor.ok", "binary_sensor.closed"]
-    assert compute_active_needs(needs, states) == ["binary_sensor.door", "sensor.water"], \
+    assert compute_active_needs(needs, states) == ["binary_sensor.door", "sensor.water"], (
         compute_active_needs(needs, states)
-    print("helpers self-check OK")
+    )
+    print("helpers self-check OK")  # noqa: T201

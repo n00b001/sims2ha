@@ -2,7 +2,9 @@
 """Parse HA_THEMING_CAPABILITIES.md and verify every variable exists in sims2.yaml."""
 
 import re
+
 import yaml
+
 
 def audit():
     with open("docs/HA_THEMING_CAPABILITIES.md") as f:
@@ -19,35 +21,32 @@ def audit():
     # family stubs and bare dashes captured from markdown table separators
     # (`|---|---|`), which are not real variables.
     variables = set()
-    for match in re.findall(r'--[\w*-]+', doc):
+    for match in re.findall(r"--[\w*-]+", doc):
         name = match[2:]
         if not name or name.endswith("-") or name.endswith("*"):
             continue
         variables.add(name)
 
-    # Flatten theme variables
+    # Flatten theme variables from the single sims2 theme (modes-based)
     themed = set()
-    for mode in ["sims2-light", "sims2-dark"]:
-        if mode in theme:
-            themed.update(theme[mode].keys())
-
-    # For sims2 (modes-based), collect both light and dark
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
-        for mode_name, vars in modes.items():
-            themed.update(vars.keys())
+        for _mode_name, theme_vars in modes.items():
+            themed.update(theme_vars.keys())
 
     missing = variables - themed
 
-    print(f"Total HA variables documented: {len(variables)}")
-    print(f"Variables themed: {len(themed)}")
-    print(f"Missing: {len(missing)}")
     if missing:
-        for v in sorted(missing):
-            print(f"  MISSING: --{v}")
+        print(  # noqa: T201
+            f"Missing: {len(missing)} — {', '.join(sorted(missing)[:10])}{'...' if len(missing) > 10 else ''}"
+        )
+    else:
+        print("Missing: 0")  # noqa: T201
 
     return len(missing) == 0
 
+
 if __name__ == "__main__":
     import sys
+
     sys.exit(0 if audit() else 1)
