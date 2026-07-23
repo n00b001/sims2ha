@@ -20,8 +20,8 @@
 })();
 /* --- Service worker registration for login screen theming --- */
 (function () {
-  if (serviceWorker in navigator) {
-    navigator.serviceWorker.register(/sims2ha/sw.js, {scope: /})
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sims2ha/sw.js", {scope: "/"})
       .then(function(registration) {
         console.log("Service worker registered with scope: " + registration.scope);
       })
