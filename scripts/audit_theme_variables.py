@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Audit theme variables for missing definitions."""
 
+from __future__ import annotations
+
 import re
 import sys
 
@@ -10,7 +12,7 @@ THEME_FILE = "custom_components/sims2ha/themes/sims2.yaml"
 DOC_FILE = "docs/HA_THEMING_CAPABILITIES.md"
 
 
-def audit():
+def audit() -> bool:
     """Audit theme variables for missing definitions."""
     with open(DOC_FILE, encoding="utf-8") as f:
         doc = f.read()
@@ -25,7 +27,7 @@ def audit():
     # listed individually in the doc and checked below). Also drop trailing-dash
     # family stubs and bare dashes captured from markdown table separators
     # (`|---|---|`), which are not real variables.
-    variables = set()
+    variables: set[str] = set()
     for match in re.findall(r"--[\w*-]+", doc):
         name = match[2:]
         if not name or name.endswith(("-", "*")):
@@ -33,7 +35,7 @@ def audit():
         variables.add(name)
 
     # Flatten theme variables from the single sims2 theme (modes-based)
-    themed = set()
+    themed: set[str] = set()
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
         for vars_dict in modes.values():
@@ -50,10 +52,10 @@ def audit():
             displayed = ", ".join(sorted_missing[:10]) + "..."
         else:
             displayed = ", ".join(sorted_missing)
-        print(f"Missing: {len(missing)} — {displayed}")
+        sys.stdout.write(f"Missing: {len(missing)} — {displayed}\n")
         return False
     else:
-        print("Missing: 0")
+        sys.stdout.write("Missing: 0\n")
         return True
 
 
