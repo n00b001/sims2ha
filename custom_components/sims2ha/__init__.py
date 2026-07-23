@@ -76,7 +76,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, _entry: ConfigEntry) -> bool:
     """Unload the integration.
 
     The dashboards and resource persist as user data (a user may have edited
@@ -172,7 +172,7 @@ async def _async_create_dashboards(hass: HomeAssistant) -> None:
     for spec in DASHBOARDS:
         try:
             await _async_upsert_dashboard(hass, lovelace_data, spec)
-        except Exception:  # noqa: BLE001 — one bad dashboard must not abort the rest
+        except Exception:
             _LOGGER.exception("Failed to create dashboard %s", spec["url_path"])
 
 
@@ -250,7 +250,7 @@ async def _async_install_theme(hass: HomeAssistant) -> None:
     try:
         await hass.async_add_executor_job(_write_theme, str(source), target)
         await hass.services.async_call("frontend", "reload_themes")
-    except Exception:  # noqa: BLE001 — theme is a bonus, not load-bearing for setup
+    except Exception:
         _LOGGER.exception("Could not install/reload the Sims 2 theme")
     else:
         _LOGGER.info("Sims 2 theme installed at %s", target)

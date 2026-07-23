@@ -31,7 +31,7 @@ def audit():
     themed = set()
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
-        for _mode_name, theme_vars in modes.items():
+        for _mode_name, theme_vars in modes.values():
             themed.update(theme_vars.keys())
 
     missing = variables - themed

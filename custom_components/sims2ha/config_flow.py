@@ -22,6 +22,7 @@ class Sims2ConfigFlow(ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Create the single entry, or abort if one already exists."""
+        # user_input is intentionally unused as this flow has no user input steps
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
         return self.async_create_entry(title="Sims 2", data={})
