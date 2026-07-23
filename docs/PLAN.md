@@ -1465,7 +1465,9 @@ Defined in `config_flow.py` for options flow:
 DATA_SCHEMA = vol.Schema({
     vol.Optional("theme_mode", default="auto"): vol.In(["auto", "light", "dark"]),
     vol.Optional("enable_animations", default=True): bool,
-    vol.Optional("sidebar_width", default=280): vol.All(vol.Coerce(int), vol.Range(min=200, max=350)),
+    vol.Optional("sidebar_width", default=280): vol.All(
+        vol.Coerce(int), vol.Range(min=200, max=350)
+    ),
     vol.Optional("dashboard_install", default=True): bool,
     vol.Optional("icon_set_version", default="1.0"): str,
 })
@@ -1834,9 +1836,7 @@ async def register_resources(call):
     ]
     # Register with Lovelace
     for resource in resources:
-        await hass.services.async_call(
-            "lovelace", "add_resource", resource, blocking=True
-        )
+        await hass.services.async_call("lovelace", "add_resource", resource, blocking=True)
 ```
 
 ---
@@ -1854,38 +1854,40 @@ Run this check before each release to ensure no regressions:
 import re
 import yaml
 
+
 def audit():
     with open("docs/HA_THEMING_CAPABILITIES.md") as f:
         doc = f.read()
-    
+
     with open("custom_components/sims2ha/themes/sims2.yaml") as f:
         theme = yaml.safe_load(f)
-    
+
     # Extract all CSS variable names from the doc
-    variables = set(re.findall(r'--[\w-]+', doc))
-    
+    variables = set(re.findall(r"--[\w-]+", doc))
+
     # Flatten theme variables
     themed = set()
     for mode in ["sims2-light", "sims2-dark"]:
         if mode in theme:
             themed.update(theme[mode].keys())
-    
+
     # For sims2 (modes-based), collect both light and dark
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
         for mode_name, vars in modes.items():
             themed.update(vars.keys())
-    
+
     missing = variables - themed
-    
+
     print(f"Total HA variables documented: {len(variables)}")
     print(f"Variables themed: {len(themed)}")
     print(f"Missing: {len(missing)}")
     if missing:
         for v in sorted(missing):
             print(f"  MISSING: {v}")
-    
+
     return len(missing) == 0
+
 
 if __name__ == "__main__":
     audit()
