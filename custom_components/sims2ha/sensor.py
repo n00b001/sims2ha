@@ -5,7 +5,7 @@ Exposes ``sensor.sims2_household_mood`` with:
   state       = mood (0-100; settable via the ``sims2ha.set_mood`` service or the
                 ``sims2ha/set_mood`` websocket command)
   attributes  = ``sims2ha_active_needs`` (list) plus the option snapshot
-                (``theme_mode``, ``enable_animations``, ``sidebar_width``) so a
+                (``enable_animations``, ``sidebar_width``) so a
                 dashboard can read them too.
 
 ``sims2ha_active_needs`` is computed from the optional ``needs_entities`` option
@@ -24,23 +24,20 @@ from homeassistant.helpers.restore_state import RestoreEntity
 
 from .const import (
     ATTR_ACTIVE_NEEDS,
+    ATTR_MOOD,
     CONF_ENABLE_ANIMATIONS,
     CONF_NEEDS_ENTITIES,
     CONF_SIDEBAR_WIDTH,
-    CONF_THEME_MODE,
     DEFAULT_MOOD,
     DEFAULT_OPTIONS,
     DOMAIN,
     EVENT_CONFIG_CHANGED,
     EVENT_MOOD_CHANGED,
-    ATTR_MOOD,
 )
 from .helpers import compute_active_needs, parse_entity_list, with_defaults
 
 
-async def async_setup_entry(
-    hass: HomeAssistant, entry: ConfigEntry, async_add_entities
-) -> None:
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities) -> None:
     """Set up the single household-mood sensor."""
     hass.data.setdefault(DOMAIN, {}).setdefault("mood", DEFAULT_MOOD)
     async_add_entities([Sims2HouseholdMoodSensor(hass, entry)])
@@ -73,9 +70,7 @@ class Sims2HouseholdMoodSensor(RestoreEntity, SensorEntity):
             self.hass.data[DOMAIN]["mood"] = self._attr_native_value
 
         self._refresh_attributes()
-        self.async_on_remove(
-            self.hass.bus.async_listen(EVENT_MOOD_CHANGED, self._on_mood_changed)
-        )
+        self.async_on_remove(self.hass.bus.async_listen(EVENT_MOOD_CHANGED, self._on_mood_changed))
         self.async_on_remove(
             self.hass.bus.async_listen(EVENT_CONFIG_CHANGED, self._on_config_changed)
         )
@@ -90,7 +85,6 @@ class Sims2HouseholdMoodSensor(RestoreEntity, SensorEntity):
             states[entity_id] = {"state": state_obj.state if state_obj else None}
         self._attr_extra_state_attributes = {
             ATTR_ACTIVE_NEEDS: compute_active_needs(needs, states),
-            CONF_THEME_MODE: options[CONF_THEME_MODE],
             CONF_ENABLE_ANIMATIONS: options[CONF_ENABLE_ANIMATIONS],
             CONF_SIDEBAR_WIDTH: options[CONF_SIDEBAR_WIDTH],
         }

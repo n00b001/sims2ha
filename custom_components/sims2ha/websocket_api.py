@@ -14,9 +14,11 @@ Registered from ``__init__._async_register_websocket``.
 from __future__ import annotations
 
 import voluptuous as vol
-
 from homeassistant.components import websocket_api
-from homeassistant.core import HomeAssistant, ServiceCall  # noqa: F401 (ServiceCall kept for parity)
+from homeassistant.core import (  # noqa: F401 (ServiceCall kept for parity)
+    HomeAssistant,
+    ServiceCall,
+)
 
 from .const import (
     ATTR_MOOD,
@@ -67,9 +69,7 @@ async def _handle_subscribe_config(hass: HomeAssistant, connection, msg) -> None
     async def forward(event) -> None:
         connection.send_message(websocket_api.event_message(msg["id"], event.data))
 
-    connection.subscriptions[msg["id"]] = hass.bus.async_listen(
-        EVENT_CONFIG_CHANGED, forward
-    )
+    connection.subscriptions[msg["id"]] = hass.bus.async_listen(EVENT_CONFIG_CHANGED, forward)
     connection.send_message(websocket_api.result_message(msg["id"]))
 
 
@@ -97,6 +97,4 @@ async def _handle_get_icon_set(hass: HomeAssistant, connection, msg) -> None:
     entry = _entry(hass)
     options = entry.options if entry is not None else {}
     version = with_defaults(options, DEFAULT_OPTIONS)[CONF_ICON_SET_VERSION]
-    connection.send_message(
-        websocket_api.result_message(msg["id"], {"version": version})
-    )
+    connection.send_message(websocket_api.result_message(msg["id"], {"version": version}))

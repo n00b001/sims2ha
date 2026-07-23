@@ -28,12 +28,20 @@
    sits at the focus, and a warm vignette fades everything into navy at edges.
    ========================================================================== */
 body {
-  background-color: #0E1628;
+  background-color: #0e1628;
   background-image:
     /* Plumbob-green ambient glow at focal point above centre */
-    radial-gradient(ellipse 40% 35% at 50% 30%, rgba(74, 222, 128, 0.10) 0%, transparent 70%),
+    radial-gradient(
+      ellipse 40% 35% at 50% 30%,
+      rgba(74, 222, 128, 0.1) 0%,
+      transparent 70%
+    ),
     /* Warm gold ambient glow — Sims 2 chrome highlight */
-    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232, 180, 77, 0.04) 0%, transparent 60%),
+    radial-gradient(
+        ellipse 60% 50% at 50% 30%,
+        rgba(232, 180, 77, 0.04) 0%,
+        transparent 60%
+      ),
     /*
      * Sunburst rays via 12 overlapping rotated radial gradients.
      * Each ray is a soft ellipse radiating from the focal point,
@@ -42,31 +50,83 @@ body {
      * are smooth — no hard edges, no visible stripes.
      */
     /* Ray 1 (top-right) */
-    radial-gradient(ellipse 25% 55% at 60% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 25% 55% at 60% 30%,
+        rgba(74, 160, 210, 0.12) 0%,
+        transparent 100%
+      ),
     /* Ray 2 (right) */
-    radial-gradient(ellipse 20% 50% at 75% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 20% 50% at 75% 35%,
+        rgba(56, 120, 180, 0.08) 0%,
+        transparent 100%
+      ),
     /* Ray 3 (bottom-right) */
-    radial-gradient(ellipse 22% 45% at 70% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 22% 45% at 70% 45%,
+        rgba(74, 160, 210, 0.1) 0%,
+        transparent 100%
+      ),
     /* Ray 4 (bottom) */
-    radial-gradient(ellipse 20% 40% at 55% 55%, rgba(56, 120, 180, 0.07) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 20% 40% at 55% 55%,
+        rgba(56, 120, 180, 0.07) 0%,
+        transparent 100%
+      ),
     /* Ray 5 (bottom-left) */
-    radial-gradient(ellipse 22% 45% at 35% 45%, rgba(74, 160, 210, 0.10) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 22% 45% at 35% 45%,
+        rgba(74, 160, 210, 0.1) 0%,
+        transparent 100%
+      ),
     /* Ray 6 (left) */
-    radial-gradient(ellipse 20% 50% at 25% 35%, rgba(56, 120, 180, 0.08) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 20% 50% at 25% 35%,
+        rgba(56, 120, 180, 0.08) 0%,
+        transparent 100%
+      ),
     /* Ray 7 (top-left) */
-    radial-gradient(ellipse 25% 55% at 40% 30%, rgba(74, 160, 210, 0.12) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 25% 55% at 40% 30%,
+        rgba(74, 160, 210, 0.12) 0%,
+        transparent 100%
+      ),
     /* Ray 8 (top) */
-    radial-gradient(ellipse 20% 50% at 50% 15%, rgba(74, 160, 210, 0.08) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 20% 50% at 50% 15%,
+        rgba(74, 160, 210, 0.08) 0%,
+        transparent 100%
+      ),
     /* Ray 9 (top-right alternate) */
-    radial-gradient(ellipse 22% 50% at 68% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 22% 50% at 68% 25%,
+        rgba(100, 170, 220, 0.06) 0%,
+        transparent 100%
+      ),
     /* Ray 10 (top-left alternate) */
-    radial-gradient(ellipse 22% 50% at 32% 25%, rgba(100, 170, 220, 0.06) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 22% 50% at 32% 25%,
+        rgba(100, 170, 220, 0.06) 0%,
+        transparent 100%
+      ),
     /* Ray 11 (mid-right) */
-    radial-gradient(ellipse 18% 40% at 80% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 18% 40% at 80% 40%,
+        rgba(56, 120, 180, 0.05) 0%,
+        transparent 100%
+      ),
     /* Ray 12 (mid-left) */
-    radial-gradient(ellipse 18% 40% at 20% 40%, rgba(56, 120, 180, 0.05) 0%, transparent 100%),
+    radial-gradient(
+        ellipse 18% 40% at 20% 40%,
+        rgba(56, 120, 180, 0.05) 0%,
+        transparent 100%
+      ),
     /* Warm vignette at edges to fade rays into navy */
-    radial-gradient(ellipse 75% 75% at 50% 30%, transparent 10%, rgba(14, 22, 40, 0.6) 100%);
+    radial-gradient(
+        ellipse 75% 75% at 50% 30%,
+        transparent 10%,
+        rgba(14, 22, 40, 0.6) 100%
+      );
   background-attachment: fixed;
 }
 
@@ -78,7 +138,12 @@ body {
    Sims 2 face automatically.
    ========================================================================== */
 body {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   line-height: 1.55 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -95,92 +160,89 @@ header,
   border-bottom: 2px solid rgba(26, 26, 62, 0.45) !important;
 }
 
-/* ---- Main content area — Sims 2 typography on navy background ------------- */
+/* ---- Main content area — Sims 2 dark typography on navy background ------------- */
 home-assistant {
-  --primary-text-color: #2A2320 !important;
-  --secondary-text-color: #5A4E40 !important;
+  --primary-text-color: #fff6e0 !important;
+  --secondary-text-color: #c4b696 !important;
 }
 
-/* Dark mode text — cream on dark panels */
-@media (prefers-color-scheme: dark) {
-  home-assistant {
-    --primary-text-color: #FFF6E0 !important;
-    --secondary-text-color: #C4B696 !important;
-  }
+/* Force cream text on all card surfaces */
+ha-card,
+.card,
+.card-content,
+ha-card .card-content,
+ha-state-card,
+.state-card,
+.entity-card,
+ha-entity-row {
+  color: #fff6e0 !important;
+}
 
-  /* Force cream text on all card surfaces in dark mode */
-  ha-card,
-  .card,
-  .card-content,
-  ha-card .card-content,
-  ha-state-card,
-  .state-card,
-  .entity-card,
-  ha-entity-row {
-    color: #FFF6E0 !important;
-  }
+/* ha-card header text */
+ha-card .card-header,
+.card-header {
+  color: #e8b44d !important;
+}
 
-  /* ha-card header text in dark mode */
-  ha-card .card-header,
-  .card-header {
-    color: #E8B44D !important;
-  }
+/* Entity state text */
+ha-state-card .state,
+.state-text,
+ha-entity-row .state {
+  color: #fff6e0 !important;
+}
 
-  /* Entity state text in dark mode */
-  ha-state-card .state,
-  .state-text,
-  ha-entity-row .state {
-    color: #FFF6E0 !important;
-  }
+/* Input fields */
+ha-textfield,
+ha-textarea,
+paper-input,
+mwc-textfield,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  background-color: rgba(30, 60, 90, 0.5) !important;
+  color: #fff6e0 !important;
+  border: 2px solid #173a52 !important;
+}
 
-  /* Input fields in dark mode */
-  ha-textfield,
-  ha-textarea,
-  paper-input,
-  mwc-textfield,
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  textarea {
-    background-color: rgba(30, 60, 90, 0.5) !important;
-    color: #FFF6E0 !important;
-    border: 2px solid #173A52 !important;
-  }
+/* Buttons text */
+mwc-button,
+md-filled-button,
+.mdc-button,
+button {
+  color: #fff6e0 !important;
+}
 
-  /* Buttons text in dark mode */
-  mwc-button,
-  md-filled-button,
-  .mdc-button,
-  button {
-    color: #FFF6E0 !important;
-  }
+/* Dialog text */
+ha-dialog,
+.dialog-surface {
+  color: #fff6e0 !important;
+}
 
-  /* Dialog text in dark mode */
-  ha-dialog,
-  .dialog-surface {
-    color: #FFF6E0 !important;
-  }
+/* Settings text */
+ha-settings-list paper-item,
+.config-menu-item {
+  color: #fff6e0 !important;
+}
 
-  /* Settings text in dark mode */
-  ha-settings-list paper-item,
-  .config-menu-item {
-    color: #FFF6E0 !important;
-  }
-
-  /* Tooltip text in dark mode */
-  .mdc-tooltip,
-  ha-tooltip,
-  [role="tooltip"] {
-    color: #FFF6E0 !important;
-  }
+/* Tooltip text */
+.mdc-tooltip,
+ha-tooltip,
+[role="tooltip"] {
+  color: #fff6e0 !important;
 }
 
 app-header paper-icon-button,
 app-header .title,
 app-header ha-icon-button {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
-  color: var(--sims2-cream-text, #FFF6E0) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
 }
 
 app-header .title {
@@ -214,14 +276,14 @@ md-outlined-button,
 .paper-button,
 button:not([disabled]) {
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 45%,
-    #2F86C5 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 45%,
+    #2f86c5 100%
   ) !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   font-weight: 600 !important;
   box-shadow:
     0 2px 6px rgba(26, 26, 62, 0.15),
@@ -238,14 +300,14 @@ md-filled-button:hover,
 button:not([disabled]):hover {
   background: linear-gradient(
     180deg,
-    #C0E4F5 0%,
-    #A8D8F0 50%,
-    #4A9BD3 100%
+    #c0e4f5 0%,
+    #a8d8f0 50%,
+    #4a9bd3 100%
   ) !important;
   box-shadow:
     0 2px 10px rgba(47, 134, 197, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-  border-color: var(--sims2-gold, #E8B44D) !important;
+  border-color: var(--sims2-gold, #e8b44d) !important;
 }
 
 mwc-button:active,
@@ -271,11 +333,11 @@ textarea {
   --mdc-shape-small: 12px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-sky-blue, #7EC8E6) 0%,
-    var(--sims2-sky-blue, #7EC8E6) 100%
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
   ) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  color: #2A2320 !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  color: #2a2320 !important;
 }
 
 ha-textfield::part(input),
@@ -285,7 +347,7 @@ input[type="number"],
 input[type="password"],
 textarea {
   background: transparent !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
   border-radius: 8px !important;
 }
 
@@ -295,7 +357,8 @@ input[type="text"]:focus,
 input[type="number"]:focus,
 input[type="password"]:focus,
 textarea:focus {
-  outline: 3px solid var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  outline: 3px solid
+    var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7bc942)) !important;
   outline-offset: 1px !important;
 }
 
@@ -314,7 +377,8 @@ paper-dialog,
    FOCUS RING — plumbob green
    ========================================================================== */
 *:focus-visible {
-  outline: 3px solid var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942));
+  outline: 3px solid
+    var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7bc942));
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -323,17 +387,20 @@ paper-dialog,
    LINKS — gold/blue links on beige-blue backgrounds
    ========================================================================== */
 a {
-  color: var(--sims2-blue, #2B5EA7);
+  color: var(--sims2-blue, #2b5ea7);
   text-decoration: none;
   border-bottom: 1px solid rgba(43, 94, 167, 0.3);
   transition: all 0.2s ease !important;
 }
 a:hover {
-  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
   border-bottom-color: transparent !important;
 }
 a:hover {
-  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942));
+  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7bc942));
 }
 
 /* ==========================================================================
@@ -360,9 +427,12 @@ paper-toggle-button {
    ========================================================================== */
 ha-slider,
 paper-slider {
-  --paper-slider-knob-color: var(--slider-thumb-color, #7EC8E6) !important;
-  --paper-slider-container-color: var(--slider-track-color, #D8C39A) !important;
-  --paper-slider-secondary-color: var(--slider-secondary-color, #6AB0D0) !important;
+  --paper-slider-knob-color: var(--slider-thumb-color, #7ec8e6) !important;
+  --paper-slider-container-color: var(--slider-track-color, #d8c39a) !important;
+  --paper-slider-secondary-color: var(
+    --slider-secondary-color,
+    #6ab0d0
+  ) !important;
 }
 
 /* ==========================================================================
@@ -401,8 +471,11 @@ paper-progress,
 [role="progressbar"],
 mwc-linear-progress,
 md-linear-progress {
-  --mdc-theme-primary: var(--sims2-gold, #FFD700) !important;
-  --paper-progress-secondary-color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  --mdc-theme-primary: var(--sims2-gold, #ffd700) !important;
+  --paper-progress-secondary-color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -412,7 +485,7 @@ paper-listbox,
 mwc-menu,
 md-menu {
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 /* ==========================================================================
@@ -424,7 +497,10 @@ md-menu {
 [data-state="open"],
 [data-state="active"],
 [data-state="running"] {
-  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -443,14 +519,14 @@ ha-alert,
 paper-tabs,
 md-tab-bar,
 [role="tablist"] {
-  border-bottom: 2px solid var(--sims2-gold, #FFD700) !important;
+  border-bottom: 2px solid var(--sims2-gold, #ffd700) !important;
 }
 
 paper-tab[selected],
 md-tab[active],
 [role="tab"][aria-selected="true"] {
-  color: var(--sims2-gold, #FFD700) !important;
-  border-bottom: 3px solid var(--sims2-gold-dark, #E6C200) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  border-bottom: 3px solid var(--sims2-gold-dark, #e6c200) !important;
 }
 
 /* ==========================================================================
@@ -459,7 +535,10 @@ md-tab[active],
 hr,
 paper-divider,
 [role="separator"] {
-  border-top-color: var(--sims2-navy, var(--sims2-panel-blue-deep, #173A52)) !important;
+  border-top-color: var(
+    --sims2-navy,
+    var(--sims2-panel-blue-deep, #173a52)
+  ) !important;
   border-top-width: 2px !important;
   opacity: 0.3;
 }
@@ -470,8 +549,13 @@ paper-divider,
 
 /* ---- Plumbob pulse on active entity icons -------------------------------- */
 @keyframes sims2-plum-pulse {
-  0%, 100% { filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.3)); }
-  50%      { filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.7)); }
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.7));
+  }
 }
 
 ha-state-icon[data-state="on"],
@@ -490,8 +574,14 @@ paper-item[selected],
 
 /* ---- Button hover — lift + gold glow -------------------------------------- */
 @keyframes sims2-btn-glow {
-  0%   { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
-  100% { box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.15); }
+  0% {
+    box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow:
+      0 2px 8px rgba(255, 215, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
 }
 
 mwc-button:hover,
@@ -502,7 +592,9 @@ md-outlined-button:hover,
 button:not([disabled]):hover {
   transform: translateY(-1px);
   animation: sims2-btn-glow 0.3s ease forwards;
-  transition: transform 0.15s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.3s ease;
 }
 
 mwc-button:active,
@@ -514,8 +606,14 @@ button:not([disabled]):active {
 
 /* ---- Card entrance — gentle fade + slide up -------------------------------- */
 @keyframes sims2-card-enter {
-  0%   { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 ha-card,
@@ -527,17 +625,39 @@ ha-card,
   animation: sims2-card-enter 0.4s ease both;
 }
 
-ha-card:nth-child(1), .card:nth-child(1) { animation-delay: 0ms; }
-ha-card:nth-child(2), .card:nth-child(2) { animation-delay: 60ms; }
-ha-card:nth-child(3), .card:nth-child(3) { animation-delay: 120ms; }
-ha-card:nth-child(4), .card:nth-child(4) { animation-delay: 180ms; }
-ha-card:nth-child(5), .card:nth-child(5) { animation-delay: 240ms; }
-ha-card:nth-child(6), .card:nth-child(6) { animation-delay: 300ms; }
+ha-card:nth-child(1),
+.card:nth-child(1) {
+  animation-delay: 0ms;
+}
+ha-card:nth-child(2),
+.card:nth-child(2) {
+  animation-delay: 60ms;
+}
+ha-card:nth-child(3),
+.card:nth-child(3) {
+  animation-delay: 120ms;
+}
+ha-card:nth-child(4),
+.card:nth-child(4) {
+  animation-delay: 180ms;
+}
+ha-card:nth-child(5),
+.card:nth-child(5) {
+  animation-delay: 240ms;
+}
+ha-card:nth-child(6),
+.card:nth-child(6) {
+  animation-delay: 300ms;
+}
 
 /* ---- Sidebar item hover — gold shimmer strip -------------------------------- */
 @keyframes sims2-sidebar-shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 paper-item:hover,
@@ -559,8 +679,14 @@ mwc-list-item:hover,
 
 /* ---- Dialog entrance — plumbob-green fade ---------------------------------- */
 @keyframes sims2-dialog-enter {
-  0%   { opacity: 0; transform: translateY(20px) scale(0.97); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 ha-dialog,
@@ -572,11 +698,21 @@ paper-dialog,
 
 /* ---- Loading spinner — rotating plumbob ----------------------------------- */
 @keyframes sims2-plumbob-spin {
-  0%   { transform: rotate(0deg) scale(1); }
-  25%  { transform: rotate(90deg) scale(1.1); }
-  50%  { transform: rotate(180deg) scale(1); }
-  75%  { transform: rotate(270deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 paper-progress[mode="indeterminate"],
@@ -589,8 +725,12 @@ md-linear-progress[mode="indeterminate"],
 
 /* ---- State-change flash — brief green glow on value update ----------------- */
 @keyframes sims2-state-flash {
-  0%   { background-color: rgba(74, 222, 128, 0.15); }
-  100% { background-color: transparent; }
+  0% {
+    background-color: rgba(74, 222, 128, 0.15);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 
 .entity-state.changed,
@@ -613,7 +753,11 @@ md-tab::after {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--sims2-gold-dark, #E6C200), var(--sims2-gold, #FFD700));
+  background: linear-gradient(
+    90deg,
+    var(--sims2-gold-dark, #e6c200),
+    var(--sims2-gold, #ffd700)
+  );
   transform: scaleX(0);
   transition: transform 0.25s ease;
 }
@@ -625,8 +769,13 @@ md-tab[active]::after {
 
 /* ---- Sidebar icon active glow ---------------------------------------------- */
 @keyframes sims2-sidebar-icon-glow {
-  0%, 100% { text-shadow: 0 0 4px rgba(74, 222, 128, 0.2); }
-  50%      { text-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
+  0%,
+  100% {
+    text-shadow: 0 0 4px rgba(74, 222, 128, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  }
 }
 
 ha-sidebar [selected] .icon,
@@ -638,8 +787,14 @@ mwc-list-item[selected] {
 
 /* ---- Header title — subtle gold shimmer ------------------------------------ */
 @keyframes sims2-header-shimmer {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.85; text-shadow: 0 0 8px rgba(255, 215, 0, 0.2); }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+  }
 }
 
 app-header .title,
@@ -651,10 +806,18 @@ ha-menu-button {
 
 /* ---- Switch toggle — green snap -------------------------------------------- */
 @keyframes sims2-switch-snap {
-  0%   { transform: scale(1); }
-  30%  { transform: scale(1.15); }
-  60%  { transform: scale(0.95); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.15);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 ha-switch[checked]:active,
@@ -664,8 +827,14 @@ paper-toggle-button[checked] .toggle-bar:active {
 
 /* ---- Plumbob sparkle on hover for card headers ----------------------------- */
 @keyframes sims2-sparkle {
-  0%, 100% { opacity: 0.6; }
-  50%      { opacity: 1; text-shadow: 0 0 6px rgba(255, 215, 0, 0.5); }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+  }
 }
 
 .card-header:hover,
@@ -688,7 +857,7 @@ ha-sidebar paper-listbox,
 ha-sidebar .nav-section-entities,
 ha-sidebar [section="navigation"],
 .sidebar [role="group"][aria-label] {
-  color: var(--sims2-gold, #FFD700) !important;
+  color: var(--sims2-gold, #ffd700) !important;
   font-size: 11px !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
@@ -697,8 +866,11 @@ ha-sidebar [section="navigation"],
 
 ha-sidebar .entity-count,
 .sidebar-badge {
-  background: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
-  color: #0E1628 !important;
+  background: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
+  color: #0e1628 !important;
   border-radius: 999px !important;
   font-size: 10px !important;
   padding: 1px 6px !important;
@@ -711,13 +883,13 @@ ha-sidebar .entity-count,
 
 /* ---- LOGIN SCREEN — Full Sims 2 splash card centered on sunburst ---------- */
 ha-login-card {
-  border: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 3px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 24px !important;
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 50%,
-    #5BB4D8 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 50%,
+    #5bb4d8 100%
   ) !important;
   box-shadow:
     0 8px 48px rgba(26, 26, 62, 0.25),
@@ -733,8 +905,13 @@ ha-login-card .card-content {
 
 ha-login-card h1,
 ha-login-card .login-brand h1 {
-  color: var(--sims2-gold, #E8B44D) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #e8b44d) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   text-shadow: 0 1px 3px rgba(232, 180, 77, 0.4) !important;
   letter-spacing: 0.06em !important;
 }
@@ -758,42 +935,72 @@ ha-login-card .login-form button,
 .login-submit {
   background: linear-gradient(
     180deg,
-    #6EE7A0 0%,
-    var(--sims2-plumbob-green, #7BC942) 40%,
-    #22C55E 100%
+    #6ee7a0 0%,
+    var(--sims2-plumbob-green, #7bc942) 40%,
+    #22c55e 100%
   ) !important;
   border-radius: 12px !important;
   box-shadow:
     0 2px 8px rgba(74, 222, 128, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
-  border: 2px solid #16A34A !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  border: 2px solid #16a34a !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
 }
 
 ha-login-card mwc-button:hover {
-  background: linear-gradient(180deg, #A7F3D0 0%, var(--sims2-plumbob-green, #7BC942) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #a7f3d0 0%,
+    var(--sims2-plumbob-green, #7bc942) 100%
+  ) !important;
   box-shadow: 0 0 16px rgba(74, 222, 128, 0.5) !important;
 }
 
 ha-login-card .login-footer {
-  color: var(--sims2-navy-dark, #0E1628) !important;
+  color: var(--sims2-navy-dark, #0e1628) !important;
   opacity: 0.7 !important;
 }
 
 /* ---- LOADING / CONNECTING OVERLAY — Sims 2 style -------------------------- */
 @keyframes sims2-loading-plum {
-  0%   { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5)); }
-  25%  { transform: rotate(90deg) scale(1.15); filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.8)); }
-  50%  { transform: rotate(180deg) scale(1); filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5)); }
-  75%  { transform: rotate(270deg) scale(1.15); filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.8)); }
-  100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5)); }
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+  }
+  25% {
+    transform: rotate(90deg) scale(1.15);
+    filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.8));
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+  }
+  75% {
+    transform: rotate(270deg) scale(1.15);
+    filter: drop-shadow(0 0 16px rgba(74, 222, 128, 0.8));
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5));
+  }
 }
 
 @keyframes sims2-loading-pulse {
-  0%, 100% { opacity: 0.7; }
-  50%      { opacity: 1; text-shadow: 0 0 12px rgba(255, 215, 0, 0.6); }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  }
 }
 
 connection-banner:not([hidden])::before,
@@ -805,10 +1012,10 @@ connection-banner:not([hidden])::before,
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   background: linear-gradient(
     105deg,
-    #B7F36B 0%,
-    var(--sims2-plumbob-green, #7BC942) 35%,
-    #22C55E 55%,
-    #16A34A 100%
+    #b7f36b 0%,
+    var(--sims2-plumbob-green, #7bc942) 35%,
+    #22c55e 55%,
+    #16a34a 100%
   );
   animation: sims2-loading-plum 3s ease-in-out infinite;
   margin-bottom: 24px;
@@ -817,8 +1024,13 @@ connection-banner:not([hidden])::before,
 connection-banner:not([hidden])::after,
 .loading-text,
 [part="loading"] .status {
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   font-size: 18px !important;
   letter-spacing: 0.08em !important;
   animation: sims2-loading-pulse 2s ease-in-out infinite;
@@ -844,11 +1056,11 @@ ha-panel-config ha-card,
 .settings-card {
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 50%,
-    #5BB4D8 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 50%,
+    #5bb4d8 100%
   ) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
   box-shadow:
     0 4px 16px rgba(26, 26, 62, 0.18),
@@ -859,8 +1071,13 @@ ha-panel-config ha-card,
 ha-panel-config h2,
 .config-section-title,
 [panel="config"] h2 {
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
@@ -872,13 +1089,13 @@ ha-settings-list,
 [panel="config"] paper-listbox,
 .config-menu {
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: rgba(237, 228, 200, 0.5) !important;
 }
 
 ha-settings-list paper-item,
 .config-menu-item {
-  border-bottom: 1px solid rgba(26, 26, 62, 0.10) !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.1) !important;
   border-radius: 8px !important;
   margin: 2px 4px !important;
 }
@@ -891,7 +1108,7 @@ ha-settings-list paper-item:hover,
 /* Settings icons — gold */
 ha-settings-list ha-svg-icon,
 .config-menu-item ha-svg-icon {
-  color: var(--sims2-gold, #FFD700) !important;
+  color: var(--sims2-gold, #ffd700) !important;
 }
 
 /* ---- DIALOG BACKDROP — dark overlay with navy-bordered dialog -------------- */
@@ -903,12 +1120,12 @@ ha-settings-list ha-svg-icon,
 ha-dialog .mdc-dialog__surface,
 paper-dialog .paper-dialog-content,
 .dialog-surface {
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-sky-blue, #7EC8E6) 0%,
-    var(--sims2-sky-blue, #7EC8E6) 100%
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
   ) !important;
   box-shadow:
     0 12px 48px rgba(26, 26, 62, 0.3),
@@ -921,8 +1138,13 @@ paper-dialog .paper-dialog-header,
 .dialog-title {
   border-bottom: 2px solid rgba(255, 215, 0, 0.3) !important;
   padding-bottom: 12px !important;
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.04em !important;
 }
 
@@ -932,26 +1154,26 @@ paper-dialog .paper-dialog-button-panel button {
   border-radius: 12px !important;
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 45%,
-    #2F86C5 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 45%,
+    #2f86c5 100%
   ) !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   font-weight: 600 !important;
   letter-spacing: 0.03em !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 ha-dialog mwc-button[primary],
 paper-dialog .primary {
   background: linear-gradient(
     180deg,
-    #6EE7A0 0%,
-    var(--sims2-plumbob-green, #7BC942) 40%,
-    #22C55E 100%
+    #6ee7a0 0%,
+    var(--sims2-plumbob-green, #7bc942) 40%,
+    #22c55e 100%
   ) !important;
-  color: #0E1628 !important;
-  border: 2px solid #16A34A !important;
+  color: #0e1628 !important;
+  border: 2px solid #16a34a !important;
 }
 
 /* ---- HA-STATE-CARD — entity display styling -------------------------------- */
@@ -960,21 +1182,24 @@ ha-state-card,
 .entity-card {
   background: linear-gradient(
     180deg,
-    var(--sims2-sky-blue, #7EC8E6) 0%,
-    var(--sims2-sky-blue, #7EC8E6) 100%
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
   ) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
   box-shadow:
     0 4px 16px rgba(26, 26, 62, 0.18),
     inset 0 2px 0 rgba(255, 255, 255, 0.7) !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 ha-state-card .state,
 .state-text[data-state="on"],
 .state-text.active {
-  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
   font-weight: 600 !important;
 }
 
@@ -983,7 +1208,7 @@ ha-entity-row,
 .entity-row,
 paper-item[data-component="entity"],
 mwc-list-item[role="option"][data-type="entity"] {
-  border-bottom: 1px solid rgba(26, 26, 62, 0.10) !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.1) !important;
   border-radius: 8px !important;
 }
 
@@ -1000,14 +1225,17 @@ ha-entity-row ha-svg-icon,
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: rgba(232, 180, 77, 0.08) !important;
 }
 
 ha-entity-row ha-svg-icon[data-active],
 .entity-row .icon.active {
-  border-color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
-  background: rgba(74, 222, 128, 0.10) !important;
+  border-color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
+  background: rgba(74, 222, 128, 0.1) !important;
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.3) !important;
 }
 
@@ -1020,30 +1248,35 @@ ha-entity-row ha-svg-icon[data-active],
 ha-card {
   background: linear-gradient(
     180deg,
-    var(--sims2-sky-blue, #7EC8E6) 0%,
-    #EDD9B4 50%,
-    #E2CC9A 100%
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    #edd9b4 50%,
+    #e2cc9a 100%
   ) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 12px !important;
   box-shadow:
     0 2px 8px rgba(26, 26, 62, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
   overflow: hidden !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ha-card header — gold underline */
 ha-card .card-header {
   background: linear-gradient(
     180deg,
-    rgba(232, 180, 77, 0.10) 0%,
+    rgba(232, 180, 77, 0.1) 0%,
     rgba(232, 180, 77, 0.03) 100%
   ) !important;
   border-bottom: 2px solid rgba(232, 180, 77, 0.25) !important;
   padding: 12px 16px !important;
-  color: var(--sims2-gold, #E8B44D) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #e8b44d) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.04em !important;
 }
 
@@ -1060,15 +1293,20 @@ ha-card .card-content {
 mdc-button,
 [role="button"] {
   border-radius: 10px !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: linear-gradient(
     180deg,
-    #A8D8F0 0%,
-    var(--sims2-sky-blue, #7EC8E6) 45%,
-    #2F86C5 100%
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 45%,
+    #2f86c5 100%
   ) !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   font-weight: 600 !important;
   box-shadow:
     0 2px 6px rgba(26, 26, 62, 0.15),
@@ -1080,14 +1318,14 @@ mdc-button,
 mdc-button:hover {
   background: linear-gradient(
     180deg,
-    #C0E4F5 0%,
-    #A8D8F0 50%,
-    #4A9BD3 100%
+    #c0e4f5 0%,
+    #a8d8f0 50%,
+    #4a9bd3 100%
   ) !important;
   box-shadow:
     0 2px 10px rgba(232, 180, 77, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
-  border-color: var(--sims2-gold, #E8B44D) !important;
+  border-color: var(--sims2-gold, #e8b44d) !important;
 }
 
 .mdc-text-field,
@@ -1106,17 +1344,21 @@ mdc-chip {
     rgba(168, 216, 240, 0.8) 0%,
     rgba(126, 200, 230, 0.7) 100%
   ) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   font-weight: 600 !important;
 }
 
 .mdc-menu,
 mdc-menu {
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  color: #2A2320 !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  color: #2a2320 !important;
   box-shadow:
     0 8px 32px rgba(26, 26, 62, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
@@ -1124,7 +1366,7 @@ mdc-menu {
 }
 
 .mdc-menu-item {
-  color: #2A2320 !important;
+  color: #2a2320 !important;
   transition: background 0.15s ease !important;
 }
 
@@ -1139,7 +1381,7 @@ mdc-tab-bar {
 }
 
 .mdc-tab--active .mdc-tab__text-label {
-  color: var(--sims2-gold, #FFD700) !important;
+  color: var(--sims2-gold, #ffd700) !important;
   font-weight: 700 !important;
 }
 
@@ -1150,7 +1392,11 @@ mdc-tab-bar {
   left: 10%;
   right: 10%;
   height: 3px;
-  background: linear-gradient(90deg, var(--sims2-gold-dark, #E6C200), var(--sims2-gold, #FFD700));
+  background: linear-gradient(
+    90deg,
+    var(--sims2-gold-dark, #e6c200),
+    var(--sims2-gold, #ffd700)
+  );
   border-radius: 999px;
 }
 
@@ -1162,7 +1408,7 @@ ha-attribution {
 }
 
 ha-attribution a {
-  color: var(--sims2-gold, #E8B44D) !important;
+  color: var(--sims2-gold, #e8b44d) !important;
   opacity: 0.7 !important;
 }
 
@@ -1175,7 +1421,7 @@ ha-tabs,
 
 ha-tabs paper-tab[selected],
 [part="tabs"] [selected] {
-  color: var(--sims2-gold, #FFD700) !important;
+  color: var(--sims2-gold, #ffd700) !important;
 }
 
 /* ==========================================================================
@@ -1189,7 +1435,7 @@ paper-icon-button,
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: rgba(30, 42, 94, 0.15) !important;
   transition: all 0.2s ease !important;
 }
@@ -1197,7 +1443,7 @@ paper-icon-button,
 ha-icon-button:hover,
 paper-icon-button:hover {
   background: rgba(232, 180, 77, 0.12) !important;
-  border-color: var(--sims2-gold, #E8B44D) !important;
+  border-color: var(--sims2-gold, #e8b44d) !important;
   box-shadow: 0 0 8px rgba(232, 180, 77, 0.25) !important;
 }
 
@@ -1206,7 +1452,7 @@ paper-icon-button:hover {
 ha-color-control,
 .color-picker {
   border-radius: 50% !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 /* ==========================================================================
@@ -1220,17 +1466,21 @@ ha-date-control {
    HA-TEMPLATE — template card styling --------------------------------------- */
 ha-template,
 .template-card {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 12px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    MAP CARD — map container styling ------------------------------------------ */
 ha-map,
 [card-type="map"] {
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
   overflow: hidden !important;
   background: transparent !important;
@@ -1240,59 +1490,83 @@ ha-map,
    LOGBOOK CARD — log entries ------------------------------------------------ */
 ha-logbook,
 [card-type="logbook"] {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 12px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    HISTORY CARD — graph container -------------------------------------------- */
 ha-history,
 [card-type="history"] {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    GARDEN CARD — plant cards ------------------------------------------------- */
 ha-garden,
 [card-type="garden"] {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    BUTTONS-CARD — third party card support ----------------------------------- */
 buttons-card,
 paper-buttons-row {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    TILE-CARD — tile styling -------------------------------------------------- */
 tile-card,
 .entity-button {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
    CUSTOM-CARD-BUILDER cards ------------------------------------------------- */
 [card-config] {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
@@ -1304,7 +1578,7 @@ ha-sidebar {
 ha-sidebar .user-avatar,
 .sidebar-avatar {
   border-radius: 50% !important;
-  border: 2px solid var(--sims2-gold, #FFD700) !important;
+  border: 2px solid var(--sims2-gold, #ffd700) !important;
   width: 36px !important;
   height: 36px !important;
 }
@@ -1312,9 +1586,13 @@ ha-sidebar .user-avatar,
 ha-sidebar .search-bar,
 .sidebar-search {
   border-radius: 12px !important;
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.25) 0%, rgba(47, 134, 197, 0.20) 100%) !important;
-  border: 2px solid var(--sims2-gold-trim, #D8C39A) !important;
-  color: var(--sims2-cream-text, #FFF6E0) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.25) 0%,
+    rgba(47, 134, 197, 0.2) 100%
+  ) !important;
+  border: 2px solid var(--sims2-gold-trim, #d8c39a) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
 }
 
 /* ==========================================================================
@@ -1334,9 +1612,13 @@ app-header .menu-button,
 app-header .search-input,
 .header-search {
   border-radius: 12px !important;
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.35) 0%, rgba(47, 134, 197, 0.30) 100%) !important;
-  border: 2px solid var(--sims2-gold-trim, #D8C39A) !important;
-  color: var(--sims2-cream-text, #FFF6E0) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.35) 0%,
+    rgba(47, 134, 197, 0.3) 100%
+  ) !important;
+  border: 2px solid var(--sims2-gold-trim, #d8c39a) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
 }
 
 /* ==========================================================================
@@ -1348,8 +1630,13 @@ app-header .search-input,
 }
 
 .view-header-title {
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.06em !important;
 }
 
@@ -1360,7 +1647,7 @@ ha-progress-ring,
 .progress-circle {
   border-radius: 50% !important;
   border: 3px solid rgba(26, 26, 62, 0.3) !important;
-  border-top-color: var(--sims2-gold, #FFD700) !important;
+  border-top-color: var(--sims2-gold, #ffd700) !important;
   animation: sims2-loading-plum 1.5s linear infinite !important;
 }
 
@@ -1370,10 +1657,19 @@ ha-progress-ring,
 .mdc-tooltip,
 mdc-tooltip {
   border-radius: 8px !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  color: #2A2320 !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  color: #2a2320 !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1382,7 +1678,11 @@ app-drawer,
 [part="drawer"],
 ha-app-drawer {
   border-right: 2px solid rgba(26, 26, 62, 0.45) !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
 }
 
 app-drawer .drawer-handle,
@@ -1410,8 +1710,14 @@ ha-radio-button,
 }
 
 paper-radio-button.selected .paper-radio-button-checked {
-  background: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
-  border-color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  background: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
+  border-color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1423,8 +1729,14 @@ ha-checkbox,
 }
 
 paper-checkbox.checked .paper-checkbox-checked {
-  background: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
-  border-color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  background: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
+  border-color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1433,7 +1745,7 @@ data-table,
 [data-component="table"],
 ha-data-table {
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   overflow: hidden !important;
 }
 
@@ -1441,18 +1753,23 @@ data-table thead,
 [data-table] th {
   background: linear-gradient(
     180deg,
-    rgba(26, 26, 62, 0.10) 0%,
+    rgba(26, 26, 62, 0.1) 0%,
     rgba(26, 26, 62, 0.03) 100%
   ) !important;
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
   font-size: 11px !important;
 }
 
 data-table tbody tr {
-  border-bottom: 1px solid rgba(26, 26, 62, 0.10) !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.1) !important;
 }
 
 data-table tbody tr:hover {
@@ -1463,10 +1780,14 @@ data-table tbody tr:hover {
    TIMELINE / CHRONOLOGICAL VIEWS -------------------------------------------- */
 ha-timeline,
 .timeline-view {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 20px !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
@@ -1474,23 +1795,35 @@ ha-timeline,
 label-badge,
 .badge-container {
   border-radius: 20px !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   box-shadow:
     0 4px 16px rgba(26, 26, 62, 0.18),
     inset 0 2px 0 rgba(255, 255, 255, 0.7) !important;
-  color: #2A2320 !important;
+  color: #2a2320 !important;
 }
 
 label-badge .badge-entity,
 .badge-label {
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
   letter-spacing: 0.04em !important;
 }
 
 label-badge .badge-value {
-  color: var(--sims2-plumbob-green, var(--sims2-plumbob-green, #7BC942)) !important;
+  color: var(
+    --sims2-plumbob-green,
+    var(--sims2-plumbob-green, #7bc942)
+  ) !important;
   font-weight: 600 !important;
 }
 
@@ -1504,7 +1837,7 @@ icon-badge,
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   background: rgba(30, 42, 94, 0.15) !important;
 }
 
@@ -1523,7 +1856,7 @@ carousel-dot,
 
 carousel-dot[active],
 .carousel-indicator.active {
-  background: var(--sims2-gold, #FFD700) !important;
+  background: var(--sims2-gold, #ffd700) !important;
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.5) !important;
 }
 
@@ -1532,14 +1865,23 @@ carousel-dot[active],
 ha-expansion-panel,
 .expansion-panel {
   border-radius: 16px !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  color: #2A2320 !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  color: #2a2320 !important;
 }
 
 ha-expansion-panel .expansion-header {
-  color: var(--sims2-gold, #FFD700) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", Georgia, serif) !important;
+  color: var(--sims2-gold, #ffd700) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    Georgia,
+    serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1615,7 +1957,7 @@ ha-select .mdc-notched-outline .mdc-notched-outline__trailing {
    SELECTION — gold highlight ---------------------------------------------- */
 ::selection {
   background: rgba(232, 180, 77, 0.25) !important;
-  color: #0E1628 !important;
+  color: #0e1628 !important;
 }
 
 /* ==========================================================================
@@ -1624,13 +1966,23 @@ ha-card,
 .card,
 [part="card"],
 mwc-tab-bar {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 ha-entity-toggle,
 ha-state-label-badge,
 .state-label-badge {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1639,8 +1991,13 @@ ha-panel-logbook paper-dialog,
 ha-panel-history paper-dialog,
 ha-panel-manage paper-dialog,
 [panel-info] {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
-  color: #2A2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
+  color: #2a2320 !important;
 }
 
 /* ==========================================================================
@@ -1652,7 +2009,7 @@ ha-panel-manage paper-dialog,
 /* ==========================================================================
    HA MAIN APP SHELL — prevent white flash on load ------------------------- */
 home-assistant {
-  --primary-color: var(--sims2-gold, #FFD700) !important;
+  --primary-color: var(--sims2-gold, #ffd700) !important;
 }
 
 /* ==========================================================================
@@ -1665,37 +2022,58 @@ home-assistant {
 .mdc-switch .mdc-switch__track,
 ha-form-field ha-switch .mdc-switch__track,
 ha-switch .mdc-switch__track {
-  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  background: linear-gradient(180deg, #8a7d6b 0%, #6b5e4a 100%) !important;
   border-radius: 12px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
 }
 
 .mdc-switch[data-checked="true"] .mdc-switch__track,
 ha-switch[data-checked="true"] .mdc-switch__track {
-  background: linear-gradient(180deg, #7BC942 0%, #5BA830 50%, #3D8B1C 100%) !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 8px rgba(123, 201, 66, 0.4) !important;
+  background: linear-gradient(
+    180deg,
+    #7bc942 0%,
+    #5ba830 50%,
+    #3d8b1c 100%
+  ) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(123, 201, 66, 0.4) !important;
 }
 
 .mdc-switch .mdc-switch__thumb-knob,
 ha-switch .mdc-switch__thumb-knob {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, #D9C4A0 40%, #B8942E 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    #d9c4a0 40%,
+    #b8942e 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
   width: 20px !important;
   height: 20px !important;
 }
 
 .mdc-switch[data-checked="true"] .mdc-switch__thumb-knob {
-  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
-  border-color: #2F6B12 !important;
-  box-shadow: 0 0 10px rgba(123, 201, 66, 0.6), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  background: linear-gradient(
+    180deg,
+    #b7f36b 0%,
+    #7bc942 50%,
+    #5ba830 100%
+  ) !important;
+  border-color: #2f6b12 !important;
+  box-shadow:
+    0 0 10px rgba(123, 201, 66, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Legacy ha-toggle */
 ha-toggle .toggle-input:checked + .toggle-button {
-  background: linear-gradient(180deg, #7BC942 0%, #5BA830 100%) !important;
-  border-color: #2F6B12 !important;
+  background: linear-gradient(180deg, #7bc942 0%, #5ba830 100%) !important;
+  border-color: #2f6b12 !important;
   box-shadow: 0 0 8px rgba(123, 201, 66, 0.5) !important;
 }
 
@@ -1711,8 +2089,8 @@ ha-slider,
 input[type="range"]::-webkit-slider-runnable-track {
   height: 8px !important;
   border-radius: 6px !important;
-  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(180deg, #8a7d6b 0%, #6b5e4a 100%) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -1721,9 +2099,16 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px !important;
   height: 20px !important;
   border-radius: 50% !important;
-  background: radial-gradient(circle at 35% 35%, #F5DF8A 0%, #D4AF37 40%, #A07830 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #f5df8a 0%,
+    #d4af37 40%,
+    #a07830 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
   cursor: pointer !important;
 }
 
@@ -1731,17 +2116,24 @@ input[type="range"]::-moz-range-thumb {
   width: 20px !important;
   height: 20px !important;
   border-radius: 50% !important;
-  background: radial-gradient(circle at 35% 35%, #F5DF8A 0%, #D4AF37 40%, #A07830 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #f5df8a 0%,
+    #d4af37 40%,
+    #a07830 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
   cursor: pointer !important;
 }
 
 input[type="range"]::-moz-range-track {
   height: 8px !important;
   border-radius: 6px !important;
-  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(180deg, #8a7d6b 0%, #6b5e4a 100%) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -1758,8 +2150,12 @@ ha-checkbox .mdc-checkbox__native-control {
 
 .mdc-checkbox .mdc-checkbox__background,
 ha-checkbox .mdc-checkbox__background {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 4px !important;
   width: 18px !important;
   height: 18px !important;
@@ -1768,13 +2164,20 @@ ha-checkbox .mdc-checkbox__background {
 
 .mdc-checkbox--checked .mdc-checkbox__background,
 ha-checkbox[checked] .mdc-checkbox__background {
-  background: linear-gradient(180deg, #E8B44D 0%, #D4AF37 50%, #A07830 100%) !important;
-  border-color: var(--sims2-panel-blue-deep, #173A52) !important;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 4px rgba(232, 180, 77, 0.3) !important;
+  background: linear-gradient(
+    180deg,
+    #e8b44d 0%,
+    #d4af37 50%,
+    #a07830 100%
+  ) !important;
+  border-color: var(--sims2-panel-blue-deep, #173a52) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 4px rgba(232, 180, 77, 0.3) !important;
 }
 
 .mdc-checkbox__checkmark-path {
-  stroke: var(--sims2-panel-blue-deep, #173A52) !important;
+  stroke: var(--sims2-panel-blue-deep, #173a52) !important;
   stroke-width: 3 !important;
 }
 
@@ -1789,17 +2192,30 @@ ha-radio .mdc-radio__native-control {
 
 .mdc-radio .mdc-radio__outer-circle,
 ha-radio .mdc-radio__outer-circle {
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
 }
 
 .mdc-radio--checked .mdc-radio__outer-circle {
-  border-color: var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
+  border-color: var(--sims2-panel-blue-deep, #173a52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
 }
 
 .mdc-radio .mdc-radio__inner-circle {
-  background: radial-gradient(circle at 40% 35%, #F5DF8A 0%, #D4AF37 50%, #8C6D1A 100%) !important;
+  background: radial-gradient(
+    circle at 40% 35%,
+    #f5df8a 0%,
+    #d4af37 50%,
+    #8c6d1a 100%
+  ) !important;
   border: none !important;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
@@ -1814,33 +2230,48 @@ progress,
 ha-progress {
   border-radius: 6px !important;
   overflow: hidden !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 .mdc-linear-progress__track {
-  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  background: linear-gradient(180deg, #8a7d6b 0%, #6b5e4a 100%) !important;
   border-radius: 4px !important;
 }
 
 .mdc-linear-progress__bar {
-  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #b7f36b 0%,
+    #7bc942 50%,
+    #5ba830 100%
+  ) !important;
   box-shadow: 0 0 6px rgba(123, 201, 66, 0.4) !important;
 }
 
 progress::-webkit-progress-bar {
-  background: linear-gradient(180deg, #8A7D6B 0%, #6B5E4A 100%) !important;
+  background: linear-gradient(180deg, #8a7d6b 0%, #6b5e4a 100%) !important;
   border-radius: 4px !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 progress::-webkit-progress-value {
-  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #b7f36b 0%,
+    #7bc942 50%,
+    #5ba830 100%
+  ) !important;
   border-radius: 2px !important;
 }
 
 progress::-moz-progress-bar {
-  background: linear-gradient(180deg, #B7F36B 0%, #7BC942 50%, #5BA830 100%) !important;
+  background: linear-gradient(
+    180deg,
+    #b7f36b 0%,
+    #7bc942 50%,
+    #5ba830 100%
+  ) !important;
   border-radius: 2px !important;
 }
 
@@ -1850,25 +2281,34 @@ progress::-moz-progress-bar {
    ========================================================================== */
 
 mwc-tab-bar {
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.90), rgba(109, 191, 223, 0.85)) !important;
-  border-bottom: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.9),
+    rgba(109, 191, 223, 0.85)
+  ) !important;
+  border-bottom: 3px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 mwc-tab {
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 700 !important;
   text-transform: none !important;
   letter-spacing: 0.3px !important;
 }
 
 mwc-tab[active] {
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 mwc-tab .mdc-tab__indicator,
 .mdc-tab-bar .mdc-tab__indicator {
-  background: linear-gradient(180deg, #E8B44D 0%, #D4AF37 100%) !important;
+  background: linear-gradient(180deg, #e8b44d 0%, #d4af37 100%) !important;
   height: 3px !important;
   border-radius: 2px 2px 0 0 !important;
 }
@@ -1879,18 +2319,29 @@ mwc-tab .mdc-tab__indicator,
 textarea,
 .mdc-text-field--outlined.mdc-text-field--textarea,
 ha-textarea {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 8px !important;
-  color: #2A2320 !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2a2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 textarea:focus,
 ha-textarea:focus {
-  border-color: #E8B44D !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(232, 180, 77, 0.25) !important;
+  border-color: #e8b44d !important;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 0 3px rgba(232, 180, 77, 0.25) !important;
 }
 
 /* ==========================================================================
@@ -1899,18 +2350,29 @@ ha-textarea:focus {
 select,
 .mdc-select,
 ha-select {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 8px !important;
-  color: #2A2320 !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2a2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 select:focus,
 .mdc-select:focus {
-  border-color: #E8B44D !important;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(232, 180, 77, 0.25) !important;
+  border-color: #e8b44d !important;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 3px rgba(232, 180, 77, 0.25) !important;
 }
 
 /* ==========================================================================
@@ -1919,11 +2381,16 @@ select:focus,
 .mdc-tooltip,
 ha-tooltip,
 [role="tooltip"] {
-  background: var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-sky-blue, #7EC8E6) !important;
-  border: 2px solid #E8B44D !important;
+  background: var(--sims2-panel-blue-deep, #173a52) !important;
+  color: var(--sims2-sky-blue, #7ec8e6) !important;
+  border: 2px solid #e8b44d !important;
   border-radius: 6px !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   box-shadow: 0 4px 12px rgba(26, 26, 62, 0.5) !important;
 }
 
@@ -1933,11 +2400,21 @@ ha-tooltip,
    ========================================================================== */
 
 .mdc-chip {
-  background: linear-gradient(180deg, #A8D8F0 0%, var(--sims2-sky-blue, #7EC8E6) 50%, #2F86C5 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    #a8d8f0 0%,
+    var(--sims2-sky-blue, #7ec8e6) 50%,
+    #2f86c5 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 8px !important;
-  color: #2A2320 !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2a2320 !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 4px rgba(26, 26, 62, 0.15) !important;
 }
@@ -1946,13 +2423,21 @@ ha-tooltip,
    ENTITY ROW — Sims 2 list item style --------------------------------------- */
 
 ha-entity-row {
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.15), rgba(109, 191, 223, 0.10)) !important;
-  border-bottom: 1px solid rgba(26, 26, 62, 0.10) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.15),
+    rgba(109, 191, 223, 0.1)
+  ) !important;
+  border-bottom: 1px solid rgba(26, 26, 62, 0.1) !important;
   border-radius: 4px !important;
 }
 
 ha-entity-row:hover {
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.35), rgba(109, 191, 223, 0.30)) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.35),
+    rgba(109, 191, 223, 0.3)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -1961,11 +2446,11 @@ ha-entity-row:hover {
    ========================================================================== */
 
 .mdc-icon-button {
-  color: var(--sims2-cream-text, #FFF6E0) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
 }
 
 .mdc-icon-button:hover {
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 /* Icon button circular background on hover */
@@ -1983,7 +2468,7 @@ ha-icon-button,
 
   ha-card,
   .card {
-    border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+    border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
     box-shadow: none !important;
   }
 }
@@ -1996,31 +2481,52 @@ ha-icon-button,
 
 ha-alert,
 .mdc-alert {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  border-left: 5px solid #E8B44D !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  border-left: 5px solid #e8b44d !important;
   border-radius: 8px !important;
-  color: #2A2320 !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: #2a2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   box-shadow: 0 4px 12px rgba(26, 26, 62, 0.2) !important;
 }
 
 ha-alert[hass-alert-warning],
 .mdc-alert--warning {
-  border-left-color: #E8B44D !important;
-  background: linear-gradient(180deg, rgba(255, 220, 160, 0.9), rgba(232, 180, 77, 0.7)) !important;
+  border-left-color: #e8b44d !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 220, 160, 0.9),
+    rgba(232, 180, 77, 0.7)
+  ) !important;
 }
 
 ha-alert[hass-alert-error],
 .mdc-alert--error {
-  border-left-color: #E55B45 !important;
-  background: linear-gradient(180deg, rgba(255, 200, 190, 0.9), rgba(229, 91, 69, 0.3)) !important;
+  border-left-color: #e55b45 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 200, 190, 0.9),
+    rgba(229, 91, 69, 0.3)
+  ) !important;
 }
 
 ha-alert[hass-alert-success],
 .mdc-alert--success {
-  border-left-color: #7BC942 !important;
-  background: linear-gradient(180deg, rgba(183, 243, 107, 0.4), rgba(126, 200, 230, 0.5)) !important;
+  border-left-color: #7bc942 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(183, 243, 107, 0.4),
+    rgba(126, 200, 230, 0.5)
+  ) !important;
 }
 
 /* ==========================================================================
@@ -2031,16 +2537,21 @@ ha-alert[hass-alert-success],
 paper-toast,
 .mdc-snackbar,
 ha-toast {
-  background: var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-sky-blue, #7EC8E6) !important;
-  border: 2px solid #E8B44D !important;
+  background: var(--sims2-panel-blue-deep, #173a52) !important;
+  color: var(--sims2-sky-blue, #7ec8e6) !important;
+  border: 2px solid #e8b44d !important;
   border-radius: 8px !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   box-shadow: 0 8px 24px rgba(26, 26, 62, 0.5) !important;
 }
 
 paper-toast .mdc-button {
-  color: #E8B44D !important;
+  color: #e8b44d !important;
   font-weight: 700 !important;
 }
 
@@ -2052,19 +2563,32 @@ paper-toast .mdc-button {
 ha-list-item,
 .mdc-list-item,
 paper-item {
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.25), rgba(109, 191, 223, 0.20)) !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.25),
+    rgba(109, 191, 223, 0.2)
+  ) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   border-bottom: 1px solid rgba(26, 26, 62, 0.08) !important;
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 ha-list-item:hover,
 .mdc-list-item--selected {
-  background: linear-gradient(180deg, rgba(126, 200, 230, 0.55), rgba(109, 191, 223, 0.50)) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 200, 230, 0.55),
+    rgba(109, 191, 223, 0.5)
+  ) !important;
 }
 
 .mdc-list-item--selected {
-  border-left: 3px solid #E8B44D !important;
+  border-left: 3px solid #e8b44d !important;
 }
 
 /* ==========================================================================
@@ -2074,14 +2598,24 @@ ha-list-item:hover,
 
 app-drawer,
 ha-sidebar {
-  background: linear-gradient(180deg, #1E3D5A 0%, #1A3350 50%, #0E2240 100%) !important;
-  border-right: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    #1e3d5a 0%,
+    #1a3350 50%,
+    #0e2240 100%
+  ) !important;
+  border-right: 3px solid var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 ha-sidebar .link,
 ha-sidebar .title a {
-  color: var(--sims2-cream-text, #FFF6E0) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   border-radius: 8px !important;
@@ -2092,9 +2626,13 @@ ha-sidebar .link:hover {
 }
 
 ha-sidebar .link.active {
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
-  background: linear-gradient(180deg, rgba(232, 180, 77, 0.3), rgba(232, 180, 77, 0.15)) !important;
-  border-left: 3px solid #E8B44D !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 180, 77, 0.3),
+    rgba(232, 180, 77, 0.15)
+  ) !important;
+  border-left: 3px solid #e8b44d !important;
   font-weight: 700 !important;
 }
 
@@ -2106,16 +2644,26 @@ ha-sidebar .link.active {
 app-header,
 ha-app-toolbar,
 .mdc-top-app-bar {
-  background: linear-gradient(180deg, #2F6B9A 0%, #235E8C 50%, #1A4A70 100%) !important;
-  border-bottom: 3px solid var(--sims2-panel-blue-deep, #173A52) !important;
-  color: var(--sims2-cream-text, #FFF6E0) !important;
+  background: linear-gradient(
+    180deg,
+    #2f6b9a 0%,
+    #235e8c 50%,
+    #1a4a70 100%
+  ) !important;
+  border-bottom: 3px solid var(--sims2-panel-blue-deep, #173a52) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
   box-shadow: 0 2px 8px rgba(26, 26, 62, 0.2) !important;
 }
 
 app-header .title,
 .mdc-top-app-bar__title {
-  color: var(--sims2-cream-text, #FFF6E0) !important;
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  color: var(--sims2-cream-text, #fff6e0) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 700 !important;
 }
 
@@ -2126,28 +2674,33 @@ app-header .title,
    ========================================================================== */
 
 state-badge ha-icon {
-  color: #A08C6A !important;
+  color: #a08c6a !important;
 }
 
 state-badge[data-state="on"] ha-icon,
 state-badge[data-state="open"] ha-icon,
 state-badge[data-state="home"] ha-icon {
-  color: #7BC942 !important;
+  color: #7bc942 !important;
   filter: drop-shadow(0 0 4px rgba(123, 201, 66, 0.5)) !important;
 }
 
 state-badge[data-state="unavailable"] ha-icon,
 state-badge[data-state="unknown"] ha-icon {
-  color: #8A7D6B !important;
+  color: #8a7d6b !important;
 }
 
 /* ==========================================================================
    CARD CONTENT — Sims 2 typography for card internals ----------------------- */
 
 .card-header {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 700 !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
   font-size: 16px !important;
   letter-spacing: 0.5px !important;
   padding: 12px 16px 8px !important;
@@ -2155,13 +2708,23 @@ state-badge[data-state="unknown"] ha-icon {
 }
 
 .card-content {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
-  color: #2A2320 !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
+  color: #2a2320 !important;
   padding: 8px 16px 12px !important;
 }
 
 .card-actions {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   padding: 8px 16px 12px !important;
   border-top: 1px solid rgba(26, 26, 62, 0.08) !important;
 }
@@ -2171,26 +2734,46 @@ state-badge[data-state="unknown"] ha-icon {
 
 ha-more-info-dialog,
 .more-info-container {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 ha-more-info-dialog .header {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 700 !important;
-  color: var(--sims2-panel-blue-deep, #173A52) !important;
+  color: var(--sims2-panel-blue-deep, #173a52) !important;
 }
 
 /* ==========================================================================
    SERVICE DESCRIPTION — Sims 2 form panel ----------------------------------- */
 
 ha-service-description {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 ha-service-description paper-input-label {
-  font-family: var(--sims2-font-display, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-display,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
   font-weight: 600 !important;
-  color: var(--sims2-espresso, #4A3320) !important;
+  color: var(--sims2-espresso, #4a3320) !important;
 }
 
 /* ==========================================================================
@@ -2198,14 +2781,18 @@ ha-service-description paper-input-label {
 
 ha-yaml-editor,
 code-editor {
-  font-family: 'Consolas', 'Monaco', monospace !important;
+  font-family: "Consolas", "Monaco", monospace !important;
 }
 
 ha-yaml-editor textarea,
 code-editor textarea {
-  background: linear-gradient(180deg, var(--sims2-sky-blue, #7EC8E6) 0%, var(--sims2-sky-blue, #7EC8E6) 100%) !important;
-  color: #2A2320 !important;
-  border: 2px solid var(--sims2-panel-blue-deep, #173A52) !important;
+  background: linear-gradient(
+    180deg,
+    var(--sims2-sky-blue, #7ec8e6) 0%,
+    var(--sims2-sky-blue, #7ec8e6) 100%
+  ) !important;
+  color: #2a2320 !important;
+  border: 2px solid var(--sims2-panel-blue-deep, #173a52) !important;
   border-radius: 8px !important;
 }
 
@@ -2216,7 +2803,12 @@ ha-energy-dashboard,
 ha-energy-date-pickerview,
 ha-energy-water-dashboard,
 ha-energy-gas-dashboard {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -2224,21 +2816,36 @@ ha-energy-gas-dashboard {
 
 ha-panel-supervisor,
 ha-panel-hassio {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
    MEDIA PLAYER CARD — Sims 2 media panel ------------------------------------ */
 
 ha-media-player-browse {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
    CALENDAR CARD — Sims 2 calendar panel ------------------------------------- */
 
 ha-calendar {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -2250,7 +2857,12 @@ ha-calendar {
 
 ha-weather-forecast,
 ha-weather-card {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -2261,7 +2873,12 @@ ha-weather-card {
 
 ha-alarm-panel-card,
 ha-panel-alarm {
-  font-family: var(--sims2-font-body, "Benguiat Gothic", system-ui, sans-serif) !important;
+  font-family: var(
+    --sims2-font-body,
+    "Benguiat Gothic",
+    system-ui,
+    sans-serif
+  ) !important;
 }
 
 /* ==========================================================================
@@ -2416,8 +3033,11 @@ input[type="range"] {
 /* Webkit range input styling for pill appearance */
 input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 999px !important;
-  background: var(--slider-track-color, #D8C39A) !important;
-  box-shadow: var(--sims2-shadow-inner-highlight, inset 0 1px 3px rgba(0, 0, 0, 0.15)) !important;
+  background: var(--slider-track-color, #d8c39a) !important;
+  box-shadow: var(
+    --sims2-shadow-inner-highlight,
+    inset 0 1px 3px rgba(0, 0, 0, 0.15)
+  ) !important;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -2430,16 +3050,19 @@ input[type="range"]::-webkit-slider-thumb {
 /* Firefox range input styling */
 input[type="range"]::-moz-range-track {
   border-radius: 999px !important;
-  background: var(--slider-track-color, #D8C39A) !important;
-  box-shadow: var(--sims2-shadow-inner-highlight, inset 0 1px 3px rgba(0, 0, 0, 0.15)) !important;
+  background: var(--slider-track-color, #d8c39a) !important;
+  box-shadow: var(
+    --sims2-shadow-inner-highlight,
+    inset 0 1px 3px rgba(0, 0, 0, 0.15)
+  ) !important;
 }
 
 input[type="range"]::-moz-range-progress {
   border-radius: 999px !important;
   background: linear-gradient(
     180deg,
-    var(--sims2-plumbob-green, #7BC942) 0%,
-    var(--sims2-panel-blue, #2F86C5) 100%
+    var(--sims2-plumbob-green, #7bc942) 0%,
+    var(--sims2-panel-blue, #2f86c5) 100%
   ) !important;
 }
 
@@ -2477,7 +3100,10 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 textarea {
-  background-color: var(--sims2-blue-text-bg, rgba(200, 225, 255, 0.5)) !important;
+  background-color: var(
+    --sims2-blue-text-bg,
+    rgba(200, 225, 255, 0.5)
+  ) !important;
   border-radius: 8px !important;
 }
 
@@ -2487,13 +3113,15 @@ mwc-snackbar,
 ha-notification-item {
   background: var(--sims2-blue-panel-bg) !important;
   border-radius: 10px !important;
-  border-left: 4px solid var(--sims2-panel-blue, #2F86C5) !important;
+  border-left: 4px solid var(--sims2-panel-blue, #2f86c5) !important;
 }
 
 /* ==========================================================================
    REDUCED MOTION — respect user preference ---------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

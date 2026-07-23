@@ -20,9 +20,7 @@ class Sims2ConfigFlow(ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
-    async def async_step_user(
-        self, user_input: dict[str, Any] | None = None
-    ) -> ConfigFlowResult:
+    async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Create the single entry, or abort if one already exists."""
         if self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")

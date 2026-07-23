@@ -11,6 +11,7 @@ Integration — one install, no copy/paste, no manual resource registration,
 no dashboard import.
 
 ### Added
+
 - Custom integration `sims2ha` that, on **Add Integration**: serves the
   frontend bundle over HTTP, registers it as a Lovelace module resource,
   creates nine storage-mode dashboards (idempotent), and copies the theme

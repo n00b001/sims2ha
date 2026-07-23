@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "lint": "eslint src/sims2-icons.js src/sims2-loading-card.js src/sims2-gauge-card.js src/sims2-divider-card.js 2>&1 || true",
-    "lint:fix": "eslint src/ custom_components/sims2ha/frontend/ --fix",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
     "format": "prettier --write 'src/**/*.js' 'custom_components/sims2ha/**/*.js' 'custom_components/sims2ha/**/*.css'"
   },
   "repository": {

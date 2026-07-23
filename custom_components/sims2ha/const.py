@@ -6,6 +6,7 @@ a Lovelace resource, (3) creates the premade storage-mode dashboards, and
 (4) drops the theme file into <config>/themes/ and reloads themes. That removes
 every manual copy/paste/register/import step.
 """
+
 DOMAIN = "sims2ha"
 
 # ---------------------------------------------------------------------------
@@ -36,7 +37,6 @@ SERVICE_WORKER_URL_PATH = "/sims2ha/sw.js"
 # ---------------------------------------------------------------------------
 # Configuration option keys
 # ---------------------------------------------------------------------------
-CONF_THEME_MODE = "theme_mode"
 CONF_ENABLE_ANIMATIONS = "enable_animations"
 CONF_SIDEBAR_WIDTH = "sidebar_width"
 CONF_ICON_SET_VERSION = "icon_set_version"
@@ -67,7 +67,6 @@ WS_GET_ICON_SET = "sims2ha/get_icon_set"
 # ---------------------------------------------------------------------------
 DEFAULT_MOOD = 100
 DEFAULT_OPTIONS = {
-    CONF_THEME_MODE: "auto",
     CONF_ENABLE_ANIMATIONS: True,
     CONF_SIDEBAR_WIDTH: 280,
     CONF_ICON_SET_VERSION: "1.0",

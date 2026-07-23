@@ -1,5 +1,5 @@
 def main():
-    print("Hello from sims2ha!")
+    pass
 
 
 if __name__ == "__main__":

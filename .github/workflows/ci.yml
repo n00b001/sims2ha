@@ -1,12 +1,5 @@
 name: CI
 
-# Quality gate for every push and pull request to main:
-#   - manifest.json / hacs.json are valid JSON
-#   - the Python integration compiles
-#   - the source JS (cards + icons) and the built bundle parse
-#   - hassfest (Home Assistant's integration validator) passes
-#   - HACS validates the repository for the "integration" category
-
 on:
   push:
     branches: [main]
@@ -29,6 +22,9 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Install uv
+        run: pip install uv
+
       - name: Validate manifest.json and hacs.json
         run: |
           python -c "import json; json.load(open('custom_components/sims2ha/manifest.json'))"
@@ -45,11 +41,19 @@ jobs:
       - name: Lint JavaScript
         run: npm run lint
 
-      - name: Lint Python
+      - name: Lint Python (ruff check)
         run: uv run ruff check .
 
+      - name: Format check Python (ruff format)
+        run: uv run ruff format --check .
+
       - name: Run Python tests
-        run: uv run pytest
+        run: |
+          if ls tests/*.py &>/dev/null; then
+            uv run pytest
+          else
+            echo "No Python test files found, skipping pytest"
+          fi
 
       - name: Run JavaScript tests
         run: npm test
