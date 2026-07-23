@@ -45,15 +45,15 @@ jobs:
         run: npm run lint
 
       - name: Lint Python (ruff check)
-        run: uv run ruff check .
+        run: ruff check .
 
       - name: Format check Python (ruff format)
-        run: uv run ruff format --check .
+        run: ruff format --check .
 
       - name: Run Python tests
         run: |
           if ls tests/*.py &>/dev/null; then
-            uv run pytest
+            pytest
           else
             echo "No Python test files found, skipping pytest"
           fi
