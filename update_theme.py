@@ -34,32 +34,28 @@ def main():
 
     theme = load_theme(theme_file)
 
-    # We need to check the base themes: sims2-light and sims2-dark
-    # Also note that the theme might have a 'sims2' key with modes that are aliases
-    # We'll update the anchors: sims2-light and sims2-dark
-
-    # Get the sets of variables for each mode
-    light_vars = set(theme.get("sims2-light", {}).keys())
-    dark_vars = set(theme.get("sims2-dark", {}).keys())
+    # With the new structure, we only have sims2 with modes.dark
+    # Get the variables from the dark mode
+    dark_vars = set(theme.get("sims2", {}).get("modes", {}).get("dark", {}).keys())
 
     # Remove the '--' prefix from each document variable to match theme keys
     doc_vars_no_dash = {var[2:] for var in doc_vars}  # remove first two characters '--'
 
-    # Find missing in light and dark
-    missing_in_light = doc_vars_no_dash - light_vars
+    # Find missing in dark mode
     missing_in_dark = doc_vars_no_dash - dark_vars
 
-    # We'll add the missing variables to both light and dark with a placeholder value
+    # We'll add the missing variables to dark mode with a placeholder value
     placeholder = "#000000"
 
-    for var in missing_in_light:
-        theme["sims2-light"][var] = placeholder
-
     for var in missing_in_dark:
-        theme["sims2-dark"][var] = placeholder
-
-    # Also, if there's a 'sims2' key with modes, we don't need to update it because it uses aliases
-    # But we'll leave it as is.
+        # Navigate to the dark mode section and add the variable
+        if "sims2" not in theme:
+            theme["sims2"] = {}
+        if "modes" not in theme["sims2"]:
+            theme["sims2"]["modes"] = {}
+        if "dark" not in theme["sims2"]["modes"]:
+            theme["sims2"]["modes"]["dark"] = {}
+        theme["sims2"]["modes"]["dark"][var] = placeholder
 
     save_theme(theme, theme_file)
 
