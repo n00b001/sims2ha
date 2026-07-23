@@ -103,12 +103,14 @@ async def _async_serve_static_files(hass: HomeAssistant, bookkeeping: dict[str, 
     # Service worker
     service_worker_path = str(_PACKAGE_DIR / SERVICE_WORKER_FILE)
 
-    await hass.http.async_register_static_paths([
-        StaticPathConfig(BUNDLE_URL_PATH, bundle_path, True),
-        StaticPathConfig(LOGIN_CSS_URL_PATH, login_css_path, True),
-        StaticPathConfig(LOADING_CSS_URL_PATH, loading_css_path, True),
-        StaticPathConfig(SERVICE_WORKER_URL_PATH, service_worker_path, True),
-    ])
+    await hass.http.async_register_static_paths(
+        [
+            StaticPathConfig(BUNDLE_URL_PATH, bundle_path, True),
+            StaticPathConfig(LOGIN_CSS_URL_PATH, login_css_path, True),
+            StaticPathConfig(LOADING_CSS_URL_PATH, loading_css_path, True),
+            StaticPathConfig(SERVICE_WORKER_URL_PATH, service_worker_path, True),
+        ]
+    )
     bookkeeping["static_paths_registered"] = True
     _LOGGER.info(
         "Sims 2 static files served at %s, %s, %s, %s",
