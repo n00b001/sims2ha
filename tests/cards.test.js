@@ -34,16 +34,22 @@ global.LitElement = class LitElement extends HTMLElement { static properties = {
 }
 
 // Convenience: a plumbob instance with the standard thresholds pre-filled.
+// Object.create(Klass.prototype) bypasses the constructor, so we also set
+// the reactive properties that _resolveMood reads directly (this.mood etc).
 function plumbobWith(overrides) {
   const { instance } = loadCard("sims2-plumbob-card.js", "sims-plumbob-card");
-  instance._config = {
+  const defaults = {
     entity: "sensor.test",
     mood: "green",
     green_above: 66,
     yellow_above: 33,
     state_map: {},
-    ...overrides,
   };
+  instance._config = { ...defaults, ...overrides };
+  instance.mood = instance._config.mood;
+  instance.greenAbove = instance._config.green_above;
+  instance.yellowAbove = instance._config.yellow_above;
+  instance.stateMap = instance._config.state_map;
   return instance;
 }
 
