@@ -18,7 +18,7 @@ test("built sims2-bundle.js is syntactically valid JavaScript", () => {
     "custom_components",
     "sims2ha",
     "frontend",
-    "sims2-bundle.js"
+    "sims2-bundle.js",
   );
   // node --check parses without executing; exit 0 means the bundle is valid JS.
   execSync(`node --check ${JSON.stringify(bundle)}`, { stdio: "pipe" });

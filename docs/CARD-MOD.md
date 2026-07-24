@@ -4,7 +4,7 @@ The base theme uses Home Assistant's native CSS-variable system, which
 transforms the entire UI without any extra integration. A plain stylesheet
 loaded as a resource cannot reach inside Home Assistant's Shadow DOM, so a
 few signature touches — a gradient panel header, a coloured sidebar rail,
-re-skinned settings pages — require running CSS *inside* each component's
+re-skinned settings pages — require running CSS _inside_ each component's
 shadow root.
 
 [card-mod](https://github.com/thomasloven/lovelace-card-mod) is the standard,
@@ -104,6 +104,7 @@ release renames a Shadow DOM node, the card simply falls back to the themed
 default until the snippet is updated.
 
 ## Why this is optional
+
 The theme, the loading screen, the plumbob card, and the dashboards all look
 correct and cohesive without card-mod — they carry their own styling in
 Shadow DOM. card-mod is purely for people who want the gradient chrome applied

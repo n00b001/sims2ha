@@ -17,7 +17,7 @@ _MOOD_MIN, _MOOD_MAX = 0, 100
 def clamp_mood(value: Any, default: int = 100) -> int:
     """Coerce ``value`` to an int in [0, 100]; return ``default`` if it is not numeric."""
     try:
-        mood = int(round(float(value)))
+        mood = round(float(value))
     except (TypeError, ValueError):
         return default
     if mood < _MOOD_MIN:
@@ -31,9 +31,7 @@ def with_defaults(options: dict[str, Any] | None, defaults: dict[str, Any]) -> d
     """Return ``options`` merged over ``defaults`` (defaults fill only missing/None keys)."""
     merged = dict(defaults)
     if options:
-        for key, value in options.items():
-            if value is not None:
-                merged[key] = value
+        return {k: v for k, v in {**defaults, **options}.items() if v is not None}
     return merged
 
 
@@ -41,11 +39,11 @@ def parse_entity_list(raw: Any) -> list[str]:
     """Accept a comma-separated string or a list and return a clean list of entity ids."""
     if raw is None:
         return []
-    if isinstance(raw, str):
-        items = raw.split(",")
-    else:
-        items = list(raw)
-    return [str(item).strip() for item in items if str(item).strip()]
+    return [
+        str(item).strip()
+        for item in (raw.split(",") if isinstance(raw, str) else list(raw))
+        if str(item).strip()
+    ]
 
 
 def compute_active_needs(needs_entities: list[str], states: dict[str, dict[str, Any]]) -> list[str]:
@@ -59,11 +57,13 @@ def compute_active_needs(needs_entities: list[str], states: dict[str, dict[str, 
     active: list[str] = []
     for entity_id in needs_entities:
         state = states.get(entity_id, {}).get("state")
+        if state is None:
+            continue
         if state in {"on", "low"}:
             active.append(entity_id)
             continue
         try:
-            if float(state) < 20:  # type: ignore[arg-type]
+            if float(state) < 20:
                 active.append(entity_id)
         except (TypeError, ValueError):
             continue

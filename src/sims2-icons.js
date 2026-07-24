@@ -843,9 +843,6 @@ window.customIcons["sims2"] = {
     if (hass && hass.icons) {
       hass.icons.register(iconSet);
       registered = true;
-      console.log(
-        "[sims2-icons] Registered " + iconSet.names.length + " sims2 icons",
-      );
     }
   }
 

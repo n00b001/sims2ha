@@ -16,8 +16,10 @@ const path = require("path");
 const { chromium } = require("playwright");
 
 // ------------------------------------------------------------------ config
-const BUNDLE_PATH = process.argv[2] || "custom_components/sims2ha/frontend/sims2-bundle.js";
-const OUTPUT_DIR  = process.argv[3] || path.join(__dirname, "..", "artifacts", "cards");
+const BUNDLE_PATH =
+  process.argv[2] || "custom_components/sims2ha/frontend/sims2-bundle.js";
+const OUTPUT_DIR =
+  process.argv[3] || path.join(__dirname, "..", "artifacts", "cards");
 
 // Minimal Home Assistant stub that Lovelace cards expect.
 function makeHass(states) {
@@ -27,10 +29,10 @@ function makeHass(states) {
 // Sample entity states for cards that need them.
 const SAMPLE_STATES = {
   "sensor.living_room_temperature": { state: "22" },
-  "sensor.main_power_draw":         { state: "3500" },
-  "sensor.battery_level":           { state: "78" },
-  "climate.living_room":            { state: "heat" },
-  "light.lamp":                     { state: "on" },
+  "sensor.main_power_draw": { state: "3500" },
+  "sensor.battery_level": { state: "78" },
+  "climate.living_room": { state: "heat" },
+  "light.lamp": { state: "on" },
 };
 
 // ------------------------------------------------------------------- pages
@@ -154,7 +156,11 @@ const PAGES = [
           green_above: 70,
           yellow_above: 33,
           children: [
-            { title: "Thermostat", type: "entities", entities: ["climate.living_room"] },
+            {
+              title: "Thermostat",
+              type: "entities",
+              entities: ["climate.living_room"],
+            },
           ],
         },
         hass: makeHass(SAMPLE_STATES),
@@ -218,7 +224,11 @@ const PAGES = [
           green_above: 70,
           yellow_above: 33,
           children: [
-            { title: "Thermostat", type: "entities", entities: ["climate.living_room"] },
+            {
+              title: "Thermostat",
+              type: "entities",
+              entities: ["climate.living_room"],
+            },
             { title: "Lights", type: "entities", entities: ["light.lamp"] },
           ],
         },
@@ -234,7 +244,11 @@ const PAGES = [
           green_above: 70,
           yellow_above: 33,
           children: [
-            { title: "Fridge", type: "entities", entities: ["sensor.kitchen_temperature"] },
+            {
+              title: "Fridge",
+              type: "entities",
+              entities: ["sensor.kitchen_temperature"],
+            },
           ],
         },
         hass: makeHass({
@@ -253,7 +267,11 @@ const PAGES = [
           green_above: 70,
           yellow_above: 33,
           children: [
-            { title: "Front Door", type: "entities", entities: ["sensor.front_door"] },
+            {
+              title: "Front Door",
+              type: "entities",
+              entities: ["sensor.front_door"],
+            },
           ],
         },
         hass: makeHass({
@@ -320,7 +338,8 @@ function buildHtml(page) {
       const waitMs = 800;
       setTimeout(() => {
         ${page.cards
-          .map((c) => `
+          .map(
+            (c) => `
           (function () {
             const container = document.getElementById("${c.name}");
             if (!container) return;
@@ -335,7 +354,9 @@ function buildHtml(page) {
             if (${c.hass !== null}) {
               card.hass = ${JSON.stringify(c.hass)};
             }
-          })();`).join("")}
+          })();`,
+          )
+          .join("")}
       }, waitMs);
     });
   </script>

@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
-"""Parse HA_THEMING_CAPABILITIES.md and verify every variable exists in sims2.yaml."""
+"""Audit theme variables for missing definitions."""
+
+from __future__ import annotations
 
 import re
+import sys
 
 import yaml
 
+THEME_FILE = "custom_components/sims2ha/themes/sims2.yaml"
+DOC_FILE = "docs/HA_THEMING_CAPABILITIES.md"
 
-def audit():
-    with open("docs/HA_THEMING_CAPABILITIES.md") as f:
+
+def audit() -> bool:
+    """Audit theme variables for missing definitions."""
+    with open(DOC_FILE, encoding="utf-8") as f:
         doc = f.read()
 
-    with open("custom_components/sims2ha/themes/sims2.yaml") as f:
+    with open(THEME_FILE, encoding="utf-8") as f:
         theme = yaml.safe_load(f)
 
     # Extract CSS variable names from the doc. The capabilities doc writes
@@ -20,33 +27,37 @@ def audit():
     # listed individually in the doc and checked below). Also drop trailing-dash
     # family stubs and bare dashes captured from markdown table separators
     # (`|---|---|`), which are not real variables.
-    variables = set()
+    variables: set[str] = set()
     for match in re.findall(r"--[\w*-]+", doc):
         name = match[2:]
-        if not name or name.endswith("-") or name.endswith("*"):
+        if not name or name.endswith(("-", "*")):
             continue
         variables.add(name)
 
     # Flatten theme variables from the single sims2 theme (modes-based)
-    themed = set()
+    themed: set[str] = set()
     if "sims2" in theme:
         modes = theme["sims2"].get("modes", {})
-        for _mode_name, theme_vars in modes.items():
-            themed.update(theme_vars.keys())
+        for vars_dict in modes.values():
+            if isinstance(vars_dict, dict):
+                themed.update(vars_dict.keys())
 
+    # Find missing variables
     missing = variables - themed
 
     if missing:
-        print(  # noqa: T201
-            f"Missing: {len(missing)} — {', '.join(sorted(missing)[:10])}{'...' if len(missing) > 10 else ''}"
-        )
+        # Limit output for readability
+        sorted_missing = sorted(missing)
+        if len(sorted_missing) > 10:
+            displayed = ", ".join(sorted_missing[:10]) + "..."
+        else:
+            displayed = ", ".join(sorted_missing)
+        sys.stdout.write(f"Missing: {len(missing)} — {displayed}\n")
+        return False
     else:
-        print("Missing: 0")  # noqa: T201
-
-    return len(missing) == 0
+        sys.stdout.write("Missing: 0\n")
+        return True
 
 
 if __name__ == "__main__":
-    import sys
-
     sys.exit(0 if audit() else 1)

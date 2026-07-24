@@ -20,16 +20,30 @@ const path = require("node:path");
 function loadCard(file, tagName) {
   const registry = {};
   global.HTMLElement = class HTMLElement {};
-  global.customElements = { define: (name, cls) => { registry[name] = cls; } };
+  global.customElements = {
+    define: (name, cls) => {
+      registry[name] = cls;
+    },
+  };
   global.window = {};
-global.LitElement = class LitElement extends HTMLElement { static properties = {}; constructor() { super(); this._config = {}; this._hass = null; } };
+  global.LitElement = class LitElement extends HTMLElement {
+    static properties = {};
+    constructor() {
+      super();
+      this._config = {};
+      this._hass = null;
+    }
+  };
 
   const full = path.resolve(__dirname, "..", "src", file);
   delete require.cache[require.resolve(full)];
   require(full);
 
   const Klass = registry[tagName];
-  if (!Klass) throw new Error(`custom element "${tagName}" did not register from ${file}`);
+  if (!Klass)
+    throw new Error(
+      `custom element "${tagName}" did not register from ${file}`,
+    );
   return { Klass, instance: Object.create(Klass.prototype) };
 }
 
@@ -55,9 +69,16 @@ function plumbobWith(overrides) {
 
 // ============================================================ sims2-plumbob
 test("plumbob: getCardSize reports 2", () => {
-  const { Klass, instance } = loadCard("sims2-plumbob-card.js", "sims-plumbob-card");
+  const { Klass, instance } = loadCard(
+    "sims2-plumbob-card.js",
+    "sims-plumbob-card",
+  );
   assert.equal(instance.getCardSize(), 2);
-  assert.deepEqual(Klass.getStubConfig(), { title: "Household Morale", mood: "green", size: 70 });
+  assert.deepEqual(Klass.getStubConfig(), {
+    title: "Household Morale",
+    mood: "green",
+    size: 70,
+  });
 });
 
 test("plumbob: returns configured mood when no entity is bound", () => {
@@ -89,14 +110,26 @@ test("plumbob: numeric state maps by green_above / yellow_above thresholds", () 
   card._hass = { states: { "sensor.test": { state: "90" } } };
   assert.equal(card._resolveMood(), "green", "90 >= green_above(66)");
   card._hass = { states: { "sensor.test": { state: "50" } } };
-  assert.equal(card._resolveMood(), "yellow", "50 >= yellow_above(33) but < green_above");
+  assert.equal(
+    card._resolveMood(),
+    "yellow",
+    "50 >= yellow_above(33) but < green_above",
+  );
   card._hass = { states: { "sensor.test": { state: "10" } } };
   assert.equal(card._resolveMood(), "red", "10 < yellow_above");
 });
 
 test("plumbob: on-like states map to green", () => {
   const card = plumbobWith();
-  for (const state of ["on", "home", "active", "running", "cooling", "heating", "ok"]) {
+  for (const state of [
+    "on",
+    "home",
+    "active",
+    "running",
+    "cooling",
+    "heating",
+    "ok",
+  ]) {
     card._hass = { states: { "sensor.test": { state } } };
     assert.equal(card._resolveMood(), "green", `state "${state}"`);
   }
@@ -104,7 +137,14 @@ test("plumbob: on-like states map to green", () => {
 
 test("plumbob: warning states map to yellow", () => {
   const card = plumbobWith();
-  for (const state of ["idle", "pending", "standby", "paused", "not_home", "away"]) {
+  for (const state of [
+    "idle",
+    "pending",
+    "standby",
+    "paused",
+    "not_home",
+    "away",
+  ]) {
     card._hass = { states: { "sensor.test": { state } } };
     assert.equal(card._resolveMood(), "yellow", `state "${state}"`);
   }
@@ -148,7 +188,11 @@ test("gauge: _resolveMood maps value by severity thresholds (boundaries inclusiv
   assert.equal(instance._resolveMood(75), "green");
   assert.equal(instance._resolveMood(70), "green", "green boundary inclusive");
   assert.equal(instance._resolveMood(50), "yellow");
-  assert.equal(instance._resolveMood(40), "yellow", "yellow boundary inclusive");
+  assert.equal(
+    instance._resolveMood(40),
+    "yellow",
+    "yellow boundary inclusive",
+  );
   assert.equal(instance._resolveMood(20), "red");
 });
 
@@ -172,7 +216,10 @@ test("gauge: _resolveValue parses numeric entity state, null otherwise", () => {
 
 // =========================================================== sims2-divider
 test("divider: getCardSize reports 1", () => {
-  const { Klass, instance } = loadCard("sims2-divider-card.js", "sims2-divider");
+  const { Klass, instance } = loadCard(
+    "sims2-divider-card.js",
+    "sims2-divider",
+  );
   assert.equal(instance.getCardSize(), 1);
   assert.deepEqual(Klass.getStubConfig(), { mood: "green", size: 30 });
 });

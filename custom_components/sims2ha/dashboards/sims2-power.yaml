@@ -30,7 +30,7 @@ views:
               device_class: power
               options:
                 type: custom:sims2-gauge
-                name: '{{ states(entity) }} W'
+                name: "{{ states(entity) }} W"
                 unit: "W"
                 min: 0
                 max: 10000

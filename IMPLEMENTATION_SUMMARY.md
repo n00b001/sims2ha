@@ -1,18 +1,21 @@
 # Implementation Summary: Sims 2 Dark-Only Theme Finalization
 
 ## Overview
+
 This implementation finalizes the Sims 2 Home Assistant integration as a dark-only theme with proper linting, formatting, and CI/CD integration, addressing all remaining issues from the development branch.
 
 ## Changes Made
 
 ### Theme Finalization
+
 - **Confirmed dark-only theme**: Verified `sims2-light` references removed from YAML, only `sims2-dark` anchor retained
-- **Cleaned CSS overrides**: 
+- **Cleaned CSS overrides**:
   - `src/sims2-theme.css`: Removed light mode defaults and `@media (prefers-color-scheme: dark)` wrapper, kept only dark values
   - `src/sims2-overrides.css`: Removed `@media (prefers-color-scheme: dark)` wrapper, kept only dark mode overrides
 - **Maintained blue-dominant palette**: Preserved navy (#080D18), sky-blue (#4A7A94), gold (#C29A3C), plumbob green (#7BC942) as per Sims 2 aesthetic
 
 ### Configuration Simplification
+
 - **Removed theme_mode configuration**:
   - `custom_components/sims2ha/const.py`: Removed `CONF_THEME_MODE` constant and from `DEFAULT_OPTIONS`
   - `custom_components/sims2ha/config_flow.py`: Simplified to single-step flow (no options)
@@ -20,7 +23,8 @@ This implementation finalizes the Sims 2 Home Assistant integration as a dark-on
   - `custom_components/sims2ha/helpers.py`: Removed `theme_mode` test values from self-check
 
 ### Linting & Formatting Fixes
-- **Package.json lint script**: 
+
+- **Package.json lint script**:
   - Changed `"lint": "eslint src/sims2-icons.js src/sims2-loading-card.js src/sims2-gauge-card.js src/sims2-divider-card.js 2>&1 || true"`
   - To: `"lint": "eslint src/"` (broader scope, no `|| true` to fail on errors)
 - **Audit script fix**:
@@ -34,6 +38,7 @@ This implementation finalizes the Sims 2 Home Assistant integration as a dark-on
   - Maintained all existing validation steps
 
 ### Build & Test Verification
+
 - **All checks pass**:
   - `npm test`: 21/21 tests pass (theme audit reports "Missing: 0")
   - `uv run ruff check .`: 0 errors
@@ -43,14 +48,16 @@ This implementation finalizes the Sims 2 Home Assistant integration as a dark-on
   - `scripts/precommit.sh` and `scripts/prepush.sh`: Execute successfully
 
 ## Verification Results
+
 ✅ Theme variables: 0 missing (per audit script)  
 ✅ JavaScript tests: 21/21 passing  
 ✅ Linting: 0 errors (ESLint), 0 errors (Ruff)  
 ✅ Formatting: Compliant (Prettier, Ruff)  
 ✅ Build: Bundle successfully generated  
-✅ Git hooks: Properly installed and executable  
+✅ Git hooks: Properly installed and executable
 
 ## Files Modified
+
 ```
 .github/workflows/ci.yml
 .pre-commit-config.yaml

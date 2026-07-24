@@ -13,13 +13,24 @@ const { execSync } = require("child_process");
 const { chromium } = require("playwright");
 
 // --------------------------------------------------------------- configuration
-const OUTPUT_DIR  = process.argv[2] || path.join(__dirname, "..", "artifacts");
-const REPO_ROOT   = path.resolve(__dirname, "..");
-const SRC_DIR     = path.join(REPO_ROOT, "src");
-const BUNDLE_SRC  = path.join(REPO_ROOT, "custom_components", "sims2ha", "frontend", "sims2-bundle.js");
+const OUTPUT_DIR = process.argv[2] || path.join(__dirname, "..", "artifacts");
+const REPO_ROOT = path.resolve(__dirname, "..");
+const SRC_DIR = path.join(REPO_ROOT, "src");
+const BUNDLE_SRC = path.join(
+  REPO_ROOT,
+  "custom_components",
+  "sims2ha",
+  "frontend",
+  "sims2-bundle.js",
+);
 
 // --------------------------------------------------------------- helpers
-function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function esc(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
 function readCss(file) {
   return fs.readFileSync(path.join(SRC_DIR, file), "utf8");
@@ -123,33 +134,97 @@ function buildLoginPage() {
 // ================================================================ ICONS PAGE
 function buildIconsPage() {
   const iconDefs = [
-    { name: "Plumbob", svg: `<svg viewBox="0 0 24 24"><polygon points="12,2 22,12 12,22 2,12" fill="url(#plumGrad)"/><defs><linearGradient id="plumGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#B7F36B"/><stop offset="35%" stop-color="#7BC942"/><stop offset="55%" stop-color="#4E9A26"/><stop offset="100%" stop-color="#2F6B12"/></linearGradient></defs></svg>` },
-    { name: "Cheerful", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 14 Q12 8 16 14" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>` },
-    { name: "Hungry", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 14 Q10 12 12 14 Q14 12 16 14" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>` },
-    { name: "Dizzy", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 10 L9 12 M10 8 L11 10 M14 8 L13 10 M16 10 L15 12" stroke="#7BC942" stroke-width="1.5"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>` },
-    { name: "Security", svg: `<svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 8V6a4 4 0 018 0v2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="14" r="2" fill="#7BC942"/></svg>` },
-    { name: "Sleepy", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 12 Q9.5 11 11 12 Q12.5 13 14 12 Q15.5 11 17 12" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>` },
-    { name: "Light", svg: `<svg viewBox="0 0 24 24"><path d="M9 21h6v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .6.4 1 1 1h6c.6 0 1-.4 1-1v-2.3C17.8 13.5 19 11.4 19 9c0-3.9-3.1-7-7-7z" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 2v4M8 6l2 2M16 6l-2 2" stroke="#E0B66B" stroke-width="1.5"/></svg>` },
-    { name: "Thermostat", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="8" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 6 L12 14" stroke="#7BC942" stroke-width="2.5"/><circle cx="12" cy="14" r="2" fill="#E0B66B"/></svg>` },
-    { name: "Door", svg: `<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="16" cy="12" r="1.5" fill="#7BC942"/><path d="M5 8h14" stroke="#E0B66B" stroke-width="1"/></svg>` },
-    { name: "Window", svg: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1" fill="none" stroke="#E0B66B" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="3" x2="12" y2="21" stroke="#E0B66B" stroke-width="1.5"/></svg>` },
-    { name: "Lock", svg: `<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 11V7a4 4 0 018 0v4" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="16" r="1.5" fill="#7BC942"/></svg>` },
-    { name: "Unlock", svg: `<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 11V7a4 4 0 017 0" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="16" r="1.5" fill="#E0B66B"/></svg>` },
-    { name: "Fan", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 9Q8 3 6 6 Q7 10 12 9Z" fill="#E0B66B" opacity="0.5"/><path d="M15 12Q21 8 18 6 Q14 7 15 12Z" fill="#E0B66B" opacity="0.5"/><path d="M9 15Q3 18 6 20 Q9 17 9 15Z" fill="#E0B66B" opacity="0.5"/><path d="M9 9Q3 12 6 10 Q9 13 9 9Z" fill="#E0B66B" opacity="0.5"/></svg>` },
-    { name: "Speaker", svg: `<svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="8" r="4" fill="none" stroke="#7BC942" stroke-width="1.5"/><path d="M16 12 Q20 12 20 16 Q20 20 16 20" fill="none" stroke="#E0B66B" stroke-width="1.5"/></svg>` },
-    { name: "Camera", svg: `<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="#7BC942" stroke-width="1.5"/><circle cx="18" cy="9" r="1" fill="#7BC942"/></svg>` },
-    { name: "Power", svg: `<svg viewBox="0 0 24 24"><path d="M12 2 L12 12" stroke="#7BC942" stroke-width="3" stroke-linecap="round"/><path d="M18 6 A8 8 0 1 1 6 6" fill="none" stroke="#E0B66B" stroke-width="2.5" stroke-linecap="round"/></svg>` },
-    { name: "Network", svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="6" cy="18" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="18" cy="18" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="9" x2="6" y2="15" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="9" x2="18" y2="15" stroke="#E0B66B" stroke-width="1.5"/></svg>` },
-    { name: "Battery", svg: `<svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><rect x="20" y="11" width="2" height="4" rx="0.5" fill="#E0B66B"/><rect x="7" y="10" width="4" height="6" rx="1" fill="#7BC942"/><rect x="13" y="10" width="4" height="6" rx="1" fill="#E0B66B"/></svg>` },
-    { name: "Temperature", svg: `<svg viewBox="0 0 24 24"><path d="M14 2v12a5 5 0 1 1-4 0V2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="17" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><rect x="11" y="8" width="2" height="6" rx="1" fill="#7BC942"/></svg>` },
-    { name: "Water", svg: `<svg viewBox="0 0 24 24"><path d="M12 2 Q6 10 6 15 A6 6 0 1 0 18 15 Q18 10 12 2Z" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M10 16 Q12 13 14 16" stroke="#7BC942" stroke-width="1.5" fill="none"/></svg>` },
+    {
+      name: "Plumbob",
+      svg: `<svg viewBox="0 0 24 24"><polygon points="12,2 22,12 12,22 2,12" fill="url(#plumGrad)"/><defs><linearGradient id="plumGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#B7F36B"/><stop offset="35%" stop-color="#7BC942"/><stop offset="55%" stop-color="#4E9A26"/><stop offset="100%" stop-color="#2F6B12"/></linearGradient></defs></svg>`,
+    },
+    {
+      name: "Cheerful",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 14 Q12 8 16 14" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>`,
+    },
+    {
+      name: "Hungry",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 14 Q10 12 12 14 Q14 12 16 14" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>`,
+    },
+    {
+      name: "Dizzy",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 10 L9 12 M10 8 L11 10 M14 8 L13 10 M16 10 L15 12" stroke="#7BC942" stroke-width="1.5"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>`,
+    },
+    {
+      name: "Security",
+      svg: `<svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 8V6a4 4 0 018 0v2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="14" r="2" fill="#7BC942"/></svg>`,
+    },
+    {
+      name: "Sleepy",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 12 Q9.5 11 11 12 Q12.5 13 14 12 Q15.5 11 17 12" stroke="#7BC942" stroke-width="2" fill="none"/><circle cx="9" cy="10" r="1.5" fill="#4A3320"/><circle cx="15" cy="10" r="1.5" fill="#4A3320"/></svg>`,
+    },
+    {
+      name: "Light",
+      svg: `<svg viewBox="0 0 24 24"><path d="M9 21h6v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .6.4 1 1 1h6c.6 0 1-.4 1-1v-2.3C17.8 13.5 19 11.4 19 9c0-3.9-3.1-7-7-7z" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 2v4M8 6l2 2M16 6l-2 2" stroke="#E0B66B" stroke-width="1.5"/></svg>`,
+    },
+    {
+      name: "Thermostat",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="8" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 6 L12 14" stroke="#7BC942" stroke-width="2.5"/><circle cx="12" cy="14" r="2" fill="#E0B66B"/></svg>`,
+    },
+    {
+      name: "Door",
+      svg: `<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="16" cy="12" r="1.5" fill="#7BC942"/><path d="M5 8h14" stroke="#E0B66B" stroke-width="1"/></svg>`,
+    },
+    {
+      name: "Window",
+      svg: `<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1" fill="none" stroke="#E0B66B" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="3" x2="12" y2="21" stroke="#E0B66B" stroke-width="1.5"/></svg>`,
+    },
+    {
+      name: "Lock",
+      svg: `<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 11V7a4 4 0 018 0v4" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="16" r="1.5" fill="#7BC942"/></svg>`,
+    },
+    {
+      name: "Unlock",
+      svg: `<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M8 11V7a4 4 0 017 0" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="16" r="1.5" fill="#E0B66B"/></svg>`,
+    },
+    {
+      name: "Fan",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M12 9Q8 3 6 6 Q7 10 12 9Z" fill="#E0B66B" opacity="0.5"/><path d="M15 12Q21 8 18 6 Q14 7 15 12Z" fill="#E0B66B" opacity="0.5"/><path d="M9 15Q3 18 6 20 Q9 17 9 15Z" fill="#E0B66B" opacity="0.5"/><path d="M9 9Q3 12 6 10 Q9 13 9 9Z" fill="#E0B66B" opacity="0.5"/></svg>`,
+    },
+    {
+      name: "Speaker",
+      svg: `<svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="8" r="4" fill="none" stroke="#7BC942" stroke-width="1.5"/><path d="M16 12 Q20 12 20 16 Q20 20 16 20" fill="none" stroke="#E0B66B" stroke-width="1.5"/></svg>`,
+    },
+    {
+      name: "Camera",
+      svg: `<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="#7BC942" stroke-width="1.5"/><circle cx="18" cy="9" r="1" fill="#7BC942"/></svg>`,
+    },
+    {
+      name: "Power",
+      svg: `<svg viewBox="0 0 24 24"><path d="M12 2 L12 12" stroke="#7BC942" stroke-width="3" stroke-linecap="round"/><path d="M18 6 A8 8 0 1 1 6 6" fill="none" stroke="#E0B66B" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+    },
+    {
+      name: "Network",
+      svg: `<svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="6" cy="18" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="18" cy="18" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="9" x2="6" y2="15" stroke="#E0B66B" stroke-width="1.5"/><line x1="12" y1="9" x2="18" y2="15" stroke="#E0B66B" stroke-width="1.5"/></svg>`,
+    },
+    {
+      name: "Battery",
+      svg: `<svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><rect x="20" y="11" width="2" height="4" rx="0.5" fill="#E0B66B"/><rect x="7" y="10" width="4" height="6" rx="1" fill="#7BC942"/><rect x="13" y="10" width="4" height="6" rx="1" fill="#E0B66B"/></svg>`,
+    },
+    {
+      name: "Temperature",
+      svg: `<svg viewBox="0 0 24 24"><path d="M14 2v12a5 5 0 1 1-4 0V2" fill="none" stroke="#E0B66B" stroke-width="1.5"/><circle cx="12" cy="17" r="3" fill="none" stroke="#E0B66B" stroke-width="1.5"/><rect x="11" y="8" width="2" height="6" rx="1" fill="#7BC942"/></svg>`,
+    },
+    {
+      name: "Water",
+      svg: `<svg viewBox="0 0 24 24"><path d="M12 2 Q6 10 6 15 A6 6 0 1 0 18 15 Q18 10 12 2Z" fill="none" stroke="#E0B66B" stroke-width="1.5"/><path d="M10 16 Q12 13 14 16" stroke="#7BC942" stroke-width="1.5" fill="none"/></svg>`,
+    },
   ];
 
-  const iconsHtml = iconDefs.map((ic) => `
+  const iconsHtml = iconDefs
+    .map(
+      (ic) => `
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;">
       <div style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;background:rgba(14,42,68,0.6);border:2px solid rgba(224,182,107,0.35);border-radius:50%;">${ic.svg}</div>
       <span style="color:#E0B66B;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:'Benguiat Gothic',Georgia,serif;">${esc(ic.name)}</span>
-    </div>`).join("\n");
+    </div>`,
+    )
+    .join("\n");
 
   const body = `
 <div style="padding:24px;max-width:800px;margin:0 auto;">
@@ -271,8 +346,8 @@ function buildDeveloperToolsPage() {
 function buildAnimationFrames() {
   const states = [
     { label: "Frame 1 — Before Change", color: "#7A5A38" },
-    { label: "Frame 2 — Flash Active",  color: "#7BC942" },
-    { label: "Frame 3 — Settled",        color: "#7BC942" },
+    { label: "Frame 2 — Flash Active", color: "#7BC942" },
+    { label: "Frame 3 — Settled", color: "#7BC942" },
   ];
 
   return states.map((s) => {
@@ -303,7 +378,12 @@ function buildAnimationFrames() {
 // ================================================================ MAIN RENDERER
 async function main() {
   // --- Build bundle first (same as pre-push hook) ---
-  const bundleBuildDir = path.join(REPO_ROOT, "custom_components", "sims2ha", "frontend");
+  const bundleBuildDir = path.join(
+    REPO_ROOT,
+    "custom_components",
+    "sims2ha",
+    "frontend",
+  );
   fs.mkdirSync(bundleBuildDir, { recursive: true });
 
   console.log("Building bundle...");
@@ -328,7 +408,7 @@ async function main() {
   // Copy bundle into every dir the rendered HTML pages live in. Each page
   // references the bundle with a relative <script src="sims2-bundle.js">, so it
   // must sit beside the HTML — including the animations/ subdir.
-  const cardBundle   = path.join(cardsDir, "sims2-bundle.js");
+  const cardBundle = path.join(cardsDir, "sims2-bundle.js");
   const screenshotBundle = path.join(screenshotsDir, "sims2-bundle.js");
   const animationsDir = path.join(screenshotsDir, "animations");
   fs.mkdirSync(animationsDir, { recursive: true });
@@ -346,24 +426,29 @@ async function main() {
     execSync(`node "${rcJs}"`, { cwd: REPO_ROOT, stdio: "inherit" });
     console.log("Custom cards rendered OK.");
   } catch (e) {
-    console.warn("Custom card render failed — continuing with remaining pages.");
+    console.warn(
+      "Custom card render failed — continuing with remaining pages.",
+    );
   }
 
   // --- Step 2: Additional screenshot pages ---
   const extraPages = [
     { builder: buildSettingsPage, subDir: screenshotsDir },
-    { builder: buildLoginPage,    subDir: screenshotsDir },
-    { builder: buildIconsPage,    subDir: screenshotsDir },
-    { builder: buildLogbookPage,  subDir: screenshotsDir },
-    { builder: buildHistoryPage,  subDir: screenshotsDir },
-    { builder: buildStatesPage,   subDir: screenshotsDir },
+    { builder: buildLoginPage, subDir: screenshotsDir },
+    { builder: buildIconsPage, subDir: screenshotsDir },
+    { builder: buildLogbookPage, subDir: screenshotsDir },
+    { builder: buildHistoryPage, subDir: screenshotsDir },
+    { builder: buildStatesPage, subDir: screenshotsDir },
     { builder: buildDeveloperToolsPage, subDir: screenshotsDir },
   ];
 
   console.log("\n=== Additional Screenshots ===");
   const animFrames = buildAnimationFrames();
   for (const af of animFrames) {
-    extraPages.push({ builder: () => af, subDir: path.join(screenshotsDir, "animations") });
+    extraPages.push({
+      builder: () => af,
+      subDir: path.join(screenshotsDir, "animations"),
+    });
   }
 
   const browser = await chromium.launch({ headless: true });
@@ -383,14 +468,21 @@ async function main() {
   for (const item of extraPages) {
     try {
       const pageData = item.builder();
-      const html = buildPage(pageData.title, pageData.body, pageData.extraScripts);
+      const html = buildPage(
+        pageData.title,
+        pageData.body,
+        pageData.extraScripts,
+      );
       const name = pageData.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
       const outDir = item.subDir;
       fs.mkdirSync(outDir, { recursive: true });
       const htmlPath = path.join(outDir, `${name}.html`);
       fs.writeFileSync(htmlPath, html);
 
-      await page.goto("file://" + htmlPath, { waitUntil: "networkidle", timeout: 15000 });
+      await page.goto("file://" + htmlPath, {
+        waitUntil: "networkidle",
+        timeout: 15000,
+      });
       await page.waitForTimeout(1500);
 
       const s = path.join(outDir, `${name}.png`);
@@ -406,4 +498,7 @@ async function main() {
   console.log(`\nTotal additional screenshots: ${screenshotCount}`);
 }
 
-main().catch((err) => { console.error("Render failed:", err.message); process.exit(1); });
+main().catch((err) => {
+  console.error("Render failed:", err.message);
+  process.exit(1);
+});

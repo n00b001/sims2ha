@@ -13,6 +13,7 @@ Since the login page is external to the main SPA, theming options are limited to
 If you run Home Assistant behind a reverse proxy (nginx, Caddy, Traefik, etc.), you can inject custom CSS into the login page.
 
 #### Nginx Example:
+
 ```nginx
 location /auth/ {
     proxy_pass http://homeassistant:8123/auth/;
@@ -101,6 +102,7 @@ location /auth/ {
 ```
 
 #### Caddy Example:
+
 ```caddy
 reverse_proxy /auth/* http://homeassistant:8123 {
     header_up Host {upstream_hostport}
@@ -109,7 +111,7 @@ reverse_proxy /auth/* http://homeassistant:8123 {
     header_up X-Forwarded-Proto {scheme}
     response body {
         import secure_headers
-        replace </head> 
+        replace </head>
             <style>
             /* Sims 2 Login Screen CSS (same as above) */
             </style>
@@ -136,6 +138,7 @@ Browser Mod cannot style the pre-auth login screen because it only works after a
 ## Implementation Notes
 
 The CSS provided above implements:
+
 - Sunburst background matching the main app
 - Sims 2 styled login card with sky-blue gradient
 - Bubbly rounded borders (24px radius)
@@ -147,6 +150,7 @@ The CSS provided above implements:
 ## Testing
 
 To test your login screen customization:
+
 1. Apply your reverse proxy configuration
 2. Reload the proxy
 3. Navigate to your Home Assistant login page
